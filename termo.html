@@ -24,6 +24,9 @@
             --text-dim: #8a9499;
             --border: #2a2f35;
             --card-bg: #14181c;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
         }
 
         body {
@@ -184,6 +187,68 @@
             padding-left: 1rem;
         }
 
+        /* Phase Selector */
+        .phase-selector {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .selector-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dim);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .phase-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .phase-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-dim);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .phase-btn:hover {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        .phase-btn.active {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .phase-badge {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+        }
+
+        .phase-btn.active .phase-badge {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
         /* Bracket */
         .bracket-wrapper {
             background-color: var(--card-bg);
@@ -198,6 +263,7 @@
             gap: 3rem;
             justify-content: center;
             min-width: min-content;
+            transition: all 0.3s;
         }
 
         .round {
@@ -250,10 +316,28 @@
             border-radius: 8px;
             overflow: hidden;
             transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .match:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 229, 255, 0.2);
+            border-color: var(--accent);
         }
 
         .match.finished {
-            border-left: 3px solid #10b981;
+            border-left: 3px solid var(--success);
+        }
+
+        .match.live {
+            border-left: 3px solid var(--warning);
+            animation: livePulse 2s infinite;
+        }
+
+        @keyframes livePulse {
+            0% { border-left-color: var(--warning); }
+            50% { border-left-color: transparent; }
+            100% { border-left-color: var(--warning); }
         }
 
         .team {
@@ -302,7 +386,7 @@
         }
 
         .team.winner .team-score {
-            background-color: #10b981;
+            background-color: var(--success);
             color: white;
         }
 
@@ -313,6 +397,124 @@
             justify-content: space-between;
             font-size: 0.7rem;
             color: var(--text-dim);
+        }
+
+        .match-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-badge.finished {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .status-badge.live {
+            background-color: var(--warning);
+            color: white;
+        }
+
+        .status-badge.pending {
+            background-color: var(--border);
+            color: var(--text-dim);
+        }
+
+        /* Score Details */
+        .score-details {
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            font-size: 0.7rem;
+            display: none;
+        }
+
+        .match.expanded .score-details {
+            display: block;
+        }
+
+        .score-breakdown {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-dim);
+        }
+
+        /* Results Panel */
+        .results-panel {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .result-card {
+            background-color: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+        }
+
+        .result-teams {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .result-team {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+        }
+
+        .result-team.winner {
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), transparent);
+            border-left: 2px solid var(--success);
+        }
+
+        .result-score {
+            font-weight: 600;
+            color: var(--accent);
         }
 
         /* Champion Banner */
@@ -488,10 +690,33 @@
             </div>
         </div>
 
+        <div class="phase-selector">
+            <div class="selector-title">
+                <span>🎮</span>
+                <span>Seleccionar Fase</span>
+            </div>
+            <div class="phase-buttons" id="phaseButtons">
+                <!-- Fases se generarán dinámicamente -->
+            </div>
+        </div>
+
         <div id="tournamentContainer">
             <div class="loading">
                 <div class="loading-spinner"></div>
                 <p>Cargando torneo...</p>
+            </div>
+        </div>
+
+        <div id="resultsPanel" class="results-panel" style="display: none;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <span>📊</span>
+                    <h3>Panera de Resultados</h3>
+                </div>
+                <div class="phase-badge" id="resultsPhase"></div>
+            </div>
+            <div class="results-grid" id="resultsGrid">
+                <!-- Resultados se generarán dinámicamente -->
             </div>
         </div>
 
@@ -564,18 +789,82 @@ viewerRef.onSnapshot((snap) => {
 });
 
 /* =========================
+   ESTADO GLOBAL
+========================= */
+let currentPhase = 'all'; // 'all' o nombre de ronda
+let tournamentData = null;
+
+/* =========================
    TORNEO REAL TIME
 ========================= */
 const torneoRef = db.collection("torneos").doc("torneo32");
 
 torneoRef.onSnapshot((snap) => {
     if (snap.exists) {
-        const torneo = snap.data();
-        renderTorneo(torneo);
+        tournamentData = snap.data();
+        renderPhaseButtons(tournamentData);
+        renderTorneo(tournamentData);
+        renderResults(tournamentData);
     } else {
         renderNoTournament();
     }
 });
+
+/* =========================
+   RENDER PHASE BUTTONS
+========================= */
+function renderPhaseButtons(torneo) {
+    const container = document.getElementById("phaseButtons");
+    
+    if (!torneo || !torneo.rondas) {
+        container.innerHTML = '';
+        return;
+    }
+
+    const rondasOrden = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'];
+    const nombres = {
+        dieciseisavos: "Dieciseisavos",
+        octavos: "Octavos",
+        cuartos: "Cuartos",
+        semis: "Semifinal",
+        final: "Final"
+    };
+
+    let html = `
+        <button class="phase-btn ${currentPhase === 'all' ? 'active' : ''}" onclick="setPhase('all')">
+            <span>📋</span>
+            Todas las fases
+            <span class="phase-badge">completo</span>
+        </button>
+    `;
+
+    rondasOrden.forEach(ronda => {
+        const partidos = torneo.rondas[ronda];
+        if (!partidos || partidos.length === 0) return;
+
+        const finishedCount = partidos.filter(p => p.equipo1?.ganador || p.equipo2?.ganador).length;
+        
+        html += `
+            <button class="phase-btn ${currentPhase === ronda ? 'active' : ''}" onclick="setPhase('${ronda}')">
+                <span>🎮</span>
+                ${nombres[ronda]}
+                <span class="phase-badge">${finishedCount}/${partidos.length}</span>
+            </button>
+        `;
+    });
+
+    container.innerHTML = html;
+}
+
+/* =========================
+   SET PHASE
+========================= */
+window.setPhase = function(phase) {
+    currentPhase = phase;
+    renderPhaseButtons(tournamentData);
+    renderTorneo(tournamentData);
+    renderResults(tournamentData);
+};
 
 /* =========================
    RENDER FUNCTIONS
@@ -600,7 +889,7 @@ function renderTorneo(torneo) {
 
     const rondasOrden = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'];
     const nombres = {
-        dieciseisavos: "Ronda 1",
+        dieciseisavos: "Dieciseisavos",
         octavos: "Octavos",
         cuartos: "Cuartos",
         semis: "Semifinal",
@@ -610,6 +899,9 @@ function renderTorneo(torneo) {
     let html = `<div class="bracket-wrapper"><div class="bracket">`;
 
     rondasOrden.forEach(ronda => {
+        // Si hay una fase seleccionada y no es 'all', solo mostrar esa fase
+        if (currentPhase !== 'all' && currentPhase !== ronda) return;
+
         const partidos = torneo.rondas[ronda];
         if (!partidos || partidos.length === 0) return;
 
@@ -626,9 +918,10 @@ function renderTorneo(torneo) {
             if (!p) return;
 
             const finished = (p.equipo1?.ganador || p.equipo2?.ganador);
-
+            const live = !finished && p.equipo1?.nombre && p.equipo2?.nombre;
+            
             html += `
-            <div class="match ${finished ? 'finished' : ''}">
+            <div class="match ${finished ? 'finished' : ''} ${live ? 'live' : ''}" onclick="toggleMatchExpand(this)">
                 <div class="team ${p.equipo1?.ganador ? 'winner' : ''}">
                     <div class="team-name">
                         <div class="team-seed">${i*2+1}</div>
@@ -647,8 +940,21 @@ function renderTorneo(torneo) {
 
                 <div class="match-footer">
                     <span>#${i+1}</span>
-                    <span>${finished ? 'Finalizado' : 'En juego'}</span>
+                    <div class="match-status">
+                        <span class="status-badge ${finished ? 'finished' : (live ? 'live' : 'pending')}">
+                            ${finished ? 'Finalizado' : (live ? 'EN VIVO' : 'Pendiente')}
+                        </span>
+                    </div>
                 </div>
+
+                ${p.puntos ? `
+                <div class="score-details">
+                    <div class="score-breakdown">
+                        <span>Puntos: ${p.puntos.equipo1 || 0} - ${p.puntos.equipo2 || 0}</span>
+                        <span>⚡ ${p.tiempo || '—'}</span>
+                    </div>
+                </div>
+                ` : ''}
             </div>
             `;
         });
@@ -670,6 +976,92 @@ function renderTorneo(torneo) {
 
     container.innerHTML = html;
 }
+
+function renderResults(torneo) {
+    const resultsPanel = document.getElementById("resultsPanel");
+    const resultsGrid = document.getElementById("resultsGrid");
+    const resultsPhase = document.getElementById("resultsPhase");
+
+    if (!torneo || !torneo.rondas) {
+        resultsPanel.style.display = 'none';
+        return;
+    }
+
+    const rondasOrden = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'];
+    const nombres = {
+        dieciseisavos: "D I E C I S E I S A V O S",
+        octavos: "O C T A V O S",
+        cuartos: "C U A R T O S",
+        semis: "S E M I F I N A L",
+        final: "F I N A L"
+    };
+
+    let allMatches = [];
+    
+    rondasOrden.forEach(ronda => {
+        // Si hay una fase seleccionada y no es 'all', solo mostrar esa fase
+        if (currentPhase !== 'all' && currentPhase !== ronda) return;
+
+        const partidos = torneo.rondas[ronda];
+        if (!partidos || partidos.length === 0) return;
+
+        partidos.forEach((p, i) => {
+            if (p.equipo1?.ganador || p.equipo2?.ganador) {
+                allMatches.push({
+                    ronda: ronda,
+                    nombre: nombres[ronda],
+                    index: i,
+                    ...p
+                });
+            }
+        });
+    });
+
+    if (allMatches.length === 0) {
+        resultsPanel.style.display = 'none';
+        return;
+    }
+
+    resultsPanel.style.display = 'block';
+    resultsPhase.innerText = currentPhase === 'all' ? 'TODAS LAS FASES' : nombres[currentPhase];
+
+    let resultsHtml = '';
+
+    allMatches.forEach(match => {
+        resultsHtml += `
+            <div class="result-card">
+                <div class="result-header">
+                    <span>${match.nombre} - Partido #${match.index+1}</span>
+                    <span>✅ Finalizado</span>
+                </div>
+                <div class="result-teams">
+                    <div class="result-team ${match.equipo1?.ganador ? 'winner' : ''}">
+                        <span>${match.equipo1?.nombre || '—'}</span>
+                        <span class="result-score">${match.equipo1?.ganador ? 'VICTORIA' : 'DERROTA'}</span>
+                    </div>
+                    <div class="result-team ${match.equipo2?.ganador ? 'winner' : ''}">
+                        <span>${match.equipo2?.nombre || '—'}</span>
+                        <span class="result-score">${match.equipo2?.ganador ? 'VICTORIA' : 'DERROTA'}</span>
+                    </div>
+                </div>
+                ${match.puntos ? `
+                <div style="margin-top: 0.5rem; font-size: 0.7rem; color: var(--text-dim); text-align: center;">
+                    Puntuación: ${match.puntos.equipo1 || 0} - ${match.puntos.equipo2 || 0}
+                </div>
+                ` : ''}
+            </div>
+        `;
+    });
+
+    resultsGrid.innerHTML = resultsHtml;
+}
+
+/* =========================
+   TOGGLE MATCH EXPAND
+========================= */
+window.toggleMatchExpand = function(element) {
+    element.classList.toggle('expanded');
+};
 
 /* =========================
    QR CODE
