@@ -7,11 +7,18 @@
   <!-- Font Awesome 6 (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+
+    @font-face {
+    font-family: 'GamerFont';
+    src: url('/guente.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'GamerFont', sans-serif;
     }
 
     body {
@@ -428,10 +435,10 @@
       <div class="hero-content fade-up">
         <h1>AECOMPU e-Sports <br>1ra Edición</h1>
         <div class="highlight">"Desata tu legado, que la luz azul te guíe hacia la gloria"</div>
-        <p style="font-size: 1.3rem; color:#2b5580;">Compete, mejora y celebra la primera edición.</p>
+        <p style="font-size: 1.3rem; color:#2b5580;">Compite, mejora y celebra la primera edición.</p>
       </div>
       <div class="hero-image fade-up">
-        <span>🏆 Proximamente</span>
+        <span>🏆 Próximamente</span>
       </div>
     </section>
 
@@ -452,7 +459,7 @@
         <div class="torneo-item">
           <div class="torneo-img"><i class="fas fa-gamepad"></i></div>
           <h3>SMASH BROS ULTIMATE</h3>
-          <p>1vs1 · stock 5 · con items ·  eliminación directa</p>
+          <p>1vs1 · stock 5 · con ítems ·  eliminación directa</p>
         </div>
         <div class="torneo-item">
           <div class="torneo-img"><i class="fas fa-futbol"></i></div>
@@ -466,13 +473,13 @@
     <section id="reglas" class="fade-up">
       <h2 class="section-title">Reglas del torneo</h2>
       <div class="reglas-list">
-        <div class="regla"><i class="fas fa-shield-alt"></i> Pertenecer a la Facultad de ciencia y tecnología de la Universidad Gerardo Barrios.</div>
+        <div class="regla"><i class="fas fa-shield-alt"></i> Pertenecer a la Facultad de Ciencia y Tecnología de la Universidad Gerardo Barrios.</div>
         <div class="regla"><i class="fas fa-clock"></i> Horarios estrictos: 10 min de cortesía para presentarse.</div>
         <div class="regla"><i class="fas fa-ban"></i> Prohibido insultos, trampas o cualquier exploit.</div>
-        <div class="regla"><i class="fas fa-trophy"></i> Formato:  eliminación directa para Smash y para FC26.</div>
+        <div class="regla"><i class="fas fa-trophy"></i> Formato: eliminación directa para Smash y para FC26.</div>
 
-        <div class="regla"><i class="fas fa-gamepad"></i> Cada jugador decidira, si usar un control propio o el staff se sedera uno</div>
-        <div class="regla"><i class="fas fa-ticket-alt"></i> El sorteo se realizara de manera aleatoria en presencia de los participantes.</div>
+        <div class="regla"><i class="fas fa-gamepad"></i> Cada jugador decidirá si usar un control propio o el staff cederá uno.</div>
+        <div class="regla"><i class="fas fa-ticket-alt"></i> El sorteo se realizará de manera aleatoria en presencia de los participantes.</div>
       
         <div class="regla"><i class="fas fa-list"></i> Organización puede descalificar por comportamiento antideportivo.</div>
       </div>
@@ -497,7 +504,9 @@
     <section id="registro" class="cta fade-up" style="background-image: url('');">
       <h2>¿ESTÁS LISTO PARA DEJAR HUELLA?</h2>
       <p style="font-size: 1.8rem; max-width: 700px; margin: 0 auto;"></p>
-      <button class="btn">REGISTRARSE AHORA</button>
+      <a href="/form.html" target="_blank" rel="noopener noreferrer">
+    <button class="btn">REGISTRARSE AHORA</button>
+</a>
       <p style="font-size: 1.2rem; background: rgba(255,255,255,0.4); padding: 0.5rem 2rem; border-radius: 40px;">¡Cupos limitados - 1ra edición!</p>
     </section>
 
