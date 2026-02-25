@@ -1,179 +1,577 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Latidos</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Montserrat', sans-serif;
-}
-
-body{
-    width:100%;
-    height:100vh;
-    overflow:hidden;
-}
-
-/* ===== FONDO MUSICAL ===== */
-.background{
-    position:absolute;
-    inset:0;
-    background-image:url('https://cdn.law.asia/wp-content/uploads/2024/11/A-comparative-guide-to-E-sports-and-gaming.jpg');
-    background-size:cover;
-    background-position:center;
-    filter:grayscale(100%) contrast(1.1);
-}
-
-/* ===== OVERLAY OSCURO ===== */
-.overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.25);
-}
-
-/* ===== CONTENEDOR PRINCIPAL ===== */
-.container{
-    position:relative;
-    width:100%;
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-/* ===== ANILLOS CIRCULARES ===== */
-.rings{
-    position:absolute;
-    width:1200px;
-    height:1200px;
-    border-radius:50%;
-}
-
-.ring{
-    position:absolute;
-    border-radius:50%;
-    border:70px solid black;
-    clip-path: polygon(0 0, 100% 0, 100% 30%, 0 60%);
-    animation:rotate 40s linear infinite;
-    opacity:0.95;
-}
-
-.ring:nth-child(1){
-    width:100%;
-    height:100%;
-    transform:rotate(15deg);
-}
-
-.ring:nth-child(2){
-    width:80%;
-    height:80%;
-    top:10%;
-    left:10%;
-    transform:rotate(-40deg);
-    clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 70%);
-}
-
-.ring:nth-child(3){
-    width:60%;
-    height:60%;
-    top:20%;
-    left:20%;
-    transform:rotate(70deg);
-    clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
-}
-
-@keyframes rotate{
-    from{transform:rotate(0deg);}
-    to{transform:rotate(360deg);}
-}
-
-/* ===== CÍRCULO CENTRAL ===== */
-.center-circle{
-    width:420px;
-    height:420px;
-    background:black;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    z-index:5;
-}
-
-/* ===== TEXTO ===== */
-.text{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-}
-
-.text .red{
-    color:#ff1e1e;
-    font-weight:600;
-    font-size:28px;
-    letter-spacing:2px;
-}
-
-.text .white{
-    color:white;
-    font-weight:800;
-    font-size:42px;
-    letter-spacing:2px;
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:768px){
-    .rings{
-        width:800px;
-        height:800px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AECOMPU e-Sports · 1ra Edición</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
 
-    .center-circle{
-        width:300px;
-        height:300px;
+    body {
+      background: linear-gradient(145deg, #f6faff 0%, #e9f2fc 100%);
+      color: #1e2f4d;
+      line-height: 1.5;
+      scroll-behavior: smooth;
     }
 
-    .text .red{
-        font-size:20px;
+    /* paleta pastel azul/blanco */
+    :root {
+      --pastel-blue-50: #f0f7ff;
+      --pastel-blue-100: #d9e9fa;
+      --pastel-blue-200: #b8d6f0;
+      --pastel-blue-300: #92c0e6;
+      --pastel-blue-400: #6ba6db;
+      --pastel-blue-500: #4a8cc7;
+      --pastel-blue-600: #3a72a8;
+      --white-soft: #fffffffa;
+      --gray-pastel: #eef3f9;
+      --shadow-pastel: 0 20px 30px -10px rgba(30, 47, 77, 0.08);
     }
 
-    .text .white{
-        font-size:28px;
+    /* ===== MENÚ RESPONSIVE ===== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5%;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 30, 60, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: all 0.3s ease;
     }
-}
-</style>
+
+    .logo {
+      font-weight: 600;
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #2b4f7c, #517ea8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #23415c;
+      transition: color 0.2s, border-bottom 0.2s;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      font-size: 1.05rem;
+    }
+
+    .nav-links a:hover {
+      color: #1d5b9e;
+      border-bottom-color: #92c0e6;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: #2b4f7c;
+      cursor: pointer;
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem 0;
+        box-shadow: 0 20px 30px rgba(0,0,0,0.02);
+        transform: translateY(-150%);
+        opacity: 0;
+        transition: transform 0.4s ease, opacity 0.3s ease;
+        pointer-events: none;
+        border-radius: 0 0 30px 30px;
+      }
+
+      .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* secciones generales */
+    section {
+      padding: 5rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #1c3e5e;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: #92c0e6;
+      border-radius: 4px;
+    }
+
+    /* animaciones suaves al hacer scroll (fade-up simple) */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.8s ease;
+    }
+    .fade-up.appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 1ra sección HERO */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      background: radial-gradient(circle at 70% 30%, #d4e4fc, #f0f7fe);
+      border-radius: 0 0 50px 50px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-content {
+      flex: 1 1 400px;
+      animation: floatIn 1.2s ease;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      background: linear-gradient(145deg, #17416b, #3f74a3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content .highlight {
+      font-size: 1.5rem;
+      margin: 1rem 0 1.5rem;
+      color: #2d5279;
+      font-weight: 400;
+      border-left: 6px solid #92c0e6;
+      padding-left: 1.5rem;
+    }
+
+    .hero-image {
+      flex: 1 1 400px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="%2392c0e6" opacity="0.3"><path d="M0,150 C80,70 200,20 300,80 C380,130 420,220 350,270 C280,320 150,300 70,240 C10,190 -40,180 0,150 Z" /></svg>') no-repeat center;
+      background-size: contain;
+      min-height: 300px;
+      border-radius: 40px;
+      background-color: #cde1f5;
+      box-shadow: var(--shadow-pastel);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 2rem;
+      color: #1f3d5e;
+      font-size: 2rem;
+      font-weight: 300;
+      text-align: center;
+      background-blend-mode: overlay;
+      background-image: url('https://placehold.co/600x400/DAE9F8/94B9DF?text=Gaming+arena');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-image span {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(8px);
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 500;
+    }
+
+    @keyframes floatIn {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 2da sección e-sports explicación */
+    .esports-info {
+      background: var(--white-soft);
+      border-radius: 40px;
+      box-shadow: var(--shadow-pastel);
+    }
+
+    .info-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .info-card {
+      flex: 1 1 250px;
+      background: #f3f9ff;
+      padding: 2rem;
+      border-radius: 28px;
+      transition: transform 0.2s;
+    }
+    .info-card:hover {
+      transform: scale(1.02);
+      background: #e7f0fc;
+    }
+
+    /* torneos disponibles (3ra) */
+    .torneos-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .torneo-item {
+      background: white;
+      border-radius: 36px;
+      padding: 2rem 2rem 1.8rem;
+      flex: 1 1 280px;
+      max-width: 350px;
+      text-align: center;
+      box-shadow: 0 15px 25px #cddef0;
+      transition: all 0.3s;
+    }
+    .torneo-item:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 35px #b7cee6;
+    }
+    .torneo-img {
+      width: 120px;
+      height: 120px;
+      background: #c7def7;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      color: #214b77;
+      border: 4px solid white;
+      box-shadow: 0 5px 0 #abc1d9;
+    }
+    .torneo-item h3 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .torneo-item p {
+      color: #4a668a;
+    }
+
+    /* 4ta reglas */
+    .reglas-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      background: #ecf5fe;
+      padding: 3rem;
+      border-radius: 60px 20px 60px 20px;
+    }
+    .regla {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(4px);
+      padding: 1.5rem;
+      border-radius: 30px;
+    }
+    .regla i {
+      font-size: 2rem;
+      color: #3e7bb3;
+    }
+
+    /* 5ta quienes somos (AECOMPU) */
+    .about {
+      background: #daeaf9;
+      border-radius: 80px 20px 80px 20px;
+    }
+    .about-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
+    }
+    .about-text {
+      flex: 2 1 300px;
+      font-size: 1.2rem;
+    }
+    .about-highlight {
+      flex: 1 1 200px;
+      background: white;
+      border-radius: 100px 20px 100px 20px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 0 0 6px #b3d1f0;
+    }
+
+    /* 6ta CTA registro */
+    .cta {
+      background: linear-gradient(125deg, #c2ddf7, #edf5fe), url('https://placehold.co/1200x600/DAE9F8/white?text=Gamers+pastel');
+      background-blend-mode: overlay;
+      background-size: cover;
+      border-radius: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: #103456;
+    }
+    .cta h2 {
+      font-size: 3.2rem;
+      max-width: 800px;
+    }
+    .btn {
+      background: #21598f;
+      color: white;
+      border: none;
+      padding: 1.2rem 3.5rem;
+      border-radius: 50px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 2rem 0 1rem;
+      box-shadow: 0 15px 20px #9bb5d9;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #3073b0;
+      transform: scale(1.05);
+      box-shadow: 0 20px 30px #7ea3cb;
+    }
+
+    /* sección extra (incentivo) */
+    .extra-features {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      background: #ffffffb3;
+      border-radius: 110px;
+      padding: 3rem;
+    }
+    .feature {
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #3c5e82;
+    }
+
+    /* clases utilitarias */
+    .text-center { text-align: center; }
+    .mt-2 { margin-top: 2rem; }
+  </style>
 </head>
-
 <body>
+  <!-- MENÚ RESPONSIVE -->
+  <nav class="navbar">
+    <div class="logo">AECOMPU e-Sports</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#que-es">¿Qué son e-Sports?</a></li>
+      <li><a href="#torneos">Torneos</a></li>
+      <li><a href="#reglas">Reglas</a></li>
+      <li><a href="#about">AECOMPU</a></li>
+      <li><a href="#registro">Regístrate</a></li>
+    </ul>
+    <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+  </nav>
 
-<div class="background"></div>
-<div class="overlay"></div>
+  <main>
+    <!-- 1RA SECCIÓN: HERO con foto/texto -->
+    <section id="inicio" class="hero">
+      <div class="hero-content fade-up">
+        <h1>AECOMPU e-Sports <br>1ra Edición</h1>
+        <div class="highlight">"Desata tu legado, que la luz azul te guíe hacia la gloria"</div>
+        <p style="font-size: 1.3rem; color:#2b5580;">Compete, mejora y celebra la primera edición.</p>
+      </div>
+      <div class="hero-image fade-up">
+        <span>🏆 23-25 MAYO 2025</span>
+      </div>
+    </section>
 
-<div class="container">
+    <!-- 2DA SECCIÓN: ¿Qué son e-Sports? -->
+    <section id="que-es" class="esports-info fade-up">
+      <h2 class="section-title">¿Qué son los e-Sports?</h2>
+      <div class="info-grid">
+        <div class="info-card">⚡ Deporte electrónico de alto nivel, donde la estrategia y reflejos definen campeones.</div>
+        <div class="info-card">🎮 Competencias profesionales de videojuegos con audiencias globales y premios.</div>
+        <div class="info-card">🤝 Comunidad, fair play y evolución constante. Esto es e-Sports.</div>
+      </div>
+    </section>
 
-    <!-- ANILLOS -->
-    <div class="rings">
-        <div class="ring"></div>
-        <div class="ring"></div>
-        <div class="ring"></div>
-    </div>
-
-    <!-- CÍRCULO CENTRAL -->
-    <div class="center-circle">
-        <div class="text">
-            <div class="red"><br>AE COMPU</div>
-            <div class="white">e-Sports<br>Cup</div>
+    <!-- 3RA SECCIÓN: Torneos disponibles (Smash Bros Ultimate / FC 26) -->
+    <section id="torneos" class="fade-up">
+      <h2 class="section-title">Torneos 1ra Edición</h2>
+      <div class="torneos-grid">
+        <div class="torneo-item">
+          <div class="torneo-img"><i class="fas fa-gamepad"></i></div>
+          <h3>SMASH BROS ULTIMATE</h3>
+          <p>1vs1 · stock 3 · sin items · rondas doble eliminación</p>
         </div>
-    </div>
+        <div class="torneo-item">
+          <div class="torneo-img"><i class="fas fa-futbol"></i></div>
+          <h3>FC 26</h3>
+          <p>1vs1 · clubes 5 estrellas · 6 min por tiempo · final a ida/vuelta</p>
+        </div>
+      </div>
+    </section>
 
-</div>
+    <!-- 4TA SECCIÓN: Reglas (las que creas pertinentes) -->
+    <section id="reglas" class="fade-up">
+      <h2 class="section-title">Reglas del torneo</h2>
+      <div class="reglas-list">
+        <div class="regla"><i class="fas fa-shield-alt"></i> Edad mínima: 14 años (con autorización si es menor).</div>
+        <div class="regla"><i class="fas fa-clock"></i> Horarios estrictos: 10 min de cortesía para presentarse.</div>
+        <div class="regla"><i class="fas fa-ban"></i> Prohibido insultos, trampas o cualquier exploit.</div>
+        <div class="regla"><i class="fas fa-trophy"></i> Formato: doble eliminación para Smash, liga+playoffs para FC26.</div>
+        <div class="regla"><i class="fas fa-wifi"></i> Cada jugador debe garantizar su conexión.</div>
+        <div class="regla"><i class="fas fa-list"></i> Organización puede descalificar por comportamiento antideportivo.</div>
+      </div>
+    </section>
 
+    <!-- 5TA SECCIÓN: organizado por AECOMPU (quiénes somos) -->
+    <section id="about" class="about fade-up">
+      <h2 class="section-title">Organizado por AECOMPU</h2>
+      <div class="about-flex">
+        <div class="about-text">
+          <p style="font-weight: 500; font-size: 1.5rem;">¿Quiénes somos?</p>
+          <p>Somos la Asociación de Estudiantes de Computación (AECOMPU). Nacimos para unir la tecnología, los videojuegos y el talento joven. Creemos en los e-Sports como herramienta de integración y desarrollo. Nuestro equipo lleva más de 5 años organizando eventos gaming con corazón pastel y profesionalismo.</p>
+        </div>
+        <div class="about-highlight">
+          <i class="fas fa-users" style="font-size: 3rem; color: #32699c;"></i>
+          <p style="margin-top: 1rem;">+15 organizadores<br> staff experimentado<br> y mucho ánimo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6TA SECCIÓN: llamado a la acción con imagen fondo y palabras motivadoras -->
+    <section id="registro" class="cta fade-up" style="background-image: url('https://placehold.co/1400x700/B0D2F0/white?text=Gaming+pastel+wave');">
+      <h2>¿ESTÁS LISTO PARA DEJAR HUELLA?</h2>
+      <p style="font-size: 1.8rem; max-width: 700px; margin: 0 auto;">Inscribe tu equipo o participa como Free</p>
+      <button class="btn">REGISTRARSE AHORA</button>
+      <p style="font-size: 1.2rem; background: rgba(255,255,255,0.4); padding: 0.5rem 2rem; border-radius: 40px;">¡Cupos limitados - 1ra edición!</p>
+    </section>
+
+    <!-- sección extra: beneficios / por qué participar -->
+    <section class="fade-up" style="padding-top: 1rem;">
+      <div class="extra-features">
+        <div class="feature"><i class="fas fa-medal fa-3x" style="color:#528fc1;"></i><h3>Premios únicos</h3><p>Medallas, periféricos y más.</p></div>
+        <div class="feature"><i class="fas fa-video fa-3x" style="color:#528fc1;"></i><h3>Transmisión</h3><p>Streaming con casters invitados.</p></div>
+        <div class="feature"><i class="fas fa-calendar-check fa-3x" style="color:#528fc1;"></i><h3>3 días</h3><p>puro gaming presencial/online.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 AECOMPU e-Sports · 1ra Edición · Todos los derechos reservados · Diseño pastel azul</p>
+    <p style="margin-top: 0.5rem;">contacto@aecompu-esports.org · <i class="fab fa-twitter"></i> <i class="fab fa-instagram"></i></p>
+  </footer>
+
+  <!-- scripts para menú responsivo y animaciones fade-up -->
+  <script>
+    (function() {
+      // menú hamburguesa
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      if (menuToggle) {
+        menuToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          navLinks.classList.toggle('active');
+        });
+      }
+
+      // cerrar menú al hacer click en un enlace (responsive)
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          navLinks.classList.remove('active');
+        });
+      });
+
+      // animación suave al hacer scroll (fade-up)
+      const faders = document.querySelectorAll('.fade-up');
+      const appearOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('appear');
+          observer.unobserve(entry.target); // solo una vez
+        });
+      }, appearOptions);
+      faders.forEach(el => appearOnScroll.observe(el));
+
+      // forzar aparición si ya están visibles al cargar
+      window.addEventListener('load', () => {
+        faders.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 100) {
+            el.classList.add('appear');
+          }
+        });
+      });
+    })();
+  </script>
+
+  <!-- estilo extra para imágenes de fondo (para la sección hero/cta usamos placeholders, puedes reemplazar con assets reales) -->
+  <style>
+    /* imágenes placeholder (puedes cambiarlas por fotos reales) */
+    .hero-image {
+      background-image: url('https://placehold.co/700x500/D9E9FA/8FB0D9?text=Gamers+pastel');
+    }
+    #registro {
+      background-image: url('https://placehold.co/1300x600/C8DFF5/white?text=te+esperamos');
+      background-size: cover;
+      background-position: center;
+    }
+    /* sobreescribir con fotografía real si se desea */
+  </style>
 </body>
 </html>
