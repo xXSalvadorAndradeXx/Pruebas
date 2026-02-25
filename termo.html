@@ -249,69 +249,69 @@
             background-color: rgba(0, 0, 0, 0.2);
         }
 
-        /* Bracket */
+        /* Bracket - Nueva disposición en grid de 3 columnas */
         .bracket-wrapper {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 2rem;
-            overflow-x: auto;
         }
 
-        .bracket {
-            display: flex;
-            gap: 3rem;
-            justify-content: center;
-            min-width: min-content;
-            transition: all 0.3s;
-        }
-
-        .round {
+        .rounds-grid {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            min-width: 260px;
+            gap: 3rem;
         }
 
-        .round-header {
-            padding: 1rem;
-            background: linear-gradient(135deg, var(--secondary), transparent);
+        .round-section {
+            background-color: var(--secondary);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            position: relative;
+            border-radius: 12px;
             overflow: hidden;
         }
 
-        .round-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent), transparent);
+        .round-header {
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, var(--card-bg), transparent);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .round-header h3 {
-            font-size: 1rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--accent);
-            margin-bottom: 0.25rem;
         }
 
         .round-header p {
-            font-size: 0.75rem;
+            font-size: 0.875rem;
             color: var(--text-dim);
         }
 
-        .matches {
-            display: flex;
-            flex-direction: column;
+        .matches-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
+            padding: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .matches-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .matches-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .match {
-            background-color: var(--secondary);
+            background-color: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 8px;
             overflow: hidden;
@@ -332,12 +332,17 @@
         .match.live {
             border-left: 3px solid var(--warning);
             animation: livePulse 2s infinite;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .match.pending {
+            opacity: 0.7;
         }
 
         @keyframes livePulse {
-            0% { border-left-color: var(--warning); }
-            50% { border-left-color: transparent; }
-            100% { border-left-color: var(--warning); }
+            0% { border-left-color: var(--warning); box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
+            50% { border-left-color: transparent; box-shadow: 0 0 10px rgba(245, 158, 11, 0.1); }
+            100% { border-left-color: var(--warning); box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
         }
 
         .team {
@@ -360,6 +365,7 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            font-size: 0.9rem;
         }
 
         .team-seed {
@@ -653,6 +659,17 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent);
         }
+
+        /* Live indicator for the current match */
+        .live-match-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--warning);
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            animation: pulse 1.5s infinite;
+        }
     </style>
 </head>
 <body>
@@ -664,7 +681,7 @@
                     <h1>AECOMPU <span>e-Sports Club</span></h1>
                 </div>
             </div>
-            <div class="live-badge">
+            <div class="live-badge" id="globalLiveBadge" style="display: none;">
                 <span class="live-dot"></span>
                 <span>EN VIVO</span>
             </div>
@@ -753,6 +770,7 @@ const db = firebase.firestore();
 const statusDot = document.getElementById("statusDot");
 const statusText = document.getElementById("statusText");
 const viewerCount = document.getElementById("viewerCount");
+const globalLiveBadge = document.getElementById("globalLiveBadge");
 
 statusDot.classList.add("connected");
 statusText.innerText = "Conectado";
@@ -791,8 +809,9 @@ viewerRef.onSnapshot((snap) => {
 /* =========================
    ESTADO GLOBAL
 ========================= */
-let currentPhase = 'all'; // 'all' o nombre de ronda
+let currentPhase = 'all';
 let tournamentData = null;
+let currentLiveMatchId = null; // Para controlar qué partido está en vivo
 
 /* =========================
    TORNEO REAL TIME
@@ -809,6 +828,40 @@ torneoRef.onSnapshot((snap) => {
         renderNoTournament();
     }
 });
+
+/* =========================
+   FUNCIÓN PARA DETERMINAR EL PARTIDO EN VIVO
+   - Busca el primer partido no finalizado con ambos equipos asignados
+========================= */
+function getCurrentLiveMatch(torneo) {
+    if (!torneo || !torneo.rondas) return null;
+    
+    const rondasOrden = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'];
+    
+    for (const ronda of rondasOrden) {
+        const partidos = torneo.rondas[ronda];
+        if (!partidos) continue;
+        
+        for (let i = 0; i < partidos.length; i++) {
+            const p = partidos[i];
+            if (!p) continue;
+            
+            // Si ya hay un ganador, el partido está finalizado
+            const finished = p.equipo1?.ganador || p.equipo2?.ganador;
+            
+            // Si no está finalizado y ambos equipos tienen nombre, está listo para jugarse
+            if (!finished && p.equipo1?.nombre && p.equipo2?.nombre) {
+                return {
+                    ronda: ronda,
+                    index: i,
+                    matchId: `${ronda}_${i}`
+                };
+            }
+        }
+    }
+    
+    return null;
+}
 
 /* =========================
    RENDER PHASE BUTTONS
@@ -877,6 +930,7 @@ function renderNoTournament() {
             <p>Esperando que el administrador inicie un torneo...</p>
         </div>
     `;
+    globalLiveBadge.style.display = 'none';
 }
 
 function renderTorneo(torneo) {
@@ -887,16 +941,23 @@ function renderTorneo(torneo) {
         return;
     }
 
+    // Obtener el partido que debe estar en vivo actualmente
+    const liveMatch = getCurrentLiveMatch(torneo);
+    currentLiveMatchId = liveMatch ? liveMatch.matchId : null;
+    
+    // Mostrar u ocultar el badge global de EN VIVO
+    globalLiveBadge.style.display = liveMatch ? 'flex' : 'none';
+
     const rondasOrden = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'];
     const nombres = {
-        dieciseisavos: "Dieciseisavos",
-        octavos: "Octavos",
-        cuartos: "Cuartos",
+        dieciseisavos: "Dieciseisavos de Final",
+        octavos: "Octavos de Final",
+        cuartos: "Cuartos de Final",
         semis: "Semifinal",
         final: "Final"
     };
 
-    let html = `<div class="bracket-wrapper"><div class="bracket">`;
+    let html = `<div class="bracket-wrapper"><div class="rounds-grid">`;
 
     rondasOrden.forEach(ronda => {
         // Si hay una fase seleccionada y no es 'all', solo mostrar esa fase
@@ -906,22 +967,41 @@ function renderTorneo(torneo) {
         if (!partidos || partidos.length === 0) return;
 
         html += `
-        <div class="round">
+        <div class="round-section">
             <div class="round-header">
                 <h3>${nombres[ronda]}</h3>
                 <p>${partidos.length} partidos</p>
             </div>
-            <div class="matches">
+            <div class="matches-grid">
         `;
 
         partidos.forEach((p, i) => {
             if (!p) return;
 
             const finished = (p.equipo1?.ganador || p.equipo2?.ganador);
-            const live = !finished && p.equipo1?.nombre && p.equipo2?.nombre;
+            const matchId = `${ronda}_${i}`;
+            
+            // Determinar si este partido debe estar en vivo
+            // Solo el partido actual no finalizado con ambos equipos y que sea el primero en orden
+            const isLive = !finished && p.equipo1?.nombre && p.equipo2?.nombre && matchId === currentLiveMatchId;
+            
+            // Si no es el partido en vivo pero está listo para jugar, se muestra como pendiente
+            const isReady = !finished && p.equipo1?.nombre && p.equipo2?.nombre;
+            
+            // Si está listo pero no es el vivo, se considera "pendiente" (esperando turno)
+            let statusClass = 'pending';
+            let statusText = 'Pendiente';
+            
+            if (finished) {
+                statusClass = 'finished';
+                statusText = 'Finalizado';
+            } else if (isLive) {
+                statusClass = 'live';
+                statusText = 'EN VIVO';
+            }
             
             html += `
-            <div class="match ${finished ? 'finished' : ''} ${live ? 'live' : ''}" onclick="toggleMatchExpand(this)">
+            <div class="match ${finished ? 'finished' : ''} ${isLive ? 'live' : ''} ${!finished && !isLive ? 'pending' : ''}" onclick="toggleMatchExpand(this)" data-match-id="${matchId}">
                 <div class="team ${p.equipo1?.ganador ? 'winner' : ''}">
                     <div class="team-name">
                         <div class="team-seed">${i*2+1}</div>
@@ -941,8 +1021,9 @@ function renderTorneo(torneo) {
                 <div class="match-footer">
                     <span>#${i+1}</span>
                     <div class="match-status">
-                        <span class="status-badge ${finished ? 'finished' : (live ? 'live' : 'pending')}">
-                            ${finished ? 'Finalizado' : (live ? 'EN VIVO' : 'Pendiente')}
+                        ${isLive ? '<span class="live-match-indicator"></span>' : ''}
+                        <span class="status-badge ${statusClass}">
+                            ${statusText}
                         </span>
                     </div>
                 </div>
