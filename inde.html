@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<title>AECOMPU eSports Cup · Reglas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    @font-face{
+    font-family:'EsportsFont';
+    src:url('./guente.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
+:root{
+--bg-dark:#050b18;
+--bg-card:#0b1a33;
+--blue:#1e90ff;
+--blue2:#4fc3ff;
+--text:#eaf2ff;
+--muted:#9bb0d3;
+--glow:0 0 25px rgba(79,195,255,.6);
+--shadow:0 20px 60px rgba(0,0,0,.6);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:'EsportsFont', 'Poppins', sans-serif;
+background:radial-gradient(circle at top,#0a1a3a,#020814 70%);
+color:var(--text);
+overflow-x:hidden;
+line-height:1.5;
+}
+
+/* ================= LOADER ================= */
+#loader{
+position:fixed;
+inset:0;
+background:#020814;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+z-index:9999;
+padding:1rem;
+}
+.loader-logo{
+font-size:clamp(2rem, 8vw, 2.8rem);
+font-weight:800;
+background:linear-gradient(90deg,#fff,var(--blue2));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:pulse 2s infinite;
+text-align:center;
+}
+.progress{
+width:min(300px, 70vw);
+height:10px;
+background:#0b1a33;
+border-radius:20px;
+overflow:hidden;
+margin-top:25px;
+}
+.bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,var(--blue),var(--blue2));
+box-shadow:var(--glow);
+animation:load 5s linear forwards;
+}
+.percent{
+margin-top:15px;
+color:var(--blue2);
+font-weight:600;
+font-size:clamp(1rem, 4vw, 1.2rem);
+}
+
+@keyframes load{to{width:100%}}
+@keyframes pulse{
+0%,100%{text-shadow:0 0 10px rgba(79,195,255,.3)}
+50%{text-shadow:0 0 40px rgba(79,195,255,.8)}
+}
+
+/* ================= NAV ================= */
+nav{
+position:fixed;
+top:0;width:100%;
+z-index:1000;
+background:rgba(5,11,24,.85);
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(79,195,255,.2);
+}
+.nav{
+max-width:1300px;
+margin:auto;
+padding:15px 20px;
+display:flex;
+flex-wrap:wrap;
+justify-content:space-between;
+align-items:center;
+gap:10px 15px;
+}
+.logo{
+font-weight:800;
+font-size:clamp(1.2rem, 4vw, 1.5rem);
+background:linear-gradient(90deg,#fff,var(--blue2));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.menu{
+display:flex;
+flex-wrap:wrap;
+gap:clamp(12px, 3vw, 25px);
+justify-content:center;
+}
+.menu a{
+color:var(--text);
+text-decoration:none;
+font-weight:500;
+position:relative;
+font-size:clamp(0.9rem, 2.5vw, 1rem);
+white-space:nowrap;
+}
+.menu a::after{
+content:'';
+position:absolute;
+left:0;bottom:-6px;
+width:0;height:2px;
+background:var(--blue2);
+transition:.3s;
+}
+.menu a:hover::after{width:100%}
+@media (max-width: 480px) {
+    .nav { flex-direction: column; text-align: center; }
+    .menu { flex-wrap: wrap; gap: 12px; }
+    .menu a { white-space: normal; }
+}
+
+/* ================= HERO ================= */
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:100px 20px 60px;
+position:relative;
+}
+.hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:radial-gradient(circle at center,rgba(79,195,255,.08),transparent 70%);
+animation:rotate 40s linear infinite;
+}
+@keyframes rotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+.hero-content{position:relative;z-index:2;max-width:900px;width:100%}
+.hero h1{
+font-size:clamp(2.2rem, 8vw, 4rem);
+font-weight:800;
+background:linear-gradient(90deg,#fff,var(--blue2));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:var(--glow);
+line-height:1.2;
+}
+.hero p{
+margin-top:20px;
+font-size:clamp(1rem, 3.5vw, 1.3rem);
+color:var(--muted);
+}
+
+/* ================= SECTIONS ================= */
+section{padding:clamp(60px, 10vw, 100px) 20px}
+.container{max-width:1300px;margin:auto;width:100%}
+
+h2{
+text-align:center;
+font-size:clamp(1.8rem, 6vw, 2.8rem);
+margin-bottom:clamp(30px, 6vw, 60px);
+background:linear-gradient(90deg,#fff,var(--blue2));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+line-height:1.3;
+word-break:break-word;
+}
+
+/* ================= INFO ================= */
+.info-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:clamp(20px, 4vw, 35px);
+}
+.card{
+background:linear-gradient(145deg,#0b1a33,#071226);
+padding:clamp(25px, 5vw, 35px);
+border-radius:25px;
+box-shadow:var(--shadow);
+border:1px solid rgba(79,195,255,.15);
+transition:.4s;
+text-align:center;
+}
+.card:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 0 60px rgba(79,195,255,.25);
+}
+.icon{font-size:clamp(2rem, 6vw, 3rem);margin-bottom:15px;color:var(--blue2)}
+.price{
+font-size:clamp(1.6rem, 5vw, 2rem);
+font-weight:700;
+color:var(--blue2);
+text-shadow:var(--glow);
+}
+
+/* ================= FASES ================= */
+.fases{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+gap:clamp(15px, 3vw, 25px);
+}
+.fase{
+background:linear-gradient(145deg,#0b1a33,#071226);
+padding:clamp(15px, 4vw, 25px);
+border-radius:20px;
+text-align:center;
+box-shadow:var(--shadow);
+border-left:4px solid var(--blue2);
+transition:.3s;
+}
+.fase:hover{transform:scale(1.05)}
+.fase span{font-size:clamp(1.6rem, 5vw, 2.2rem);color:var(--blue2);font-weight:700;display:block}
+.fase p{font-size:clamp(0.9rem, 3vw, 1rem)}
+
+/* ================= REGLAS ================= */
+#reglas {
+    background: linear-gradient(180deg, rgba(5,11,24,0.8) 0%, #020814 100%);
+    scroll-margin-top: 70px;
+}
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(20px, 4vw, 30px);
+    margin-top: 40px;
+}
+.rule-card {
+    background: rgba(11, 26, 51, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: clamp(20px, 4vw, 30px);
+    border-radius: 30px;
+    border: 1px solid rgba(79, 195, 255, 0.25);
+    box-shadow: var(--shadow);
+    transition: 0.3s;
+    border-top: 3px solid var(--blue2);
+    height: fit-content;
+}
+.rule-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 40px rgba(79,195,255,0.3);
+    border-color: var(--blue2);
+}
+.rule-icon {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 15px;
+    display: inline-block;
+    background: #071226;
+    padding: 8px 18px;
+    border-radius: 60px;
+    box-shadow: var(--glow);
+}
+.rule-card h3 {
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    margin-bottom: 15px;
+    color: var(--blue2);
+    text-shadow: 0 0 8px rgba(79,195,255,0.5);
+    word-break: break-word;
+}
+.rule-card ul {
+    list-style: none;
+    text-align: left;
+}
+.rule-card li {
+    margin-bottom: 12px;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    color: var(--muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    border-bottom: 1px dashed rgba(79,195,255,0.2);
+    padding-bottom: 8px;
+}
+.rule-card li strong {
+    color: white;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+.rule-card li::before {
+    content: "▹";
+    color: var(--blue2);
+    font-size: 1.2rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+.rule-highlight {
+    background: linear-gradient(145deg, #0b1a33, #10233f);
+    padding: 15px;
+    border-radius: 20px;
+    margin-top: 15px;
+    border-left: 6px solid #ffaa00;
+    box-shadow: 0 0 20px #ffaa3350;
+    color: #fff3d6;
+    font-weight: 600;
+    text-align: center;
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+}
+.rule-highlight span {
+    color: #ffcc66;
+    font-size: clamp(1.2rem, 4vw, 1.4rem);
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* ================= CTA ================= */
+.cta{
+text-align:center;
+background:linear-gradient(145deg,#08162f,#020814);
+}
+.cta button{
+margin-top:30px;
+padding:clamp(12px, 3vw, 18px) clamp(30px, 8vw, 60px);
+font-size:clamp(1.2rem, 4vw, 1.6rem);
+font-weight:700;
+border-radius:60px;
+border:none;
+cursor:pointer;
+background:linear-gradient(90deg,var(--blue),var(--blue2));
+color:#020814;
+box-shadow:var(--glow);
+transition:.3s;
+width: fit-content;
+max-width: 90%;
+white-space: normal;
+word-break: break-word;
+}
+.cta button:hover{transform:scale(1.05)}
+
+/* ================= POPUP ================= */
+.popup{
+position:fixed;inset:0;
+background:rgba(0,0,0,.85);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+padding:15px;
+}
+.popup-box{
+background:#071226;
+padding:clamp(25px, 6vw, 40px);
+border-radius:25px;
+text-align:center;
+border:1px solid var(--blue2);
+box-shadow:var(--glow);
+animation:zoom .3s ease;
+max-width: 500px;
+width: 100%;
+}
+.popup-box h3{font-size:clamp(1.3rem, 5vw, 1.8rem); margin-bottom: 10px;}
+.popup-box p{font-size:clamp(0.9rem, 3vw, 1.1rem); color: var(--muted);}
+@keyframes zoom{from{transform:scale(.7)}to{transform:scale(1)}}
+.popup button{
+margin-top:25px;
+padding:12px 35px;
+border-radius:40px;
+border:none;
+cursor:pointer;
+background:var(--blue2);
+font-weight:700;
+font-size:clamp(0.9rem, 3vw, 1rem);
+}
+
+/* ================= FOOTER ================= */
+footer{
+background:#020814;
+text-align:center;
+padding:clamp(30px, 6vw, 40px) 15px;
+border-top:1px solid rgba(79,195,255,.2);
+color:var(--muted);
+}
+footer p{font-size:clamp(0.85rem, 2.5vw, 1rem);}
+
+/* ================= SCROLLBAR PERSONALIZADA ================= */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: linear-gradient(180deg, #020814, #071226); box-shadow: inset 0 0 10px rgba(79,195,255,0.1); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #1e90ff, #4fc3ff); border-radius: 10px; box-shadow: 0 0 15px rgba(79,195,255,0.6); border: 2px solid #020814; transition: all 0.3s ease; }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #4fc3ff, #1e90ff); box-shadow: 0 0 30px rgba(79,195,255,0.9); }
+::-webkit-scrollbar-thumb:active { background: linear-gradient(180deg, #00e5ff, #1e90ff); box-shadow: 0 0 40px rgba(0,229,255,1); }
+::-webkit-scrollbar-corner { background: #020814; }
+
+/* Ajustes extra para móviles muy pequeños */
+@media (max-width: 380px) {
+    .menu a { font-size: 0.8rem; }
+    .rule-card li { flex-wrap: wrap; }
+    .rule-card li::before { align-self: flex-start; margin-top: 3px; }
+    .fases { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) and (orientation: landscape) {
+    .hero { min-height: auto; padding: 120px 20px 60px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADER (opcional) -->
+<div id="loader">
+    <div class="loader-logo">AECOMPU</div>
+    <div class="progress"><div class="bar"></div></div>
+    <div class="percent" id="percent">0%</div>
+</div>
+
+<!-- NAV -->
+<nav>
+<div class="nav">
+<div class="logo">AECOMPU eSports</div>
+<div class="menu">
+<a href="#info">Info</a>
+<a href="#fases">Fases</a>
+<a href="#reglas">Reglas</a>
+<a href="#inscripcion">Inscripción</a>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-content">
+<h1>AECOMPU eSports Cup</h1>
+<p>El torneo universitario más grande. Competencia. Honor. Gloria.</p>
+</div>
+</section>
+
+<!-- INFO -->
+<section id="info">
+<div class="container">
+<h2>Información del Torneo</h2>
+<div class="info-grid">
+<div class="card"><div class="icon">🎮</div><h3>64 Jugadores</h3><p>Solo estudiantes UGB</p></div>
+<div class="card"><div class="icon">💰</div><h3>Inscripción</h3><div class="price">$3.00</div></div>
+<div class="card"><div class="icon">🏆</div><h3>Reconocimiento</h3><p>Premios y visibilidad institucional</p></div>
+</div>
+</div>
+</section>
+
+<!-- FASES -->
+<section id="fases">
+<div class="container">
+<h2>Fases</h2>
+<div class="fases">
+<div class="fase"><span>32</span><p>Ronda 1</p></div>
+<div class="fase"><span>16</span><p>Ronda 2</p></div>
+<div class="fase"><span>8</span><p>Octavos</p></div>
+<div class="fase"><span>4</span><p>Cuartos</p></div>
+<div class="fase"><span>2</span><p>Semis</p></div>
+<div class="fase"><span>1</span><p>Final</p></div>
+</div>
+</div>
+</section>
+
+<!-- ========== SECCIÓN DE REGLAS (TOTALMENTE RESPONSIVA) ========== -->
+<section id="reglas">
+<div class="container">
+    <h2>⚡ REGLAMENTO OFICIAL ⚡</h2>
+    <div class="rules-grid">
+        
+        <!-- Tarjeta 1: Elegibilidad + equipo fijo -->
+        <div class="rule-card">
+            <div class="rule-icon">🎓</div>
+            <h3>Elegibilidad</h3>
+            <ul>
+                <li><strong>Estudiantes UGB</strong> (Facultad de Ciencia y Tecnología).</li>
+                <li><strong>ID único:</strong> se verificará carnet o constancia.</li>
+            </ul>
+            <div class="rule-highlight">
+                <span>⚠️ 1 SOLO EQUIPO ⚠️</span>
+                El equipo que selecciones en el formulario de registro será con el único que puedas utilizar en TODAS las fases. No se permiten cambios ni suplencias distintas.
+            </div>
+        </div>
+
+        <!-- Tarjeta 2: Formato de juego -->
+        <div class="rule-card">
+            <div class="rule-icon">⚙️</div>
+            <h3>Formato & partidas</h3>
+            <ul>
+                <li><strong>1vs1</strong> – eliminación directa.</li>
+                <li>Eliminatoria a Partido Único.</li>
+                <li>Se te permitirá llevar tu propio control.</li>
+                <li>Salón (Por confirmar).</li>
+            </ul>
+        </div>
+
+        <!-- Tarjeta 3: Conducta y Fair Play -->
+        <div class="rule-card">
+            <div class="rule-icon">🤝</div>
+            <h3>Código de honor</h3>
+            <ul>
+                <li>Tolerancia cero a insultos, racismo o trampas.</li>
+                <li>Si un jugador no se presenta en 15min, será eliminado.</li>
+                <li>Decisiones del staff son inapelables.</li>
+            </ul>
+        </div>
+
+        <!-- Tarjeta 4: Sanciones & aclaraciones -->
+        <div class="rule-card">
+            <div class="rule-icon">⚖️</div>
+            <h3>Sanciones</h3>
+            <ul>
+                <li>El equipo registrado es <strong>intransferible</strong>.</li>
+                <li>Cualquier intento de suplantación causa descalificación inmediata.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Texto extra responsivo -->
+    <p style="text-align: center; margin-top: 40px; color: var(--blue2); font-weight: 600; font-size: clamp(1rem, 3.5vw, 1.2rem); border: 1px solid #4fc3ff40; padding: 15px 10px; border-radius: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
+    📌 El equipo/avatar/raza que elijas al inscribirte será tu sello durante todo el campeonato. <br> No se aceptan cambios bajo ninguna circunstancia.
+    </p>
+</div>
+</section>
+
+<!-- CTA -->
+<section id="inscripcion" class="cta">
+<div class="container">
+<h2>¿Listo para competir?</h2>
+<button id="open">INSCRIBIRSE</button>
+</div>
+</section>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+<div class="popup-box">
+<h3>Inscripciones próximamente</h3>
+<p>Sigue las redes oficiales de AECOMPU</p>
+<button id="close">Entendido</button>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<p>AECOMPU eSports Cup - Universidad Gerardo Barrios CRU</p>
+<p>© 2026 AECOMPU · reglas v1.0</p>
+</footer>
+
+<script>
+/* Loader con progreso responsivo */
+let p=0;
+let percent=document.getElementById("percent");
+let loader=document.getElementById("loader");
+let interval=setInterval(()=>{
+p++;
+percent.innerText=p+"%";
+if(p>=100){
+clearInterval(interval);
+setTimeout(()=>{loader.style.display="none"},500);
+}
+},50);
+
+/* Popup */
+const open=document.getElementById("open");
+const close=document.getElementById("close");
+const popup=document.getElementById("popup");
+open.onclick=()=>popup.style.display="flex";
+close.onclick=()=>popup.style.display="none";
+popup.onclick=e=>{if(e.target===popup)popup.style.display="none";}
+
+// Cerrar popup con tecla Escape (accesibilidad)
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popup.style.display === 'flex') {
+        popup.style.display = 'none';
+    }
+});
+</script>
+
+</body>
+</html>
