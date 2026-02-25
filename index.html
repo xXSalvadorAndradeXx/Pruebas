@@ -3,205 +3,421 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>e-Sports Cup Loader</title>
+<title>AECOMPU eSports Cup</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+    @font-face{
+    font-family:'EsportsFont';
+    src:url('./guente.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
+:root{
+--bg-dark:#050b18;
+--bg-card:#0b1a33;
+--blue:#1e90ff;
+--blue2:#4fc3ff;
+--text:#eaf2ff;
+--muted:#9bb0d3;
+--glow:0 0 25px rgba(79,195,255,.6);
+--shadow:0 20px 60px rgba(0,0,0,.6);
 }
 
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-    width:100vw;
-    height:100vh;
-    background:#020b18;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'Poppins','Segoe UI',system-ui;
-    overflow:hidden;
+font-family:'EsportsFont', sans-serif;
+background:radial-gradient(circle at top,#0a1a3a,#020814 70%);
+color:var(--text);
+overflow-x:hidden;
 }
 
-/* ===== ESCENA ===== */
-.scene{
-    position:relative;
-    width:100%;
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+/* ================= LOADER ================= */
+#loader{
+position:fixed;
+inset:0;
+background:#020814;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+z-index:9999;
 }
-
-/* ===== AURORA FONDO ===== */
-.bg{
-    position:absolute;
-    inset:-20%;
-    background:
-        radial-gradient(circle at 20% 30%, rgba(0,180,255,.35), transparent 40%),
-        radial-gradient(circle at 80% 20%, rgba(0,255,200,.25), transparent 45%),
-        radial-gradient(circle at 50% 80%, rgba(0,120,255,.35), transparent 50%),
-        linear-gradient(120deg,#00111f,#002b55,#001a33);
-    filter: blur(60px);
-    animation: bgMove 25s linear infinite alternate;
+.loader-logo{
+font-size:2.8rem;
+font-weight:800;
+background:linear-gradient(90deg,#fff,var(--blue2));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:pulse 2s infinite;
 }
-
-@keyframes bgMove{
-    0%{transform:translate(0,0) rotate(0deg);}
-    50%{transform:translate(6%,4%) rotate(5deg);}
-    100%{transform:translate(-6%,-4%) rotate(-5deg);}
+.progress{
+width:300px;
+height:10px;
+background:#0b1a33;
+border-radius:20px;
+overflow:hidden;
+margin-top:25px;
 }
-
-/* ===== CARD ===== */
-.loader-card{
-    position:relative;
-    z-index:5;
-    background: rgba(5,25,60,.4);
-    backdrop-filter: blur(18px);
-    border:1px solid rgba(0,200,255,.25);
-    border-radius:28px;
-    padding:2.5em 3em;
-    box-shadow:
-        0 0 60px rgba(0,180,255,.25),
-        inset 0 0 30px rgba(0,150,255,.15);
-    text-align:center;
-    width:min(90%,520px);
-    animation: float 7s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-12px);}
-    100%{transform:translateY(0);}
-}
-
-/* ===== LOGO ===== */
-.logo{
-    font-size:clamp(1.8rem,6vw,3rem);
-    font-weight:900;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    color:#e9f7ff;
-    text-shadow:
-        0 0 10px #00e1ff,
-        0 0 30px #009dff,
-        0 0 60px rgba(0,120,255,.8);
-    margin-bottom:.3em;
-}
-
-.sub{
-    font-size:.9rem;
-    letter-spacing:3px;
-    color:#7fdcff;
-    opacity:.85;
-    margin-bottom:1.8em;
-}
-
-/* ===== BARRA ===== */
-.bar-container{
-    width:100%;
-    height:18px;
-    background:rgba(0,60,120,.4);
-    border-radius:20px;
-    overflow:hidden;
-    border:1px solid rgba(0,200,255,.3);
-    box-shadow: inset 0 0 10px rgba(0,0,0,.6);
-}
-
 .bar{
-    height:100%;
-    width:0%;
-    background: linear-gradient(90deg,#00e1ff,#00ffa6,#00aaff);
-    border-radius:20px;
-    box-shadow:
-        0 0 10px rgba(0,255,255,.8),
-        0 0 25px rgba(0,180,255,.9);
-    transition: width 0.8s ease;
+height:100%;
+width:0%;
+background:linear-gradient(90deg,var(--blue),var(--blue2));
+box-shadow:var(--glow);
+animation:load 5s linear forwards;
 }
-
-/* ===== PORCENTAJE ===== */
 .percent{
-    margin-top:1em;
-    font-size:1.2rem;
-    font-weight:700;
-    color:#e9f7ff;
-    text-shadow:
-        0 0 10px #00e1ff,
-        0 0 20px #009dff;
+margin-top:15px;
+color:var(--blue2);
+font-weight:600;
 }
 
-/* ===== TEXTO ===== */
-.status{
-    margin-top:.6em;
-    font-size:.85rem;
-    letter-spacing:2px;
-    color:#7fdcff;
-    opacity:.8;
+@keyframes load{to{width:100%}}
+@keyframes pulse{
+0%,100%{text-shadow:0 0 10px rgba(79,195,255,.3)}
+50%{text-shadow:0 0 40px rgba(79,195,255,.8)}
 }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:600px){
-    .loader-card{
-        padding:2em 1.5em;
-    }
+/* ================= NAV ================= */
+nav{
+position:fixed;
+top:0;width:100%;
+z-index:1000;
+background:rgba(5,11,24,.85);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(79,195,255,.2);
+}
+.nav{
+max-width:1300px;
+margin:auto;
+padding:15px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+.logo{
+font-weight:800;
+font-size:1.5rem;
+background:linear-gradient(90deg,#fff,var(--blue2));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.menu{
+display:flex;
+gap:25px;
+}
+.menu a{
+color:var(--text);
+text-decoration:none;
+font-weight:500;
+position:relative;
+}
+.menu a::after{
+content:'';
+position:absolute;
+left:0;bottom:-6px;
+width:0;height:2px;
+background:var(--blue2);
+transition:.3s;
+}
+.menu a:hover::after{width:100%}
+
+/* ================= HERO ================= */
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:120px 20px 60px;
+position:relative;
+}
+.hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:radial-gradient(circle at center,rgba(79,195,255,.08),transparent 70%);
+animation:rotate 40s linear infinite;
+}
+@keyframes rotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+.hero-content{position:relative;z-index:2;max-width:900px}
+.hero h1{
+font-size:4rem;
+font-weight:800;
+background:linear-gradient(90deg,#fff,var(--blue2));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:var(--glow);
+}
+.hero p{
+margin-top:20px;
+font-size:1.3rem;
+color:var(--muted);
+}
+
+/* ================= SECTIONS ================= */
+section{padding:100px 20px}
+.container{max-width:1300px;margin:auto}
+
+h2{
+text-align:center;
+font-size:2.8rem;
+margin-bottom:60px;
+background:linear-gradient(90deg,#fff,var(--blue2));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* ================= INFO ================= */
+.info-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:35px;
+}
+.card{
+background:linear-gradient(145deg,#0b1a33,#071226);
+padding:35px;
+border-radius:25px;
+box-shadow:var(--shadow);
+border:1px solid rgba(79,195,255,.15);
+transition:.4s;
+text-align:center;
+}
+.card:hover{
+transform:translateY(-15px) scale(1.02);
+box-shadow:0 0 60px rgba(79,195,255,.25);
+}
+.icon{font-size:3rem;margin-bottom:15px;color:var(--blue2)}
+.price{
+font-size:2rem;
+font-weight:700;
+color:var(--blue2);
+text-shadow:var(--glow);
+}
+
+/* ================= FASES ================= */
+.fases{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:25px;
+}
+.fase{
+background:linear-gradient(145deg,#0b1a33,#071226);
+padding:25px;
+border-radius:20px;
+text-align:center;
+box-shadow:var(--shadow);
+border-left:4px solid var(--blue2);
+transition:.3s;
+}
+.fase:hover{transform:scale(1.08)}
+.fase span{font-size:2.2rem;color:var(--blue2);font-weight:700}
+
+/* ================= CTA ================= */
+.cta{
+text-align:center;
+background:linear-gradient(145deg,#08162f,#020814);
+}
+.cta button{
+margin-top:30px;
+padding:18px 60px;
+font-size:1.6rem;
+font-weight:700;
+border-radius:60px;
+border:none;
+cursor:pointer;
+background:linear-gradient(90deg,var(--blue),var(--blue2));
+color:#020814;
+box-shadow:var(--glow);
+transition:.3s;
+}
+.cta button:hover{transform:scale(1.1)}
+
+/* ================= POPUP ================= */
+.popup{
+position:fixed;inset:0;
+background:rgba(0,0,0,.75);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+}
+.popup-box{
+background:#071226;
+padding:40px;
+border-radius:25px;
+text-align:center;
+border:1px solid var(--blue2);
+box-shadow:var(--glow);
+animation:zoom .3s ease;
+}
+@keyframes zoom{from{transform:scale(.7)}to{transform:scale(1)}}
+.popup button{
+margin-top:25px;
+padding:12px 35px;
+border-radius:40px;
+border:none;
+cursor:pointer;
+background:var(--blue2);
+font-weight:700;
+}
+
+/* ================= FOOTER ================= */
+footer{
+background:#020814;
+text-align:center;
+padding:40px 15px;
+border-top:1px solid rgba(79,195,255,.2);
+color:var(--muted);
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+.hero h1{font-size:2.5rem}
+.menu{flex-wrap:wrap;justify-content:center}
+}
+
+
+/* ================= SCROLLBAR PERSONALIZADA ================= */
+
+/* Scrollbar general */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Fondo del scrollbar */
+::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, #020814, #071226);
+    box-shadow: inset 0 0 10px rgba(79,195,255,0.1);
+}
+
+/* Barra deslizante */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #1e90ff, #4fc3ff);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(79,195,255,0.6);
+    border: 2px solid #020814;
+    transition: all 0.3s ease;
+}
+
+/* Hover efecto glow */
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #4fc3ff, #1e90ff);
+    box-shadow: 0 0 30px rgba(79,195,255,0.9);
+}
+
+/* Click (active) */
+::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, #00e5ff, #1e90ff);
+    box-shadow: 0 0 40px rgba(0,229,255,1);
+}
+
+/* Esquinas */
+::-webkit-scrollbar-corner {
+    background: #020814;
 }
 </style>
 </head>
 
 <body>
 
-<div class="scene">
-    <div class="bg"></div>
 
-    <div class="loader-card">
-        <div class="logo">e-Sports Cup</div>
-        <div class="sub">UGB · AECOMPU</div>
 
-        <div class="bar-container">
-            <div class="bar" id="bar"></div>
-        </div>
 
-        <div class="percent" id="percent">0%</div>
-        <div class="status" id="status">Cargando torneo...</div>
-    </div>
+<!-- NAV -->
+<nav>
+<div class="nav">
+<div class="logo">AECOMPU eSports</div>
+<div class="menu">
+<a href="#info">Info</a>
+<a href="#fases">Fases</a>
+<a href="#inscripcion">Inscripción</a>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-content">
+<h1>AECOMPU eSports Cup</h1>
+<p>El torneo universitario más grande. Competencia. Honor. Gloria.</p>
+</div>
+</section>
+
+<!-- INFO -->
+<section id="info">
+<div class="container">
+<h2>Información del Torneo</h2>
+<div class="info-grid">
+<div class="card"><div class="icon">🎮</div><h3>64 Jugadores</h3><p>Solo estudiantes UGB</p></div>
+<div class="card"><div class="icon">💰</div><h3>Inscripción</h3><div class="price">$3.00</div></div>
+<div class="card"><div class="icon">🏆</div><h3>Reconocimiento</h3><p>Premios y visibilidad institucional</p></div>
+</div>
+</div>
+</section>
+
+<!-- FASES -->
+<section id="fases">
+<div class="container">
+<h2>Fases</h2>
+<div class="fases">
+<div class="fase"><span>32</span><p>Ronda 1</p></div>
+<div class="fase"><span>16</span><p>Ronda 2</p></div>
+<div class="fase"><span>8</span><p>Octavos</p></div>
+<div class="fase"><span>4</span><p>Cuartos</p></div>
+<div class="fase"><span>2</span><p>Semis</p></div>
+<div class="fase"><span>1</span><p>Final</p></div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section id="inscripcion" class="cta">
+<div class="container">
+<h2>¿Listo para competir?</h2>
+<button id="open">INSCRIBIRSE</button>
+</div>
+</section>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+<div class="popup-box">
+<h3>Inscripciones próximamente</h3>
+<p>Sigue las redes oficiales de AECOMPU</p>
+<button id="close">Entendido</button>
+</div>
 </div>
 
+<!-- FOOTER -->
+<footer>
+<p>AECOMPU eSports Cup - Universidad Gerardo Barrios CRU</p>
+<p>© 2026 AECOMPU</p>
+</footer>
+
 <script>
-/* ===== CONFIGURACIÓN FECHAS ===== */
-// Fecha inicio (hoy automático)
-const startDate = new Date();
-
-// Fecha final → 1 de septiembre del año actual
-const endDate = new Date(new Date().getFullYear(), 8, 1); // Mes 8 = Septiembre
-
-const bar = document.getElementById("bar");
-const percentText = document.getElementById("percent");
-const statusText = document.getElementById("status");
-
-function updateProgress(){
-    const now = new Date();
-
-    const total = endDate - startDate;
-    const current = now - startDate;
-
-    let progress = (current / total) * 100;
-    progress = Math.max(0, Math.min(100, progress)); // limitar 0-100
-
-    const display = progress.toFixed(2);
-
-    bar.style.width = display + "%";
-    percentText.textContent = display + "%";
-
-    if(progress < 100){
-        statusText.textContent = "Preparando torneo...";
-    }else{
-        statusText.textContent = "Torneo listo 🔥";
-    }
+/* Loader */
+let p=0;
+let percent=document.getElementById("percent");
+let loader=document.getElementById("loader");
+let interval=setInterval(()=>{
+p++;
+percent.innerText=p+"%";
+if(p>=100){
+clearInterval(interval);
+setTimeout(()=>{loader.style.display="none"},500);
 }
+},50);
 
-/* actualizar cada segundo */
-setInterval(updateProgress, 1000);
-updateProgress();
+/* Popup */
+const open=document.getElementById("open");
+const close=document.getElementById("close");
+const popup=document.getElementById("popup");
+open.onclick=()=>popup.style.display="flex";
+close.onclick=()=>popup.style.display="none";
+popup.onclick=e=>{if(e.target===popup)popup.style.display="none";}
 </script>
 
 </body>
