@@ -9,6 +9,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     <style>
+        /* (Mantén todos los estilos igual que antes) */
         * {
             margin: 0;
             padding: 0;
@@ -36,7 +37,6 @@
             min-height: 100vh;
         }
 
-        /* Header */
         .header {
             background-color: var(--secondary);
             border-bottom: 1px solid var(--border);
@@ -113,14 +113,12 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* Container */
         .container {
             max-width: 1600px;
             margin: 2rem auto;
             padding: 0 2rem;
         }
 
-        /* Info Panel */
         .info-panel {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
@@ -187,7 +185,6 @@
             padding-left: 1rem;
         }
 
-        /* Phase Selector */
         .phase-selector {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
@@ -249,7 +246,6 @@
             background-color: rgba(0, 0, 0, 0.2);
         }
 
-        /* Bracket - Nueva disposición en grid de 3 columnas */
         .bracket-wrapper {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
@@ -297,7 +293,6 @@
             padding: 1.5rem;
         }
 
-        /* Responsive */
         @media (max-width: 1200px) {
             .matches-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -434,7 +429,6 @@
             color: var(--text-dim);
         }
 
-        /* Score Details */
         .score-details {
             margin-top: 0.5rem;
             padding: 0.5rem;
@@ -454,7 +448,6 @@
             color: var(--text-dim);
         }
 
-        /* Results Panel */
         .results-panel {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
@@ -523,7 +516,6 @@
             color: var(--accent);
         }
 
-        /* Champion Banner */
         .champion-banner {
             margin-top: 2rem;
             padding: 2rem;
@@ -554,17 +546,6 @@
             text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
         }
 
-        /* Third Place */
-        .third-place {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: linear-gradient(135deg, #cd7f32, #b87333);
-            border-radius: 8px;
-            text-align: center;
-            color: white;
-        }
-
-        /* Loading */
         .loading {
             text-align: center;
             padding: 4rem;
@@ -585,7 +566,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* No tournament */
         .no-tournament {
             text-align: center;
             padding: 4rem;
@@ -605,7 +585,6 @@
             font-size: 0.875rem;
         }
 
-        /* QR Code */
         .qr-section {
             margin-top: 2rem;
             padding: 1.5rem;
@@ -636,12 +615,11 @@
             border-radius: 12px;
         }
 
-        .qr-code svg {
+        .qr-code img {
             width: 100%;
             height: 100%;
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -660,7 +638,6 @@
             background: var(--accent);
         }
 
-        /* Live indicator for the current match */
         .live-match-indicator {
             display: inline-block;
             width: 8px;
@@ -713,7 +690,6 @@
                 <span>Seleccionar Fase</span>
             </div>
             <div class="phase-buttons" id="phaseButtons">
-                <!-- Fases se generarán dinámicamente -->
             </div>
         </div>
 
@@ -733,7 +709,6 @@
                 <div class="phase-badge" id="resultsPhase"></div>
             </div>
             <div class="results-grid" id="resultsGrid">
-                <!-- Resultados se generarán dinámicamente -->
             </div>
         </div>
 
@@ -748,25 +723,19 @@
     </main>
 
 <script>
-/* =========================
-   FIREBASE INIT
-========================= */
 const firebaseConfig = {
-  apiKey: "AIzaSyB_gYa50kpSjOkzK4Y50PPZVnk0H5vmlVU",
-  authDomain: "aecompu-8a34e.firebaseapp.com",
-  projectId: "aecompu-8a34e",
-  storageBucket: "aecompu-8a34e.firebasestorage.app",
-  messagingSenderId: "275967123743",
-  appId: "1:275967123743:web:45a4307519afaa60ca102a",
-  measurementId: "G-93BBP4GZY8"
+    apiKey: "AIzaSyB_gYa50kpSjOkzK4Y50PPZVnk0H5vmlVU",
+    authDomain: "aecompu-8a34e.firebaseapp.com",
+    projectId: "aecompu-8a34e",
+    storageBucket: "aecompu-8a34e.firebasestorage.app",
+    messagingSenderId: "275967123743",
+    appId: "1:275967123743:web:45a4307519afaa60ca102a",
+    measurementId: "G-93BBP4GZY8"
 };
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-/* =========================
-   ESTADO CONEXIÓN
-========================= */
 const statusDot = document.getElementById("statusDot");
 const statusText = document.getElementById("statusText");
 const viewerCount = document.getElementById("viewerCount");
@@ -775,9 +744,6 @@ const globalLiveBadge = document.getElementById("globalLiveBadge");
 statusDot.classList.add("connected");
 statusText.innerText = "Conectado";
 
-/* =========================
-   CONTADOR DE ESPECTADORES
-========================= */
 const viewerRef = db.collection("views").doc("visualizador");
 
 db.runTransaction(async (t) => {
@@ -806,17 +772,11 @@ viewerRef.onSnapshot((snap) => {
     }
 });
 
-/* =========================
-   ESTADO GLOBAL
-========================= */
 let currentPhase = 'all';
 let tournamentData = null;
-let currentLiveMatchId = null; // Para controlar qué partido está en vivo
+let currentLiveMatchId = null;
 
-/* =========================
-   TORNEO REAL TIME
-========================= */
-const torneoRef = db.collection("torneos").doc("torneo32");
+const torneoRef = db.collection("torneos").doc("torneo_dinamico");
 
 torneoRef.onSnapshot((snap) => {
     if (snap.exists) {
@@ -829,28 +789,24 @@ torneoRef.onSnapshot((snap) => {
     }
 });
 
-/* =========================
-   FUNCIÓN PARA DETERMINAR EL PARTIDO EN VIVO
-   - Busca el primer partido no finalizado con ambos equipos asignados
-========================= */
 function getCurrentLiveMatch(torneo) {
     if (!torneo || !torneo.rondas) return null;
     
-    const rondasOrden = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'];
+    // AHORA INCLUIMOS TREINTAIDOSAVOS
+    const rondasOrden = ['treintaidosavos', 'dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'];
     
     for (const ronda of rondasOrden) {
         const partidos = torneo.rondas[ronda];
-        if (!partidos) continue;
+        if (!partidos || !Array.isArray(partidos)) continue;
         
         for (let i = 0; i < partidos.length; i++) {
             const p = partidos[i];
             if (!p) continue;
             
-            // Si ya hay un ganador, el partido está finalizado
             const finished = p.equipo1?.ganador || p.equipo2?.ganador;
             
-            // Si no está finalizado y ambos equipos tienen nombre, está listo para jugarse
-            if (!finished && p.equipo1?.nombre && p.equipo2?.nombre) {
+            if (!finished && p.equipo1?.nombre && p.equipo2?.nombre && 
+                p.equipo1.nombre !== '—' && p.equipo2.nombre !== '—') {
                 return {
                     ronda: ronda,
                     index: i,
@@ -863,9 +819,6 @@ function getCurrentLiveMatch(torneo) {
     return null;
 }
 
-/* =========================
-   RENDER PHASE BUTTONS
-========================= */
 function renderPhaseButtons(torneo) {
     const container = document.getElementById("phaseButtons");
     
@@ -874,8 +827,10 @@ function renderPhaseButtons(torneo) {
         return;
     }
 
-    const rondasOrden = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'];
+    // AHORA INCLUIMOS TREINTAIDOSAVOS
+    const rondasOrden = ['treintaidosavos', 'dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'];
     const nombres = {
+        treintaidosavos: "Treintaidosavos",
         dieciseisavos: "Dieciseisavos",
         octavos: "Octavos",
         cuartos: "Cuartos",
@@ -893,9 +848,9 @@ function renderPhaseButtons(torneo) {
 
     rondasOrden.forEach(ronda => {
         const partidos = torneo.rondas[ronda];
-        if (!partidos || partidos.length === 0) return;
+        if (!partidos || !Array.isArray(partidos) || partidos.length === 0) return;
 
-        const finishedCount = partidos.filter(p => p.equipo1?.ganador || p.equipo2?.ganador).length;
+        const finishedCount = partidos.filter(p => p && (p.equipo1?.ganador || p.equipo2?.ganador)).length;
         
         html += `
             <button class="phase-btn ${currentPhase === ronda ? 'active' : ''}" onclick="setPhase('${ronda}')">
@@ -909,19 +864,14 @@ function renderPhaseButtons(torneo) {
     container.innerHTML = html;
 }
 
-/* =========================
-   SET PHASE
-========================= */
 window.setPhase = function(phase) {
     currentPhase = phase;
-    renderPhaseButtons(tournamentData);
-    renderTorneo(tournamentData);
-    renderResults(tournamentData);
+    if (tournamentData) {
+        renderPhaseButtons(tournamentData);
+        renderTorneo(tournamentData);
+        renderResults(tournamentData);
+    }
 };
-
-/* =========================
-   RENDER FUNCTIONS
-========================= */
 
 function renderNoTournament() {
     document.getElementById("tournamentContainer").innerHTML = `
@@ -941,15 +891,15 @@ function renderTorneo(torneo) {
         return;
     }
 
-    // Obtener el partido que debe estar en vivo actualmente
     const liveMatch = getCurrentLiveMatch(torneo);
     currentLiveMatchId = liveMatch ? liveMatch.matchId : null;
     
-    // Mostrar u ocultar el badge global de EN VIVO
     globalLiveBadge.style.display = liveMatch ? 'flex' : 'none';
 
-    const rondasOrden = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'];
+    // AHORA INCLUIMOS TREINTAIDOSAVOS
+    const rondasOrden = ['treintaidosavos', 'dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'];
     const nombres = {
+        treintaidosavos: "Treintaidosavos de Final",
         dieciseisavos: "Dieciseisavos de Final",
         octavos: "Octavos de Final",
         cuartos: "Cuartos de Final",
@@ -960,11 +910,10 @@ function renderTorneo(torneo) {
     let html = `<div class="bracket-wrapper"><div class="rounds-grid">`;
 
     rondasOrden.forEach(ronda => {
-        // Si hay una fase seleccionada y no es 'all', solo mostrar esa fase
         if (currentPhase !== 'all' && currentPhase !== ronda) return;
 
         const partidos = torneo.rondas[ronda];
-        if (!partidos || partidos.length === 0) return;
+        if (!partidos || !Array.isArray(partidos) || partidos.length === 0) return;
 
         html += `
         <div class="round-section">
@@ -978,17 +927,14 @@ function renderTorneo(torneo) {
         partidos.forEach((p, i) => {
             if (!p) return;
 
-            const finished = (p.equipo1?.ganador || p.equipo2?.ganador);
+            const finished = !!(p.equipo1?.ganador || p.equipo2?.ganador);
             const matchId = `${ronda}_${i}`;
             
-            // Determinar si este partido debe estar en vivo
-            // Solo el partido actual no finalizado con ambos equipos y que sea el primero en orden
-            const isLive = !finished && p.equipo1?.nombre && p.equipo2?.nombre && matchId === currentLiveMatchId;
+            const isLive = !finished && 
+                          p.equipo1?.nombre && p.equipo2?.nombre && 
+                          p.equipo1.nombre !== '—' && p.equipo2.nombre !== '—' && 
+                          matchId === currentLiveMatchId;
             
-            // Si no es el partido en vivo pero está listo para jugar, se muestra como pendiente
-            const isReady = !finished && p.equipo1?.nombre && p.equipo2?.nombre;
-            
-            // Si está listo pero no es el vivo, se considera "pendiente" (esperando turno)
             let statusClass = 'pending';
             let statusText = 'Pendiente';
             
@@ -1045,7 +991,6 @@ function renderTorneo(torneo) {
 
     html += `</div></div>`;
 
-    /* CAMPEÓN */
     if (torneo.campeon) {
         html += `
         <div class="champion-banner">
@@ -1068,8 +1013,10 @@ function renderResults(torneo) {
         return;
     }
 
-    const rondasOrden = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'];
+    // AHORA INCLUIMOS TREINTAIDOSAVOS
+    const rondasOrden = ['treintaidosavos', 'dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'];
     const nombres = {
+        treintaidosavos: "T R E I N T A I D O S A V O S",
         dieciseisavos: "D I E C I S E I S A V O S",
         octavos: "O C T A V O S",
         cuartos: "C U A R T O S",
@@ -1080,14 +1027,13 @@ function renderResults(torneo) {
     let allMatches = [];
     
     rondasOrden.forEach(ronda => {
-        // Si hay una fase seleccionada y no es 'all', solo mostrar esa fase
         if (currentPhase !== 'all' && currentPhase !== ronda) return;
 
         const partidos = torneo.rondas[ronda];
-        if (!partidos || partidos.length === 0) return;
+        if (!partidos || !Array.isArray(partidos) || partidos.length === 0) return;
 
         partidos.forEach((p, i) => {
-            if (p.equipo1?.ganador || p.equipo2?.ganador) {
+            if (p && (p.equipo1?.ganador || p.equipo2?.ganador)) {
                 allMatches.push({
                     ronda: ronda,
                     nombre: nombres[ronda],
@@ -1137,21 +1083,15 @@ function renderResults(torneo) {
     resultsGrid.innerHTML = resultsHtml;
 }
 
-/* =========================
-   TOGGLE MATCH EXPAND
-========================= */
 window.toggleMatchExpand = function(element) {
     element.classList.toggle('expanded');
 };
 
-/* =========================
-   QR CODE
-========================= */
 function generateQR() {
     const url = window.location.href;
     const qrDiv = document.getElementById("qrCode");
     qrDiv.innerHTML = `
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}" />
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}" alt="QR Code" />
     `;
 }
 

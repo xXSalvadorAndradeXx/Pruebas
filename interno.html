@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AECOMPU e-Sports Club - Torneo 32</title>
+    <title>AECOMPU e-Sports Club - Torneo Dinámico</title>
     <style>
         * {
             margin: 0;
@@ -31,7 +31,6 @@
             line-height: 1.5;
         }
 
-        /* Header Minimalista */
         .header {
             background-color: var(--secondary);
             border-bottom: 1px solid var(--border);
@@ -94,14 +93,12 @@
             font-weight: 500;
         }
 
-        /* Container */
         .container {
             max-width: 1600px;
             margin: 2rem auto;
             padding: 0 2rem;
         }
 
-        /* Panel de Control */
         .control-panel {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
@@ -196,7 +193,6 @@
             font-size: 0.875rem;
         }
 
-        /* Bracket - Versión Mejorada */
         .bracket-wrapper {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
@@ -322,7 +318,6 @@
             color: var(--accent);
         }
 
-        /* Final Round Special */
         .round.final-round .match {
             border-color: var(--accent);
             background: linear-gradient(135deg, var(--secondary), rgba(0, 229, 255, 0.05));
@@ -350,19 +345,6 @@
             color: var(--primary);
         }
 
-        /* Tercer Puesto */
-        .third-place {
-            margin-top: 1rem;
-            padding: 0.75rem;
-            background-color: var(--secondary);
-            border: 1px dashed var(--border);
-            border-radius: 8px;
-            text-align: center;
-            font-size: 0.875rem;
-            color: var(--text-dim);
-        }
-
-        /* Error Message */
         .error-message {
             color: #ef4444;
             font-size: 0.875rem;
@@ -373,7 +355,6 @@
             background-color: rgba(239, 68, 68, 0.1);
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -392,7 +373,6 @@
             background: var(--accent);
         }
 
-        /* Responsive */
         @media (max-width: 1024px) {
             .bracket {
                 gap: 2rem;
@@ -401,6 +381,17 @@
             .round {
                 min-width: 200px;
             }
+        }
+
+        .tamano-info {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: var(--accent);
+            color: var(--primary);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-left: 1rem;
         }
     </style>
 </head>
@@ -413,8 +404,8 @@
                     <h1>AECOMPU <span>e-Sports Club</span></h1>
                 </div>
             </div>
-            <div class="tourney-badge">
-                <span>32 PLAYERS • CHAMPIONS FORMAT</span>
+            <div class="tourney-badge" id="tourneyBadge">
+                <span>SELECCIONA TAMAÑO</span>
             </div>
         </div>
     </header>
@@ -423,15 +414,24 @@
         <div class="control-panel">
             <h2>Registro de Participantes</h2>
             <div class="input-group">
-                <textarea id="participantes" placeholder="Ingresa 32 nombres (uno por línea)&#10;Ejemplo:&#10;AECOMPU_Gamer&#10;eSports_Pro&#10;Club_Fighter&#10;..."></textarea>
+                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                    <select id="tamanoTorneo" class="btn" style="background-color: var(--secondary); color: var(--text); padding: 0.75rem;">
+                        <option value="4">4 Participantes </option>
+                        <option value="8">8 Participantes </option>
+                        <option value="16">16 Participantes </option>
+                        <option value="32" selected>32 Participantes </option>
+                        <option value="64">64 Participantes </option>
+                    </select>
+                </div>
+                <textarea id="participantes" placeholder="Ingresa los nombres (uno por línea)"></textarea>
                 <div class="button-group">
                     <button class="btn btn-primary" onclick="iniciarTorneo()">Iniciar Torneo</button>
                     <button class="btn btn-outline" onclick="cargarEjemplo()">Cargar Ejemplo</button>
                     <button class="btn btn-outline" onclick="reiniciarTorneo()">Reiniciar</button>
                 </div>
                 <div id="error" class="error-message" style="display: none;"></div>
-                <div class="stats">
-                    <span>📊 32 participantes requeridos</span>
+                <div class="stats" id="stats">
+                    <span>📊 Selecciona el tamaño del torneo</span>
                     <span>⚡ Haz clic en cada equipo para avanzar</span>
                 </div>
             </div>
@@ -442,101 +442,116 @@
         </div>
     </main>
 
-
-
-
-
-
     <!-- Firebase SDK -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyB_gYa50kpSjOkzK4Y50PPZVnk0H5vmlVU",
-    authDomain: "aecompu-8a34e.firebaseapp.com",
-    projectId: "aecompu-8a34e",
-    storageBucket: "aecompu-8a34e.firebasestorage.app",
-    messagingSenderId: "275967123743",
-    appId: "1:275967123743:web:45a4307519afaa60ca102a",
-    measurementId: "G-93BBP4GZY8"
-  };
+        const firebaseConfig = {
+            apiKey: "AIzaSyB_gYa50kpSjOkzK4Y50PPZVnk0H5vmlVU",
+            authDomain: "aecompu-8a34e.firebaseapp.com",
+            projectId: "aecompu-8a34e",
+            storageBucket: "aecompu-8a34e.firebasestorage.app",
+            messagingSenderId: "275967123743",
+            appId: "1:275967123743:web:45a4307519afaa60ca102a",
+            measurementId: "G-93BBP4GZY8"
+        };
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-  window.db = db;
-  window.setDoc = setDoc;
-  window.getDoc = getDoc;
-  window.doc = doc;
-</script>
+        window.db = db;
+        window.setDoc = setDoc;
+        window.getDoc = getDoc;
+        window.doc = doc;
+    </script>
 
     <script>
         let torneo = {
+            tamano: 32,
             participantes: [],
-            rondas: {
-                'dieciseisavos': [],
-                'octavos': [],
-                'cuartos': [],
-                'semis': [],
-                'final': [],
-                'campeon': null,
-                'tercero': []
-            }
+            rondas: {}
+        };
+
+        const MAPA_RONDAS = {
+            4: ['semis', 'final'],
+            8: ['cuartos', 'semis', 'final'],
+            16: ['octavos', 'cuartos', 'semis', 'final'],
+            32: ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'],
+            64: ['treintaidosavos', 'dieciseisavos', 'octavos', 'cuartos', 'semis', 'final']
         };
 
         const NOMBRES_RONDAS = {
-            'dieciseisavos': { nombre: 'Ronda 1', subtitulo: '16avos de Final', equipos: 32 },
-            'octavos': { nombre: 'Ronda 2', subtitulo: 'Octavos de Final', equipos: 16 },
-            'cuartos': { nombre: 'Cuartos', subtitulo: 'Cuartos de Final', equipos: 8 },
-            'semis': { nombre: 'Semifinal', subtitulo: 'Semifinales', equipos: 4 },
-            'final': { nombre: 'Final', subtitulo: 'Gran Final', equipos: 2 },
-            'tercero': { nombre: '3er Puesto', subtitulo: 'Tercer Lugar', equipos: 2 }
+            'treintaidosavos': { nombre: 'Ronda 1', subtitulo: '32avos de Final' },
+            'dieciseisavos': { nombre: 'Ronda 2', subtitulo: '16avos de Final' },
+            'octavos': { nombre: 'Ronda 3', subtitulo: 'Octavos de Final' },
+            'cuartos': { nombre: 'Cuartos', subtitulo: 'Cuartos de Final' },
+            'semis': { nombre: 'Semifinal', subtitulo: 'Semifinales' },
+            'final': { nombre: 'Final', subtitulo: 'Gran Final' }
         };
 
-        function cargarStorage() {
-            const guardado = localStorage.getItem('aecompuTorneo');
-            if (guardado) {
-                try {
-                    torneo = JSON.parse(guardado);
-                    mostrarTorneo();
-                } catch (e) {
-                    console.error('Error al cargar el torneo');
-                }
+        function actualizarBadge() {
+            const tamano = document.getElementById('tamanoTorneo').value;
+            const badge = document.getElementById('tourneyBadge');
+            badge.innerHTML = `<span>${tamano} PLAYERS • FORMATO CHAMPIONS</span>`;
+        }
+
+        function getRondasParaTamano(tamano) {
+            return MAPA_RONDAS[tamano] || MAPA_RONDAS[32];
+        }
+
+        function iniciarTorneo() {
+            const textarea = document.getElementById('participantes');
+            const tamano = parseInt(document.getElementById('tamanoTorneo').value);
+            const nombres = textarea.value.split('\n')
+                .map(n => n.trim())
+                .filter(n => n !== '');
+
+            const errorDiv = document.getElementById('error');
+            const statsDiv = document.getElementById('stats');
+
+            if (nombres.length !== tamano) {
+                errorDiv.style.display = 'block';
+                errorDiv.textContent = `❌ Error: Ingresaste ${nombres.length} nombres. Se requieren exactamente ${tamano}.`;
+                return;
             }
-        }
 
-        function guardarStorage() {
-            localStorage.setItem('aecompuTorneo', JSON.stringify(torneo));
-        }
+            errorDiv.style.display = 'none';
+            
+            const mezclados = mezclarArray([...nombres]);
+            
+            // Crear la primera ronda según el tamaño
+            const rondas = {};
+            const primeraRonda = getRondasParaTamano(tamano)[0];
+            
+            // Crear partidos de primera ronda
+            const primeraRondaPartidos = [];
+            for (let i = 0; i < tamano; i += 2) {
+                primeraRondaPartidos.push({
+                    id: `${primeraRonda}_${Math.floor(i/2)}`,
+                    equipo1: { nombre: mezclados[i] || '—', ganador: false },
+                    equipo2: { nombre: mezclados[i + 1] || '—', ganador: false }
+                });
+            }
+            
+            rondas[primeraRonda] = primeraRondaPartidos;
+            
+            // Inicializar rondas vacías
+            getRondasParaTamano(tamano).slice(1).forEach(ronda => {
+                rondas[ronda] = [];
+            });
 
+            torneo = {
+                tamano: tamano,
+                participantes: mezclados,
+                rondas: rondas,
+                campeon: null
+            };
 
-        async function guardarStorage() {
-    try {
-        const ref = doc(db, "torneos", "torneo32");
-        await setDoc(ref, torneo);
-        console.log("Torneo guardado en Firebase");
-    } catch (e) {
-        console.error("Error guardando en Firebase:", e);
-    }
-}
-
-async function cargarStorage() {
-    try {
-        const ref = doc(db, "torneos", "torneo32");
-        const snap = await getDoc(ref);
-
-        if (snap.exists()) {
-            torneo = snap.data();
+            guardarStorage();
             mostrarTorneo();
-            console.log("Torneo cargado desde Firebase");
-        } else {
-            console.log("No hay torneo guardado en Firebase");
+            actualizarBadge();
         }
-    } catch (e) {
-        console.error("Error cargando desde Firebase:", e);
-    }
-}
 
         function mezclarArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -546,80 +561,38 @@ async function cargarStorage() {
             return array;
         }
 
-        function iniciarTorneo() {
-            const textarea = document.getElementById('participantes');
-            const nombres = textarea.value.split('\n')
-                .map(n => n.trim())
-                .filter(n => n !== '');
-
-            const errorDiv = document.getElementById('error');
-
-            if (nombres.length !== 32) {
-                errorDiv.style.display = 'block';
-                errorDiv.textContent = `❌ Error: Ingresaste ${nombres.length} nombres. Se requieren exactamente 32.`;
-                return;
-            }
-
-            errorDiv.style.display = 'none';
-            
-            const mezclados = mezclarArray([...nombres]);
-            
-            const dieciseisavos = [];
-            for (let i = 0; i < 32; i += 2) {
-                dieciseisavos.push({
-                    id: `m16_${Math.floor(i/2)}`,
-                    equipo1: { nombre: mezclados[i], ganador: false, score: 0 },
-                    equipo2: { nombre: mezclados[i + 1], ganador: false, score: 0 }
-                });
-            }
-
-            torneo = {
-                participantes: mezclados,
-                rondas: {
-                    dieciseisavos: dieciseisavos,
-                    octavos: [],
-                    cuartos: [],
-                    semis: [],
-                    final: [],
-                    tercero: [],
-                    campeon: null
-                }
-            };
-
-            guardarStorage();
-            mostrarTorneo();
-        }
-
         function avanzarEquipo(ronda, index, equipoNum) {
             const partido = torneo.rondas[ronda][index];
             if (!partido) return;
 
             const equipoGanador = equipoNum === 1 ? partido.equipo1 : partido.equipo2;
             
-            if (!equipoGanador.nombre) return;
+            if (!equipoGanador.nombre || equipoGanador.nombre === '—') return;
 
             // Marcar ganador
             partido.equipo1.ganador = false;
             partido.equipo2.ganador = false;
             equipoGanador.ganador = true;
 
-            const siguienteRonda = getSiguienteRonda(ronda);
-            if (!siguienteRonda) {
-                if (ronda === 'final') {
-                    torneo.campeon = equipoGanador.nombre;
-                }
+            const rondasTornero = getRondasParaTamano(torneo.tamano);
+            const indexRondaActual = rondasTornero.indexOf(ronda);
+            
+            if (indexRondaActual === rondasTornero.length - 1) {
+                // Es la final
+                torneo.campeon = equipoGanador.nombre;
                 guardarStorage();
                 mostrarTorneo();
                 return;
             }
 
+            const siguienteRonda = rondasTornero[indexRondaActual + 1];
             const siguienteIndex = Math.floor(index / 2);
             
             if (!torneo.rondas[siguienteRonda][siguienteIndex]) {
                 torneo.rondas[siguienteRonda][siguienteIndex] = {
                     id: `${siguienteRonda}_${siguienteIndex}`,
-                    equipo1: { nombre: '', ganador: false, score: 0 },
-                    equipo2: { nombre: '', ganador: false, score: 0 }
+                    equipo1: { nombre: '—', ganador: false },
+                    equipo2: { nombre: '—', ganador: false }
                 };
             }
 
@@ -627,14 +600,12 @@ async function cargarStorage() {
             if (esPar) {
                 torneo.rondas[siguienteRonda][siguienteIndex].equipo1 = { 
                     nombre: equipoGanador.nombre, 
-                    ganador: false,
-                    score: 0
+                    ganador: false
                 };
             } else {
                 torneo.rondas[siguienteRonda][siguienteIndex].equipo2 = { 
                     nombre: equipoGanador.nombre, 
-                    ganador: false,
-                    score: 0
+                    ganador: false
                 };
             }
 
@@ -642,23 +613,11 @@ async function cargarStorage() {
             mostrarTorneo();
         }
 
-        function getSiguienteRonda(ronda) {
-            const mapa = {
-                'dieciseisavos': 'octavos',
-                'octavos': 'cuartos',
-                'cuartos': 'semis',
-                'semis': 'final',
-                'final': null,
-                'tercero': null
-            };
-            return mapa[ronda];
-        }
-
         function mostrarTorneo() {
             const torneoDiv = document.getElementById('torneo');
             const bracketDiv = document.getElementById('bracket');
 
-            if (!torneo.participantes.length) {
+            if (!torneo.participantes || torneo.participantes.length === 0) {
                 torneoDiv.style.display = 'none';
                 return;
             }
@@ -667,24 +626,26 @@ async function cargarStorage() {
             
             let html = '';
 
-            const rondasOrden = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'final'];
+            const rondasAMostrar = getRondasParaTamano(torneo.tamano);
             
-            rondasOrden.forEach(ronda => {
+            rondasAMostrar.forEach(ronda => {
                 if (torneo.rondas[ronda] && torneo.rondas[ronda].length > 0) {
                     html += generarRondaHTML(ronda);
                 }
             });
 
-            // Tercer puesto si existe
-            if (torneo.rondas.tercero && torneo.rondas.tercero.length > 0) {
-                html += generarRondaHTML('tercero');
-            }
-
             bracketDiv.innerHTML = html;
+
+            // Actualizar stats
+            const statsDiv = document.getElementById('stats');
+            statsDiv.innerHTML = `
+                <span>📊 ${torneo.tamano} participantes</span>
+                <span>⚡ Haz clic en cada equipo para avanzar</span>
+            `;
         }
 
         function generarRondaHTML(ronda) {
-            const info = NOMBRES_RONDAS[ronda] || { nombre: ronda, subtitulo: '', equipos: 0 };
+            const info = NOMBRES_RONDAS[ronda] || { nombre: ronda, subtitulo: '' };
             const partidos = torneo.rondas[ronda];
             
             if (!partidos || partidos.length === 0) return '';
@@ -741,16 +702,12 @@ async function cargarStorage() {
         }
 
         function cargarEjemplo() {
-            const equiposEjemplo = [
-                'AECOMPU_Gamer', 'eSports_Pro', 'Club_Fighter', 'Team_Legend',
-                'Dragon_Stars', 'Phoenix_GG', 'Wolf_Pack', 'Shadow_Pro',
-                'Elite_Squad', 'Victory_GG', 'Thunder_Pro', 'Storm_Riders',
-                'King_Team', 'Queen_Stars', 'Ace_Gaming', 'Prime_Esports',
-                'Falcon_Pro', 'Eagle_Team', 'Titan_GG', 'Nemesis_Pro',
-                'Ravage_Club', 'Fury_Stars', 'Venom_Team', 'Cobra_Pro',
-                'Ghost_Gaming', 'Spectre_Pro', 'Phantom_Team', 'Reaper_GG',
-                'Viper_Stars', 'Python_Pro', 'Crypto_Team', 'Neon_Pro'
-            ];
+            const tamano = parseInt(document.getElementById('tamanoTorneo').value);
+            const equiposEjemplo = [];
+            
+            for (let i = 1; i <= tamano; i++) {
+                equiposEjemplo.push(`Jugador_${i}`);
+            }
             
             document.getElementById('participantes').value = equiposEjemplo.join('\n');
         }
@@ -758,34 +715,62 @@ async function cargarStorage() {
         function reiniciarTorneo() {
             if (confirm('¿Reiniciar el torneo? Todo el progreso se perderá.')) {
                 torneo = {
+                    tamano: 32,
                     participantes: [],
-                    rondas: {
-                        dieciseisavos: [],
-                        octavos: [],
-                        cuartos: [],
-                        semis: [],
-                        final: [],
-                        tercero: [],
-                        campeon: null
-                    }
+                    rondas: {},
+                    campeon: null
                 };
                 localStorage.removeItem('aecompuTorneo');
                 document.getElementById('torneo').style.display = 'none';
                 document.getElementById('participantes').value = '';
                 document.getElementById('error').style.display = 'none';
+                actualizarBadge();
+            }
+        }
+
+        async function guardarStorage() {
+            localStorage.setItem('aecompuTorneo', JSON.stringify(torneo));
+            try {
+                if (window.db) {
+                    const ref = doc(db, "torneos", "torneo_dinamico");
+                    await setDoc(ref, torneo);
+                }
+            } catch (e) {
+                console.error("Error guardando en Firebase:", e);
+            }
+        }
+
+        async function cargarStorage() {
+            try {
+                const guardado = localStorage.getItem('aecompuTorneo');
+                if (guardado) {
+                    torneo = JSON.parse(guardado);
+                    mostrarTorneo();
+                    actualizarBadge();
+                }
+                
+                if (window.db) {
+                    const ref = doc(db, "torneos", "torneo_dinamico");
+                    const snap = await getDoc(ref);
+                    if (snap.exists()) {
+                        torneo = snap.data();
+                        mostrarTorneo();
+                        actualizarBadge();
+                    }
+                }
+            } catch (e) {
+                console.error("Error cargando:", e);
             }
         }
 
         // Inicializar
-   window.addEventListener("load", () => {
-    // Esperar a que Firebase exista
-    const waitFirebase = setInterval(() => {
-        if (window.db) {
-            clearInterval(waitFirebase);
-            cargarStorage();   // ahora sí, Firebase ya existe
-        }
-    }, 100);
-});
+        window.addEventListener("load", () => {
+            cargarStorage();
+            actualizarBadge();
+            
+            // Actualizar badge cuando cambie el select
+            document.getElementById('tamanoTorneo').addEventListener('change', actualizarBadge);
+        });
 
         // Hacer funciones globales
         window.iniciarTorneo = iniciarTorneo;
