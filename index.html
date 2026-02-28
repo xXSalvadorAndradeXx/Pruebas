@@ -47,7 +47,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 5%;
+      padding: 1rem 5%;
       background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -128,9 +128,9 @@
       }
     }
 
-    /* secciones generales */
+    /* secciones generales - REDUCIDO EL PADDING */
     section {
-      padding: 5rem 5%;
+      padding: 3rem 5%;
       max-width: 1400px;
       margin: 0 auto;
     }
@@ -166,9 +166,9 @@
       transform: translateY(0);
     }
 
-    /* 1ra sección HERO */
+    /* 1ra sección HERO - REDUCIDA ALTURA */
     .hero {
-      min-height: 85vh;
+      min-height: 70vh;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -176,7 +176,8 @@
       gap: 2rem;
       background: radial-gradient(circle at 70% 30%, #d4e4fc, #f0f7fe);
       border-radius: 0 0 50px 50px;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
+      padding: 2rem 5%;
     }
 
     .hero-content {
@@ -206,7 +207,7 @@
       flex: 1 1 400px;
       background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="%2392c0e6" opacity="0.3"><path d="M0,150 C80,70 200,20 300,80 C380,130 420,220 350,270 C280,320 150,300 70,240 C10,190 -40,180 0,150 Z" /></svg>') no-repeat center;
       background-size: contain;
-      min-height: 300px;
+      min-height: 250px;
       border-radius: 40px;
       background-color: #cde1f5;
       box-shadow: var(--shadow-pastel);
@@ -219,7 +220,7 @@
       font-weight: 300;
       text-align: center;
       background-blend-mode: overlay;
-      background-image: url('https://placehold.co/600x400/DAE9F8/94B9DF?text=Gaming+arena');
+      background-image: url('https://cdn.law.asia/wp-content/uploads/2024/11/A-comparative-guide-to-E-sports-and-gaming.jpg');
       background-size: cover;
       background-position: center;
     }
@@ -232,9 +233,53 @@
       font-weight: 500;
     }
 
+    /* BOTÓN DE REGISTRO EN HERO */
+    .hero-btn {
+      display: inline-block;
+      background: #21598f;
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0;
+      box-shadow: 0 10px 15px #9bb5d9;
+      transition: all 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .hero-btn:hover {
+      background: #3073b0;
+      transform: scale(1.05);
+      box-shadow: 0 15px 25px #7ea3cb;
+    }
+
     @keyframes floatIn {
       0% { opacity: 0; transform: translateY(40px); }
       100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* LOGO DE AECOMPU (espacio para que lo insertes) */
+    .aecompu-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .logo-placeholder {
+      width: 120px;
+      height: 120px;
+      background: #c7def7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: #214b77;
+      border: 4px solid white;
+      box-shadow: 0 5px 0 #abc1d9;
+      margin: 0 auto;
     }
 
     /* 2da sección e-sports explicación */
@@ -248,12 +293,12 @@
       display: flex;
       gap: 2rem;
       flex-wrap: wrap;
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
     .info-card {
       flex: 1 1 250px;
       background: #f3f9ff;
-      padding: 2rem;
+      padding: 1.5rem;
       border-radius: 28px;
       transition: transform 0.2s;
     }
@@ -266,14 +311,14 @@
     .torneos-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 2.5rem;
+      gap: 2rem;
       justify-content: center;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
     }
     .torneo-item {
       background: white;
       border-radius: 36px;
-      padding: 2rem 2rem 1.8rem;
+      padding: 1.8rem 1.8rem 1.5rem;
       flex: 1 1 280px;
       max-width: 350px;
       text-align: center;
@@ -311,9 +356,9 @@
     .reglas-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
+      gap: 1.5rem;
       background: #ecf5fe;
-      padding: 3rem;
+      padding: 2rem;
       border-radius: 60px 20px 60px 20px;
     }
     .regla {
@@ -322,12 +367,65 @@
       align-items: flex-start;
       background: rgba(255,255,255,0.5);
       backdrop-filter: blur(4px);
-      padding: 1.5rem;
+      padding: 1.2rem;
       border-radius: 30px;
     }
     .regla i {
       font-size: 2rem;
       color: #3e7bb3;
+    }
+
+    /* Sección de FECHA DEL SORTEO */
+    .sorteo-section {
+      background: linear-gradient(135deg, #b3d1f0, #d4e4fc);
+      border-radius: 50px;
+      text-align: center;
+      padding: 2.5rem;
+      margin: 1rem auto;
+    }
+    .sorteo-fecha {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #17416b;
+      background: white;
+      display: inline-block;
+      padding: 0.8rem 3rem;
+      border-radius: 60px;
+      box-shadow: 0 10px 0 #8fb4da;
+      margin: 1rem 0;
+    }
+
+    /* Sección de PREMIOS */
+    .premios-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .premio-item {
+      background: white;
+      border-radius: 30px;
+      padding: 1.8rem;
+      flex: 1 1 200px;
+      max-width: 250px;
+      text-align: center;
+      box-shadow: 0 10px 20px #b7cee6;
+      border-bottom: 6px solid #4a8cc7;
+    }
+    .premio-item i {
+      font-size: 3rem;
+      color: #f7d44a;
+      margin-bottom: 1rem;
+    }
+    .premio-item h3 {
+      font-size: 1.8rem;
+      color: #1c3e5e;
+    }
+    .premio-item .premio-desc {
+      font-size: 1rem;
+      color: #4a668a;
+      margin-top: 0.5rem;
     }
 
     /* 5ta quienes somos (AECOMPU) */
@@ -338,7 +436,7 @@
     .about-flex {
       display: flex;
       flex-wrap: wrap;
-      gap: 3rem;
+      gap: 2rem;
       align-items: center;
     }
     .about-text {
@@ -349,7 +447,7 @@
       flex: 1 1 200px;
       background: white;
       border-radius: 100px 20px 100px 20px;
-      padding: 2rem;
+      padding: 1.5rem;
       text-align: center;
       box-shadow: 0 0 0 6px #b3d1f0;
     }
@@ -365,10 +463,20 @@
       align-items: center;
       text-align: center;
       color: #103456;
+      padding: 3rem 2rem;
     }
     .cta h2 {
-      font-size: 3.2rem;
+      font-size: 2.8rem;
       max-width: 800px;
+    }
+    .fecha-limite {
+      background: rgba(255,255,255,0.7);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 1rem 0;
+      border: 2px dashed #21598f;
     }
     .btn {
       background: #21598f;
@@ -378,7 +486,7 @@
       border-radius: 50px;
       font-size: 1.5rem;
       font-weight: 600;
-      margin: 2rem 0 1rem;
+      margin: 1.5rem 0 1rem;
       box-shadow: 0 15px 20px #9bb5d9;
       transition: all 0.2s;
       cursor: pointer;
@@ -393,11 +501,11 @@
     .extra-features {
       display: flex;
       justify-content: center;
-      gap: 3rem;
+      gap: 2.5rem;
       flex-wrap: wrap;
       background: #ffffffb3;
       border-radius: 110px;
-      padding: 3rem;
+      padding: 2rem;
     }
     .feature {
       text-align: center;
@@ -407,6 +515,15 @@
       text-align: center;
       padding: 2rem;
       color: #3c5e82;
+    }
+
+    .developer-link {
+      color: #21598f;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .developer-link:hover {
+      text-decoration: underline;
     }
 
     /* clases utilitarias */
@@ -423,6 +540,8 @@
       <li><a href="#que-es">¿Qué son e-Sports?</a></li>
       <li><a href="#torneos">Torneos</a></li>
       <li><a href="#reglas">Reglas</a></li>
+      <li><a href="#premios">Premios</a></li>
+      <li><a href="#sorteo">Sorteo</a></li>
       <li><a href="#about">AECOMPU</a></li>
       <li><a href="#registro">Regístrate</a></li>
     </ul>
@@ -430,21 +549,19 @@
   </nav>
 
   <main>
-    <!-- 1RA SECCIÓN: HERO con foto/texto -->
+    <!-- 1RA SECCIÓN: HERO con foto/texto y BOTÓN DE REGISTRO -->
     <section id="inicio" class="hero">
       <div class="hero-content fade-up">
         <h1>AECOMPU e-Sports <br>1ra Edición</h1>
-        <div class="highlight">"Desata tu legado, que la luz azul te guíe hacia la gloria"</div>
+        <div class="highlight">"Prepara tu equipo, elige tu personaje y demuestra que eres el mejor"</div>
         <p style="font-size: 1.3rem; color:#2b5580;">Compite, mejora y celebra la primera edición.</p>
+        <a href="#registro" class="hero-btn">¡REGÍSTRATE AHORA!</a>
       </div>
-
-
-      
-      
+      <div class="hero-image fade-up">
+        <span>Coming 2026</span>
+      </div>
     </section>
-<div class="hero-image fade-up">
-        <span>Coming 2026 </span>
-      </div>
+
     <!-- 2DA SECCIÓN: ¿Qué son e-Sports? -->
     <section id="que-es" class="esports-info fade-up">
       <h2 class="section-title">¿Qué son los e-Sports?</h2>
@@ -462,7 +579,7 @@
         <div class="torneo-item">
           <div class="torneo-img"><i class="fas fa-gamepad"></i></div>
           <h3>SMASH BROS ULTIMATE</h3>
-          <p>1vs1 · stock 5 · con ítems ·  eliminación directa</p>
+          <p>1vs1 · stock 5 · con ítems · eliminación directa</p>
         </div>
         <div class="torneo-item">
           <div class="torneo-img"><i class="fas fa-futbol"></i></div>
@@ -472,25 +589,65 @@
       </div>
     </section>
 
-    <!-- 4TA SECCIÓN: Reglas (las que creas pertinentes) -->
+    <!-- 4TA SECCIÓN: Reglas (con la especificación completa) -->
     <section id="reglas" class="fade-up">
       <h2 class="section-title">Reglas del torneo</h2>
       <div class="reglas-list">
-        <div class="regla"><i class="fas fa-shield-alt"></i> Pertenecer a la Facultad de Ciencia y Tecnología de la Universidad Gerardo Barrios.</div>
+        <div class="regla"><i class="fas fa-shield-alt"></i> Pertenecer a la Facultad de Ciencia y Tecnología de la Universidad Gerardo Barrios, Centro Regional Usulután.</div>
         <div class="regla"><i class="fas fa-clock"></i> Horarios estrictos: 10 min de cortesía para presentarse.</div>
         <div class="regla"><i class="fas fa-ban"></i> Prohibido insultos, trampas o cualquier exploit.</div>
         <div class="regla"><i class="fas fa-trophy"></i> Formato: eliminación directa para Smash y para FC26.</div>
-
         <div class="regla"><i class="fas fa-gamepad"></i> Cada jugador decidirá si usar un control propio o el staff cederá uno.</div>
         <div class="regla"><i class="fas fa-ticket-alt"></i> El sorteo se realizará de manera aleatoria en presencia de los participantes.</div>
-      
-        <div class="regla"><i class="fas fa-list"></i> Organización puede descalificar por comportamiento antideportivo.</div>
+        <div class="regla"><i class="fas fa-gavel"></i> <a href="#reglamento-completo" style="color: #1c3e5e; text-decoration: underline;">Organización puede descalificar por comportamiento antideportivo. Ver reglamento completo</a></div>
       </div>
     </section>
 
-    <!-- 5TA SECCIÓN: organizado por AECOMPU (quiénes somos) -->
+    <!-- NUEVA SECCIÓN: Fecha del SORTEO -->
+    <section id="sorteo" class="sorteo-section fade-up">
+      <h2 class="section-title" style="margin-bottom: 1rem;">📅 Fecha del Sorteo</h2>
+      <p style="font-size: 1.5rem;">El sorteo de llaves y enfrentamientos se realizará:</p>
+      <div class="sorteo-fecha">15 DE MARZO 2026 · 10:00 AM</div>
+      <p style="font-size: 1.2rem; margin-top: 1rem;">Auditorio de la Facultad - ¡Presencia obligatoria!</p>
+    </section>
+
+    <!-- NUEVA SECCIÓN: PREMIOS detallados -->
+    <section id="premios" class="fade-up">
+      <h2 class="section-title">🏆 Premios por categoría</h2>
+      <div class="premios-grid">
+        <div class="premio-item">
+          <i class="fas fa-crown"></i>
+          <h3>1er Lugar</h3>
+          <div class="premio-desc">Trofeo Campeón + Tarjeta de regalo $100 + Kit gamer</div>
+        </div>
+        <div class="premio-item">
+          <i class="fas fa-medal"></i>
+          <h3>2do Lugar</h3>
+          <div class="premio-desc">Medalla de plata + Tarjeta de regalo $50 + Mouse pad</div>
+        </div>
+        <div class="premio-item">
+          <i class="fas fa-award"></i>
+          <h3>3er Lugar</h3>
+          <div class="premio-desc">Medalla de bronce + Tarjeta de regalo $25 + Llavero exclusivo</div>
+        </div>
+        <div class="premio-item">
+          <i class="fas fa-star"></i>
+          <h3>Premio especial</h3>
+          <div class="premio-desc">Jugador más destacado - Kit de streaming</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5TA SECCIÓN: organizado por AECOMPU (quiénes somos) CON ESPACIO PARA LOGO -->
     <section id="about" class="about fade-up">
       <h2 class="section-title">Organizado por AECOMPU</h2>
+      <div class="aecompu-logo">
+        <div class="logo-placeholder">
+          <i class="fas fa-laptop-code"></i>
+        </div>
+        <!-- ESPACIO PARA LOGO REAL: Reemplaza el div superior con tu imagen -->
+        <!-- <img src="ruta-de-tu-logo.png" alt="Logo AECOMPU" style="width: 120px;"> -->
+      </div>
       <div class="about-flex">
         <div class="about-text">
           <p style="font-weight: 500; font-size: 1.5rem;">¿Quiénes somos?</p>
@@ -503,18 +660,21 @@
       </div>
     </section>
 
-    <!-- 6TA SECCIÓN: llamado a la acción con imagen fondo y palabras motivadoras -->
-    <section id="registro" class="cta fade-up" style="background-image: url('');">
+    <!-- 6TA SECCIÓN: llamado a la acción con FECHA LÍMITE -->
+    <section id="registro" class="cta fade-up">
       <h2>¿ESTÁS LISTO PARA DEJAR HUELLA?</h2>
+      <div class="fecha-limite">
+        <i class="fas fa-calendar-alt"></i> FECHA LÍMITE DE INSCRIPCIÓN: 10 DE MARZO 2026
+      </div>
       <p style="font-size: 1.8rem; max-width: 700px; margin: 0 auto;"></p>
       <a href="/form.html" target="_blank" rel="noopener noreferrer">
-    <button class="btn">REGISTRARSE AHORA</button>
-</a>
+        <button class="btn">REGISTRARSE AHORA</button>
+      </a>
       <p style="font-size: 1.2rem; background: rgba(255,255,255,0.4); padding: 0.5rem 2rem; border-radius: 40px;">¡Cupos limitados - 1ra edición!</p>
     </section>
 
     <!-- sección extra: beneficios / por qué participar -->
-    <section class="fade-up" style="padding-top: 1rem;">
+    <section class="fade-up" style="padding-top: 0.5rem;">
       <div class="extra-features">
         <div class="feature"><i class="fas fa-medal fa-3x" style="color:#528fc1;"></i><h3>Premios únicos</h3><p>Medallas y trofeos</p></div>
         <div class="feature"><i class="fas fa-video fa-3x" style="color:#528fc1;"></i><h3>Transmisión</h3><p>Resultados al instante.</p></div>
@@ -526,8 +686,8 @@
   <footer>
     <p>© 2025 AECOMPU e-Sports · 1ra Edición · Todos los derechos reservados ·</p> 
     <p style="margin-top: 0.5rem;">contacto@aecompu-esports.org · <i class="fab fa-twitter"></i> <i class="fab fa-instagram"></i></p>
-  <p>Desarrollado por: </p> <a class="developer" href="https://andradedev.site/"></a>
-</footer>
+    <p>Desarrollado por: <a class="developer-link" href="https://andradedev.site/" target="_blank">AndradeDev.site</a></p>
+  </footer>
 
   <!-- scripts para menú responsivo y animaciones fade-up -->
   <script>
@@ -576,7 +736,7 @@
     })();
   </script>
 
-  <!-- estilo extra para imágenes de fondo (para la sección hero/cta usamos placeholders, puedes reemplazar con assets reales) -->
+  <!-- estilo extra para imágenes de fondo -->
   <style>
     /* imágenes placeholder (puedes cambiarlas por fotos reales) */
     .hero-image {
@@ -587,7 +747,6 @@
       background-size: cover;
       background-position: center;
     }
-    /* sobreescribir con fotografía real si se desea */
   </style>
 </body>
 </html>
