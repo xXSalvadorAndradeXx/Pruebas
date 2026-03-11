@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torneo E‑Sports FC · Grupos animados</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+
+        body {
+            background: #0b1e3a;
+            color: #ffffff;
+            line-height: 1.5;
+            padding: 0 0 2rem 0;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(145deg, #0a2670 0%, #0f3d91 100%);
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.1rem;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 2rem auto;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 32px;
+            padding: 2rem 2rem 2.5rem;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        h2 {
+            font-weight: 500;
+            font-size: 1.9rem;
+            letter-spacing: -0.3px;
+            border-left: 6px solid #1e73ff;
+            padding-left: 1.2rem;
+            margin: 1.8rem 0 1.5rem 0;
+            text-shadow: 0 2px 3px rgba(0,0,0,0.4);
+        }
+
+        h2:first-of-type {
+            margin-top: 0.2rem;
+        }
+
+        h3 {
+            font-weight: 500;
+            font-size: 1.4rem;
+            margin: 0 0 1rem 0;
+            color: #b8d1ff;
+            letter-spacing: -0.2px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 140px;
+            padding: 1.2rem 1.5rem;
+            background: #102545;
+            border: 2px solid #1f3f7a;
+            border-radius: 20px;
+            color: white;
+            font-size: 1rem;
+            line-height: 1.5;
+            resize: vertical;
+            outline: none;
+            transition: 0.2s ease;
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.5);
+        }
+
+        textarea:focus {
+            border-color: #1e73ff;
+            box-shadow: 0 0 0 3px rgba(30, 115, 255, 0.3), inset 0 2px 5px #000;
+        }
+
+        button {
+            background: #1e73ff;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            margin-top: 1rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 8px 20px -5px #0f3d91;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        button:hover {
+            background: #4c93ff;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px -8px #1e73ff;
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 15px -3px #1e73ff;
+        }
+
+        .groups {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 30px 0 20px;
+            min-height: 320px; /* Evita saltos durante animación */
+        }
+
+        /* ESTILOS BASE DE GRUPO (oculto + animación) */
+        .group {
+            background: #0f2648;
+            padding: 1.5rem 1rem 1.2rem;
+            border-radius: 24px;
+            border: 1px solid #254980;
+            box-shadow: 0 15px 25px -12px #030c1a;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+        }
+
+        /* Retrasos individuales para cada grupo */
+        .group:nth-child(1) { animation-delay: 0.1s; }
+        .group:nth-child(2) { animation-delay: 0.4s; }
+        .group:nth-child(3) { animation-delay: 0.7s; }
+        .group:nth-child(4) { animation-delay: 1.0s; }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+                filter: blur(4px);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(-5px) scale(1.02);
+                filter: blur(0);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        /* Efecto hover en grupo */
+        .group:hover {
+            border-color: #3f7bff;
+            background: #132c55;
+            transform: scale(1.02) translateY(-5px);
+            box-shadow: 0 20px 30px -8px #0a1c3a;
+        }
+
+        .group h3 {
+            text-align: center;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            color: white;
+            border-bottom: 2px dashed #2e5799;
+            padding-bottom: 0.6rem;
+        }
+
+        .group div {
+            padding: 0.5rem 0.8rem;
+            margin: 4px 0;
+            background: #0e1f3f;
+            border-radius: 40px;
+            text-align: center;
+            font-weight: 400;
+            border: 1px solid #2c4b85;
+            box-shadow: inset 0 2px 3px rgba(0,0,0,0.5);
+            font-size: 0.95rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: 0.15s;
+        }
+
+        /* Animación para los nombres dentro del grupo (efecto escalera) */
+        .group div {
+            opacity: 0;
+            animation: slideInName 0.4s ease forwards;
+        }
+
+        /* diferentes retardos para cada línea de jugador */
+        .group div:nth-child(2) { animation-delay: 0.1s; }
+        .group div:nth-child(3) { animation-delay: 0.15s; }
+        .group div:nth-child(4) { animation-delay: 0.2s; }
+        .group div:nth-child(5) { animation-delay: 0.25s; }
+        .group div:nth-child(6) { animation-delay: 0.3s; }
+        .group div:nth-child(7) { animation-delay: 0.35s; }
+        .group div:nth-child(8) { animation-delay: 0.4s; }
+        .group div:nth-child(9) { animation-delay: 0.45s; }
+
+        @keyframes slideInName {
+            0% {
+                opacity: 0;
+                transform: translateX(-15px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .match {
+            background: linear-gradient(135deg, #15315f, #0f2850);
+            padding: 0.8rem 1.5rem;
+            margin: 8px 0;
+            border-radius: 40px;
+            border-left: 5px solid #1e73ff;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            font-weight: 450;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            transition: 0.15s;
+            border-right: 1px solid #2f5caa;
+        }
+
+        .match:hover {
+            background: #1c3f7a;
+            border-left-width: 8px;
+            padding-left: 1.9rem;
+        }
+
+        .bracket {
+            margin-top: 3.5rem;
+        }
+
+        .round {
+            margin-bottom: 2.8rem;
+        }
+
+        .round h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            border-bottom: 1px solid #2f5caa;
+            padding-bottom: 0.3rem;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+        }
+
+        @media (max-width: 800px) {
+            .groups {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .container {
+                width: 95%;
+                padding: 1.5rem;
+            }
+            h1 { font-size: 1.8rem; }
+        }
+
+        @media (max-width: 500px) {
+            .groups {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hint {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hint::before {
+            content: "⚡";
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* barra de progreso de animación (opcional, toque extra) */
+        .progress-indicator {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 10px 0 20px;
+        }
+        .progress-dot {
+            width: 10px;
+            height: 10px;
+            background: #1e4c9e;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .progress-dot.active {
+            background: #1e73ff;
+            box-shadow: 0 0 12px #1e73ff;
+            transform: scale(1.4);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>⚡ TORNEO E‑SPORTS FC ⚡</h1>
+    <p>Grupos con aparición secuencial · elegancia animada</p>
+</header>
+
+<div class="container">
+    <h2 style="margin-top:0;">Participantes</h2>
+    <p class="hint">Escribe un jugador por línea (mínimo 32)</p>
+
+    <textarea id="players" placeholder="Lionel&#10;Kylian&#10;Erling&#10;Kevin&#10;..."></textarea>
+
+    <br>
+    <button onclick="generateTournament()">Generar Torneo animado</button>
+
+    <!-- grupos con animación secuencial -->
+    <div id="groups" class="groups"></div>
+
+    <!-- fase de liga -->
+    <div id="matches" class="matches"></div>
+
+    <!-- fase eliminatoria -->
+    <div id="bracket" class="bracket"></div>
+</div>
+
+<script>
+    (function() {
+        const shuffle = (array) => {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        };
+
+        window.generateTournament = function() {
+            const input = document.getElementById("players").value.trim();
+            let players = input.split("\n").map(p => p.trim()).filter(p => p.length > 0);
+
+            if (players.length < 32) {
+                alert("⚠️ Debes ingresar al menos 32 jugadores (líneas no vacías)");
+                return;
+            }
+
+            players = shuffle([...players]);
+
+            const groupsContainer = document.getElementById("groups");
+            const matchesContainer = document.getElementById("matches");
+            const bracketContainer = document.getElementById("bracket");
+
+            // Limpiar todo
+            groupsContainer.innerHTML = "";
+            matchesContainer.innerHTML = "<h2>⚽ Fase de liga</h2>";
+            bracketContainer.innerHTML = "";
+
+            // Crear los grupos (4 grupos de 8)
+            const groups = [];
+            for (let g = 0; g < 4; g++) {
+                const groupPlayers = players.slice(g * 8, g * 8 + 8);
+                groups.push(groupPlayers);
+
+                const groupDiv = document.createElement("div");
+                groupDiv.className = "group";
+
+                // Título del grupo
+                groupDiv.innerHTML = `<h3>Grupo ${String.fromCharCode(65 + g)}</h3>`;
+
+                // Agregar jugadores UNO A UNO (para que la animación se note)
+                groupPlayers.forEach(p => {
+                    groupDiv.innerHTML += `<div>${p}</div>`;
+                });
+
+                groupsContainer.appendChild(groupDiv);
+            }
+
+            // Los grupos ya tienen animación por CSS (fadeInUp con delay)
+            // Ahora los partidos de liga
+            groups.forEach((group, idx) => {
+
+    const groupLetter = String.fromCharCode(65 + idx);
+    matchesContainer.innerHTML += `<h3 style="margin-top:1.8rem;">📋 Grupo ${groupLetter}</h3>`;
+
+    const rounds = [
+        [[0,1],[2,3],[4,5],[6,7]],
+        [[0,2],[1,3],[4,6],[5,7]]
+    ];
+
+    rounds.forEach(round => {
+        round.forEach(match => {
+
+            const p1 = group[match[0]];
+            const p2 = group[match[1]];
+
+            matchesContainer.innerHTML += `
+                <div class="match">${p1} vs ${p2}</div>
+            `;
+        });
+    });
+
+});
+
+            // Bracket eliminatorio (sin cambios pero lo dejamos igual)
+            bracketContainer.innerHTML = "<h2>🏆 Fase eliminatoria</h2>";
+
+            let bracketHTML = "";
+            bracketHTML += `<div class="round"><h3>🔹 Octavos de final</h3>`;
+            for (let i = 0; i < 8; i++) {
+                const left = `${i+1}° Grupo ${String.fromCharCode(65 + (i%4))}`;
+                const right = `${16-i}° Grupo ${String.fromCharCode(65 + (15-i)%4)}`;
+                bracketHTML += `<div class="match">${left}  vs  ${right}</div>`;
+            }
+            bracketHTML += `</div>`;
+
+            bracketHTML += `<div class="round"><h3>🔸 Cuartos de final</h3>`;
+            bracketHTML += `<div class="match">Ganador octavo 1  vs  Ganador octavo 2</div>`;
+            bracketHTML += `<div class="match">Ganador octavo 3  vs  Ganador octavo 4</div>`;
+            bracketHTML += `<div class="match">Ganador octavo 5  vs  Ganador octavo 6</div>`;
+            bracketHTML += `<div class="match">Ganador octavo 7  vs  Ganador octavo 8</div>`;
+            bracketHTML += `</div>`;
+
+            bracketHTML += `<div class="round"><h3>🔹 Semifinales</h3>`;
+            bracketHTML += `<div class="match">Ganador cuarto 1  vs  Ganador cuarto 2</div>`;
+            bracketHTML += `<div class="match">Ganador cuarto 3  vs  Ganador cuarto 4</div>`;
+            bracketHTML += `</div>`;
+
+            bracketHTML += `<div class="round"><h3>🥉 Tercer puesto</h3>`;
+            bracketHTML += `<div class="match">Perdedor semifinal 1  vs  Perdedor semifinal 2</div>`;
+            bracketHTML += `</div>`;
+
+            bracketHTML += `<div class="round"><h3>🏁 Final</h3>`;
+            bracketHTML += `<div class="match" style="background: linear-gradient(145deg, #1e4c9e, #12316b); border-left: 6px solid gold;">Ganador semifinal 1  vs  Ganador semifinal 2</div>`;
+            bracketHTML += `</div>`;
+
+            bracketContainer.innerHTML += bracketHTML;
+        };
+
+        // Precargar con datos de ejemplo
+        window.onload = function() {
+            const ta = document.getElementById('players');
+            if (ta.value === '') {
+                const demo = [];
+                for (let i = 1; i <= 32; i++) {
+                    demo.push(`Jugador ${i}`);
+                }
+                ta.value = demo.join('\n');
+            }
+        };
+    })();
+</script>
+
+<footer style="text-align:center; font-size:0.8rem; opacity:0.4; margin-top: 0.5rem;">
+    E-Sports FC · grupos aparecen uno a uno con animación suave
+</footer>
+</body>
+</html>
