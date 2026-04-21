@@ -1,936 +1,478 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AECOMPU e-Sports · 1ra Edición</title>
-  <!-- Font Awesome 6 (free) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-
-    @font-face {
-      font-family: 'GamerFont';
-      src: url('/guente.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'GamerFont', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    }
-
-    body {
-      background: #f8fafd;
-      color: #1e2f4d;
-      line-height: 1.5;
-      scroll-behavior: smooth;
-    }
-
-    :root {
-      --primary: #2b4f7c;
-      --primary-light: #4a8cc7;
-      --primary-soft: #92c0e6;
-      --bg-soft: #f0f7ff;
-      --white-soft: #ffffff;
-      --gray-soft: #eef3f9;
-      --text-primary: #1e2f4d;
-      --text-secondary: #4a668a;
-      --shadow-subtle: 0 4px 12px rgba(0, 20, 40, 0.03);
-    }
-
-    /* ===== MENÚ RESPONSIVE ===== */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 5%;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 2px 10px rgba(0, 30, 60, 0.03);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .logo {
-      font-weight: 600;
-      font-size: 1.4rem;
-      color: var(--primary);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 500;
-      color: var(--text-primary);
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary-light);
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1.5rem;
-      color: var(--primary);
-      cursor: pointer;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        padding: 2rem 0;
-        transform: translateY(-150%);
-        opacity: 0;
-        transition: transform 0.3s ease, opacity 0.2s ease;
-        pointer-events: none;
-        border-radius: 0 0 24px 24px;
-        box-shadow: var(--shadow-subtle);
-      }
-
-      .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: all;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-    }
-
-    /* secciones generales */
-    section {
-      padding: 4rem 5%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      font-size: 2.2rem;
-      font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 2rem;
-      letter-spacing: -0.01em;
-    }
-
-    /* ===== ANIMACIONES SUAVES AL SCROLL ===== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
-    }
-
-    .reveal.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Diferentes tipos de animaciones (opcionales) */
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-30px);
-      transition: all 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
-    }
-
-    .reveal-left.revealed {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(30px);
-      transition: all 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
-    }
-
-    .reveal-right.revealed {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .reveal-scale {
-      opacity: 0;
-      transform: scale(0.95);
-      transition: all 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
-    }
-
-    .reveal-scale.revealed {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* Retrasos para efectos en cascada */
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
-    .delay-4 { transition-delay: 0.4s; }
-    .delay-5 { transition-delay: 0.5s; }
-
-    /* HERO - más limpio */
-    .hero {
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 2rem;
-      padding: 2rem 5%;
-      background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
-      border-radius: 0 0 40px 40px;
-    }
-
-    .hero-content {
-      flex: 1 1 400px;
-    }
-
-    .hero-content h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-
-    .hero-content .highlight {
-      font-size: 1.2rem;
-      color: var(--text-secondary);
-      border-left: 3px solid var(--primary-soft);
-      padding-left: 1.5rem;
-      margin: 1.5rem 0;
-    }
-
-    .hero-image {
-      flex: 1 1 400px;
-      min-height: 300px;
-      border-radius: 24px;
-      background-image: url('https://image.api.playstation.com/vulcan/ap/rnd/202509/1900/08583f8bf7387b7b62bf613609eecc70a2916849970da15f.jpg');
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--shadow-subtle);
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding: 1.5rem;
-    }
-
-    .hero-image span {
-      background: rgba(255,255,255,0.8);
-      backdrop-filter: blur(4px);
-      padding: 0.5rem 1.5rem;
-      border-radius: 40px;
-      font-size: 0.9rem;
-      color: var(--primary);
-    }
-
-    .hero-btn {
-      display: inline-block;
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0.8rem 2rem;
-      border-radius: 40px;
-      font-size: 1rem;
-      font-weight: 500;
-      margin-top: 1rem;
-      transition: all 0.2s;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .hero-btn:hover {
-      background: var(--primary-light);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(43, 79, 124, 0.1);
-    }
-
-    /* tarjetas de información - más sutiles */
-    .info-grid, .torneos-grid, .premios-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-
-    .info-card, .torneo-item, .premio-item {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 20px;
-      box-shadow: var(--shadow-subtle);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      border: 1px solid rgba(146, 192, 230, 0.2);
-    }
-
-    .info-card:hover, .torneo-item:hover, .premio-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(43, 79, 124, 0.05);
-      border-color: rgba(146, 192, 230, 0.4);
-    }
-
-    .torneo-item {
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .torneo-img {
-      width: 80px;
-      height: 80px;
-      background: var(--bg-soft);
-      border-radius: 50%;
-      margin: 0 auto 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: var(--primary);
-      border: 2px solid white;
-      box-shadow: 0 2px 0 rgba(43, 79, 124, 0.1);
-    }
-
-    .torneo-item h3 {
-      font-size: 1.3rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .torneo-item p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    /* reglas */
-    .reglas-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-      background: var(--bg-soft);
-      padding: 2rem;
-      border-radius: 24px;
-    }
-
-    .regla {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      padding: 1rem;
-      background: white;
-      border-radius: 16px;
-      box-shadow: var(--shadow-subtle);
-    }
-
-    .regla i {
-      font-size: 1.2rem;
-      color: var(--primary-light);
-    }
-
-    .regla a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    .regla a:hover {
-      text-decoration: underline;
-    }
-
-    /* sección sorteo */
-    .sorteo-section {
-      background: var(--bg-soft);
-      border-radius: 32px;
-      text-align: center;
-      padding: 3rem 2rem;
-      margin: 2rem auto;
-    }
-
-    .sorteo-fecha {
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--primary);
-      background: white;
-      display: inline-block;
-      padding: 0.5rem 2rem;
-      border-radius: 60px;
-      box-shadow: var(--shadow-subtle);
-      margin: 1rem 0;
-    }
-
-    /* premios */
-    .premio-item {
-      text-align: center;
-    }
-
-    .premio-item i {
-      font-size: 2rem;
-      color: var(--primary-light);
-      margin-bottom: 0.5rem;
-    }
-
-    .premio-item h3 {
-      font-size: 1.3rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .premio-item .premio-desc {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    /* about */
-    .about {
-      background: var(--bg-soft);
-      border-radius: 32px;
-      padding: 3rem;
-    }
-
-    .about-flex {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .about-text {
-      flex: 2 1 300px;
-    }
-
-    .about-text p:first-child {
-      font-size: 1.3rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .about-highlight {
-      flex: 1 1 200px;
-      background: white;
-      border-radius: 24px;
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: var(--shadow-subtle);
-    }
-
-    .logo-placeholder {
-      width: 80px;
-      height: 80px;
-      background: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: var(--primary);
-      border: 2px solid rgba(43, 79, 124, 0.1);
-      margin: 0 auto 1.5rem;
-    }
-
-    /* CTA */
-    .cta {
-      background: var(--bg-soft);
-      border-radius: 32px;
-      text-align: center;
-      padding: 3rem 2rem;
-    }
-
-    .cta h2 {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-
-    .fecha-limite {
-      background: white;
-      padding: 0.5rem 1.5rem;
-      border-radius: 40px;
-      display: inline-block;
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--primary);
-      border: 1px solid rgba(43, 79, 124, 0.1);
-      margin: 1rem 0;
-    }
-
-    .btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 1rem 2.5rem;
-      border-radius: 40px;
-      font-size: 1rem;
-      font-weight: 500;
-      margin: 1rem 0;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn:hover {
-      background: var(--primary-light);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(43, 79, 124, 0.1);
-    }
-
-    /* extra features */
-    .extra-features {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      padding: 2rem;
-      background: white;
-      border-radius: 32px;
-      border: 1px solid rgba(146, 192, 230, 0.2);
-    }
-
-    .feature {
-      text-align: center;
-    }
-
-    .feature i {
-      font-size: 2rem;
-      color: var(--primary-light);
-      margin-bottom: 0.5rem;
-    }
-
-    .feature h3 {
-      font-size: 1rem;
-      color: var(--primary);
-      margin-bottom: 0.25rem;
-    }
-
-    .feature p {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
-
-    /* footer */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--text-secondary);
-      border-top: 1px solid rgba(146, 192, 230, 0.2);
-    }
-
-    .developer-link {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    /* MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.3);
-      backdrop-filter: blur(4px);
-    }
-
-    .modal-content {
-      background: white;
-      margin: 40px auto;
-      padding: 2rem;
-      border-radius: 28px;
-      max-width: 800px;
-      width: 90%;
-      max-height: 80vh;
-      overflow-y: auto;
-      box-shadow: 0 20px 30px rgba(0,0,0,0.05);
-    }
-
-    .close {
-      float: right;
-      font-size: 1.8rem;
-      font-weight: 300;
-      color: var(--text-secondary);
-      cursor: pointer;
-      line-height: 1;
-      margin-top: -0.5rem;
-    }
-
-    .close:hover {
-      color: var(--primary);
-    }
-
-    .bases-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin: 1.5rem 0;
-    }
-
-    .base-categoria {
-      background: var(--bg-soft);
-      padding: 1.5rem;
-      border-radius: 20px;
-    }
-
-    .base-categoria h4 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-    }
-
-    .base-categoria ul {
-      list-style: none;
-    }
-
-    .base-categoria li {
-      margin-bottom: 0.5rem;
-      padding-left: 0;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    .modal-content h2 {
-      color: var(--primary);
-      font-size: 1.8rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .modal-content h3 {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      font-weight: 400;
-      margin-bottom: 1.5rem;
-    }
-
-    @media (max-width: 768px) {
-      section {
-        padding: 3rem 1.5rem;
-      }
-      
-      .section-title {
-        font-size: 1.8rem;
-      }
-      
-      .modal-content {
-        padding: 1.5rem;
-      }
-    }
-
-    .developer-link {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .space {
-      padding: 1rem;
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>UGB e-Champions League | Reglamento Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #eef2ff 0%, #d9e2f0 100%);
+            font-family: 'Inter', sans-serif;
+            color: #0a1c2f;
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Contenedor principal estilo "documento UEFA" */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 2.5rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 2px 5px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        /* Header inspiración UEFA Champions League */
+        .hero {
+            background: linear-gradient(135deg, #0b2b44 0%, #0a1a2e 100%);
+            padding: 2.5rem 2.5rem 2rem 2.5rem;
+            position: relative;
+            border-bottom: 5px solid #ffcd3c;
+        }
+
+        .hero::before {
+            content: "🏆";
+            font-size: 6rem;
+            position: absolute;
+            bottom: 0;
+            right: 1.5rem;
+            opacity: 0.08;
+            pointer-events: none;
+            font-family: monospace;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .hero h1 i {
+            font-size: 2.5rem;
+            color: #ffcd3c;
+        }
+
+        .hero-sub {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            margin-top: 0.75rem;
+            font-weight: 500;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            row-gap: 0.5rem;
+            border-left: 3px solid #ffcd3c;
+            padding-left: 1rem;
+        }
+
+        .hero-sub span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* badge de versión */
+        .badge-version {
+            background: #ffcd3c20;
+            backdrop-filter: blur(4px);
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 0.25rem 0.8rem;
+            border-radius: 40px;
+            color: #ffcd3c;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* contenido principal */
+        .reglamento-content {
+            padding: 2.5rem 2.5rem 3rem;
+        }
+
+        /* secciones grid / columnas */
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card-rule {
+            background: #f9fbfe;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e6edf4;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card-rule:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+            border-color: #cbdde9;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid #e0ebf3;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-header i {
+            font-size: 1.8rem;
+            color: #1f6392;
+            background: #e3f0f8;
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+        }
+
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0a2a44;
+            letter-spacing: -0.3px;
+        }
+
+        .rule-list {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .rule-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.6rem;
+            position: relative;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #1f2e3f;
+        }
+
+        .rule-list li i {
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            font-size: 0.9rem;
+            color: #2c7cb6;
+            width: 1.2rem;
+        }
+
+        .highlight-point {
+            background: #eef4fc;
+            padding: 0.15rem 0.4rem;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #0059b3;
+        }
+
+        .points-system {
+            background: #eef2fa;
+            border-radius: 1rem;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .points-system p {
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, #cbdde9, transparent);
+        }
+
+        .fair-play {
+            background: linear-gradient(110deg, #eef2ff, #ffffff);
+            border-left: 6px solid #ffcd3c;
+            padding: 1rem 1.2rem;
+            border-radius: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #4a627a;
+            border-top: 1px solid #e2ecf3;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+            .reglamento-content {
+                padding: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .card-header h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        .text-small {
+            font-size: 0.85rem;
+            color: #3c5a7d;
+        }
+
+        .inline-code {
+            background: #eaf0f6;
+            padding: 0.1rem 0.4rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-weight: 500;
+        }
+
+        .btn-icon {
+            background: none;
+            border: none;
+        }
+
+        .azul-uefa {
+            background: #002b5c;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5rem;
+        }
+
+        td, th {
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo">AECOMPU e-Sports</div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#que-es">e-Sports</a></li>
-      <li><a href="#torneos">Torneos</a></li>
-      <li><a href="#reglas">Reglas</a></li>
-      <li><a href="#premios">Premios</a></li>
-      <li><a href="#sorteo">Sorteo</a></li>
-      <li><a href="#about">AECOMPU</a></li>
-      <li><a href="#registro">Registro</a></li>
-    </ul>
-    <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-  </nav>
-
-  <main>
-    <!-- HERO (sin animación inicial) -->
-    <section id="inicio" class="hero">
-      <div class="hero-content">
-        <h1>AECOMPU e-Sports <br>1ra Edición</h1>
-        <div class="highlight">"Prepara tu equipo, elige tu personaje y demuestra que eres el mejor"</div>
-        <a href="#registro" class="hero-btn">REGISTRARSE</a>
-      </div>
-      <div class="hero-image">
-        <span>Marzo 2026</span>
-      </div>
-    </section>
-
-    <!-- ¿Qué son e-Sports? -->
-    <section id="que-es" class="reveal">
-      <h2 class="section-title">¿Qué son los e-Sports?</h2>
-      <div class="info-grid">
-        <div class="info-card reveal reveal-left delay-1">⚡ Deporte electrónico de alto nivel, donde la estrategia y reflejos definen campeones.</div>
-        <div class="info-card reveal reveal-left delay-2">🎮 Competencias profesionales de videojuegos con audiencias globales.</div>
-        <div class="info-card reveal reveal-left delay-3">🤝 Comunidad, fair play y evolución constante en cada partida.</div>
-      </div>
-    </section>
-
-    <!-- Torneos -->
-    <section id="torneos" class="reveal">
-      <h2 class="section-title">Torneos 1ra Edición</h2>
-      <div class="torneos-grid">
-        <div class="torneo-item reveal reveal-scale delay-1" onclick="abrirPopupSmash()">
-          <div class="torneo-img"><i class="fas fa-gamepad"></i></div>
-          <h3>SUPER SMASH BROS ULTIMATE</h3>
-          <p>1vs1 · stock 5 · con ítems · eliminación directa</p>
-          <small style="color: var(--primary-soft); display: block; margin-top: 0.5rem;">Ver bases completas →</small>
+<div class="container">
+    <div class="hero">
+        <h1>
+            <i class="fas fa-trophy"></i> 
+            UGB e-Champions League
+        </h1>
+        <div class="hero-sub">
+            <span><i class="fas fa-calendar-alt"></i> 11 – 15 de mayo</span>
+            <span><i class="fas fa-users"></i> 32 jugadores | 8 grupos</span>
+            <span><i class="fas fa-dollar-sign"></i> Inscripción $5.00</span>
+            <span><i class="fas fa-gamepad"></i> FC · Presencial</span>
         </div>
-        <div class="torneo-item reveal reveal-scale delay-2" onclick="abrirPopupFC()">
-          <div class="torneo-img"><i class="fas fa-futbol"></i></div>
-          <h3>FC 26</h3>
-          <p>1vs1 · 6 min por partido · eliminación directa</p>
-          <small style="color: var(--primary-soft); display: block; margin-top: 0.5rem;">Ver bases completas →</small>
+        <div class="badge-version">
+            <i class="fas fa-gavel"></i> REGLAMENTO OFICIAL V.2.0
         </div>
-      </div>
-    </section>
-
-    <!-- Reglas -->
-    <section id="reglas" class="reveal">
-      <h2 class="section-title">Reglas del torneo</h2>
-      <div class="reglas-list">
-        <div class="regla reveal reveal-left delay-1"><i class="fas fa-shield-alt"></i> Pertenecer a la Facultad de Ciencia y Tecnología de la UGB, Usulután.</div>
-        <div class="regla reveal reveal-left delay-2"><i class="fas fa-clock"></i> 10 minutos de cortesía para presentarse.</div>
-        <div class="regla reveal reveal-left delay-3"><i class="fas fa-ban"></i> Prohibido insultos, trampas o cualquier exploit.</div>
-        <div class="regla reveal reveal-left delay-4"><i class="fas fa-trophy"></i> Eliminación directa para ambos torneos.</div>
-        <div class="regla reveal reveal-left delay-5"><i class="fas fa-gamepad"></i> Control propio o préstamo del staff.</div>
-        <div class="regla reveal reveal-left delay-5"><i class="fas fa-ticket-alt"></i> Sorteo aleatorio con participantes presentes.</div>
-      </div>
-    </section>
-
-    <!-- Sorteo -->
-    <section id="sorteo" class="sorteo-section reveal reveal-scale">
-      <h2 class="section-title" style="margin-bottom: 0.5rem;">📅 Fecha del Sorteo</h2>
-      <p style="color: var(--text-secondary);">El sorteo de llaves se realizará:</p>
-      <div class="sorteo-fecha reveal reveal-scale delay-1">Próximamente</div>
-      <p style="color: var(--text-secondary); margin-top: 0.5rem;" class="reveal reveal-scale delay-2">Auditorio de la Facultad - Presencia obligatoria</p>
-    </section>
-
-    <!-- Premios -->
-    <section id="premios" class="reveal">
-      <h2 class="section-title">Premios</h2>
-      <div class="premios-grid">
-        <div class="premio-item reveal reveal-right delay-1">
-          <i class="fas fa-crown"></i>
-          <h3>1er Lugar</h3>
-          <div class="premio-desc">Trofeo + Tarjeta de regalo $100 + Kit gamer</div>
+         <div class="badge-version">
+            <i class="fas fa-arrow-right"></i> El aprovechamiento de vacios legales, se sancionara con la expulsion inmediata.
         </div>
-      </div>
-    </section>
-
-    <!-- AECOMPU -->
-    <section id="about" class="about reveal">
-      <h2 class="section-title">Organizado por AECOMPU</h2>
-      <div class="aecompu-logo">
-        <div class="logo-placeholder reveal reveal-scale delay-1">
-          <i class="fas fa-laptop-code"></i>
-        </div>
-      </div>
-      <div class="about-flex">
-        <div class="about-text reveal reveal-left delay-2">
-          <p>Asociación de Estudiantes de Computación</p>
-          <p style="color: var(--text-secondary);">Unimos tecnología, videojuegos y talento joven. Los e-Sports como herramienta de integración y desarrollo.</p>
-        </div>
-        <div class="about-highlight reveal reveal-right delay-3">
-          <i class="fas fa-users" style="font-size: 2rem; color: var(--primary);"></i>
-          <p style="margin-top: 0.5rem; color: var(--text-secondary);">+15 organizadores</p>
-        </div>
-      </div>
-    </section>
-<section id="about" class="space">
-</section>
-    <!-- Registro -->
-    <section id="registro" class="cta reveal">
-      <h2 class="reveal reveal-scale delay-1">¿LISTO PARA PARTICIPAR?</h2>
-      <div class="fecha-limite reveal reveal-scale delay-2">
-        <i class="fas fa-calendar-alt"></i> Inscripción hasta: 10 MAR 2026
-      </div>
-      <a href="/form.html" target="_blank" rel="noopener noreferrer" class="reveal reveal-scale delay-3">
-        <button class="btn">REGISTRARSE</button>
-      </a>
-      <p style="color: var(--text-secondary); margin-top: 1rem;" class="reveal reveal-scale delay-4">Cupos limitados - 1ra edición</p>
-    </section>
-
-    <!-- Beneficios -->
-    <section style="padding-top: 1rem;">
-      <div class="extra-features">
-        <div class="feature reveal reveal-scale delay-1"><i class="fas fa-medal"></i><h3>Premios únicos</h3><p>Trofeos exclusivos</p></div>
-        <div class="feature reveal reveal-scale delay-2"><i class="fas fa-video"></i><h3>Transmisión</h3><p>Resultados en vivo</p></div>
-        <div class="feature reveal reveal-scale delay-3"><i class="fas fa-calendar-check"></i><h3>1 día</h3><p>Competencia presencial</p></div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="reveal">
-    <p>© 2026 AECOMPU e-Sports · 1ra Edición</p>
-    <p style="margin: 0.5rem 0; color: var(--text-secondary);">contacto@aecompu-esports.org</p>
-    <p>Desarrollado por: <a class="developer-link" href="https://andradedev.site/" target="_blank">AndradeDev.site</a></p>
-  </footer>
-
-  <!-- Modales -->
-  <div id="popupSmash" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="cerrarPopup('popupSmash')">&times;</span>
-      <h2>SUPER SMASH BROS ULTIMATE</h2>
-      <h3>Bases de competición</h3>
-      
-      <div class="bases-container">
-        <div class="base-categoria">
-          <h4>Formato de juego</h4>
-          <ul>
-            <li>• 1 vs 1 · Stock: 5 · 7 minutos</li>
-            <li>• Ítems activados</li>
-            <li>• Escenarios legales</li>
-            <li>• Fase grupos + eliminatorias</li>
-          </ul>
-        </div>
-        <div class="base-categoria">
-          <h4>Reglas específicas</h4>
-          <ul>
-            <li>• Personajes libres (DLC incluidos)</li>
-            <li>• Stalling prohibido</li>
-            <li>• 3 minutos de tolerancia</li>
-          </ul>
-        </div>
-        <div class="base-categoria">
-          <h4>Sanciones</h4>
-          <ul>
-            <li>• Amarilla: retrasos, lenguaje</li>
-            <li>• Roja: insultos, trampas</li>
-            <li>• Walkover: 10 min sin presentarse</li>
-          </ul>
-        </div>
-      </div>
     </div>
-  </div>
+    <div class="reglamento-content">
+        <!-- primera fila: general + formato + config -->
+        <div class="section-grid">
+            <!-- 📌 General -->
+            <div class="card-rule">
+                <div class="card-header">
+                    <i class="fas fa-scroll"></i>
+                    <h2>1. General</h2>
+                </div>
+                <ul class="rule-list">
+                    <li><i class="fas fa-map-marker-alt"></i> Torneo presencial de eSports en <strong>FC 26</strong>.</li>
+                    <li><i class="fas fa-user-friends"></i> <strong>32 jugadores</strong> distribuidos en <strong>8 grupos de 4</strong>.</li>
+                    <li><i class="fas fa-check-circle"></i> Todos deben haber completado inscripción + pago de <span class="highlight-point">$5.00 USD</span>.</li>
+                    <li><i class="far fa-calendar-check"></i> Desarrollo: <strong>11 al 15 de mayo</strong> · formato definido.</li>
+                </ul>
+            </div>
 
-  <div id="popupFC" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="cerrarPopup('popupFC')">&times;</span>
-      <h2>EA SPORTS FC 26</h2>
-      <h3>Bases de competición</h3>
-      
-      <div class="bases-container">
-        <div class="base-categoria">
-          <h4>Formato de juego</h4>
-          <ul>
-            <li>• 1 vs 1 · 6 min por tiempo</li>
-            <li>• Clubes 5 estrellas máx</li>
-            <li>• Eliminación directa</li>
-          </ul>
+            <!-- 🎮 Formato del Torneo -->
+            <div class="card-rule">
+                <div class="card-header">
+                    <i class="fas fa-chart-simple"></i>
+                    <h2>2. Formato</h2>
+                </div>
+                <ul class="rule-list">
+                    <li><i class="fas fa-layer-group"></i> <strong>Fase de Grupos:</strong> Todos contra todos, partido único.</li>
+                    <div class="points-system">
+                        <p><i class="fas fa-star-of-life"></i> Sistema de puntos:</p>
+                        <span class="highlight-point">Victoria = 3 pts</span> &nbsp;|&nbsp; 
+                        <span class="highlight-point">Empate = 1 pt</span> &nbsp;|&nbsp; 
+                        <span class="highlight-point">Derrota = 0 pts</span>
+                        <p class="text-small" style="margin-top: 5px;">✅ Clasifican los <strong>2 mejores</strong> de cada grupo.</p>
+                    </div>
+                    <li><i class="fas fa-arrow-right"></i> <strong>Fase Eliminatoria:</strong> Octavos | Cuartos | Semifinales | Final</li>
+                    <li><i class="fas fa-skull-crossbones"></i> Eliminación directa (partido único).</li>
+                </ul>
+            </div>
+
+            <!-- ⚽ Configuración de Partidos -->
+            <div class="card-rule">
+                <div class="card-header">
+                    <i class="fas fa-sliders-h"></i>
+                    <h2>3. Configuración</h2>
+                </div>
+                <ul class="rule-list">
+                    <li><i class="fas fa-hourglass-half"></i> Duración: <strong>6 min por tiempo</strong> </li>
+                    <li><i class="fas fa-brain"></i> Dificultad: <strong> Leyenda</strong> </li>
+                    <li><i class="fas fa-tachometer-alt"></i> Velocidad: <strong>Rapido</strong> · Plantillas actualizadas.</li>
+                    <li><i class="fas fa-band-aid"></i> Lesiones: <strong>Activas</strong> </li>
+                    <li><i class="fas fa-futbol"></i> Elección de equipo: libre </li>
+                </ul>
+            </div>
         </div>
-        <div class="base-categoria">
-          <h4>Reglas específicas</h4>
-          <ul>
-            <li>• Controles libres</li>
-            <li>• 3 pausas máx por partido</li>
-            <li>• Celebraciones respetuosas</li>
-          </ul>
+
+        <!-- segunda fila: Equipos+controles, Puntualidad, Empates grupos -->
+        <div class="section-grid">
+            <!-- 🎮 Equipos y Controles -->
+            <div class="card-rule">
+                <div class="card-header">
+                    <i class="fas fa-gamepad"></i>
+                    <h2>4. Equipos y Controles</h2>
+                </div>
+                <ul class="rule-list">
+                    <li><i class="fas fa-usb"></i> Cada jugador puede usar su <strong>propio control</strong> (compatible con PS5).</li>
+                    <li><i class="fas fa-tv"></i> Organizador provee: <strong>consola + pantalla</strong>.</li>
+                    <li><i class="fas fa-ban"></i> Prohibido modificar configuraciones externas que den ventaja injusta.</li>
+                    <li><i class="fas fa-microchip"></i> Se velará por la integridad competitiva.</li>
+                </ul>
+            </div>
+
+            <!-- ⏰ Puntualidad y Asistencia -->
+            <div class="card-rule">
+                <div class="card-header">
+                    <i class="fas fa-clock"></i>
+                    <h2>5. Puntualidad</h2>
+                </div>
+                <ul class="rule-list">
+                    <li><i class="fas fa-hourglass-start"></i> Presentarse <strong>5 minutos antes</strong> de su partida.</li>
+                    <li><i class="fas fa-hourglass-end"></i> Tiempo de espera máximo: <strong>5 minutos</strong>.</li>
+                    <li><i class="fas fa-skull"></i> Incomparecencia = <strong>walkover (3-0)</strong>.</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Reincidencias: <strong>descalificación</strong> inmediata.</li>
+                </ul>
+            </div>
+
+            <!-- ⚖️ Empates en Fase de Grupos -->
+            <div class="card-rule">
+                <div class="card-header">
+                    <i class="fas fa-balance-scale"></i>
+                    <h2>6. Empates Grupos</h2>
+                </div>
+                <ul class="rule-list">
+                    <li><i class="fas fa-chart-line"></i> Criterios de desempate (puntos iguales):</li>
+                    <li>1️⃣ <strong>Diferencia de goles</strong></li>
+                    <li>2️⃣ <strong>Goles a favor</strong></li>
+                    <li>3️⃣ <strong>Resultado entre los empatados</strong></li>
+                    <li>4️⃣ <strong>Sorteo</strong> (si persiste el empate).</li>
+                </ul>
+                <div class="fair-play text-small" style="margin-top: 10px; background:#eef3fc;">
+                    <i class="fas fa-chalkboard-user"></i> La organización publicará tablas actualizadas.
+                </div>
+            </div>
         </div>
-        <div class="base-categoria">
-          <h4>Desempates</h4>
-          <ul>
-            <li>• Diferencia de goles</li>
-            <li>• Tiempo extra + penales</li>
-          </ul>
+
+        <!-- tercera fila: Empates eliminatorias, Conducta y Fair Play -->
+        <div class="section-grid">
+            <!-- 🔥 Empates en Eliminatorias -->
+            <div class="card-rule">
+                <div class="card-header">
+                    <i class="fas fa-fire"></i>
+                    <h2>7. Eliminatorias</h2>
+                </div>
+                <ul class="rule-list">
+                    <li><i class="fas fa-hourglass-half"></i> Si empate al término del tiempo reglamentario: <strong>tiempo extra</strong>.</li>
+                    <li><i class="fas fa-futbol"></i> Si persiste empate: <strong>penales</strong> hasta definir ganador.</li>
+                    <li><i class="fas fa-flag-checkered"></i> No hay replays, partido único definitorio.</li>
+                </ul>
+                <div class="points-system" style="margin-top: 12px;">
+                    <i class="fas fa-lightbulb"></i> Reglas estándar de tiempo extra en FC (2 tiempos de 3 min c/u sugerido).
+                </div>
+            </div>
+
+            <!-- 🚫 Conducta y Fair Play -->
+            <div class="card-rule">
+                <div class="card-header">
+                    <i class="fas fa-handshake"></i>
+                    <h2>8. Fair Play</h2>
+                </div>
+                <ul class="rule-list">
+                    <li><i class="fas fa-comment-dots"></i> Se exige respeto entre jugadores y organizadores.</li>
+                    <li><i class="fas fa-ban"></i> Prohibiciones:
+                        <ul style="margin-top: 6px; margin-left: 1.2rem; list-style: circle; color:#2d4a6e;">
+                            <li>Insultos / conductas antideportivas</li>
+                            <li>Hacer tiempo de forma excesiva (pausas largas injustificadas)</li>
+                            <li>Abusar de errores/glitches del juego</li>
+                        </ul>
+                    </li>
+                    <li><i class="fas fa-gavel"></i> Sanciones progresivas: <strong>Advertencia → Pérdida de partido → Descalificación</strong>.</li>
+                </ul>
+                <div class="fair-play">
+                    <i class="fas fa-heart" style="color:#cc8b2e;"></i> <strong>Código de honor UGB:</strong> competencia leal, espíritu deportivo y profesionalismo.
+                </div>
+            </div>
+
+            <!-- info extra : ítem resumen de llaves (decorativo) -->
+            <div class="card-rule">
+                <div class="card-header">
+                    <i class="fas fa-trophy"></i>
+                    <h2>Formato Estrella</h2>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div><i class="fas fa-chart-pie"></i> <strong>Fase Grupos:</strong> 8 grupos → 16 clasificados.</div>
+                    <div><i class="fas fa-tree"></i> <strong>Playoffs:</strong> Octavos → Cuartos → Semis → Final.</div>
+                    <div><i class="fas fa-stopwatch"></i> Partidos únicos, máxima intensidad.</div>
+                    <hr>
+                    <div class="text-small"><i class="fas fa-calendar-week"></i> <strong>Cronograma tentativo:</strong> Grupos (11-12 mayo), Octavos (13), Cuartos+Semis (14), Final (15).</div>
+                    <div class="text-small"><i class="fas fa-award"></i> Premios y reconocimientos para campeón y subcampeón.</div>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <!-- Resumen de sanciones y detalles adicionales (doble check) -->
+        <div style="background: #f3f7fc; border-radius: 1.5rem; padding: 1.2rem 1.5rem; margin-top: 1rem; border: 1px solid #dce7f0;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                <div>
+                    <i class="fas fa-info-circle" style="color:#1f6392;"></i> <strong>Reglas complementarias:</strong>
+                    <span class="text-small"> El comité organizador se reserva el derecho de modificar aspectos menores para garantizar el buen desarrollo. Cualquier situación no prevista será resuelta por los administradores del torneo.</span>
+                </div>
+                <div>
+                    <span class="highlight-point"><i class="fas fa-check-double"></i> Versión oficial – UGB eSports</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span><i class="far fa-registered"></i> UGB e-Champions League · Torneo presencial de eSports FC</span>
+            <span><i class="fas fa-envelope"></i> USSS008322@UGB.EDU.SV | <i class=""></i> +503 7628 - 4263</span>
+            <span><i class="fas fa-shield-alt"></i> Fair Play & Professional Standards</span>
+        </div>
     </div>
-  </div>
-
-  <script>
-    (function() {
-      // Menú responsive
-      const menuToggle = document.getElementById('menuToggle');
-      const navLinks = document.getElementById('navLinks');
-      
-      if (menuToggle) {
-        menuToggle.addEventListener('click', (e) => {
-          e.stopPropagation();
-          navLinks.classList.toggle('active');
-        });
-      }
-
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('active');
-        });
-      });
-
-      // ===== ANIMACIONES SUAVES AL SCROLL =====
-      const revealElements = document.querySelectorAll('.reveal');
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-          }
-        });
-      }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      });
-
-      revealElements.forEach(element => {
-        observer.observe(element);
-      });
-
-      // Forzar revisión inicial para elementos ya visibles
-      setTimeout(() => {
-        revealElements.forEach(element => {
-          const rect = element.getBoundingClientRect();
-          if (rect.top < window.innerHeight - 100) {
-            element.classList.add('revealed');
-          }
-        });
-      }, 100);
-    })();
-
-    // Funciones para modales
-    function abrirPopupSmash() {
-      document.getElementById('popupSmash').style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function abrirPopupFC() {
-      document.getElementById('popupFC').style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function cerrarPopup(popupId) {
-      document.getElementById(popupId).style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    window.onclick = function(event) {
-      if (event.target.classList.contains('modal')) {
-        event.target.style.display = 'none';
-        document.body.style.overflow = 'auto';
-      }
-    }
-
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        document.querySelectorAll('.modal').forEach(modal => {
-          if (modal.style.display === 'block') {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-          }
-        });
-      }
-    });
-  </script>
+</div>
 </body>
 </html>
