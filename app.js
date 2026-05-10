@@ -193,26 +193,31 @@ function initParticles() {
 // ─── COUNTDOWN ───────────────────────────────────────────────────
 
 function initCountdown() {
-  const target = new Date('2026-05-11T8:00:00');
+  // 11 de mayo de 2026 a las 8:00 AM (El Salvador, UTC-6)
+  const target = new Date('2026-05-11T08:00:00-06:00');
 
   const update = () => {
     const diff = target - Date.now();
+
     if (diff <= 0) {
-      document.getElementById('cd-days').textContent  = '00';
+      document.getElementById('cd-days').textContent = '00';
       document.getElementById('cd-hours').textContent = '00';
-      document.getElementById('cd-mins').textContent  = '00';
-      document.getElementById('cd-secs').textContent  = '00';
+      document.getElementById('cd-mins').textContent = '00';
+      document.getElementById('cd-secs').textContent = '00';
       return;
     }
+
     const d = Math.floor(diff / 86400000);
     const h = Math.floor((diff % 86400000) / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
     const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
-    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-    document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
-    document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+
+    document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
   };
+
   update();
   setInterval(update, 1000);
 }
