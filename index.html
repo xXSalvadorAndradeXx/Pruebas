@@ -1,478 +1,366 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>UGB e-Champions League | Reglamento Oficial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: linear-gradient(145deg, #eef2ff 0%, #d9e2f0 100%);
-            font-family: 'Inter', sans-serif;
-            color: #0a1c2f;
-            line-height: 1.5;
-            padding: 2rem 1.5rem;
-        }
-
-        /* Contenedor principal estilo "documento UEFA" */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 2.5rem;
-            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 2px 5px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            transition: all 0.2s ease;
-        }
-
-        /* Header inspiración UEFA Champions League */
-        .hero {
-            background: linear-gradient(135deg, #0b2b44 0%, #0a1a2e 100%);
-            padding: 2.5rem 2.5rem 2rem 2.5rem;
-            position: relative;
-            border-bottom: 5px solid #ffcd3c;
-        }
-
-        .hero::before {
-            content: "🏆";
-            font-size: 6rem;
-            position: absolute;
-            bottom: 0;
-            right: 1.5rem;
-            opacity: 0.08;
-            pointer-events: none;
-            font-family: monospace;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .hero h1 i {
-            font-size: 2.5rem;
-            color: #ffcd3c;
-        }
-
-        .hero-sub {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
-            margin-top: 0.75rem;
-            font-weight: 500;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            row-gap: 0.5rem;
-            border-left: 3px solid #ffcd3c;
-            padding-left: 1rem;
-        }
-
-        .hero-sub span {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* badge de versión */
-        .badge-version {
-            background: #ffcd3c20;
-            backdrop-filter: blur(4px);
-            display: inline-block;
-            font-size: 0.7rem;
-            padding: 0.25rem 0.8rem;
-            border-radius: 40px;
-            color: #ffcd3c;
-            font-weight: 600;
-            margin-top: 1rem;
-        }
-
-        /* contenido principal */
-        .reglamento-content {
-            padding: 2.5rem 2.5rem 3rem;
-        }
-
-        /* secciones grid / columnas */
-        .section-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .card-rule {
-            background: #f9fbfe;
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
-            border: 1px solid #e6edf4;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card-rule:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
-            border-color: #cbdde9;
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-bottom: 2px solid #e0ebf3;
-            padding-bottom: 0.75rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .card-header i {
-            font-size: 1.8rem;
-            color: #1f6392;
-            background: #e3f0f8;
-            width: 44px;
-            height: 44px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 18px;
-        }
-
-        .card-header h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #0a2a44;
-            letter-spacing: -0.3px;
-        }
-
-        .rule-list {
-            list-style: none;
-            margin-top: 0.5rem;
-        }
-
-        .rule-list li {
-            margin-bottom: 0.75rem;
-            padding-left: 1.6rem;
-            position: relative;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #1f2e3f;
-        }
-
-        .rule-list li i {
-            position: absolute;
-            left: 0;
-            top: 0.2rem;
-            font-size: 0.9rem;
-            color: #2c7cb6;
-            width: 1.2rem;
-        }
-
-        .highlight-point {
-            background: #eef4fc;
-            padding: 0.15rem 0.4rem;
-            border-radius: 8px;
-            font-weight: 600;
-            color: #0059b3;
-        }
-
-        .points-system {
-            background: #eef2fa;
-            border-radius: 1rem;
-            padding: 0.75rem 1rem;
-            margin: 1rem 0 0.5rem;
-        }
-
-        .points-system p {
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-        }
-
-        hr {
-            margin: 1rem 0;
-            border: none;
-            height: 1px;
-            background: linear-gradient(90deg, #cbdde9, transparent);
-        }
-
-        .fair-play {
-            background: linear-gradient(110deg, #eef2ff, #ffffff);
-            border-left: 6px solid #ffcd3c;
-            padding: 1rem 1.2rem;
-            border-radius: 1rem;
-            margin-top: 1rem;
-        }
-
-        .footer-note {
-            margin-top: 2rem;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #4a627a;
-            border-top: 1px solid #e2ecf3;
-            padding-top: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        @media (max-width: 700px) {
-            body {
-                padding: 1rem;
-            }
-            .reglamento-content {
-                padding: 1.5rem;
-            }
-            .hero h1 {
-                font-size: 1.9rem;
-            }
-            .card-header h2 {
-                font-size: 1.3rem;
-            }
-        }
-
-        .text-small {
-            font-size: 0.85rem;
-            color: #3c5a7d;
-        }
-
-        .inline-code {
-            background: #eaf0f6;
-            padding: 0.1rem 0.4rem;
-            border-radius: 8px;
-            font-family: monospace;
-            font-weight: 500;
-        }
-
-        .btn-icon {
-            background: none;
-            border: none;
-        }
-
-        .azul-uefa {
-            background: #002b5c;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 0.5rem;
-        }
-
-        td, th {
-            padding: 0.4rem 0;
-            font-size: 0.9rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UGB e-Champions League</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<div class="container">
-    <div class="hero">
-        <h1>
-            <i class="fas fa-trophy"></i> 
-            UGB e-Champions League
-        </h1>
-        <div class="hero-sub">
-            <span><i class="fas fa-calendar-alt"></i> 11 – 15 de mayo</span>
-            <span><i class="fas fa-users"></i> 32 jugadores | 8 grupos</span>
-            <span><i class="fas fa-dollar-sign"></i> Inscripción $5.00</span>
-            <span><i class="fas fa-gamepad"></i> FC · Presencial</span>
-        </div>
-        <div class="badge-version">
-            <i class="fas fa-gavel"></i> REGLAMENTO OFICIAL V.2.0
-        </div>
-         <div class="badge-version">
-            <i class="fas fa-arrow-right"></i> El aprovechamiento de vacios legales, se sancionara con la expulsion inmediata.
-        </div>
+
+  <!-- ═══════════════════════════════════════════════ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#inicio" class="nav-logo">
+        <span class="logo-icon">
+  <img src="img/logo.png" alt="UGB e-Champions">
+</span>
+        <span class="logo-text">UGB <em>e-Champions</em></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio"    class="nav-link active" data-section="inicio">Inicio</a></li>
+        <li><a href="#partidos"  class="nav-link"        data-section="partidos">Partidos</a></li>
+        <li><a href="#premios"   class="nav-link"        data-section="premios">Premios</a></li>
+        <li><a href="#reglamento"class="nav-link"        data-section="reglamento">Reglamento</a></li>
+      </ul>
+      <button class="nav-cta" onclick="document.getElementById('partidos').scrollIntoView({behavior:'smooth'})">Ver Partidos</button>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <div class="reglamento-content">
-        <!-- primera fila: general + formato + config -->
-        <div class="section-grid">
-            <!-- 📌 General -->
-            <div class="card-rule">
-                <div class="card-header">
-                    <i class="fas fa-scroll"></i>
-                    <h2>1. General</h2>
-                </div>
-                <ul class="rule-list">
-                    <li><i class="fas fa-map-marker-alt"></i> Torneo presencial de eSports en <strong>FC 26</strong>.</li>
-                    <li><i class="fas fa-user-friends"></i> <strong>32 jugadores</strong> distribuidos en <strong>8 grupos de 4</strong>.</li>
-                    <li><i class="fas fa-check-circle"></i> Todos deben haber completado inscripción + pago de <span class="highlight-point">$5.00 USD</span>.</li>
-                    <li><i class="far fa-calendar-check"></i> Desarrollo: <strong>11 al 15 de mayo</strong> · formato definido.</li>
-                </ul>
-            </div>
+  </nav>
 
-            <!-- 🎮 Formato del Torneo -->
-            <div class="card-rule">
-                <div class="card-header">
-                    <i class="fas fa-chart-simple"></i>
-                    <h2>2. Formato</h2>
-                </div>
-                <ul class="rule-list">
-                    <li><i class="fas fa-layer-group"></i> <strong>Fase de Grupos:</strong> Todos contra todos, partido único.</li>
-                    <div class="points-system">
-                        <p><i class="fas fa-star-of-life"></i> Sistema de puntos:</p>
-                        <span class="highlight-point">Victoria = 3 pts</span> &nbsp;|&nbsp; 
-                        <span class="highlight-point">Empate = 1 pt</span> &nbsp;|&nbsp; 
-                        <span class="highlight-point">Derrota = 0 pts</span>
-                        <p class="text-small" style="margin-top: 5px;">✅ Clasifican los <strong>2 mejores</strong> de cada grupo.</p>
-                    </div>
-                    <li><i class="fas fa-arrow-right"></i> <strong>Fase Eliminatoria:</strong> Octavos | Cuartos | Semifinales | Final</li>
-                    <li><i class="fas fa-skull-crossbones"></i> Eliminación directa (partido único).</li>
-                </ul>
-            </div>
-
-            <!-- ⚽ Configuración de Partidos -->
-            <div class="card-rule">
-                <div class="card-header">
-                    <i class="fas fa-sliders-h"></i>
-                    <h2>3. Configuración</h2>
-                </div>
-                <ul class="rule-list">
-                    <li><i class="fas fa-hourglass-half"></i> Duración: <strong>6 min por tiempo</strong> </li>
-                    <li><i class="fas fa-brain"></i> Dificultad: <strong> Leyenda</strong> </li>
-                    <li><i class="fas fa-tachometer-alt"></i> Velocidad: <strong>Rapido</strong> · Plantillas actualizadas.</li>
-                    <li><i class="fas fa-band-aid"></i> Lesiones: <strong>Activas</strong> </li>
-                    <li><i class="fas fa-futbol"></i> Elección de equipo: libre </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- segunda fila: Equipos+controles, Puntualidad, Empates grupos -->
-        <div class="section-grid">
-            <!-- 🎮 Equipos y Controles -->
-            <div class="card-rule">
-                <div class="card-header">
-                    <i class="fas fa-gamepad"></i>
-                    <h2>4. Equipos y Controles</h2>
-                </div>
-                <ul class="rule-list">
-                    <li><i class="fas fa-usb"></i> Cada jugador puede usar su <strong>propio control</strong> (compatible con PS5).</li>
-                    <li><i class="fas fa-tv"></i> Organizador provee: <strong>consola + pantalla</strong>.</li>
-                    <li><i class="fas fa-ban"></i> Prohibido modificar configuraciones externas que den ventaja injusta.</li>
-                    <li><i class="fas fa-microchip"></i> Se velará por la integridad competitiva.</li>
-                </ul>
-            </div>
-
-            <!-- ⏰ Puntualidad y Asistencia -->
-            <div class="card-rule">
-                <div class="card-header">
-                    <i class="fas fa-clock"></i>
-                    <h2>5. Puntualidad</h2>
-                </div>
-                <ul class="rule-list">
-                    <li><i class="fas fa-hourglass-start"></i> Presentarse <strong>5 minutos antes</strong> de su partida.</li>
-                    <li><i class="fas fa-hourglass-end"></i> Tiempo de espera máximo: <strong>5 minutos</strong>.</li>
-                    <li><i class="fas fa-skull"></i> Incomparecencia = <strong>walkover (3-0)</strong>.</li>
-                    <li><i class="fas fa-exclamation-triangle"></i> Reincidencias: <strong>descalificación</strong> inmediata.</li>
-                </ul>
-            </div>
-
-            <!-- ⚖️ Empates en Fase de Grupos -->
-            <div class="card-rule">
-                <div class="card-header">
-                    <i class="fas fa-balance-scale"></i>
-                    <h2>6. Empates Grupos</h2>
-                </div>
-                <ul class="rule-list">
-                    <li><i class="fas fa-chart-line"></i> Criterios de desempate (puntos iguales):</li>
-                    <li>1️⃣ <strong>Diferencia de goles</strong></li>
-                    <li>2️⃣ <strong>Goles a favor</strong></li>
-                    <li>3️⃣ <strong>Resultado entre los empatados</strong></li>
-                    <li>4️⃣ <strong>Sorteo</strong> (si persiste el empate).</li>
-                </ul>
-                <div class="fair-play text-small" style="margin-top: 10px; background:#eef3fc;">
-                    <i class="fas fa-chalkboard-user"></i> La organización publicará tablas actualizadas.
-                </div>
-            </div>
-        </div>
-
-        <!-- tercera fila: Empates eliminatorias, Conducta y Fair Play -->
-        <div class="section-grid">
-            <!-- 🔥 Empates en Eliminatorias -->
-            <div class="card-rule">
-                <div class="card-header">
-                    <i class="fas fa-fire"></i>
-                    <h2>7. Eliminatorias</h2>
-                </div>
-                <ul class="rule-list">
-                    <li><i class="fas fa-hourglass-half"></i> Si empate al término del tiempo reglamentario: <strong>tiempo extra</strong>.</li>
-                    <li><i class="fas fa-futbol"></i> Si persiste empate: <strong>penales</strong> hasta definir ganador.</li>
-                    <li><i class="fas fa-flag-checkered"></i> No hay replays, partido único definitorio.</li>
-                </ul>
-                <div class="points-system" style="margin-top: 12px;">
-                    <i class="fas fa-lightbulb"></i> Reglas estándar de tiempo extra en FC (2 tiempos de 3 min c/u sugerido).
-                </div>
-            </div>
-
-            <!-- 🚫 Conducta y Fair Play -->
-            <div class="card-rule">
-                <div class="card-header">
-                    <i class="fas fa-handshake"></i>
-                    <h2>8. Fair Play</h2>
-                </div>
-                <ul class="rule-list">
-                    <li><i class="fas fa-comment-dots"></i> Se exige respeto entre jugadores y organizadores.</li>
-                    <li><i class="fas fa-ban"></i> Prohibiciones:
-                        <ul style="margin-top: 6px; margin-left: 1.2rem; list-style: circle; color:#2d4a6e;">
-                            <li>Insultos / conductas antideportivas</li>
-                            <li>Hacer tiempo de forma excesiva (pausas largas injustificadas)</li>
-                            <li>Abusar de errores/glitches del juego</li>
-                        </ul>
-                    </li>
-                    <li><i class="fas fa-gavel"></i> Sanciones progresivas: <strong>Advertencia → Pérdida de partido → Descalificación</strong>.</li>
-                </ul>
-                <div class="fair-play">
-                    <i class="fas fa-heart" style="color:#cc8b2e;"></i> <strong>Código de honor UGB:</strong> competencia leal, espíritu deportivo y profesionalismo.
-                </div>
-            </div>
-
-            <!-- info extra : ítem resumen de llaves (decorativo) -->
-            <div class="card-rule">
-                <div class="card-header">
-                    <i class="fas fa-trophy"></i>
-                    <h2>Formato Estrella</h2>
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 8px;">
-                    <div><i class="fas fa-chart-pie"></i> <strong>Fase Grupos:</strong> 8 grupos → 16 clasificados.</div>
-                    <div><i class="fas fa-tree"></i> <strong>Playoffs:</strong> Octavos → Cuartos → Semis → Final.</div>
-                    <div><i class="fas fa-stopwatch"></i> Partidos únicos, máxima intensidad.</div>
-                    <hr>
-                    <div class="text-small"><i class="fas fa-calendar-week"></i> <strong>Cronograma tentativo:</strong> Grupos (11-12 mayo), Octavos (13), Cuartos+Semis (14), Final (15).</div>
-                    <div class="text-small"><i class="fas fa-award"></i> Premios y reconocimientos para campeón y subcampeón.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Resumen de sanciones y detalles adicionales (doble check) -->
-        <div style="background: #f3f7fc; border-radius: 1.5rem; padding: 1.2rem 1.5rem; margin-top: 1rem; border: 1px solid #dce7f0;">
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
-                <div>
-                    <i class="fas fa-info-circle" style="color:#1f6392;"></i> <strong>Reglas complementarias:</strong>
-                    <span class="text-small"> El comité organizador se reserva el derecho de modificar aspectos menores para garantizar el buen desarrollo. Cualquier situación no prevista será resuelta por los administradores del torneo.</span>
-                </div>
-                <div>
-                    <span class="highlight-point"><i class="fas fa-check-double"></i> Versión oficial – UGB eSports</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-note">
-            <span><i class="far fa-registered"></i> UGB e-Champions League · Torneo presencial de eSports FC</span>
-            <span><i class="fas fa-envelope"></i> USSS008322@UGB.EDU.SV | <i class=""></i> +503 7628 - 4263</span>
-            <span><i class="fas fa-shield-alt"></i> Fair Play & Professional Standards</span>
-        </div>
+  <!-- ═══════════════════════════════════════════════ HERO ════ -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <div class="hero-particles" id="particles"></div>
     </div>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="badge-dot"></span>
+        TEMPORADA 2026 · FC 26
+      </div>
+      <h1 class="hero-title reveal delay-1">
+        <span class="title-line">UGB</span>
+        <span class="title-line accent">e-Champions</span>
+        <span class="title-line">League</span>
+      </h1>
+      <p class="hero-sub reveal delay-2">El torneo universitario más competitivo de FC&nbsp;26</p>
+      <div class="hero-actions reveal delay-3">
+        <button class="btn-primary" onclick="document.getElementById('partidos').scrollIntoView({behavior:'smooth'})">
+          <span>Ver Partidos</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button class="btn-ghost" onclick="document.getElementById('reglamento').scrollIntoView({behavior:'smooth'})">Reglamento</button>
+      </div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown-bar reveal delay-4">
+      <div class="countdown-label">PRÓXIMA JORNADA</div>
+      <div class="countdown-timers">
+        <div class="cd-unit"><span id="cd-days">00</span><small>Días</small></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span id="cd-hours">00</span><small>Horas</small></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span id="cd-mins">00</span><small>Min</small></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span id="cd-secs">00</span><small>Seg</small></div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ STATS ═══ -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <div class="stat-number" data-target="32">0</div>
+          <div class="stat-label">Jugadores</div>
+        </div>
+        <div class="stat-card reveal delay-1">
+          <div class="stat-number" data-target="8">0</div>
+          <div class="stat-label">Grupos</div>
+        </div>
+        <div class="stat-card reveal delay-2">
+          <div class="stat-number" data-target="16">0</div>
+          <div class="stat-label">Clasificados</div>
+        </div>
+        <div class="stat-card reveal delay-3">
+          <div class="stat-number" data-target="1">0</div>
+          <div class="stat-label">Campeón</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ GALLERY ═══ -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">TORNEO 2026</span>
+        <h2 class="section-title">Momentos del Torneo</h2>
+      </div>
+      <div class="gallery-grid reveal delay-1">
+        <div class="gallery-card g-large">
+          <div class="gallery-img" style="background: linear-gradient(135deg,#1C21D1 0%,#0a0e6b 100%)">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">SEMIFINAL</span>
+              <p>Jornada épica de 90 minutos</p>
+            </div>
+            <div class="gallery-mock-field">
+              <div class="field-lines"></div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-img" style="background: linear-gradient(135deg,#0f1642 0%,#1C21D1 100%)">
+            <div class="gallery-overlay"><span class="gallery-tag">GRUPO A</span><p>Clasificación reñida</p></div>
+            <div class="gallery-emoji">🏆</div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-img" style="background: linear-gradient(135deg,#1a1a2e 0%,#16213e 100%)">
+            <div class="gallery-overlay"><span class="gallery-tag">FINAL</span><p>El gran encuentro</p></div>
+            <div class="gallery-emoji">⚽</div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-img" style="background: linear-gradient(135deg,#0d0d1a 0%,#1C21D1 100%)">
+            <div class="gallery-overlay"><span class="gallery-tag">PREMIOS</span><p>Reconocimiento a los mejores</p></div>
+            <div class="gallery-emoji">🥇</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ SPONSORS ═ -->
+  <section class="sponsors-section">
+    <div class="container">
+      <div class="sponsors-label reveal">PATROCINADORES OFICIALES</div>
+      <div class="sponsors-row reveal delay-1">
+        <div class="sponsor-item">UGB</div>
+        <div class="sponsor-item">FC 26</div>
+        <div class="sponsor-item">eSports UGB</div>
+        <div class="sponsor-item">Liga Campus</div>
+        <div class="sponsor-item">GG WP</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ TESTIMONIOS ═ -->
+  <section class="testimonios-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">JUGADORES</span>
+        <h2 class="section-title">Lo Que Dicen</h2>
+      </div>
+      <div class="testimonios-grid">
+        <div class="testimonio-card reveal">
+          <div class="t-quote">"</div>
+          <p>La mejor experiencia competitiva que he tenido en la universidad. La organización es de primer nivel.</p>
+          <div class="t-author">
+            <div class="t-avatar">MR</div>
+            <div><strong>Marco Rodríguez</strong><small>Campeón Temporada Anterior</small></div>
+          </div>
+        </div>
+        <div class="testimonio-card reveal delay-1">
+          <div class="t-quote">"</div>
+          <p>Un torneo que te prepara para la escena competitiva real. Increíble nivel de los participantes.</p>
+          <div class="t-author">
+            <div class="t-avatar">SL</div>
+            <div><strong>Sara López</strong><small>Subcampeona</small></div>
+          </div>
+        </div>
+        <div class="testimonio-card reveal delay-2">
+          <div class="t-quote">"</div>
+          <p>La producción, el hype, la competencia. Todo al nivel de un torneo profesional. Brutal.</p>
+          <div class="t-author">
+            <div class="t-avatar">JM</div>
+            <div><strong>Juan Martínez</strong><small>3er Lugar</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ PARTIDOS ═══ -->
+  <section class="partidos-section" id="partidos">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">RESULTADOS</span>
+        <h2 class="section-title">Partidos</h2>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs-wrapper reveal delay-1">
+        <div class="tabs" id="tabs">
+          <button class="tab active" data-phase="octavos">Octavos</button>
+          <button class="tab" data-phase="cuartos">Cuartos</button>
+          <button class="tab" data-phase="semis">Semifinales</button>
+          <button class="tab" data-phase="tercero">Tercer Lugar</button>
+          <button class="tab" data-phase="final">Final</button>
+        </div>
+      </div>
+
+      <div class="matches-grid" id="matchesGrid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ PREMIOS ═══ -->
+  <section class="premios-section" id="premios">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">RECONOCIMIENTOS</span>
+        <h2 class="section-title">Premios</h2>
+        <p class="section-sub">Los mejores jugadores del torneo</p>
+      </div>
+
+      <div class="podio-wrapper reveal delay-1">
+        <!-- 2nd -->
+        <div class="podio-item podio-2">
+          <div class="podio-card">
+            <div class="podio-avatar silver">🥈</div>
+            <div class="podio-medal silver-text">2°</div>
+            <h3 class="podio-name">Por Definir</h3>
+            <p class="podio-desc">Subcampeón</p>
+            <div class="podio-glow silver-glow"></div>
+          </div>
+          <div class="podio-stand podio-stand-2">
+            <span>2</span>
+          </div>
+        </div>
+        <!-- 1st -->
+        <div class="podio-item podio-1">
+          <div class="podio-card champion">
+            <div class="podio-crown">👑</div>
+            <div class="podio-avatar gold">🥇</div>
+            <div class="podio-medal gold-text">1°</div>
+            <h3 class="podio-name">Por Definir</h3>
+            <p class="podio-desc">Campeón UGB 2026</p>
+            <div class="podio-glow gold-glow"></div>
+          </div>
+          <div class="podio-stand podio-stand-1">
+            <span>1</span>
+          </div>
+        </div>
+        <!-- 3rd -->
+        <div class="podio-item podio-3">
+          <div class="podio-card">
+            <div class="podio-avatar bronze">🥉</div>
+            <div class="podio-medal bronze-text">3°</div>
+            <h3 class="podio-name">Por Definir</h3>
+            <p class="podio-desc">Tercer Lugar</p>
+            <div class="podio-glow bronze-glow"></div>
+          </div>
+          <div class="podio-stand podio-stand-3">
+            <span>3</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premio especial -->
+      <div class="special-awards reveal delay-2">
+        <div class="award-card">
+          <div class="award-icon">⚽</div>
+          <h4>Máximo Goleador</h4>
+          <p>Por Definir</p>
+        </div>
+        <div class="award-card">
+          <div class="award-icon">🧤</div>
+          <h4>Mejor Portero</h4>
+          <p>Por Definir</p>
+        </div>
+        <div class="award-card">
+          <div class="award-icon">⭐</div>
+          <h4>MVP del Torneo</h4>
+          <p>Por Definir</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ REGLAMENTO ═ -->
+  <section class="reglamento-section" id="reglamento">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">NORMAS OFICIALES</span>
+        <h2 class="section-title">Reglamento</h2>
+        <p class="section-sub">Conoce las reglas del torneo</p>
+      </div>
+
+      <div class="reglamento-grid" id="reglamentoGrid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+       <div class="footer-logo">
+  <img src="img/logo.png" alt="UGB e-Champions Logo" class="footer-logo-img">
+  <span>UGB e-Champions</span>
 </div>
+          <p>El torneo universitario más competitivo de FC 26. Competencia, pasión y excelencia deportiva.</p>
+          <div class="social-links">
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Twitter/X">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Discord">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.001.022.01.041.028.055a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .028-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#partidos">Partidos</a></li>
+            <li><a href="#premios">Premios</a></li>
+            <li><a href="#reglamento">Reglamento</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              esports@ugb.edu.sv
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44a2 2 0 0 1 1.993-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +503 0000-0000
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 UGB eSports · UGB e-Champions League. Todos los derechos reservados.</span>
+        <span>Desarrollador por Salvador Andrade</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
