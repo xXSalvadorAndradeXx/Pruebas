@@ -198,7 +198,7 @@ function initParticles() {
 
 function initCountdown() {
   // 11 de mayo de 2026 a las 8:00 AM (El Salvador, UTC-6)
-  const target = new Date('2026-05-11T08:00:00-06:00');
+  const target = new Date('2026-05-11T08:20:00-06:00');
 
   const update = () => {
     const diff = target - Date.now();
