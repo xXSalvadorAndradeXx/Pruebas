@@ -193,7 +193,7 @@ function initParticles() {
 // ─── COUNTDOWN ───────────────────────────────────────────────────
 
 function initCountdown() {
-  const target = new Date('2026-05-22T11:00:00');
+  const target = new Date('2026-05-11T8:00:00');
 
   const update = () => {
     const diff = target - Date.now();
