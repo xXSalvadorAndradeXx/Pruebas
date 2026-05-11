@@ -18,7 +18,7 @@ const MATCHES = {
 
 
     { id:7,  home:'MauroLH', away:'Noe de Jesús',            scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'9:15 AM',   status:'live',   emoji:['🏹','⚔️'] },
-    { id:8,  home:'MauroLH', away:'Lazo26',                  scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'9:15 AM',   status:'pending',   emoji:['🌟','💥'] },
+    { id:8,  home:'XxLABEStiaXx', away:'xJona_YT',                  scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'9:15 AM',   status:'pending',   emoji:['🌟','💥'] },
     { id:9,  home:'CharlyMart', away:'XxLABEStiaXx',         scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'9:50 AM',   status:'pending',   emoji:['⚡','🔥'] },
   ],
   cuartos: [
