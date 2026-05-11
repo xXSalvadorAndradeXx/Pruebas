@@ -9,7 +9,7 @@
 
 const MATCHES = {
   octavos: [
-    { id:1,  home:'BR', away:'xJona_YT',               scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'8:20 AM',   status:'pending',   emoji:['🦁','🐺'] },
+    { id:1,  home:'BR', away:'xJona_YT',               scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'8:20 AM',   status:'live',   emoji:['🦁','🐺'] },
     { id:2,  home:'Danflo93', away:'Gaitan_gzz',             scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'8:30 AM',   status:'pending',   emoji:['🦅','🐯'] },
     { id:3,  home:'PabloJZC', away:'Joshua_smith_503',       scoreH:0, scoreA:3, date:'11 Mayo 2026', time:'8:45 AM',   status:'finished',   emoji:['🐲','🦊'] },
     { id:4,  home:'Ramirez123', away:'lemus_17',             scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'8:45 AM',   status:'pending',   emoji:['🐻','🏹'] },
