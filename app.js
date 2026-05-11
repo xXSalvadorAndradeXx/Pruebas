@@ -13,11 +13,11 @@ const MATCHES = {
     { id:2,  home:'Danflo93', away:'Gaitan_gzz',             scoreH:2, scoreA:3, date:'11 Mayo 2026', time:'8:30 AM',   status:'finished',   emoji:['🦅','🐯'] },
     { id:3,  home:'Kyburex', away:'Joshua_smith_503',       scoreH:0, scoreA:1, date:'11 Mayo 2026', time:'8:45 AM',   status:'finished',   emoji:['🐲','🦊'] },
     { id:4,  home:'Ramirez123', away:'lemus_17',             scoreH:0, scoreA:3, date:'11 Mayo 2026', time:'8:45 AM',   status:'finished',   emoji:['🐻','🏹'] },
-    { id:5,  home:'Remi', away:'Lazo26',                    scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'9:00 AM',   status:'live',   emoji:['🌊','🌪️'] },
+    { id:5,  home:'Remi', away:'Lazo26',                    scoreH:2, scoreA:1, date:'11 Mayo 2026', time:'9:00 AM',   status:'finished',   emoji:['🌊','🌪️'] },
 
 
 
-    { id:7,  home:'MauroLH', away:'Noe de Jesús',            scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'9:15 AM',   status:'pending',   emoji:['🏹','⚔️'] },
+    { id:7,  home:'MauroLH', away:'Noe de Jesús',            scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'9:15 AM',   status:'live',   emoji:['🏹','⚔️'] },
     { id:8,  home:'MauroLH', away:'Lazo26',                  scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'9:15 AM',   status:'pending',   emoji:['🌟','💥'] },
     { id:9,  home:'CharlyMart', away:'XxLABEStiaXx',         scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'9:50 AM',   status:'pending',   emoji:['⚡','🔥'] },
   ],
