@@ -20,10 +20,10 @@ const MATCHES = {
     { id:5,  home:'Remi', away:'Lazo26',                    scoreH:2, scoreA:1, date:'11 Mayo 2026', time:'9:00 AM',   status:'finished',   emoji:['🌊','🌪️'] },
 
 
-{ id:6,  home:'Kyburex', away:'Lazo26',                    scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'9:00 AM',   status:'pending',   emoji:['🌊','🌪️'] },
+{ id:6,  home:'Kyburex', away:'Lazo26',                    scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'9:00 AM',   status:'live',   emoji:['🌊','🌪️'] },
 
     { id:7,  home:'MauroLH', away:'Noe de Jesús',            scoreH:2, scoreA:3, date:'11 Mayo 2026', time:'9:15 AM',   status:'finished',   emoji:['🏹','⚔️'] },
-    { id:8,  home:'xJona_YT', away:'Emerson_T',                  scoreH:0, scoreA:0, date:'11 Mayo 2026', time:'9:15 AM',   status:'live',   emoji:['🌟','💥'] },
+    { id:8,  home:'xJona_YT', away:'Emerson_T',                  scoreH:1, scoreA:3, date:'11 Mayo 2026', time:'9:15 AM',   status:'finished',   emoji:['🌟','💥'] },
 
 
   ],
