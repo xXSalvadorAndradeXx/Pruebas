@@ -28,22 +28,22 @@ const MATCHES = {
 
   ],
   cuartos: [
-    { id:9,   home:'BR', away:'Joshua_Smith', scoreH:0, scoreA:0, date:'12 Mayo 2026', time:'9:00 AM',  status:'pending', emoji:['🦁','🐲'] },
-    { id:10,  home:'Gaitan_gzz', away:'lemus_17', scoreH:0, scoreA:0, date:'12 Mayo 2026', time:'9:00 AM',  status:'pending', emoji:['🦁','🐲'] },
-    { id:11,  home:'Noe de Jesús', away:'Lazo26', scoreH:0, scoreA:0, date:'12 Mayo 2026', time:'9:00 AM',  status:'pending', emoji:['🦁','🐲'] },
-    { id:12,  home:'Remi', away:'Emerson_Turcio', scoreH:0, scoreA:0, date:'12 Mayo 2026', time:'9:00 AM',  status:'pending', emoji:['🦁','🐲'] },
+    { id:9,   home:'BR', away:'Joshua_Smith', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'8:00 AM',  status:'pending', emoji:['🦁','🐲'] },
+    { id:10,  home:'Gaitan_gzz', away:'lemus_17', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'8:00 AM',  status:'pending', emoji:['🦁','🐲'] },
+    { id:11,  home:'Noe de Jesús', away:'Lazo26', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'8:00 AM',  status:'pending', emoji:['🦁','🐲'] },
+    { id:12,  home:'Remi', away:'Emerson_Turcio', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'8:00 AM',  status:'pending', emoji:['🦁','🐲'] },
 
     
   ],
   semis: [
-    { id:13, home:'Por definir', away:'Por definir', scoreH:0, scoreA:0, date:'13 Mayo 2026', time:'9:00 AM', status:'pending', emoji:['🏆','🏆'] },
-    { id:14, home:'Por definir', away:'Por definir', scoreH:0, scoreA:0, date:'13 Mayo 2026', time:'10:00 AM', status:'pending', emoji:['🏆','🏆'] },
+    { id:13, home:'Por definir', away:'Por definir', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'9:00 AM', status:'pending', emoji:['🏆','🏆'] },
+    { id:14, home:'Por definir', away:'Por definir', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'9:00 AM', status:'pending', emoji:['🏆','🏆'] },
   ],
   tercero: [
-    { id:15, home:'Por definir', away:'Por definir', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'9:00 AM', status:'pending', emoji:['🥉','🥉'] },
+    { id:15, home:'Por definir', away:'Por definir', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'10:00 AM', status:'pending', emoji:['🥉','🥉'] },
   ],
   final: [
-    { id:16, home:'Por definir', away:'Por definir', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'11:00 AM', status:'pending', emoji:['👑','👑'] },
+    { id:16, home:'Por definir', away:'Por definir', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'10:00 AM', status:'pending', emoji:['👑','👑'] },
   ],
 };
 
