@@ -28,7 +28,7 @@ const MATCHES = {
 
   ],
   cuartos: [
-    { id:9,   home:'BR', away:'Joshua_Smith', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'8:00 AM',  status:'pending', emoji:['🦁','🐲'] },
+    { id:9,   home:'BR', away:'Joshua_Smith', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'8:00 AM',  status:'live', emoji:['🦁','🐲'] },
 
 
     { id:10,  home:'Gaitan_gzz', away:'lemus_17', scoreH:1, scoreA:5, date:'15 Mayo 2026', time:'8:00 AM',  status:'finished', emoji:['🦁','🐲'] },
@@ -37,8 +37,8 @@ const MATCHES = {
     { id:11,  home:'Noe de Jesús', away:'Emerson_Turcio', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'8:00 AM',  status:'pending', emoji:['🦁','🐲'] },
 
 
-    
-    { id:12,  home:'Remi', away:'Lazo26', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'8:00 AM',  status:'live', emoji:['🦁','🐲'] },
+
+    { id:12,  home:'Remi', away:'Lazo26', scoreH:5, scoreA:0, date:'15 Mayo 2026', time:'8:00 AM',  status:'finished', emoji:['🦁','🐲'] },
 
     
   ],
