@@ -28,7 +28,7 @@ const MATCHES = {
 
   ],
   cuartos: [
-    { id:9,   home:'BR', away:'Joshua_Smith', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'8:00 AM',  status:'live', emoji:['🦁','🐲'] },
+    { id:9,   home:'BR', away:'Joshua_Smith', scoreH:4, scoreA:3, date:'15 Mayo 2026', time:'8:00 AM',  status:'finished', emoji:['🦁','🐲'] },
 
 
     { id:10,  home:'Gaitan_gzz', away:'lemus_17', scoreH:1, scoreA:5, date:'15 Mayo 2026', time:'8:00 AM',  status:'finished', emoji:['🦁','🐲'] },
