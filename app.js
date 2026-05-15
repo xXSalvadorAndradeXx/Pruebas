@@ -34,7 +34,7 @@ const MATCHES = {
     { id:10,  home:'Gaitan_gzz', away:'lemus_17', scoreH:1, scoreA:5, date:'15 Mayo 2026', time:'8:00 AM',  status:'finished', emoji:['🦁','🐲'] },
 
 
-    { id:11,  home:'Noe de Jesús', away:'Gaitan_gzz', scoreH:2, scoreA:1, date:'15 Mayo 2026', time:'8:00 AM',  status:'pending', emoji:['🦁','🐲'] },
+    { id:11,  home:'Noe de Jesús', away:'Gaitan_gzz', scoreH:2, scoreA:1, date:'15 Mayo 2026', time:'8:00 AM',  status:'finished', emoji:['🦁','🐲'] },
 
 
 
@@ -43,7 +43,7 @@ const MATCHES = {
     
   ],
   semis: [
-    { id:13, home:'BR', away:'Por definir', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'9:00 AM', status:'pending', emoji:['🏆','🏆'] },
+    { id:13, home:'BR', away:'Noe de Jesús', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'9:00 AM', status:'pending', emoji:['🏆','🏆'] },
     { id:14, home:'Remi', away:'lemus_17', scoreH:0, scoreA:2, date:'15 Mayo 2026', time:'9:00 AM', status:'finished', emoji:['🏆','🏆'] },
   ],
   tercero: [
