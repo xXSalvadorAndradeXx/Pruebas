@@ -47,7 +47,7 @@ const MATCHES = {
     { id:14, home:'Remi', away:'lemus_17', scoreH:0, scoreA:2, date:'15 Mayo 2026', time:'9:00 AM', status:'finished', emoji:['🏆','🏆'] },
   ],
   tercero: [
-    { id:15, home:'Remi', away:'BR', scoreH:3, scoreA:1, date:'15 Mayo 2026', time:'10:00 AM', status:'pending', emoji:['🥉','🥉'] },
+    { id:15, home:'Remi', away:'BR', scoreH:3, scoreA:1, date:'15 Mayo 2026', time:'10:00 AM', status:'finished', emoji:['🥉','🥉'] },
   ],
   final: [
     { id:16, home:'Noe de Jesús', away:'lemus_17', scoreH:0, scoreA:0, date:'15 Mayo 2026', time:'10:00 AM', status:'pending', emoji:['👑','👑'] },
