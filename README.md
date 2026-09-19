@@ -1,297 +1,225 @@
+<!-- =========================================================
+     AECOMPU SUPERLEAGUE — README
+     Todas las imágenes de este README se cargan desde Internet.
+     No depende de /assets para renderizarse en GitHub.
+========================================================= -->
+
 <div align="center">
 
-<img src="assets/img/logos/superleague.svg" alt="AECOMPU SuperLeague Logo" width="260">
+<img
+src="https://capsule-render.vercel.app/api?type=waving&height=260&color=0:050b09,45:087445,100:18f27d&text=AECOMPU%20SUPERLEAGUE&fontColor=ffffff&fontSize=52&fontAlignY=39&desc=FC%2027%20TOURNAMENT%20%E2%80%A2%20SEASON%202026&descAlignY=58&descSize=18&animation=fadeIn"
+width="100%"
+alt="AECOMPU SuperLeague"
+/>
 
 <br>
 
-AECOMPU SUPERLEAGUE
+<img
+src="https://readme-typing-svg.demolab.com?font=Rajdhani&weight=700&size=24&duration=2600&pause=900&color=18F27D&center=true&vCenter=true&width=700&lines=DOMINA+EL+CAMPO.+CONQUISTA+LA+LIGA.;FC+27+%E2%80%A2+1+VS+1+%E2%80%A2+PRESENCIAL;POWERED+BY+AECOMPU"
+alt="AECOMPU SuperLeague typing banner"
+/>
 
-FC 27 TOURNAMENT
+<br><br>
 
-Competencia universitaria de EA SPORTS FC 27 organizada por AECOMPU
+<a href="#">
+  <img src="https://img.shields.io/badge/AECOMPU-SUPERLEAGUE-18F27D?style=for-the-badge&labelColor=050B09" alt="AECOMPU SuperLeague">
+</a>
+<a href="#">
+  <img src="https://img.shields.io/badge/FC_27-TOURNAMENT-18F27D?style=for-the-badge&labelColor=071511" alt="FC 27 Tournament">
+</a>
+<a href="#">
+  <img src="https://img.shields.io/badge/SEASON-2026-FFFFFF?style=for-the-badge&labelColor=050B09" alt="Season 2026">
+</a>
 
-<br>
-
-
-
-
-
-
-
-<br>
+<br><br>
 
 Universidad Gerardo Barrios · Centro Regional Usulután
 
+Asociación de Estudiantes de Computación — AECOMPU
+
 <br>
 
-DOMINA EL CAMPO. CONQUISTA LA LIGA.
+ONE GAME. ONE CHAMPION.
 
 </div>
 
-<p align="center">
-  <img src="assets/img/backgrounds/hero.webp" alt="AECOMPU SuperLeague Preview" width="100%">
-</p>
+<div align="center">
 
-⚽ Sobre AECOMPU SuperLeague
+<img
+src="https://www.fifplay.com/img/public/fc-27.jpg"
+width="850"
+alt="EA SPORTS FC 27"
+/>
 
-AECOMPU SuperLeague es una landing page oficial diseñada para presentar, promocionar y gestionar visualmente un torneo universitario competitivo de FC 27.
+</div>
 
-El proyecto fue desarrollado con una identidad visual inspirada en transmisiones deportivas modernas, competiciones de eSports y eventos de fútbol digital, manteniendo una estética oscura, tecnológica y competitiva.
+<br>
 
-La plataforma está preparada para mostrar información del torneo como:
+⚽ AECOMPU SuperLeague
 
-formato de competencia;
+AECOMPU SuperLeague es una experiencia web promocional diseñada para presentar una competición universitaria de EA SPORTS FC 27 organizada por la Asociación de Estudiantes de Computación — AECOMPU.
 
-calendario;
+El sitio busca transmitir una identidad de torneo real mediante una interfaz inspirada en el lenguaje visual de los eSports, las transmisiones deportivas modernas y las competiciones de fútbol digital.
 
-partidos;
+La plataforma está preparada para funcionar como:
 
-resultados;
+landing page oficial;
 
-clasificación;
+centro de información del torneo;
 
-bracket;
+calendario de competición;
+
+Match Center;
+
+bracket de eliminatorias;
 
 reglamento;
 
-premios;
+clasificación;
 
-gran final;
+centro de inscripción;
 
-inscripciones;
+página de resultados;
 
-preguntas frecuentes;
+presentación de la Gran Final;
 
-información de AECOMPU.
+base reutilizable para futuras temporadas.
 
-La información que todavía no ha sido definida oficialmente utiliza el estado POR CONFIRMAR, evitando mostrar fechas, premios, jugadores o reglas inventadas.
+🏆 Tournament Identity
 
-🏆 Identidad del torneo
+<div align="center">
 
-Información
 
-Detalle
 
-Nombre
+
+
+COMPETICIÓN
 
 AECOMPU SuperLeague
 
-Juego
+VIDEOJUEGO
 
-FC 27
+EA SPORTS FC 27
 
-Temporada
+TEMPORADA
 
 2026
 
-Formato
+FORMATO
 
 1 VS 1
 
-Modalidad
+MODALIDAD
 
 Presencial
 
-Organizador
+ORGANIZADOR
 
 AECOMPU
 
-Universidad
+UNIVERSIDAD
 
 Universidad Gerardo Barrios
 
-Sede
+SEDE
 
 Centro Regional Usulután
 
-Plataforma
+PLATAFORMA
 
 Por confirmar
 
-🎮 Experiencia visual
+</div>
 
-La interfaz utiliza una estética deportiva premium basada en:
+🎮 Visual Experience
 
-fondos oscuros;
+La identidad visual fue diseñada alrededor de una dirección artística oscura y competitiva.
 
-verde esmeralda;
+BLACK
+  +
+EMERALD GREEN
+  +
+NEON DETAILS
+  +
+DIGITAL GEOMETRY
+  +
+FOOTBALL
+  +
+ESPORTS
 
-verde neón moderado;
+Dirección visual
 
-detalles en turquesa;
+fondos negros y verde oscuro;
 
-geometría deportiva;
+verde esmeralda como color principal;
+
+verde neón utilizado de forma moderada;
+
+detalles turquesa;
 
 polígonos;
 
 diagonales;
 
-líneas técnicas;
+grids técnicos;
 
 iluminación digital;
 
-grids;
+profundidad;
 
-profundidad visual;
+líneas deportivas;
+
+interfaces estilo broadcast;
+
+números gigantes;
 
 microinteracciones;
 
-composición estilo broadcast;
+estética competitiva.
 
-elementos inspirados en competencias profesionales de eSports.
+🖼️ FC 27
 
-El objetivo visual del proyecto es que la página se perciba como el sitio oficial de una competición real y no como una plantilla universitaria tradicional.
+<div align="center">
 
-✨ Características
+<a href="https://www.ea.com/games/ea-sports-fc/fc-27">
+  <img
+    src="https://www.fifplay.com/img/public/fc-27.jpg"
+    width="700"
+    alt="EA SPORTS FC 27"
+  >
+</a>
 
-Hero deportivo
+<br>
 
-La sección principal presenta:
+<sub>EA SPORTS FC 27 · imagen promocional alojada externamente.</sub>
 
-identidad de AECOMPU SuperLeague;
+</div>
 
-FC 27 Tournament;
+🚀 Tech Stack
 
-temporada;
+<div align="center">
 
-formato 1 VS 1;
+<img
+src="https://skillicons.dev/icons?i=html,css,js,git,github,vscode"
+alt="Tecnologías utilizadas"
+/>
 
-modalidad presencial;
+<br><br>
 
-llamadas a la acción;
+<img src="https://img.shields.io/badge/HTML5-Semantic-18F27D?style=flat-square&labelColor=071511" alt="HTML5">
+<img src="https://img.shields.io/badge/CSS3-Responsive-18F27D?style=flat-square&labelColor=071511" alt="CSS3">
+<img src="https://img.shields.io/badge/JavaScript-Vanilla-18F27D?style=flat-square&labelColor=071511" alt="JavaScript">
+<img src="https://img.shields.io/badge/Frameworks-NONE-ffffff?style=flat-square&labelColor=071511" alt="No frameworks">
 
-composición geométrica;
+</div>
 
-número 27 como elemento visual;
-
-wordmark de SuperLeague;
-
-efectos de profundidad.
-
-Match Center
-
-Sistema visual para mostrar partidas:
-
-CUARTOS DE FINAL
-
-JUGADOR 01    2
-
-      FINAL
-
-JUGADOR 02    1
-
-Los encuentros se administran directamente desde:
-
-const matches = [];
-
-Tournament Bracket
-
-Bracket preparado para mostrar:
-
-CUARTOS
-   ↓
-SEMIFINALES
-   ↓
-FINAL
-   ↓
-CAMPEÓN
-
-En dispositivos móviles el bracket puede desplazarse horizontalmente para mantener su legibilidad.
-
-Road to the Final
-
-Timeline configurable:
-
-REGISTRO
-   ↓
-SORTEO
-   ↓
-RONDA INICIAL
-   ↓
-ELIMINATORIAS
-   ↓
-SEMIFINAL
-   ↓
-GRAN FINAL
-
-Las etapas pueden modificarse fácilmente en main.js.
-
-Reglamento
-
-El proyecto incorpora:
-
-modal de reglamento;
-
-overlay oscuro;
-
-blur;
-
-cierre mediante botón;
-
-cierre haciendo clic fuera;
-
-cierre mediante ESC;
-
-gestión básica del foco;
-
-soporte de teclado;
-
-estructura accesible.
-
-Calendario
-
-El calendario permite mostrar:
-
-fecha;
-
-hora;
-
-ubicación;
-
-estado del evento.
-
-Estados disponibles:
-
-PRÓXIMAMENTE
-CONFIRMADO
-FINALIZADO
-
-Countdown
-
-La web posee un contador configurable para el torneo:
-
-DÍAS
-HORAS
-MIN
-SEG
-
-Si todavía no existe una fecha oficial:
-
-FECHA POR CONFIRMAR
-
-FAQ
-
-Sistema accordion desarrollado con JavaScript Vanilla.
-
-Características:
-
-una pregunta abierta a la vez;
-
-animaciones suaves;
-
-navegación accesible;
-
-estructura editable desde JavaScript.
-
-🧱 Tecnologías
-
-El proyecto fue desarrollado únicamente con tecnologías web nativas.
+Construido con
 
 HTML5
 CSS3
 JavaScript Vanilla
 
-No utiliza:
+Sin utilizar
 
 React
 Vue
@@ -301,21 +229,9 @@ Tailwind CSS
 jQuery
 GSAP
 
-Esto permite que el proyecto sea:
+El proyecto puede ejecutarse directamente desde index.html.
 
-ligero;
-
-rápido;
-
-fácil de mantener;
-
-fácil de desplegar;
-
-independiente de frameworks;
-
-compatible con hosting estático.
-
-📁 Estructura del proyecto
+📂 Project Structure
 
 aecompu-superleague/
 │
@@ -330,162 +246,106 @@ aecompu-superleague/
 │   └── main.js
 │
 └── assets/
-    │
     ├── img/
-    │   │
     │   ├── backgrounds/
-    │   │   └── hero.webp
-    │   │
     │   ├── logos/
-    │   │   ├── aecompu.png
-    │   │   └── superleague.svg
-    │   │
     │   ├── players/
-    │   │
     │   └── sponsors/
     │
     └── icons/
 
-🖼️ Assets recomendados
+El sitio principal puede utilizar assets locales cuando sea necesario, pero este README carga sus elementos visuales directamente desde Internet.
 
-Logo AECOMPU
+✨ Main Features
 
-Colocar el logo oficial en:
+🟢 Hero Section
 
-assets/img/logos/aecompu.png
+La portada presenta la identidad principal de la competición:
 
-Ejemplo:
+AECOMPU PRESENTA
 
-<p align="center">
-  <img src="assets/img/logos/aecompu.png" alt="AECOMPU" width="180">
-</p>
+FC 27 TOURNAMENT
 
-Logo SuperLeague
+AECOMPU
+SUPERLEAGUE
 
-Logo principal recomendado:
+DOMINA EL CAMPO.
+CONQUISTA LA LIGA.
 
-assets/img/logos/superleague.svg
+Incluye:
 
-Utilizar preferiblemente un archivo SVG para mantener máxima calidad en cualquier resolución.
+temporada;
 
-Hero
+badges;
 
-Imagen opcional:
+CTA;
 
-assets/img/backgrounds/hero.webp
+composición geométrica;
 
-La página está diseñada para seguir funcionando correctamente aunque esta imagen no exista.
+número 27 gigante;
 
-Jugadores
+identidad SuperLeague;
 
-assets/img/players/
+iluminación verde;
 
-Puede utilizarse posteriormente para:
+efectos de profundidad.
 
-finalistas;
+📡 Quick Tournament Info
 
-campeones;
+Información rápida estilo transmisión deportiva:
 
-perfiles;
+FORMATO
+1 VS 1
 
-tarjetas de jugador;
+PLATAFORMA
+POR CONFIRMAR
 
-publicaciones especiales.
+MODALIDAD
+PRESENCIAL
 
-Patrocinadores
+SEDE
+UGB USULUTÁN
 
-assets/img/sponsors/
+INSCRIPCIÓN
+PRÓXIMAMENTE
 
-Espacio reservado para futuras marcas o aliados del torneo.
+🛣️ Road to the Final
 
-⚙️ Configuración principal
+01
+REGISTRO
+   ↓
+02
+SORTEO
+   ↓
+03
+RONDA INICIAL
+   ↓
+04
+ELIMINATORIAS
+   ↓
+05
+SEMIFINAL
+   ↓
+06
+GRAN FINAL
 
-Toda la información importante se encuentra centralizada al inicio de:
+Las etapas se administran desde:
 
-js/main.js
+const tournamentStages = [];
 
-Objeto principal:
+⚔️ Match Center
 
-const TOURNAMENT_CONFIG = {
-  tournamentName: "AECOMPU SuperLeague",
-  game: "FC 27",
-  season: "2026",
-  organizer: "AECOMPU",
+El sistema permite mostrar encuentros utilizando una interfaz similar a un marcador deportivo.
 
-  registrationUrl: "#",
+CUARTOS DE FINAL            FINAL
 
-  registrationDeadline: null,
+JUGADOR 01                    2
 
-  tournamentDate: null,
+               VS
 
-  venue: "Universidad Gerardo Barrios - Usulután",
+JUGADOR 02                    1
 
-  platform: "POR CONFIRMAR",
-
-  modality: "PRESENCIAL",
-
-  format: "1 VS 1",
-
-  andradeDevUrl: "https://iamsalvadorandrade.netlify.app/",
-
-  aecompuLogo: "assets/img/logos/aecompu.png"
-};
-
-📝 Abrir las inscripciones
-
-Actualmente:
-
-registrationUrl: "#"
-
-Esto hace que el botón muestre:
-
-INSCRIPCIONES PRÓXIMAMENTE
-
-Cuando exista el formulario oficial:
-
-registrationUrl: "https://forms.google.com/..."
-
-El botón automáticamente cambiará a:
-
-INSCRIBIRME AHORA
-
-⏱️ Configurar fecha del torneo
-
-Mientras no exista una fecha oficial:
-
-tournamentDate: null
-
-La página mostrará:
-
-FECHA POR CONFIRMAR
-
-Cuando exista una fecha:
-
-tournamentDate: "2026-10-20T09:00:00"
-
-El countdown comenzará automáticamente.
-
-📅 Modificar calendario
-
-El calendario se encuentra en:
-
-const schedule = [];
-
-Ejemplo:
-
-{
-  name: "GRAN FINAL",
-  date: "POR CONFIRMAR",
-  time: "POR CONFIRMAR",
-  location: "Universidad Gerardo Barrios - Usulután",
-  status: "PRÓXIMAMENTE"
-}
-
-Cuando los datos sean oficiales solo deben reemplazarse los valores correspondientes.
-
-⚔️ Modificar partidos
-
-Los partidos se controlan mediante:
+Datos administrados desde:
 
 const matches = [];
 
@@ -502,45 +362,255 @@ Ejemplo:
   scoreB: 1
 }
 
-Estados recomendados:
+Estados disponibles
 
 FINAL
 PRÓXIMAMENTE
 EN VIVO
 
-🏁 Modificar bracket
+🏁 Tournament Bracket
 
-El bracket se administra mediante:
+CUARTOS
+   │
+   ├──────────┐
+   │          │
+   ▼          ▼
+SEMIFINALES
+      │
+      ▼
+    FINAL
+      │
+      ▼
+   CAMPEÓN
 
-const bracket = [];
+El bracket está construido completamente con:
 
-Ejemplo:
+HTML
+CSS
+JavaScript
 
-{
-  title: "CUARTOS",
-  matches: [
-    ["PLAYER 01", "PLAYER 02"],
-    ["PLAYER 03", "PLAYER 04"],
-    ["PLAYER 05", "PLAYER 06"],
-    ["PLAYER 07", "PLAYER 08"]
-  ]
-}
+Sin librerías externas.
 
-📜 Modificar reglamento
+En dispositivos móviles se permite desplazamiento horizontal para conservar la estructura de las eliminatorias.
 
-Las reglas principales están disponibles en:
+📜 Rules
+
+La plataforma incluye un sistema de reglamento mediante modal.
+
+Funciones
+
+overlay oscuro;
+
+efecto blur;
+
+animación de entrada;
+
+botón de cierre;
+
+cierre haciendo clic en el fondo;
+
+cierre mediante ESC;
+
+scroll interno;
+
+role="dialog";
+
+aria-modal;
+
+gestión básica del foco;
+
+navegación mediante teclado.
+
+Las reglas pueden modificarse desde:
 
 const rules = [];
 
-Y el contenido del modal en:
+y:
 
 const modalRules = [];
 
-Esto permite actualizar el reglamento sin modificar el HTML.
+📅 Tournament Schedule
+
+El calendario está preparado para:
+
+INSCRIPCIONES
+SORTEO
+PRIMERA RONDA
+ELIMINATORIAS
+GRAN FINAL
+
+Cada evento puede contener:
+
+FECHA
+HORA
+UBICACIÓN
+ESTADO
+
+Estados:
+
+PRÓXIMAMENTE
+CONFIRMADO
+FINALIZADO
+
+Toda la información se administra desde:
+
+const schedule = [];
+
+🏆 Glory Awaits
+
+              01
+           CAMPEÓN
+
+     SUPERLEAGUE CHAMPION
+
+           PREMIO
+       POR CONFIRMAR
+
+
+              02
+         SUBCAMPEÓN
+
+           PREMIO
+       POR CONFIRMAR
+
+Los premios no confirmados permanecen explícitamente como:
+
+POR CONFIRMAR
+
+🔥 The Final
+
+La página incluye una sección especial para el evento principal:
+
+             THE FINAL
+
+FINALISTA A      VS      FINALISTA B
+
+        AECOMPU SUPERLEAGUE
+              GRAN FINAL
+
+            POR CONFIRMAR
+
+🟢 AECOMPU
+
+<div align="center">
+
+<img
+src="https://img.shields.io/badge/AECOMPU-ASOCIACIÓN_DE_ESTUDIANTES_DE_COMPUTACIÓN-18F27D?style=for-the-badge&labelColor=050B09"
+alt="AECOMPU"
+/>
+
+<br><br>
+
+ASOCIACIÓN DE ESTUDIANTES DE COMPUTACIÓN
+
+Universidad Gerardo Barrios
+
+Centro Regional Usulután
+
+<br>
+
+TECNOLOGÍA · INNOVACIÓN · COMUNIDAD · ESPORTS
+
+</div>
+
+🎓 Universidad Gerardo Barrios
+
+<div align="center">
+
+<a href="https://ugb.edu.sv/">
+  <img
+    src="https://dei.uca.edu.sv/wp-content/uploads/bfi_thumb/logo-ugb-vertical-3nfblpu05m74w6trcigem8.png"
+    width="220"
+    alt="Universidad Gerardo Barrios"
+  >
+</a>
+
+<br><br>
+
+Universidad Gerardo Barrios
+
+Centro Regional Usulután
+
+</div>
+
+⚙️ Tournament Configuration
+
+La configuración principal está centralizada en:
+
+js/main.js
+
+const TOURNAMENT_CONFIG = {
+
+  tournamentName: "AECOMPU SuperLeague",
+
+  game: "FC 27",
+
+  season: "2026",
+
+  organizer: "AECOMPU",
+
+  registrationUrl: "#",
+
+  registrationDeadline: null,
+
+  tournamentDate: null,
+
+  venue: "Universidad Gerardo Barrios - Usulután",
+
+  platform: "POR CONFIRMAR",
+
+  modality: "PRESENCIAL",
+
+  format: "1 VS 1",
+
+  andradeDevUrl:
+    "https://iamsalvadorandrade.netlify.app/"
+};
+
+Esto evita tener que modificar la misma información en múltiples lugares del HTML.
+
+📝 Registration
+
+Mientras las inscripciones no estén disponibles:
+
+registrationUrl: "#"
+
+La interfaz mostrará:
+
+INSCRIPCIONES PRÓXIMAMENTE
+
+Cuando exista un formulario:
+
+registrationUrl: "URL_DEL_FORMULARIO"
+
+El botón cambiará automáticamente a:
+
+INSCRIBIRME AHORA
+
+⏱️ Countdown
+
+Mientras no exista fecha oficial:
+
+tournamentDate: null
+
+Se mostrará:
+
+FECHA POR CONFIRMAR
+
+Cuando la organización establezca la fecha:
+
+tournamentDate: "2026-10-20T09:00:00"
+
+El contador mostrará automáticamente:
+
+DÍAS
+HORAS
+MIN
+SEG
 
 📱 Responsive Design
 
-La interfaz fue preparada para funcionar correctamente en:
+Diseñado para:
 
 1920px
 1440px
@@ -550,80 +620,73 @@ La interfaz fue preparada para funcionar correctamente en:
 480px
 375px
 
-La experiencia móvil incluye:
+Desktop
 
-navbar hamburguesa;
+bracket horizontal;
+
+hero completo;
+
+Match Center multicolumna;
+
+navegación tradicional;
+
+timeline horizontal.
+
+Mobile
+
+menú hamburguesa;
 
 navegación fullscreen;
 
 hero reorganizado;
 
-tipografía adaptable;
+cards apiladas;
 
 estadísticas en dos columnas;
 
-tarjetas apiladas;
-
-bracket con scroll;
-
 timeline vertical;
 
-countdown responsive;
+bracket desplazable;
 
-botones adaptados a pantallas pequeñas.
+CTA adaptado;
 
-♿ Accesibilidad
+countdown responsive.
 
-El proyecto incorpora:
+♿ Accessibility
 
-HTML semántico;
+Incluye:
 
-aria-label;
+Semantic HTML
+ARIA labels
+ARIA expanded
+ARIA hidden
+ARIA modal
+Keyboard navigation
+Focus management
+Focus visible
+ESC modal closing
+Reduced motion support
 
-aria-expanded;
+También se respeta:
 
-aria-hidden;
+@media (prefers-reduced-motion: reduce)
 
-aria-modal;
+⚡ Performance
 
-navegación mediante teclado;
-
-focus-visible;
-
-cierre de modal mediante ESC;
-
-control básico del foco;
-
-contraste visual;
-
-prefers-reduced-motion.
-
-⚡ Rendimiento
-
-Se priorizan animaciones mediante:
+La interfaz prioriza:
 
 transform
 opacity
 
-Además se utiliza:
+para animaciones eficientes.
+
+También utiliza:
 
 IntersectionObserver
 
-para ejecutar animaciones únicamente cuando los elementos ingresan al viewport.
+para activar contenido únicamente cuando entra en pantalla.
 
-También se evita el uso innecesario de:
-
-librerías externas;
-
-frameworks;
-
-animaciones continuas;
-
-dependencias pesadas.
-
-🎬 Animaciones
-
-Incluye:
+🎬 Animations
 
 fade-up
 slide-left
@@ -631,143 +694,118 @@ slide-right
 scale-in
 counter animation
 navbar transition
-card hover
 button hover
-parallax ligero
-active navigation
+card hover
+bracket hover
 accordion animation
 modal transition
+light parallax
+active navigation
 
-Las animaciones se desactivan o reducen cuando el usuario utiliza:
+Las animaciones fueron diseñadas para complementar la experiencia sin convertir la interfaz en una página sobrecargada.
 
-prefers-reduced-motion
+🔎 SEO
 
-🔍 SEO
+Incluye:
 
-El sitio incorpora configuración básica de SEO:
+title
+meta description
+keywords
+theme-color
+Open Graph title
+Open Graph description
+Open Graph type
 
-<title>
+Título:
+
 AECOMPU SuperLeague | FC 27 Tournament
-</title>
 
-También incluye:
-
-meta description;
-
-keywords;
-
-theme color;
-
-Open Graph title;
-
-Open Graph description;
-
-Open Graph type.
-
-🚀 Ejecutar el proyecto
+🚀 Run Locally
 
 No es necesario instalar dependencias.
 
-Opción 1
+Método 1
 
-Abrir directamente:
+Abrir:
 
 index.html
 
-Opción 2
+Método 2
 
-Utilizar Live Server en Visual Studio Code.
+Utilizar Live Server:
 
-Click derecho en index.html
-→ Open with Live Server
+index.html
+   ↓
+Open with Live Server
 
 🌐 Deployment
 
-El proyecto puede desplegarse fácilmente en plataformas como:
+Compatible con hosting estático:
 
-GitHub Pages;
+<div align="center">
 
-Netlify;
+<img src="https://skillicons.dev/icons?i=github,vercel,netlify,cloudflare" alt="Deployment platforms">
 
-Vercel;
+</div>
 
-Cloudflare Pages;
+<br>
 
-hosting tradicional;
+Puede publicarse en:
 
-servidor Apache;
+GitHub Pages
+Netlify
+Vercel
+Cloudflare Pages
+Apache
+Nginx
 
-servidor Nginx.
+🔮 Future Roadmap
 
-Al tratarse de una aplicación completamente estática, no necesita servidor backend para funcionar.
+La arquitectura permite extender AECOMPU SuperLeague con:
 
-🔮 Posibles mejoras futuras
+backend;
 
-La arquitectura actual permite ampliar el proyecto con:
+API REST;
+
+base de datos;
+
+registro automático;
 
 panel administrativo;
 
-actualización de resultados en vivo;
+autenticación;
 
-backend API;
+generación automática de bracket;
 
-base de datos;
+actualización de resultados;
+
+rankings;
 
 perfiles de jugadores;
 
 estadísticas;
 
-ranking histórico;
+noticias;
 
 temporadas;
 
-múltiples torneos;
+historial de campeones;
 
-sistema de inscripción;
-
-autenticación;
-
-streaming;
-
-noticias;
+integración de streaming;
 
 patrocinadores;
 
-galería multimedia;
+galería multimedia.
 
-generación automática de bracket;
-
-resultados en tiempo real.
-
-🟢 AECOMPU
+👨‍💻 Developed by
 
 <div align="center">
 
-<img src="assets/img/logos/aecompu.png" width="150" alt="AECOMPU Logo">
-
-Asociación de Estudiantes de Computación
-
-Universidad Gerardo Barrios
-
-Centro Regional Usulután
-
-<br>
-
-Tecnología · Innovación · Comunidad · eSports
-
-</div>
-
-👨‍💻 Desarrollo
-
-<div align="center">
-
-DESARROLLADO POR
-
-ANDRADE DEV
-
-Desarrollo · Tecnología · Soluciones Digitales
-
-Portafolio · GitHub
+<img
+src="https://capsule-render.vercel.app/api?type=rect&height=115&color=0:050b09,100:087445&text=ANDRADE%20DEV&fontColor=18F27D&fontSize=34&fontAlignY=43&desc=DESARROLLO%20%E2%80%A2%20TECNOLOG%C3%8DA%20%E2%80%A2%20SOLUCIONES%20DIGITALES&descAlignY=68&descSize=12"
+width="100%"
+alt="Andrade Dev"
+/>
 
 <br>
 
@@ -775,27 +813,39 @@ Salvador Andrade
 
 Full Stack Developer
 
+<br>
+
+<a href="https://github.com/xXSalvadorAndradeXx">
+  <img src="https://img.shields.io/badge/GitHub-xXSalvadorAndradeXx-18F27D?style=for-the-badge&logo=github&logoColor=white&labelColor=050B09" alt="GitHub">
+</a>
+
+<a href="https://iamsalvadorandrade.netlify.app/">
+  <img src="https://img.shields.io/badge/PORTFOLIO-ANDRADE_DEV-18F27D?style=for-the-badge&logo=netlify&logoColor=white&labelColor=050B09" alt="Andrade Dev Portfolio">
+</a>
+
 </div>
 
-📄 Licencia y uso
+📄 Disclaimer
 
-Este proyecto fue desarrollado para AECOMPU SuperLeague.
+AECOMPU SuperLeague es un proyecto para una competición universitaria organizada por AECOMPU.
 
-Los nombres, logos y elementos institucionales de AECOMPU y Universidad Gerardo Barrios deberán utilizarse de acuerdo con las autorizaciones correspondientes.
+EA SPORTS FC y sus elementos relacionados pertenecen a sus respectivos titulares. Su presencia en este README se utiliza únicamente para identificar el videojuego alrededor del cual se desarrolla el torneo.
 
-Las referencias visuales relacionadas con FC 27 se utilizan únicamente como contexto temático del torneo. El proyecto no pretende representar un sitio oficial de Electronic Arts.
+Los elementos institucionales de Universidad Gerardo Barrios pertenecen a la universidad y deben utilizarse respetando sus lineamientos de identidad.
 
 <div align="center">
 
-<br>
+<img
+src="https://capsule-render.vercel.app/api?type=waving&height=160&section=footer&color=0:18f27d,55:087445,100:050b09&text=ONE%20GAME.%20ONE%20CHAMPION.&fontColor=ffffff&fontSize=25&fontAlignY=70"
+width="100%"
+alt="One Game One Champion"
+/>
 
 AECOMPU SUPERLEAGUE
 
-FC 27 TOURNAMENT
+FC 27 TOURNAMENT · SEASON 2026
 
-<br>
-
-ONE GAME · ONE CHAMPION
+POWERED BY AECOMPU
 
 <br>
 
