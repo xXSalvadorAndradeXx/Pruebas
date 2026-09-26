@@ -2600,7 +2600,7 @@ code {
 }
 
 .groups-heading p:not(.section-kicker) {
-  max-width: 430px;
+  max-width: 500px;
   margin: 0;
   color: var(--text-muted);
   font-size: 0.86rem;
@@ -2608,11 +2608,12 @@ code {
 
 .groups-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .group-card {
+  min-width: 0;
   overflow: hidden;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.016);
@@ -2624,7 +2625,7 @@ code {
   justify-content: space-between;
   gap: 18px;
   min-height: 96px;
-  padding: 18px 18px 15px;
+  padding: 18px 20px 15px;
   border-bottom: 1px solid var(--border);
   background: linear-gradient(145deg, rgba(24, 242, 125, 0.055), transparent 62%);
 }
@@ -2640,13 +2641,37 @@ code {
 .group-card__header h3 {
   margin: 4px 0 0;
   font-family: var(--title-font);
-  font-size: 1.55rem;
+  font-size: 1.65rem;
   line-height: 1;
 }
 
 .group-card__header > strong {
   color: var(--green-primary);
   white-space: nowrap;
+}
+
+.group-table__head,
+.group-table li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 44px 44px 52px;
+  align-items: center;
+  gap: 8px;
+}
+
+.group-table__head {
+  min-height: 34px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.015);
+  font-size: 0.52rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.group-table__head span:nth-child(2) {
+  text-align: left;
 }
 
 .group-table {
@@ -2656,15 +2681,12 @@ code {
 }
 
 .group-table li {
-  display: grid;
-  grid-template-columns: 24px 30px minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 7px;
-  min-height: 43px;
-  padding: 0 13px;
+  min-height: 52px;
+  padding: 0 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.045);
   color: var(--text-muted);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
+  transition: background 0.2s ease;
 }
 
 .group-table li:last-child {
@@ -2672,33 +2694,79 @@ code {
 }
 
 .group-table li.is-qualifying {
-  background: linear-gradient(90deg, rgba(24, 242, 125, 0.07), transparent 70%);
+  background: linear-gradient(90deg, rgba(24, 242, 125, 0.075), transparent 72%);
 }
 
 .group-table__position {
   color: var(--text-dim);
   font-family: var(--title-font);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 900;
+  text-align: center;
 }
 
-.group-table__seed {
+.group-table__team {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.group-table__team small {
+  flex: 0 0 auto;
+  min-width: 24px;
   color: var(--green-primary);
+  font-size: 0.56rem;
   font-weight: 900;
+  letter-spacing: 0.04em;
 }
 
-.group-table strong {
+.group-table__team strong {
+  min-width: 0;
   overflow: hidden;
   color: #dcebe5;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.group-table small {
+.group-table__stat,
+.group-table__points {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.group-table__points {
   color: var(--green-primary);
-  font-size: 0.46rem;
-  font-weight: 900;
+  font-family: var(--title-font);
+  font-size: 1.08rem;
+}
+
+.group-card__legend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 38px;
+  padding: 0 16px;
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  background: rgba(0, 0, 0, 0.08);
+  font-size: 0.52rem;
+  font-weight: 800;
   letter-spacing: 0.08em;
+}
+
+.group-card__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.group-card__legend i {
+  width: 7px;
+  height: 7px;
+  background: var(--green-primary);
+  transform: rotate(45deg);
 }
 
 .match-card__footer {
@@ -2917,5 +2985,63 @@ code {
 
   .modal__dialog--rules .modal__body {
     max-height: calc(92vh - 96px);
+  }
+}
+
+
+/* Group tables - responsive refinement */
+@media (max-width: 900px) {
+  .groups-heading {
+    display: grid;
+    gap: 16px;
+    margin-top: 70px;
+  }
+
+  .groups-heading p:not(.section-kicker) {
+    max-width: 680px;
+  }
+
+  .groups-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .group-card__header {
+    min-height: 82px;
+    padding-inline: 13px;
+  }
+
+  .group-card__header > strong {
+    font-size: 0.46rem;
+  }
+
+  .group-table__head,
+  .group-table li {
+    grid-template-columns: 26px minmax(0, 1fr) 34px 34px 42px;
+    gap: 5px;
+  }
+
+  .group-table__head,
+  .group-table li,
+  .group-card__legend {
+    padding-inline: 10px;
+  }
+
+  .group-table__team {
+    gap: 5px;
+  }
+
+  .group-table__team small {
+    display: none;
+  }
+
+  .group-table li {
+    min-height: 48px;
+    font-size: 0.66rem;
+  }
+
+  .group-table__points {
+    font-size: 1rem;
   }
 }
