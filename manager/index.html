@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050b09">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Manager · AECOMPU SuperLeague</title>
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/manager.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="manager-bg" aria-hidden="true"></div>
+
+  <section class="login-view" id="loginView">
+    <form class="login-card" id="loginForm" autocomplete="off">
+      <div class="manager-brand">
+        <span>AECOMPU</span>
+        <strong>SUPER<span>LEAGUE</span></strong>
+      </div>
+      <p class="eyebrow">TOURNAMENT MANAGER</p>
+      <h1>Panel de control</h1>
+      <p class="muted">Acceso reservado para la organización del torneo.</p>
+      <label for="managerPassword">Contraseña</label>
+      <div class="password-row">
+        <input id="managerPassword" name="password" type="password" required autocomplete="current-password" placeholder="••••••••••••">
+        <button id="togglePassword" class="icon-btn" type="button" aria-label="Mostrar u ocultar contraseña">VER</button>
+      </div>
+      <p class="login-error" id="loginError" role="alert" hidden>Contraseña incorrecta.</p>
+      <button class="primary-btn" type="submit">ENTRAR AL MANAGER</button>
+      <a class="back-link" href="../index.html">← Volver a la vista pública</a>
+    </form>
+  </section>
+
+  <div class="dashboard" id="dashboard" hidden>
+    <header class="manager-header">
+      <div class="manager-brand manager-brand--small">
+        <span>AECOMPU</span>
+        <strong>SUPER<span>LEAGUE</span></strong>
+      </div>
+      <div class="manager-header__actions">
+        <a href="../index.html" target="_blank" rel="noopener">VER PÚBLICA ↗</a>
+        <button id="logoutButton" type="button">CERRAR SESIÓN</button>
+      </div>
+    </header>
+
+    <main class="manager-main">
+      <section class="manager-hero">
+        <div>
+          <p class="eyebrow">LIVE TOURNAMENT CONTROL</p>
+          <h1>MANAGER <span>SUPERLEAGUE</span></h1>
+          <p class="muted">Edita nombres y registra marcadores. PTS, GF, GC, posiciones y clasificados se calculan automáticamente.</p>
+        </div>
+        <div class="manager-status" id="managerStatus">LISTO</div>
+      </section>
+
+      <section class="summary-grid" id="summaryGrid"></section>
+
+      <nav class="manager-tabs" aria-label="Secciones del manager">
+        <button class="is-active" data-tab="results" type="button">RESULTADOS</button>
+        <button data-tab="teams" type="button">EQUIPOS</button>
+        <button data-tab="standings" type="button">TABLAS</button>
+        <button data-tab="tools" type="button">HERRAMIENTAS</button>
+      </nav>
+
+      <section class="panel is-active" data-panel="results">
+        <div class="panel-heading">
+          <div><p class="eyebrow">GROUP MATCHES</p><h2>Registrar resultados</h2></div>
+          <label>Grupo
+            <select id="resultGroupFilter">
+              <option value="A">Grupo A</option><option value="B">Grupo B</option><option value="C">Grupo C</option><option value="D">Grupo D</option>
+            </select>
+          </label>
+        </div>
+        <div id="resultManager"></div>
+      </section>
+
+      <section class="panel" data-panel="teams">
+        <div class="panel-heading"><div><p class="eyebrow">TEAM DIRECTORY</p><h2>Nombres de equipos</h2></div></div>
+        <div class="team-editor-grid" id="teamEditor"></div>
+      </section>
+
+      <section class="panel" data-panel="standings">
+        <div class="panel-heading"><div><p class="eyebrow">LIVE STANDINGS</p><h2>Clasificación calculada</h2></div></div>
+        <div class="standings-grid" id="managerStandings"></div>
+      </section>
+
+      <section class="panel" data-panel="tools">
+        <div class="panel-heading"><div><p class="eyebrow">ADMIN TOOLS</p><h2>Herramientas</h2></div></div>
+        <div class="tools-card">
+          <h3>Restablecer torneo</h3>
+          <p>Devuelve nombres y resultados de fase de grupos al estado inicial.</p>
+          <button class="danger-btn" id="resetTournament" type="button">RESTABLECER TODO</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/store.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/manager.js" defer></script>
+</body>
+</html>
