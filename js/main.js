@@ -8,251 +8,569 @@ const TOURNAMENT_CONFIG = {
   registrationUrl: "#",
   registrationDeadline: null,
   tournamentDate: null,
-  venue: "Universidad Gerardo Barrios - Usulután",
-  platform: "POR CONFIRMAR",
+  venue: "Universidad Gerardo Barrios · Centro Regional Usulután",
+  platform: "PlayStation 5",
   modality: "PRESENCIAL",
-  format: "1 VS 1",
+  format: "2 VS 2",
+  participants: 64,
+  teams: 32,
+  groups: 4,
+  teamsPerGroup: 8,
+  groupMatchesPerTeam: 2,
+  qualifyingPerGroup: 4,
+  stations: 3,
+  kickoff: "9:30 A. M.",
+  finish: "5:30 P. M.",
+  firstHalfMinutes: 5,
+  halftimeMinutes: 5,
+  secondHalfMinutes: 5,
+  rotationMinutes: 10,
+  slotMinutes: 25,
   andradeDevUrl: "https://iamsalvadorandrade.netlify.app/",
   aecompuLogo: "assets/img/logos/aecompu.png"
 };
 
 const tournamentStages = [
   {
-    name: "REGISTRO",
-    note: "Inscripción de participantes"
+    name: "FASE DE GRUPOS",
+    note: "32 equipos · 4 grupos de 8 · 2 partidos por equipo"
   },
   {
-    name: "SORTEO",
-    note: "POR CONFIRMAR"
+    name: "TOP 16",
+    note: "Clasifican los 4 mejores de cada grupo"
   },
   {
-    name: "RONDA INICIAL",
-    note: "FORMATO CONFIGURABLE"
+    name: "OCTAVOS",
+    note: "16 equipos · eliminación directa"
   },
   {
-    name: "ELIMINATORIAS",
-    note: "FORMATO CONFIGURABLE"
+    name: "CUARTOS",
+    note: "8 equipos · 4 partidos"
   },
   {
-    name: "SEMIFINAL",
-    note: "FORMATO CONFIGURABLE"
+    name: "SEMIFINALES",
+    note: "4 equipos · 2 partidos"
   },
   {
-    name: "GRAN FINAL",
-    note: "CAMPEONATO"
+    name: "PODIO",
+    note: "3.er lugar + gran final · top 3 definido en cancha"
   }
 ];
 
+const groups = ["A", "B", "C", "D"].map((groupName) => ({
+  name: `GRUPO ${groupName}`,
+  teams: Array.from({ length: 8 }, (_, index) => ({
+    seed: `${groupName}${index + 1}`,
+    name: "POR SORTEAR",
+    qualifies: index < 4
+  }))
+}));
+
 const matches = [
   {
-    stage: "CUARTOS DE FINAL",
-    status: "FINAL",
-    playerA: "JUGADOR 01",
-    scoreA: 2,
-    playerB: "JUGADOR 02",
-    scoreB: 1
+    stage: "ESTACIÓN 1",
+    status: "LISTA",
+    playerA: "EQUIPO POR DEFINIR",
+    scoreA: null,
+    playerB: "EQUIPO POR DEFINIR",
+    scoreB: null,
+    footer: "Bloque de 25 min"
   },
   {
-    stage: "SEMIFINAL",
-    status: "PRÓXIMAMENTE",
-    playerA: "JUGADOR 03",
+    stage: "ESTACIÓN 2",
+    status: "LISTA",
+    playerA: "EQUIPO POR DEFINIR",
     scoreA: null,
-    playerB: "JUGADOR 04",
-    scoreB: null
+    playerB: "EQUIPO POR DEFINIR",
+    scoreB: null,
+    footer: "Bloque de 25 min"
   },
   {
-    stage: "SEMIFINAL",
-    status: "PRÓXIMAMENTE",
-    playerA: "JUGADOR 05",
+    stage: "ESTACIÓN 3",
+    status: "LISTA",
+    playerA: "EQUIPO POR DEFINIR",
     scoreA: null,
-    playerB: "JUGADOR 06",
-    scoreB: null
+    playerB: "EQUIPO POR DEFINIR",
+    scoreB: null,
+    footer: "Bloque de 25 min"
   }
 ];
 
 const bracket = [
   {
+    title: "OCTAVOS",
+    matches: [
+      { teams: ["A1", "B4"] },
+      { teams: ["A2", "B3"] },
+      { teams: ["B1", "A4"] },
+      { teams: ["B2", "A3"] },
+      { teams: ["C1", "D4"] },
+      { teams: ["C2", "D3"] },
+      { teams: ["D1", "C4"] },
+      { teams: ["D2", "C3"] }
+    ]
+  },
+  {
     title: "CUARTOS",
     matches: [
-      ["PLAYER 01", "PLAYER 02"],
-      ["PLAYER 03", "PLAYER 04"],
-      ["PLAYER 05", "PLAYER 06"],
-      ["PLAYER 07", "PLAYER 08"]
+      { teams: ["GANADOR O1", "GANADOR O2"] },
+      { teams: ["GANADOR O3", "GANADOR O4"] },
+      { teams: ["GANADOR O5", "GANADOR O6"] },
+      { teams: ["GANADOR O7", "GANADOR O8"] }
     ]
   },
   {
     title: "SEMIFINALES",
     matches: [
-      ["POR CONFIRMAR", "POR CONFIRMAR"],
-      ["POR CONFIRMAR", "POR CONFIRMAR"]
+      { teams: ["GANADOR C1", "GANADOR C2"] },
+      { teams: ["GANADOR C3", "GANADOR C4"] }
     ]
   },
   {
-    title: "FINAL",
+    title: "PODIO",
     matches: [
-      ["POR CONFIRMAR", "POR CONFIRMAR"]
+      {
+        label: "3.er LUGAR",
+        teams: ["PERDEDOR S1", "PERDEDOR S2"]
+      },
+      {
+        label: "FINAL",
+        teams: ["GANADOR S1", "GANADOR S2"]
+      }
     ]
   },
   {
     title: "CAMPEÓN",
-    champion: "POR CONFIRMAR"
+    champion: "POR DEFINIR"
   }
 ];
 
 const schedule = [
   {
-    name: "INSCRIPCIONES",
-    date: "POR CONFIRMAR",
-    time: "POR CONFIRMAR",
-    location: "POR CONFIRMAR",
-    status: "PRÓXIMAMENTE"
-  },
-  {
-    name: "SORTEO",
-    date: "POR CONFIRMAR",
-    time: "POR CONFIRMAR",
-    location: "POR CONFIRMAR",
-    status: "PRÓXIMAMENTE"
-  },
-  {
-    name: "PRIMERA RONDA",
-    date: "POR CONFIRMAR",
-    time: "POR CONFIRMAR",
+    name: "CHECK-IN DE EQUIPOS",
+    date: "DÍA DEL EVENTO",
+    time: "9:00 – 9:25 A. M.",
     location: TOURNAMENT_CONFIG.venue,
-    status: "PRÓXIMAMENTE"
+    status: "PREVIO",
+    note: "Acreditación, confirmación de parejas y llamado inicial."
   },
   {
-    name: "ELIMINATORIAS",
-    date: "POR CONFIRMAR",
-    time: "POR CONFIRMAR",
-    location: TOURNAMENT_CONFIG.venue,
-    status: "PRÓXIMAMENTE"
+    name: "FASE DE GRUPOS",
+    date: "DÍA DEL EVENTO",
+    time: "9:30 A. M. – 2:05 P. M.",
+    location: "3 estaciones · 32 partidos · 11 tandas",
+    status: "KICKOFF",
+    note: "Cada equipo juega 2 partidos. No hay pausa general."
+  },
+  {
+    name: "OCTAVOS DE FINAL",
+    date: "DÍA DEL EVENTO",
+    time: "2:05 – 3:20 P. M.",
+    location: "3 estaciones · 8 partidos · 3 tandas",
+    status: "TOP 16",
+    note: "Comienza la eliminación directa."
+  },
+  {
+    name: "CUARTOS DE FINAL",
+    date: "DÍA DEL EVENTO",
+    time: "3:20 – 4:10 P. M.",
+    location: "3 estaciones · 4 partidos · 2 tandas",
+    status: "TOP 8",
+    note: "Los cuatro ganadores avanzan a semifinales."
+  },
+  {
+    name: "SEMIFINALES",
+    date: "DÍA DEL EVENTO",
+    time: "4:10 – 4:35 P. M.",
+    location: "2 partidos simultáneos",
+    status: "TOP 4",
+    note: "Ganadores a la final; perdedores al partido por 3.er lugar."
+  },
+  {
+    name: "PARTIDO POR 3.er LUGAR",
+    date: "DÍA DEL EVENTO",
+    time: "4:35 – 5:00 P. M.",
+    location: "Estación principal",
+    status: "PODIO",
+    note: "Define oficialmente el tercer puesto."
   },
   {
     name: "GRAN FINAL",
-    date: "POR CONFIRMAR",
-    time: "POR CONFIRMAR",
+    date: "DÍA DEL EVENTO",
+    time: "5:00 – 5:25 P. M.",
+    location: "Estación principal",
+    status: "FINAL",
+    note: "Partido por el campeonato AECOMPU SuperLeague."
+  },
+  {
+    name: "PREMIACIÓN",
+    date: "DÍA DEL EVENTO",
+    time: "5:25 – 5:30 P. M.",
     location: TOURNAMENT_CONFIG.venue,
-    status: "PRÓXIMAMENTE"
+    status: "CIERRE",
+    note: "Reconocimiento a 1.er, 2.º y 3.er lugar."
   }
 ];
 
 const rules = [
   {
-    title: "Formato",
-    preview: "Formato competitivo 1 VS 1.",
-    detail:
-      "El torneo se plantea en modalidad 1 VS 1. La estructura definitiva de rondas y emparejamientos queda POR CONFIRMAR."
+    title: "Formato 2 VS 2",
+    preview: "64 participantes organizados en 32 equipos de dos jugadores."
+  },
+  {
+    title: "Fase de grupos",
+    preview: "4 grupos de 8; cada equipo juega 2 partidos y clasifican 4."
   },
   {
     title: "Partidos",
-    preview: "Duración y configuración POR CONFIRMAR.",
-    detail:
-      "La duración de los partidos, dificultad, velocidad de juego, condiciones y demás parámetros específicos de FC 27 están POR CONFIRMAR."
+    preview:
+      "5 min por tiempo, 5 min de descanso y bloques operativos de 25 min."
   },
   {
-    title: "Controles",
-    preview: "Uso de controles POR CONFIRMAR.",
-    detail:
-      "La organización todavía debe confirmar si los participantes deberán llevar su propio control, qué modelos serán admitidos y cómo se gestionarán los periféricos."
-  },
-  {
-    title: "Puntualidad",
-    preview: "Horarios oficiales POR CONFIRMAR.",
-    detail:
-      "Los márgenes de llegada, tolerancia y consecuencias por retraso están POR CONFIRMAR."
+    title: "Desempates",
+    preview:
+      "Puntos, diferencia de gol, goles a favor y criterios deportivos."
   },
   {
     title: "Fair Play",
-    preview: "Competencia respetuosa y organizada.",
-    detail:
-      "Se espera una conducta respetuosa entre participantes, organización y público. Los criterios formales de conducta se publicarán en el reglamento definitivo."
+    preview:
+      "Respeto obligatorio a rivales, organización, público y equipos."
   },
   {
     title: "Sanciones",
-    preview: "Sistema disciplinario POR CONFIRMAR.",
-    detail:
-      "Las faltas, advertencias, descalificaciones y sanciones específicas están POR CONFIRMAR."
+    preview:
+      "Advertencia, pérdida administrativa o descalificación según gravedad."
   }
 ];
 
 const modalRules = [
   {
-    title: "Formato",
-    detail: rules[0].detail
+    title: "1. Objeto y alcance",
+    paragraphs: [
+      "La AECOMPU SuperLeague FC 27 es una competencia presencial de eSports organizada por AECOMPU. Este reglamento aplica a todos los participantes desde el registro hasta la premiación.",
+      "La participación implica conocer y aceptar estas disposiciones, así como las decisiones operativas de la organización cuando se presenten situaciones no previstas."
+    ]
   },
   {
-    title: "Configuración",
-    detail: "Parámetros específicos de FC 27: POR CONFIRMAR."
+    title: "2. Participantes y equipos",
+    bullets: [
+      "Participan 64 personas distribuidas en 32 equipos.",
+      "Cada equipo está integrado por exactamente 2 jugadores registrados.",
+      "Un jugador solo puede pertenecer a un equipo durante toda la competencia.",
+      "Los integrantes compiten juntos en modalidad 2 vs. 2."
+    ]
   },
   {
-    title: "Equipos",
-    detail:
-      "Selección de clubes, selecciones, restricciones o criterios de uso: POR CONFIRMAR."
+    title: "3. Registro de equipos",
+    bullets: [
+      "Cada pareja deberá registrar nombre del equipo y datos de sus dos integrantes.",
+      "El cupo máximo es de 32 equipos.",
+      "La fecha límite y el enlace oficial de inscripción serán comunicados por AECOMPU.",
+      "Después del cierre de inscripciones no se aceptarán cambios de jugadores salvo autorización excepcional de la organización."
+    ]
   },
   {
-    title: "Pausas",
-    detail:
-      "Número, duración y condiciones para realizar pausas: POR CONFIRMAR."
+    title: "4. Check-in y presentación",
+    bullets: [
+      "El check-in recomendado se realizará de 9:00 a 9:25 a. m.",
+      "El kickoff oficial es a las 9:30 a. m.; los equipos deben estar listos antes de esa hora.",
+      "Ambos integrantes deben permanecer atentos a los llamados y al orden de estaciones.",
+      "La organización podrá llamar al siguiente encuentro mientras el partido anterior está finalizando para evitar retrasos."
+    ]
   },
   {
-    title: "Desempates",
-    detail:
-      "Procedimiento de tiempo extra, penales u otros mecanismos: POR CONFIRMAR."
+    title: "5. Estructura general",
+    bullets: [
+      "Fase de grupos: 32 equipos.",
+      "Clasificación: 16 equipos.",
+      "Octavos: 16 → 8.",
+      "Cuartos: 8 → 4.",
+      "Semifinales: 4 → 2 finalistas.",
+      "Los perdedores de semifinales disputan el 3.er lugar.",
+      "Los ganadores de semifinales disputan la gran final."
+    ]
   },
   {
-    title: "Puntualidad",
-    detail: rules[3].detail
+    title: "6. Fase de grupos",
+    bullets: [
+      "Habrá 4 grupos: A, B, C y D.",
+      "Cada grupo estará compuesto por 8 equipos.",
+      "Cada equipo disputará 2 partidos durante esta fase.",
+      "Los rivales se determinan mediante el fixture posterior al sorteo.",
+      "La fase de grupos comprende 32 partidos en total."
+    ]
   },
   {
-    title: "Conducta",
-    detail: rules[4].detail
+    title: "7. Sistema de puntuación",
+    bullets: [
+      "Victoria: 3 puntos.",
+      "Empate: 1 punto por equipo.",
+      "Derrota: 0 puntos.",
+      "Los resultados son registrados por la mesa de control al terminar cada encuentro."
+    ]
   },
   {
-    title: "Sanciones",
-    detail: rules[5].detail
+    title: "8. Criterios de desempate",
+    paragraphs: [
+      "Si dos o más equipos terminan igualados en puntos, se aplicarán los criterios en este orden:"
+    ],
+    bullets: [
+      "Mayor diferencia de goles.",
+      "Mayor cantidad de goles a favor.",
+      "Menor cantidad de goles recibidos.",
+      "Resultado directo entre los equipos empatados, cuando se hayan enfrentado.",
+      "Si el empate continúa y afecta una posición de clasificación, la organización podrá ordenar un desempate breve o tanda de penales para definir la posición."
+    ]
+  },
+  {
+    title: "9. Clasificación a octavos",
+    bullets: [
+      "Clasifican los equipos ubicados del 1.º al 4.º lugar de cada grupo.",
+      "Cada grupo entrega 4 clasificados.",
+      "Los puestos 5.º al 8.º quedan eliminados.",
+      "En total avanzan 16 equipos a la fase de eliminación directa."
+    ]
+  },
+  {
+    title: "10. Cruces de octavos",
+    bullets: [
+      "A1 vs B4.",
+      "A2 vs B3.",
+      "B1 vs A4.",
+      "B2 vs A3.",
+      "C1 vs D4.",
+      "C2 vs D3.",
+      "D1 vs C4.",
+      "D2 vs C3."
+    ]
+  },
+  {
+    title: "11. Eliminación directa",
+    paragraphs: [
+      "Desde octavos de final, cada enfrentamiento debe producir un ganador. El equipo derrotado queda eliminado, salvo los perdedores de semifinales, quienes disputan el partido por el 3.er lugar."
+    ]
+  },
+  {
+    title: "12. Empates en eliminación",
+    bullets: [
+      "Un partido de eliminación directa no puede finalizar empatado.",
+      "Si el marcador termina igualado, se utilizará el mecanismo de desempate definido por la organización para FC 27, priorizando una tanda de penales para mantener el horario.",
+      "La decisión deberá aplicarse de la misma manera a todos los partidos equivalentes."
+    ]
+  },
+  {
+    title: "13. Partido por el 3.er lugar",
+    bullets: [
+      "Lo disputan los dos equipos perdedores de semifinales.",
+      "El ganador obtiene oficialmente el 3.er lugar del torneo.",
+      "El partido se programa antes de la gran final."
+    ]
+  },
+  {
+    title: "14. Configuración temporal del partido",
+    bullets: [
+      "Primer tiempo: 5 minutos.",
+      "Descanso / entretiempo: 5 minutos.",
+      "Segundo tiempo: 5 minutos.",
+      "Rotación y preparación entre partidos: hasta 10 minutos.",
+      "Cada espacio del cronograma se administra como un bloque de 25 minutos."
+    ]
+  },
+  {
+    title: "15. Estaciones de juego",
+    bullets: [
+      "Se utilizarán 3 estaciones de juego.",
+      "Pueden disputarse hasta 3 encuentros simultáneamente.",
+      "La organización asigna la estación de cada partido.",
+      "Los equipos no pueden exigir una estación específica."
+    ]
+  },
+  {
+    title: "16. Plataforma y controles",
+    bullets: [
+      `Plataforma prevista: ${TOURNAMENT_CONFIG.platform}.`,
+      "Antes de iniciar, cada equipo debe verificar botones, joysticks, conexión y configuración del control.",
+      "Cualquier falla debe reportarse antes del saque inicial cuando sea posible.",
+      "Los periféricos admitidos y la política sobre controles propios serán comunicados por AECOMPU antes del evento."
+    ]
+  },
+  {
+    title: "17. Selección de clubes o selecciones",
+    paragraphs: [
+      "La organización publicará antes del inicio cualquier restricción aplicable a clubes, selecciones, equipos especiales o plantillas. Una vez anunciado el criterio, será uniforme para todos los participantes y no podrá modificarse a conveniencia de un equipo."
+    ]
+  },
+  {
+    title: "18. Inicio de cada encuentro",
+    bullets: [
+      "Los equipos se presentan cuando sean llamados.",
+      "Se confirma la estación asignada y el correcto funcionamiento de controles.",
+      "Ambas parejas verifican la configuración del partido.",
+      "El encuentro inicia cuando la mesa de control o encargado de estación lo autorice."
+    ]
+  },
+  {
+    title: "19. Pausas",
+    bullets: [
+      "Solo se permiten pausas justificadas por problemas técnicos, de control, conexión, salud o indicación de la organización.",
+      "No se permite pausar para cortar deliberadamente una jugada, perder tiempo o romper el ritmo del rival.",
+      "El abuso de pausas puede ser sancionado."
+    ]
+  },
+  {
+    title: "20. Desconexiones y fallas técnicas",
+    bullets: [
+      "Ante una desconexión, los jugadores deben detener cualquier manipulación adicional y avisar al encargado.",
+      "La organización registrará marcador, minuto aproximado y causa aparente de la interrupción.",
+      "Según el caso, podrá ordenar reinicio, continuación controlada o resolución administrativa.",
+      "Una desconexión provocada deliberadamente puede resultar en pérdida del partido o descalificación."
+    ]
+  },
+  {
+    title: "21. Puntualidad y llamados",
+    bullets: [
+      "Cada equipo debe permanecer localizable durante toda la fase en la que siga con vida.",
+      "Se realizarán llamados para presentarse en la estación asignada.",
+      "Un retraso que comprometa el cronograma puede generar advertencia o W.O.",
+      "La organización priorizará mantener los bloques de 25 minutos."
+    ]
+  },
+  {
+    title: "22. Walkover (W.O.)",
+    bullets: [
+      "Si un equipo no se presenta después de los llamados y la tolerancia indicada por la organización, puede perder por W.O.",
+      "Como referencia administrativa, el W.O. podrá registrarse 3-0 para efectos de tabla.",
+      "La ausencia reiterada o abandono deliberado puede implicar exclusión del torneo."
+    ]
+  },
+  {
+    title: "23. Conducta",
+    bullets: [
+      "Se exige respeto hacia rivales, compañeros, organizadores y espectadores.",
+      "Quedan prohibidos insultos graves, amenazas, agresiones, hostigamiento y daño intencional a equipos o instalaciones.",
+      "La celebración competitiva es válida mientras no se convierta en acoso o provocación reiterada."
+    ]
+  },
+  {
+    title: "24. Juego limpio",
+    bullets: [
+      "No se permite explotar deliberadamente errores del juego para obtener una ventaja antideportiva.",
+      "Está prohibido manipular conexión, controles, consola o configuración para perjudicar al rival.",
+      "No se permiten dispositivos, software o métodos externos no autorizados."
+    ]
+  },
+  {
+    title: "25. Espectadores",
+    bullets: [
+      "Los espectadores deben permanecer fuera del espacio operativo de las estaciones.",
+      "No pueden tocar controles, consolas o accesorios durante un encuentro.",
+      "No deben interrumpir ni dar indicaciones de manera que afecten el desarrollo del partido.",
+      "La organización puede solicitar el retiro de quien altere la competencia."
+    ]
+  },
+  {
+    title: "26. Resultados y evidencia",
+    bullets: [
+      "Al terminar un partido, el resultado debe ser reportado y validado por la mesa de control.",
+      "La organización puede utilizar fotografías, videos, capturas, registros del juego y testimonios de encargados para resolver incidencias.",
+      "Los equipos deben revisar el resultado antes de abandonar la estación."
+    ]
+  },
+  {
+    title: "27. Protestas",
+    bullets: [
+      "Cualquier protesta debe presentarse inmediatamente después del encuentro afectado.",
+      "Debe indicarse el partido, equipos involucrados, situación y evidencia disponible.",
+      "Las reclamaciones tardías pueden rechazarse si ya afectan rondas posteriores, salvo situaciones graves."
+    ]
+  },
+  {
+    title: "28. Sanciones",
+    bullets: [
+      "Advertencia verbal o formal para faltas leves.",
+      "Penalización administrativa cuando la conducta afecte el desarrollo del evento.",
+      "Pérdida del partido cuando una infracción impacte directamente la competencia.",
+      "Descalificación por agresión, amenazas, trampa, daño intencional, manipulación técnica o conducta gravemente antideportiva."
+    ]
+  },
+  {
+    title: "29. Premios y posiciones",
+    bullets: [
+      "1.er lugar: ganador de la gran final.",
+      "2.º lugar: equipo derrotado en la gran final.",
+      "3.er lugar: ganador del partido entre los perdedores de semifinales.",
+      "Los premios específicos se anunciarán por AECOMPU cuando estén confirmados."
+    ]
+  },
+  {
+    title: "30. Autoridad y aceptación",
+    paragraphs: [
+      "AECOMPU y el equipo organizador tienen autoridad para aplicar este reglamento, ordenar estaciones, registrar resultados y resolver situaciones excepcionales procurando consistencia y equidad.",
+      "Al inscribirse y participar, cada equipo acepta el formato, horarios, reglas de conducta y sanciones aquí descritas."
+    ]
   }
 ];
 
 const faq = [
   {
-    question: "¿Quién puede participar?",
+    question: "¿Cuántas personas participan?",
     answer:
-      "Los requisitos definitivos de participación están POR CONFIRMAR. AECOMPU publicará la información oficial antes de abrir el registro."
+      "El torneo está diseñado para 64 participantes, organizados en 32 equipos de dos jugadores."
   },
   {
-    question: "¿Qué necesito para competir?",
+    question: "¿Es 1 vs. 1 o 2 vs. 2?",
     answer:
-      "Los requisitos técnicos y de registro están POR CONFIRMAR. La página se actualizará cuando la organización los defina."
+      "La modalidad oficial de esta edición es 2 vs. 2. Cada pareja compite como un solo equipo durante todo el torneo."
   },
   {
-    question: "¿Debo llevar mi propio control?",
+    question: "¿Cómo funciona la fase de grupos?",
     answer:
-      "POR CONFIRMAR. La organización indicará si cada participante debe llevar su control y qué dispositivos serán compatibles."
+      "Hay 4 grupos de 8 equipos. Cada equipo juega 2 partidos. Se otorgan 3 puntos por victoria, 1 por empate y 0 por derrota; clasifican los 4 mejores de cada grupo."
+  },
+  {
+    question: "¿Cuántos equipos pasan a eliminación directa?",
+    answer:
+      "Avanzan 16 equipos: cuatro por cada grupo. Después se juegan octavos, cuartos, semifinales, tercer lugar y final."
+  },
+  {
+    question: "¿A qué hora comienza y termina?",
+    answer:
+      "El kickoff oficial está previsto para las 9:30 a. m. y el cierre con premiación alrededor de las 5:30 p. m. El check-in se realiza antes del inicio."
+  },
+  {
+    question: "¿Habrá descanso general para almorzar?",
+    answer:
+      "El cronograma de 8 horas no contempla una pausa general. Cada equipo tendrá descansos naturales mientras se disputan otros encuentros y deberá estar atento a sus llamados."
+  },
+  {
+    question: "¿Cuánto dura cada partido?",
+    answer:
+      "Se configuran 5 minutos por tiempo y 5 minutos de entretiempo. Operativamente se reserva un bloque total de 25 minutos por encuentro, incluyendo hasta 10 minutos para rotación y preparación."
+  },
+  {
+    question: "¿Cuántas estaciones habrá?",
+    answer:
+      "Habrá 3 estaciones, por lo que pueden jugarse hasta 3 partidos simultáneamente."
+  },
+  {
+    question: "¿Cómo se define el tercer lugar?",
+    answer:
+      "Los dos equipos que pierdan las semifinales juegan un partido específico por el 3.er lugar antes de la gran final."
   },
   {
     question: "¿Dónde se realizará?",
     answer:
-      "La sede general indicada es Universidad Gerardo Barrios, Centro Regional Usulután. El espacio específico dentro del campus está POR CONFIRMAR."
+      "La sede indicada es la Universidad Gerardo Barrios, Centro Regional Usulután. El espacio exacto dentro del campus será comunicado por AECOMPU."
   },
   {
-    question: "¿Cómo conoceré mi rival?",
+    question: "¿Debo llevar mi propio control?",
     answer:
-      "El mecanismo del sorteo y la publicación de emparejamientos están POR CONFIRMAR. El bracket de esta web quedará preparado para mostrarlo."
+      "AECOMPU comunicará antes del evento la política definitiva sobre controles propios y periféricos admitidos."
   },
   {
-    question: "¿Qué sucede si llego tarde?",
+    question: "¿Dónde consulto todas las reglas?",
     answer:
-      "La tolerancia y las sanciones por retraso están POR CONFIRMAR y se publicarán en el reglamento oficial."
-  },
-  {
-    question: "¿Cuándo será el sorteo?",
-    answer: "La fecha y hora del sorteo están POR CONFIRMAR."
-  },
-  {
-    question: "¿Dónde puedo consultar las reglas?",
-    answer:
-      "Puedes abrir el reglamento desde la sección de reglas. Los puntos pendientes aparecerán como POR CONFIRMAR hasta que AECOMPU publique la versión definitiva."
+      "En la sección REGLAS puedes abrir el reglamento completo con formato, puntuación, desempates, horarios, conducta, sanciones y procedimientos técnicos."
   }
 ];
 
@@ -262,6 +580,7 @@ function init() {
   renderSeason();
   renderQuickInfo();
   renderRoadmap();
+  renderGroups();
   renderMatches();
   renderBracket();
   renderRules();
@@ -290,15 +609,10 @@ function renderSeason() {
 function renderQuickInfo() {
   const items = [
     ["FORMATO", TOURNAMENT_CONFIG.format],
-    ["PLATAFORMA", TOURNAMENT_CONFIG.platform],
-    ["MODALIDAD", TOURNAMENT_CONFIG.modality],
-    ["SEDE", "UGB USULUTÁN"],
-    [
-      "INSCRIPCIÓN",
-      TOURNAMENT_CONFIG.registrationUrl === "#"
-        ? "PRÓXIMAMENTE"
-        : "ABIERTA"
-    ]
+    ["EQUIPOS", String(TOURNAMENT_CONFIG.teams)],
+    ["ESTACIONES", String(TOURNAMENT_CONFIG.stations)],
+    ["KICKOFF", TOURNAMENT_CONFIG.kickoff],
+    ["SEDE", "UGB USULUTÁN"]
   ];
 
   const container = document.getElementById("quickInfo");
@@ -347,6 +661,62 @@ function renderRoadmap() {
     .join("");
 }
 
+function renderGroups() {
+  const container = document.getElementById("groupsGrid");
+
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = groups
+    .map(
+      (group, groupIndex) => `
+        <article
+          class="group-card reveal fade-up"
+          style="transition-delay:${groupIndex * 70}ms"
+        >
+          <div class="group-card__header">
+            <div>
+              <span>
+                GROUP ${String(groupIndex + 1).padStart(2, "0")}
+              </span>
+              <h3>${escapeHTML(group.name)}</h3>
+            </div>
+
+            <strong>8 EQUIPOS</strong>
+          </div>
+
+          <ol class="group-table">
+            ${group.teams
+              .map(
+                (team, index) => `
+                  <li class="${team.qualifies ? "is-qualifying" : ""}">
+                    <span class="group-table__position">
+                      ${index + 1}
+                    </span>
+
+                    <span class="group-table__seed">
+                      ${escapeHTML(team.seed)}
+                    </span>
+
+                    <strong>
+                      ${escapeHTML(team.name)}
+                    </strong>
+
+                    <small>
+                      ${team.qualifies ? "CLASIFICA" : ""}
+                    </small>
+                  </li>
+                `
+              )
+              .join("")}
+          </ol>
+        </article>
+      `
+    )
+    .join("");
+}
+
 function renderMatches() {
   const container = document.getElementById("matchGrid");
 
@@ -355,54 +725,42 @@ function renderMatches() {
   }
 
   container.innerHTML = matches
-    .map((match, index) => {
-      const statusClass = getStatusClass(match.status);
-
-      const scoreA = Number.isFinite(match.scoreA)
-        ? match.scoreA
-        : "—";
-
-      const scoreB = Number.isFinite(match.scoreB)
-        ? match.scoreB
-        : "—";
-
-      return `
+    .map(
+      (match, index) => `
         <article
           class="match-card reveal fade-up"
           style="transition-delay:${Math.min(index * 80, 240)}ms"
         >
           <div class="match-card__top">
-
             <span class="match-card__stage">
               ${escapeHTML(match.stage)}
             </span>
 
-            <span class="status ${statusClass}">
+            <span class="status ${getStatusClass(match.status)}">
               ${escapeHTML(match.status)}
             </span>
-
           </div>
 
           <div class="match-card__body">
-
             <div class="match-player">
               <strong>${escapeHTML(match.playerA)}</strong>
-              <span>${scoreA}</span>
+              <span>—</span>
             </div>
 
-            <div class="match-vs">
-              ${match.status === "FINAL" ? "FINAL" : "VS"}
-            </div>
+            <div class="match-vs">VS</div>
 
             <div class="match-player">
               <strong>${escapeHTML(match.playerB)}</strong>
-              <span>${scoreB}</span>
+              <span>—</span>
             </div>
 
+            <div class="match-card__footer">
+              ${escapeHTML(match.footer)}
+            </div>
           </div>
         </article>
-      `;
-    })
+      `
+    )
     .join("");
 }
 
@@ -417,62 +775,71 @@ function renderBracket() {
     .map((column, columnIndex) => {
       if (column.champion) {
         return `
-          <section class="bracket-column">
-
+          <section class="bracket-column bracket-column--champion">
             <div class="bracket-column__title">
               ${escapeHTML(column.title)}
             </div>
 
             <div class="bracket-champion">
               <div>
-
                 <span>CHAMPION</span>
-
                 <strong>
                   ${escapeHTML(column.champion)}
                 </strong>
-
               </div>
             </div>
-
           </section>
         `;
       }
 
       const gapClass =
         columnIndex === 1
-          ? "bracket-gap-lg"
+          ? "bracket-gap-sm"
           : columnIndex === 2
-          ? "bracket-gap-xl"
-          : "";
+            ? "bracket-gap-lg"
+            : columnIndex === 3
+              ? "bracket-gap-xl"
+              : "";
 
       return `
         <section class="bracket-column ${gapClass}">
-
           <div class="bracket-column__title">
             ${escapeHTML(column.title)}
           </div>
 
           ${column.matches
             .map(
-              (players) => `
-                <div class="bracket-match">
+              (match) => `
+                <div
+                  class="bracket-match ${
+                    match.label === "FINAL"
+                      ? "bracket-match--final"
+                      : ""
+                  }"
+                >
+                  ${
+                    match.label
+                      ? `
+                        <div class="bracket-match__label">
+                          ${escapeHTML(match.label)}
+                        </div>
+                      `
+                      : ""
+                  }
 
                   <div class="bracket-player">
-                    <span>${escapeHTML(players[0])}</span>
+                    <span>${escapeHTML(match.teams[0])}</span>
                     <strong>—</strong>
                   </div>
 
                   <div class="bracket-player">
-                    <span>${escapeHTML(players[1])}</span>
+                    <span>${escapeHTML(match.teams[1])}</span>
                     <strong>—</strong>
                   </div>
-
                 </div>
               `
             )
             .join("")}
-
         </section>
       `;
     })
@@ -481,17 +848,13 @@ function renderBracket() {
 
 function renderRules() {
   const preview = document.getElementById("rulesPreview");
-
-  const modalContent = document.getElementById(
-    "rulesModalContent"
-  );
+  const modalContent = document.getElementById("rulesModalContent");
 
   if (preview) {
     preview.innerHTML = rules
       .map(
         (rule, index) => `
           <article class="rule-card">
-
             <span>
               ${String(index + 1).padStart(2, "0")}
             </span>
@@ -503,7 +866,6 @@ function renderRules() {
             <p>
               ${escapeHTML(rule.preview)}
             </p>
-
           </article>
         `
       )
@@ -511,27 +873,52 @@ function renderRules() {
   }
 
   if (modalContent) {
-    modalContent.innerHTML = modalRules
-      .map(
-        (rule, index) => `
-          <section class="modal-rule">
+    modalContent.innerHTML = `
+      <div class="rules-summary">
+        <strong>
+          64 JUGADORES · 32 EQUIPOS · 2 VS 2 ·
+          4 GRUPOS · TOP 16 · 3 ESTACIONES
+        </strong>
 
-            <span>
-              ${String(index + 1).padStart(2, "0")}
-            </span>
+        <span>
+          Kickoff 9:30 A. M. · Cierre estimado 5:30 P. M.
+        </span>
+      </div>
 
-            <h3>
-              ${escapeHTML(rule.title)}
-            </h3>
+      ${modalRules
+        .map(
+          (rule) => `
+            <section class="modal-rule">
+              <h3>${escapeHTML(rule.title)}</h3>
 
-            <p>
-              ${escapeHTML(rule.detail)}
-            </p>
+              ${(rule.paragraphs || [])
+                .map(
+                  (paragraph) => `
+                    <p>${escapeHTML(paragraph)}</p>
+                  `
+                )
+                .join("")}
 
-          </section>
-        `
-      )
-      .join("");
+              ${
+                rule.bullets
+                  ? `
+                    <ul>
+                      ${rule.bullets
+                        .map(
+                          (bullet) => `
+                            <li>${escapeHTML(bullet)}</li>
+                          `
+                        )
+                        .join("")}
+                    </ul>
+                  `
+                  : ""
+              }
+            </section>
+          `
+        )
+        .join("")}
+    `;
   }
 }
 
@@ -546,25 +933,17 @@ function renderSchedule() {
     .map(
       (event, index) => `
         <article class="schedule-item reveal fade-up">
-
           <div class="schedule-item__num">
             ${String(index + 1).padStart(2, "0")}
           </div>
 
           <div class="schedule-item__content">
-
-            <h3>
-              ${escapeHTML(event.name)}
-            </h3>
-
-            <p>
-              ${escapeHTML(event.location)}
-            </p>
-
+            <h3>${escapeHTML(event.name)}</h3>
+            <p>${escapeHTML(event.location)}</p>
+            <small>${escapeHTML(event.note)}</small>
           </div>
 
           <div class="schedule-item__meta">
-
             <span>
               ${escapeHTML(event.date)}
               ·
@@ -576,9 +955,7 @@ function renderSchedule() {
             >
               ${escapeHTML(event.status)}
             </span>
-
           </div>
-
         </article>
       `
     )
@@ -599,7 +976,6 @@ function renderFAQ() {
 
       return `
         <article class="accordion-item">
-
           <button
             class="accordion-trigger"
             id="${buttonId}"
@@ -607,15 +983,8 @@ function renderFAQ() {
             aria-expanded="false"
             aria-controls="${panelId}"
           >
-
-            <span>
-              ${escapeHTML(item.question)}
-            </span>
-
-            <span aria-hidden="true">
-              +
-            </span>
-
+            <span>${escapeHTML(item.question)}</span>
+            <span aria-hidden="true">+</span>
           </button>
 
           <div
@@ -624,17 +993,10 @@ function renderFAQ() {
             role="region"
             aria-labelledby="${buttonId}"
           >
-
             <div>
-
-              <p>
-                ${escapeHTML(item.answer)}
-              </p>
-
+              <p>${escapeHTML(item.answer)}</p>
             </div>
-
           </div>
-
         </article>
       `;
     })
@@ -642,17 +1004,9 @@ function renderFAQ() {
 }
 
 function setupRegistration() {
-  const button = document.getElementById(
-    "registrationButton"
-  );
-
-  const deadline = document.getElementById(
-    "registrationDeadline"
-  );
-
-  const andradeLink = document.getElementById(
-    "andradeDevLink"
-  );
+  const button = document.getElementById("registrationButton");
+  const deadline = document.getElementById("registrationDeadline");
+  const andradeLink = document.getElementById("andradeDevLink");
 
   if (deadline) {
     deadline.textContent = formatConfiguredDate(
@@ -662,8 +1016,7 @@ function setupRegistration() {
 
   if (button) {
     if (TOURNAMENT_CONFIG.registrationUrl === "#") {
-      button.textContent =
-        "INSCRIPCIONES PRÓXIMAMENTE";
+      button.textContent = "INSCRIPCIONES PRÓXIMAMENTE";
 
       button.setAttribute(
         "aria-disabled",
@@ -672,21 +1025,16 @@ function setupRegistration() {
 
       button.addEventListener(
         "click",
-        (event) => {
-          event.preventDefault();
-        }
+        (event) => event.preventDefault()
       );
     } else {
-      button.textContent =
-        "INSCRIBIRME AHORA";
+      button.textContent = "INSCRIBIR EQUIPO";
 
       button.href =
         TOURNAMENT_CONFIG.registrationUrl;
 
       button.target = "_blank";
-
-      button.rel =
-        "noopener noreferrer";
+      button.rel = "noopener noreferrer";
     }
   }
 
@@ -697,13 +1045,11 @@ function setupRegistration() {
 }
 
 function setupCountdown() {
-  const countdown = document.getElementById(
-    "countdown"
-  );
+  const countdown =
+    document.getElementById("countdown");
 
-  const empty = document.getElementById(
-    "countdownEmpty"
-  );
+  const empty =
+    document.getElementById("countdownEmpty");
 
   if (!countdown || !empty) {
     return;
@@ -714,7 +1060,7 @@ function setupCountdown() {
     empty.hidden = false;
 
     empty.textContent =
-      "FECHA POR CONFIRMAR";
+      `FECHA POR CONFIRMAR · KICKOFF ${TOURNAMENT_CONFIG.kickoff}`;
 
     return;
   }
@@ -724,12 +1070,6 @@ function setupCountdown() {
   );
 
   if (Number.isNaN(target.getTime())) {
-    countdown.hidden = true;
-    empty.hidden = false;
-
-    empty.textContent =
-      "FECHA POR CONFIRMAR";
-
     return;
   }
 
@@ -750,40 +1090,30 @@ function setupCountdown() {
       return false;
     }
 
-    const days = Math.floor(
-      distance / 86400000
-    );
-
-    const hours = Math.floor(
-      (distance % 86400000) / 3600000
-    );
-
-    const minutes = Math.floor(
-      (distance % 3600000) / 60000
-    );
-
-    const seconds = Math.floor(
-      (distance % 60000) / 1000
-    );
-
     setText(
       "days",
-      String(days).padStart(2, "0")
+      Math.floor(distance / 86400000)
     );
 
     setText(
       "hours",
-      String(hours).padStart(2, "0")
+      Math.floor(
+        (distance % 86400000) / 3600000
+      )
     );
 
     setText(
       "minutes",
-      String(minutes).padStart(2, "0")
+      Math.floor(
+        (distance % 3600000) / 60000
+      )
     );
 
     setText(
       "seconds",
-      String(seconds).padStart(2, "0")
+      Math.floor(
+        (distance % 60000) / 1000
+      )
     );
 
     return true;
@@ -791,70 +1121,54 @@ function setupCountdown() {
 
   update();
 
-  const timer = window.setInterval(() => {
+  const interval = window.setInterval(() => {
     if (!update()) {
-      window.clearInterval(timer);
+      window.clearInterval(interval);
     }
   }, 1000);
 }
 
 function setupNavbar() {
-  const header = document.getElementById(
-    "siteHeader"
-  );
+  const header =
+    document.getElementById("siteHeader");
 
   if (!header) {
     return;
   }
 
-  const update = () => {
+  const update = () =>
     header.classList.toggle(
       "is-scrolled",
-      window.scrollY > 18
+      window.scrollY > 20
     );
-  };
 
   update();
 
   window.addEventListener(
     "scroll",
     update,
-    {
-      passive: true
-    }
+    { passive: true }
   );
 }
 
 function setupMobileMenu() {
-  const toggle = document.getElementById(
-    "menuToggle"
-  );
+  const button =
+    document.getElementById("menuToggle");
 
-  const panel = document.getElementById(
-    "navMenu"
-  );
+  const panel =
+    document.getElementById("navMenu");
 
-  if (!toggle || !panel) {
+  if (!button || !panel) {
     return;
   }
 
-  const closeMenu = () => {
-    toggle.classList.remove(
-      "is-open"
-    );
+  const close = () => {
+    button.classList.remove("is-open");
+    panel.classList.remove("is-open");
 
-    panel.classList.remove(
-      "is-open"
-    );
-
-    toggle.setAttribute(
+    button.setAttribute(
       "aria-expanded",
       "false"
-    );
-
-    toggle.setAttribute(
-      "aria-label",
-      "Abrir menú"
     );
 
     panel.setAttribute(
@@ -867,129 +1181,75 @@ function setupMobileMenu() {
     );
   };
 
-  const openMenu = () => {
-    toggle.classList.add(
-      "is-open"
+  button.addEventListener("click", () => {
+    const opening =
+      !panel.classList.contains("is-open");
+
+    button.classList.toggle(
+      "is-open",
+      opening
     );
 
-    panel.classList.add(
-      "is-open"
+    panel.classList.toggle(
+      "is-open",
+      opening
     );
 
-    toggle.setAttribute(
+    button.setAttribute(
       "aria-expanded",
-      "true"
-    );
-
-    toggle.setAttribute(
-      "aria-label",
-      "Cerrar menú"
+      String(opening)
     );
 
     panel.setAttribute(
       "aria-hidden",
-      "false"
+      String(!opening)
     );
 
-    document.body.classList.add(
-      "menu-open"
+    document.body.classList.toggle(
+      "menu-open",
+      opening
     );
-  };
+  });
 
-  toggle.addEventListener(
-    "click",
-    () => {
-      if (
-        toggle.getAttribute(
-          "aria-expanded"
-        ) === "true"
-      ) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    }
-  );
+  panel
+    .querySelectorAll("a")
+    .forEach((link) =>
+      link.addEventListener(
+        "click",
+        close
+      )
+    );
 
-  panel.addEventListener(
-    "click",
-    (event) => {
-      if (
-        event.target.closest("a")
-      ) {
-        closeMenu();
-      }
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1120) {
+      close();
     }
-  );
-
-  window.addEventListener(
-    "resize",
-    () => {
-      if (
-        window.innerWidth > 1120
-      ) {
-        closeMenu();
-      }
-    }
-  );
+  });
 }
 
 function setupModal() {
-  const modal = document.getElementById(
-    "rulesModal"
-  );
-
-  const dialog =
-    modal?.querySelector(
-      ".modal__dialog"
-    );
+  const modal =
+    document.getElementById("rulesModal");
 
   const openButton =
-    document.getElementById(
-      "openRules"
-    );
+    document.getElementById("openRules");
 
   const closeButton =
-    document.getElementById(
-      "closeRules"
-    );
+    document.getElementById("closeRules");
 
-  if (
-    !modal ||
-    !dialog ||
-    !openButton ||
-    !closeButton
-  ) {
+  if (!modal || !openButton || !closeButton) {
     return;
   }
 
-  let lastFocusedElement = null;
+  const dialog =
+    modal.querySelector(".modal__dialog");
 
-  const getFocusable = () => {
-    return [
-      ...dialog.querySelectorAll(
-        `
-          button,
-          [href],
-          input,
-          select,
-          textarea,
-          [tabindex]:not([tabindex="-1"])
-        `
-      )
-    ].filter(
-      (node) =>
-        !node.hasAttribute("disabled")
-    );
-  };
+  let lastFocused = null;
 
-  const openModal = () => {
-    lastFocusedElement =
-      document.activeElement;
+  const open = () => {
+    lastFocused = document.activeElement;
 
-    modal.classList.add(
-      "is-open"
-    );
+    modal.classList.add("is-open");
 
     modal.setAttribute(
       "aria-hidden",
@@ -1000,246 +1260,148 @@ function setupModal() {
       "modal-open"
     );
 
-    window.requestAnimationFrame(
-      () => {
-        modal.classList.add(
-          "is-visible"
-        );
-
-        dialog.focus();
-      }
-    );
+    requestAnimationFrame(() => {
+      modal.classList.add("is-visible");
+      dialog?.focus();
+    });
   };
 
-  const closeModal = () => {
-    modal.classList.remove(
-      "is-visible"
-    );
+  const close = () => {
+    modal.classList.remove("is-visible");
 
-    modal.setAttribute(
-      "aria-hidden",
-      "true"
-    );
+    window.setTimeout(() => {
+      modal.classList.remove("is-open");
 
-    document.body.classList.remove(
-      "modal-open"
-    );
+      modal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
 
-    window.setTimeout(
-      () => {
-        modal.classList.remove(
-          "is-open"
-        );
+      document.body.classList.remove(
+        "modal-open"
+      );
 
-        if (
-          lastFocusedElement instanceof
-          HTMLElement
-        ) {
-          lastFocusedElement.focus();
-        }
-      },
-      240
-    );
+      if (lastFocused instanceof HTMLElement) {
+        lastFocused.focus();
+      }
+    }, 220);
   };
 
   openButton.addEventListener(
     "click",
-    openModal
+    open
   );
 
   closeButton.addEventListener(
     "click",
-    closeModal
+    close
   );
 
-  modal.addEventListener(
-    "click",
-    (event) => {
-      if (
-        event.target.matches(
-          "[data-modal-close]"
-        )
-      ) {
-        closeModal();
-      }
-    }
-  );
+  modal
+    .querySelectorAll("[data-modal-close]")
+    .forEach((node) =>
+      node.addEventListener(
+        "click",
+        close
+      )
+    );
 
   document.addEventListener(
     "keydown",
     (event) => {
       if (
-        !modal.classList.contains(
-          "is-open"
-        )
+        event.key === "Escape" &&
+        modal.classList.contains("is-open")
       ) {
-        return;
-      }
-
-      if (event.key === "Escape") {
-        closeModal();
-
-        return;
-      }
-
-      if (event.key === "Tab") {
-        const focusable =
-          getFocusable();
-
-        if (!focusable.length) {
-          return;
-        }
-
-        const first =
-          focusable[0];
-
-        const last =
-          focusable[
-            focusable.length - 1
-          ];
-
-        if (
-          event.shiftKey &&
-          document.activeElement ===
-            first
-        ) {
-          event.preventDefault();
-
-          last.focus();
-        } else if (
-          !event.shiftKey &&
-          document.activeElement ===
-            last
-        ) {
-          event.preventDefault();
-
-          first.focus();
-        }
+        close();
       }
     }
   );
 }
 
 function setupAccordion() {
-  const accordion =
-    document.getElementById(
-      "faqAccordion"
-    );
+  document
+    .querySelectorAll(".accordion-trigger")
+    .forEach((trigger) => {
+      trigger.addEventListener(
+        "click",
+        () => {
+          const expanded =
+            trigger.getAttribute(
+              "aria-expanded"
+            ) === "true";
 
-  if (!accordion) {
-    return;
-  }
+          const panel =
+            document.getElementById(
+              trigger.getAttribute(
+                "aria-controls"
+              )
+            );
 
-  accordion.addEventListener(
-    "click",
-    (event) => {
-      const trigger =
-        event.target.closest(
-          ".accordion-trigger"
-        );
-
-      if (!trigger) {
-        return;
-      }
-
-      const currentItem =
-        trigger.closest(
-          ".accordion-item"
-        );
-
-      const isOpen =
-        trigger.getAttribute(
-          "aria-expanded"
-        ) === "true";
-
-      accordion
-        .querySelectorAll(
-          ".accordion-item"
-        )
-        .forEach((item) => {
-          item.classList.remove(
-            "is-open"
+          trigger.setAttribute(
+            "aria-expanded",
+            String(!expanded)
           );
 
-          item
-            .querySelector(
-              ".accordion-trigger"
-            )
-            ?.setAttribute(
-              "aria-expanded",
-              "false"
+          trigger.classList.toggle(
+            "is-open",
+            !expanded
+          );
+
+          if (panel) {
+            panel.classList.toggle(
+              "is-open",
+              !expanded
             );
-        });
+          }
 
-      if (!isOpen) {
-        currentItem?.classList.add(
-          "is-open"
-        );
+          const icon =
+            trigger.lastElementChild;
 
-        trigger.setAttribute(
-          "aria-expanded",
-          "true"
-        );
-      }
-    }
-  );
+          if (icon) {
+            icon.textContent =
+              expanded ? "+" : "−";
+          }
+        }
+      );
+    });
 }
 
 function setupRevealAnimations() {
-  const nodes =
-    document.querySelectorAll(
-      ".reveal"
-    );
+  const items =
+    document.querySelectorAll(".reveal");
 
-  if (
-    !(
-      "IntersectionObserver" in
-      window
-    )
-  ) {
-    nodes.forEach((node) => {
-      node.classList.add(
-        "is-visible"
-      );
-    });
+  if (!("IntersectionObserver" in window)) {
+    items.forEach((item) =>
+      item.classList.add("is-visible")
+    );
 
     return;
   }
 
   const observer =
     new IntersectionObserver(
-      (
-        entries,
-        revealObserver
-      ) => {
-        entries.forEach(
-          (entry) => {
-            if (
-              !entry.isIntersecting
-            ) {
-              return;
-            }
-
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
             entry.target.classList.add(
               "is-visible"
             );
 
-            revealObserver.unobserve(
+            observer.unobserve(
               entry.target
             );
           }
-        );
+        });
       },
       {
-        threshold: 0.12,
-        rootMargin:
-          "0px 0px -6% 0px"
+        threshold: 0.12
       }
     );
 
-  nodes.forEach((node) => {
-    observer.observe(node);
-  });
+  items.forEach((item) =>
+    observer.observe(item)
+  );
 }
 
 function setupCounters() {
@@ -1248,182 +1410,142 @@ function setupCounters() {
       "[data-count]"
     );
 
-  if (
-    !(
-      "IntersectionObserver" in
-      window
-    )
-  ) {
+  if (!("IntersectionObserver" in window)) {
     return;
   }
 
   const observer =
     new IntersectionObserver(
-      (
-        entries,
-        counterObserver
-      ) => {
-        entries.forEach(
-          (entry) => {
-            if (
-              !entry.isIntersecting
-            ) {
-              return;
-            }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
 
-            const node =
-              entry.target;
+          const node = entry.target;
 
-            const target =
-              Number(
-                node.dataset.count ||
-                  0
+          const target =
+            Number(node.dataset.count || 0);
+
+          const suffix =
+            node.dataset.suffix || "";
+
+          const format =
+            node.dataset.format || "";
+
+          const duration = 800;
+          const start = performance.now();
+
+          const animate = (now) => {
+            const progress =
+              Math.min(
+                (now - start) / duration,
+                1
               );
 
-            const suffix =
-              node.dataset.suffix ||
-              "";
+            const value =
+              Math.round(
+                target *
+                  (
+                    1 -
+                    Math.pow(
+                      1 - progress,
+                      3
+                    )
+                  )
+              );
 
-            const format =
-              node.dataset.format;
-
-            const duration = 900;
-
-            const startTime =
-              performance.now();
-
-            const tick = (now) => {
-              const progress =
-                Math.min(
-                  (now -
-                    startTime) /
-                    duration,
-                  1
-                );
-
-              const eased =
-                1 -
-                Math.pow(
-                  1 - progress,
-                  3
-                );
-
-              const value =
-                Math.round(
-                  target * eased
-                );
-
-              const rendered =
+            node.textContent =
+              `${
                 format === "02"
-                  ? String(
-                      value
-                    ).padStart(
+                  ? String(value).padStart(
                       2,
                       "0"
                     )
-                  : String(value);
+                  : value
+              }${suffix}`;
 
-              node.textContent =
-                rendered + suffix;
+            if (progress < 1) {
+              requestAnimationFrame(
+                animate
+              );
+            }
+          };
 
-              if (progress < 1) {
-                requestAnimationFrame(
-                  tick
-                );
-              }
-            };
+          requestAnimationFrame(animate);
 
-            requestAnimationFrame(
-              tick
-            );
-
-            counterObserver.unobserve(
-              node
-            );
-          }
-        );
+          observer.unobserve(node);
+        });
       },
       {
-        threshold: 0.6
+        threshold: 0.55
       }
     );
 
-  counters.forEach(
-    (counter) => {
-      observer.observe(counter);
-    }
+  counters.forEach((counter) =>
+    observer.observe(counter)
   );
 }
 
 function setupActiveNavigation() {
-  const sections =
-    document.querySelectorAll(
-      ".section-anchor"
-    );
-
   const links = [
     ...document.querySelectorAll(
       "[data-nav]"
     )
   ];
 
+  const pairs = links
+    .map((link) => ({
+      link,
+      section: document.querySelector(
+        link.getAttribute("href")
+      )
+    }))
+    .filter((item) => item.section);
+
   if (
-    !sections.length ||
-    !links.length ||
-    !(
-      "IntersectionObserver" in
-      window
-    )
+    !("IntersectionObserver" in window) ||
+    !pairs.length
   ) {
     return;
   }
 
-  const linkMap = new Map(
-    links.map((link) => [
-      link
-        .getAttribute("href")
-        ?.replace("#", ""),
-      link
-    ])
-  );
-
   const observer =
     new IntersectionObserver(
       (entries) => {
-        const visible =
-          entries
-            .filter(
-              (entry) =>
-                entry.isIntersecting
-            )
-            .sort(
-              (a, b) =>
-                b.intersectionRatio -
-                a.intersectionRatio
-            )[0];
+        const visible = entries
+          .filter(
+            (entry) =>
+              entry.isIntersecting
+          )
+          .sort(
+            (a, b) =>
+              b.intersectionRatio -
+              a.intersectionRatio
+          )[0];
 
         if (!visible) {
           return;
         }
 
-        links.forEach((link) => {
+        links.forEach((link) =>
           link.classList.remove(
             "is-active"
-          );
-        });
-
-        linkMap
-          .get(
-            visible.target.id
           )
-          ?.classList.add(
-            "is-active"
-          );
+        );
+
+        const match = pairs.find(
+          (item) =>
+            item.section === visible.target
+        );
+
+        match?.link.classList.add(
+          "is-active"
+        );
       },
       {
         rootMargin:
-          "-30% 0px -55% 0px",
-
+          "-25% 0px -60% 0px",
         threshold: [
           0.01,
           0.2,
@@ -1432,15 +1554,13 @@ function setupActiveNavigation() {
       }
     );
 
-  sections.forEach(
-    (section) => {
-      observer.observe(section);
-    }
+  pairs.forEach((item) =>
+    observer.observe(item.section)
   );
 }
 
 function setupLogoFallback() {
-  const img =
+  const image =
     document.getElementById(
       "aecompuLogo"
     );
@@ -1450,80 +1570,72 @@ function setupLogoFallback() {
       "aecompuLogoPlaceholder"
     );
 
+  if (!image || !placeholder) {
+    return;
+  }
+
+  image.addEventListener(
+    "load",
+    () => {
+      image.hidden = false;
+      placeholder.hidden = true;
+    }
+  );
+
+  image.addEventListener(
+    "error",
+    () => {
+      image.hidden = true;
+      placeholder.hidden = false;
+    }
+  );
+
+  if (TOURNAMENT_CONFIG.aecompuLogo) {
+    image.src =
+      TOURNAMENT_CONFIG.aecompuLogo;
+  }
+}
+
+function setupParallax() {
+  const art =
+    document.querySelector(
+      ".hero__art"
+    );
+
   if (
-    !img ||
-    !placeholder ||
-    !TOURNAMENT_CONFIG.aecompuLogo
+    !art ||
+    window
+      .matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      )
+      .matches
   ) {
     return;
   }
 
-  const probe = new Image();
-
-  probe.onload = () => {
-    img.src =
-      TOURNAMENT_CONFIG.aecompuLogo;
-
-    img.hidden = false;
-
-    placeholder.hidden = true;
-  };
-
-  probe.onerror = () => {
-    img.hidden = true;
-
-    placeholder.hidden = false;
-  };
-
-  probe.src =
-    TOURNAMENT_CONFIG.aecompuLogo;
-}
-
-function setupParallax() {
-  const heroNumber =
-    document.querySelector(
-      ".hero__number"
-    );
-
-  if (!heroNumber) {
-    return;
-  }
-
-  const reduceMotion =
-    window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-  if (reduceMotion) {
-    return;
-  }
-
-  let ticking = false;
-
-  const update = () => {
-    const offset = Math.min(
-      window.scrollY * 0.035,
-      28
-    );
-
-    heroNumber.style.transform =
-      `translate3d(0, ${offset}px, 0)`;
-
-    ticking = false;
-  };
-
   window.addEventListener(
-    "scroll",
-    () => {
-      if (ticking) {
+    "pointermove",
+    (event) => {
+      if (window.innerWidth < 900) {
         return;
       }
 
-      ticking = true;
+      const x =
+        (
+          event.clientX /
+            window.innerWidth -
+          0.5
+        ) * 8;
 
-      requestAnimationFrame(
-        update
-      );
+      const y =
+        (
+          event.clientY /
+            window.innerHeight -
+          0.5
+        ) * 8;
+
+      art.style.transform =
+        `translate3d(${x}px, ${y}px, 0)`;
     },
     {
       passive: true
@@ -1533,18 +1645,23 @@ function setupParallax() {
 
 function getStatusClass(status) {
   const normalized =
-    String(status || "")
-      .toUpperCase();
+    String(status).toUpperCase();
 
   if (
-    normalized === "FINAL" ||
-    normalized === "FINALIZADO"
+    ["FINAL", "CIERRE"].includes(
+      normalized
+    )
   ) {
     return "status--final";
   }
 
   if (
-    normalized === "EN VIVO"
+    [
+      "LIVE",
+      "EN JUEGO",
+      "KICKOFF",
+      "LISTA"
+    ].includes(normalized)
   ) {
     return "status--live";
   }
@@ -1557,14 +1674,9 @@ function formatConfiguredDate(value) {
     return "POR CONFIRMAR";
   }
 
-  const date =
-    new Date(value);
+  const date = new Date(value);
 
-  if (
-    Number.isNaN(
-      date.getTime()
-    )
-  ) {
+  if (Number.isNaN(date.getTime())) {
     return "POR CONFIRMAR";
   }
 
@@ -1575,7 +1687,9 @@ function formatConfiguredDate(value) {
       month: "long",
       year: "numeric"
     }
-  ).format(date);
+  )
+    .format(date)
+    .toUpperCase();
 }
 
 function setText(id, value) {
@@ -1583,7 +1697,11 @@ function setText(id, value) {
     document.getElementById(id);
 
   if (node) {
-    node.textContent = value;
+    node.textContent =
+      String(value).padStart(
+        2,
+        "0"
+      );
   }
 }
 

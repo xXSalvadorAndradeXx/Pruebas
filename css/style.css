@@ -2545,3 +2545,377 @@ code {
     transform: none;
   }
 }
+/* =========================================================
+   AECOMPU SUPERLEAGUE 2026 · 2 VS 2 FORMAT OVERRIDES
+   ========================================================= */
+
+.competition-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.competition-facts span {
+  min-height: 78px;
+  display: grid;
+  align-content: center;
+  gap: 2px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.018);
+  color: var(--text-dim);
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.competition-facts strong {
+  color: var(--green-primary);
+  font-family: var(--title-font);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.groups-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 36px;
+  margin: 90px 0 28px;
+  padding-top: 34px;
+  border-top: 1px solid var(--border);
+}
+
+.groups-heading h3 {
+  margin: 0;
+  font-family: var(--title-font);
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+}
+
+.groups-heading h3 span {
+  color: var(--green-primary);
+}
+
+.groups-heading p:not(.section-kicker) {
+  max-width: 430px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+}
+
+.groups-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.group-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.016);
+}
+
+.group-card__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 96px;
+  padding: 18px 18px 15px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(145deg, rgba(24, 242, 125, 0.055), transparent 62%);
+}
+
+.group-card__header span,
+.group-card__header > strong {
+  color: var(--text-dim);
+  font-size: 0.54rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.group-card__header h3 {
+  margin: 4px 0 0;
+  font-family: var(--title-font);
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.group-card__header > strong {
+  color: var(--green-primary);
+  white-space: nowrap;
+}
+
+.group-table {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.group-table li {
+  display: grid;
+  grid-template-columns: 24px 30px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 7px;
+  min-height: 43px;
+  padding: 0 13px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+  color: var(--text-muted);
+  font-size: 0.66rem;
+}
+
+.group-table li:last-child {
+  border-bottom: 0;
+}
+
+.group-table li.is-qualifying {
+  background: linear-gradient(90deg, rgba(24, 242, 125, 0.07), transparent 70%);
+}
+
+.group-table__position {
+  color: var(--text-dim);
+  font-family: var(--title-font);
+  font-size: 0.95rem;
+  font-weight: 900;
+}
+
+.group-table__seed {
+  color: var(--green-primary);
+  font-weight: 900;
+}
+
+.group-table strong {
+  overflow: hidden;
+  color: #dcebe5;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.group-table small {
+  color: var(--green-primary);
+  font-size: 0.46rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.match-card__footer {
+  margin-top: 2px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Five-column Top 16 bracket */
+.bracket {
+  min-width: 1520px;
+  grid-template-columns: 1.28fr 1.08fr 0.98fr 0.98fr 0.72fr;
+  gap: 28px;
+}
+
+.bracket-gap-sm {
+  margin-block: 34px;
+}
+
+.bracket-gap-lg {
+  margin-block: 116px;
+}
+
+.bracket-gap-xl {
+  margin-block: 164px;
+}
+
+.bracket-match__label {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--cyan);
+  background: rgba(44, 232, 196, 0.035);
+  font-size: 0.52rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+}
+
+.bracket-match--final {
+  border-color: rgba(24, 242, 125, 0.34);
+  box-shadow: 0 12px 34px rgba(24, 242, 125, 0.045);
+}
+
+.bracket-column--champion {
+  align-self: center;
+}
+
+/* Detailed rules modal */
+.modal__dialog--rules {
+  width: min(980px, 100%);
+  max-height: min(88vh, 900px);
+}
+
+.modal__dialog--rules .modal__body {
+  max-height: calc(min(88vh, 900px) - 100px);
+}
+
+.rules-summary {
+  display: grid;
+  gap: 5px;
+  margin-bottom: 30px;
+  padding: 18px;
+  border: 1px solid var(--border-strong);
+  background: rgba(24, 242, 125, 0.045);
+}
+
+.rules-summary strong {
+  color: var(--green-primary);
+  font-family: var(--title-font);
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+}
+
+.rules-summary span {
+  color: var(--text-muted);
+  font-size: 0.74rem;
+}
+
+.modal-rule h3 {
+  color: #f2faf7;
+}
+
+.modal-rule p + p {
+  margin-top: 10px;
+}
+
+.modal-rule ul {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.modal-rule li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--text-muted);
+  font-size: 0.91rem;
+}
+
+.modal-rule li::before {
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--green-primary);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.schedule-item__content small {
+  display: block;
+  margin-top: 5px;
+  color: var(--text-dim);
+  font-size: 0.66rem;
+}
+
+/* Three-place podium */
+.prize-grid--three {
+  max-width: 1120px;
+  grid-template-columns: 0.9fr 1.15fr 0.9fr;
+  align-items: end;
+}
+
+.prize-grid--three .prize-card--champion {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.prize-grid--three .prize-card:nth-child(2) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.prize-grid--three .prize-card:nth-child(3) {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.prize-card--third {
+  min-height: 330px;
+}
+
+/* Tournament-specific responsive behavior */
+@media (max-width: 1120px) {
+  .groups-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .competition-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .groups-heading {
+    display: grid;
+    gap: 16px;
+    margin-top: 70px;
+  }
+
+  .groups-heading p:not(.section-kicker) {
+    max-width: 650px;
+  }
+
+  .prize-grid--three {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .prize-grid--three .prize-card--champion,
+  .prize-grid--three .prize-card:nth-child(2),
+  .prize-grid--three .prize-card:nth-child(3) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .prize-grid--three .prize-card--champion {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 700px) {
+  .groups-grid,
+  .competition-facts,
+  .prize-grid--three {
+    grid-template-columns: 1fr;
+  }
+
+  .prize-grid--three .prize-card--champion {
+    grid-column: auto;
+  }
+
+  .group-card__header {
+    min-height: 82px;
+  }
+
+  .group-table li {
+    grid-template-columns: 24px 30px minmax(0, 1fr);
+  }
+
+  .group-table small {
+    display: none;
+  }
+
+  .modal__dialog--rules {
+    max-height: 92vh;
+  }
+
+  .modal__dialog--rules .modal__body {
+    max-height: calc(92vh - 96px);
+  }
+}
