@@ -106,6 +106,15 @@ function calculateGroupStandings(groupLetter) {
   tournamentState.groupMatches
     .filter((match) => match.group === groupLetter)
     .forEach((match) => {
+      if (
+        match.scoreA === null ||
+        match.scoreB === null ||
+        match.scoreA === "" ||
+        match.scoreB === ""
+      ) {
+        return;
+      }
+
       const scoreA = Number(match.scoreA);
       const scoreB = Number(match.scoreB);
       const valid = Number.isInteger(scoreA) && scoreA >= 0 && Number.isInteger(scoreB) && scoreB >= 0;
@@ -170,7 +179,7 @@ function renderGroups() {
     const sortedTeams = getSortedGroupTeams(group);
 
     return `
-      <article class="group-card reveal fade-up" style="transition-delay:${groupIndex * 70}ms">
+      <article class="group-card reveal fade-up is-visible" style="transition-delay:${groupIndex * 70}ms">
         <div class="group-card__header">
           <div>
             <span>GROUP ${String(groupIndex + 1).padStart(2, "0")}</span>

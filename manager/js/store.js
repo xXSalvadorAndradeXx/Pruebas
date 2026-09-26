@@ -45,6 +45,7 @@ function calculateManagerStandings(state, groupLetter) {
   const table = new Map();
   (state.teams[groupLetter] || []).forEach((team) => table.set(team.seed, {seed:team.seed,name:team.name,points:0,goalsFor:0,goalsAgainst:0}));
   state.groupMatches.filter((m) => m.group === groupLetter).forEach((m) => {
+    if (m.scoreA === null || m.scoreB === null || m.scoreA === "" || m.scoreB === "") return;
     const a = Number(m.scoreA), b = Number(m.scoreB);
     if (!Number.isInteger(a) || a < 0 || !Number.isInteger(b) || b < 0) return;
     const ta = table.get(m.teamA), tb = table.get(m.teamB);

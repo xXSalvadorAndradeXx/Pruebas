@@ -90,7 +90,14 @@ function renderManager() {
 }
 
 function renderManagerSummary() {
-  const completed = managerState.groupMatches.filter((m) => Number.isInteger(Number(m.scoreA)) && Number.isInteger(Number(m.scoreB))).length;
+  const completed = managerState.groupMatches.filter((m) =>
+    m.scoreA !== null &&
+    m.scoreB !== null &&
+    m.scoreA !== "" &&
+    m.scoreB !== "" &&
+    Number.isInteger(Number(m.scoreA)) &&
+    Number.isInteger(Number(m.scoreB))
+  ).length;
   const container = document.getElementById("summaryGrid");
   if (!container) return;
   const cards = [["EQUIPOS","32"],["PARTIDOS DE GRUPO",`${completed}/32`],["GRUPOS","4"],["CLASIFICAN","16"]];
@@ -120,7 +127,13 @@ function renderResultManager() {
   if (select) select.value = selectedResultGroup;
   const matches = managerState.groupMatches.filter((m) => m.group === selectedResultGroup);
   container.innerHTML = `<div class="fixture-list">${matches.map((match) => {
-    const hasResult = Number.isInteger(Number(match.scoreA)) && Number.isInteger(Number(match.scoreB));
+    const hasResult =
+      match.scoreA !== null &&
+      match.scoreB !== null &&
+      match.scoreA !== "" &&
+      match.scoreB !== "" &&
+      Number.isInteger(Number(match.scoreA)) &&
+      Number.isInteger(Number(match.scoreB));
     return `
       <div class="fixture-row">
         <span class="fixture-meta">R${match.round} · ${match.id}</span>
