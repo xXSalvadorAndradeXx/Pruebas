@@ -1,406 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050b09">
-  <meta name="description" content="Sitio oficial de AECOMPU SuperLeague, torneo presencial 2 vs 2 de FC 27 para 64 participantes organizados en 32 equipos.">
-  <meta name="keywords" content="AECOMPU SuperLeague, FC 27, torneo 2 vs 2, eSports, Universidad Gerardo Barrios, Usulután">
-  <meta property="og:title" content="AECOMPU SuperLeague | FC 27 · 2 VS 2">
-  <meta property="og:description" content="64 participantes, 32 equipos, fase de grupos y eliminación directa en la AECOMPU SuperLeague FC 27.">
-  <meta property="og:type" content="website">
-  <title>AECOMPU SuperLeague | FC 27 · 2 VS 2</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="AECOMPU Gaming: nueva iniciativa de la Asociación de Estudiantes de Computación para crear experiencias alrededor de los videojuegos, comunidad y tecnología.">
+  <title>AECOMPU Gaming | Nueva iniciativa</title>
+  <link rel="stylesheet" href="assets/css/base.css"><link rel="stylesheet" href="assets/css/light.css">
 </head>
-<body>
-  <a class="skip-link" href="#main">Saltar al contenido</a>
-
-  <header class="site-header" id="siteHeader">
-    <nav class="navbar container" aria-label="Navegación principal">
-      <a class="brand" href="#inicio" aria-label="AECOMPU SuperLeague - Inicio">
-        <span class="brand__eyebrow">AECOMPU</span>
-        <span class="brand__main"><span>SUPER</span><strong>LEAGUE</strong></span>
-      </a>
-
-      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
-        <span></span><span></span><span></span>
-      </button>
-
-      <div class="nav-panel" id="navMenu" aria-hidden="true">
-        <ul class="nav-links">
-          <li><a href="#inicio" data-nav>INICIO</a></li>
-          <li><a href="#torneo" data-nav>TORNEO</a></li>
-          <li><a href="#formato" data-nav>FORMATO</a></li>
-          <li><a href="#clasificacion" data-nav>BRACKET</a></li>
-          <li><a href="#calendario" data-nav>HORARIO</a></li>
-          <li><a href="#reglas" data-nav>REGLAS</a></li>
-          <li><a href="#premios" data-nav>PREMIOS</a></li>
-          <li><a href="#faq" data-nav>FAQ</a></li>
-        </ul>
-        <a class="btn btn--primary nav-cta" href="#registro">INSCRIBIR EQUIPO <span aria-hidden="true">↗</span></a>
-      </div>
-    </nav>
-  </header>
-
-  <main id="main">
-    <section class="hero section-anchor" id="inicio" aria-labelledby="heroTitle">
-      <div class="hero__visual-grid" aria-hidden="true"></div>
-      <div class="hero__speed-lines" aria-hidden="true"></div>
-      <div class="hero__number" aria-hidden="true">27</div>
-      <div class="hero__wordmark-bg" aria-hidden="true">SUPERLEAGUE</div>
-
-      <div class="container hero__content">
-        <div class="hero__copy reveal fade-up">
-          <p class="kicker"><span></span>AECOMPU PRESENTA</p>
-          <div class="hero__season">TEMPORADA <strong data-season>2026</strong></div>
-          <p class="hero__game">FC 27 · DUOS TOURNAMENT</p>
-
-          <h1 id="heroTitle" class="hero__title">
-            <span class="hero__title-small">AECOMPU</span>
-            <span class="hero__title-main">SUPER<span>LEAGUE</span></span>
-          </h1>
-
-          <p class="hero__statement">JUEGA EN PAREJA.<br>CONQUISTA LA LIGA.</p>
-          <p class="hero__description">64 participantes. 32 equipos de dos jugadores. Cuatro grupos, fase eliminatoria y una sola pareja campeona de la AECOMPU SuperLeague FC 27.</p>
-
-          <div class="badge-row" aria-label="Características del torneo">
-            <span class="badge">FC 27</span>
-            <span class="badge">2 VS 2</span>
-            <span class="badge">32 EQUIPOS</span>
-            <span class="badge">3 ESTACIONES</span>
-            <span class="badge">PRESENCIAL</span>
-          </div>
-
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#registro">INSCRIBIR EQUIPO <span aria-hidden="true">↗</span></a>
-            <a class="btn btn--ghost" href="#formato">VER FORMATO <span aria-hidden="true">↓</span></a>
-          </div>
-        </div>
-
-        <div class="hero__art reveal slide-right" aria-hidden="true">
-          <div class="hero-orbit hero-orbit--a"></div>
-          <div class="hero-orbit hero-orbit--b"></div>
-          <div class="hero-shield">
-            <span class="hero-shield__top">SL</span>
-            <span class="hero-shield__center">27</span>
-            <span class="hero-shield__bottom">2 VS 2 · 2026</span>
-          </div>
-          <div class="hero-art__label hero-art__label--one">32 TEAMS · 64 PLAYERS</div>
-          <div class="hero-art__label hero-art__label--two">UGB · USULUTÁN</div>
-        </div>
-      </div>
-
-      <a class="scroll-cue" href="#quick-info" aria-label="Desplazarse hacia la información del torneo">
-        <span>SCROLL</span><i></i>
-      </a>
-    </section>
-
-    <section class="quick-info" id="quick-info" aria-label="Información rápida del torneo">
-      <div class="container quick-info__grid" id="quickInfo"></div>
-    </section>
-
-    <section class="section competition section-anchor" id="torneo" aria-labelledby="competitionTitle">
-      <div class="container split-layout">
-        <div class="split-layout__copy reveal slide-left">
-          <p class="section-kicker">THE COMPETITION</p>
-          <h2 class="section-title" id="competitionTitle">DOS JUGADORES.<br><span>UN SOLO EQUIPO.</span></h2>
-          <p class="lead">AECOMPU SuperLeague reúne a 64 participantes en 32 equipos de dos jugadores para competir presencialmente en FC 27 sobre PlayStation 5.</p>
-          <p class="body-copy">La competencia comienza con cuatro grupos de ocho equipos. Cada pareja disputa dos encuentros de fase de grupos; los cuatro mejores de cada grupo avanzan a un cuadro de 16 equipos con octavos, cuartos, semifinales, partido por el tercer lugar y gran final.</p>
-          <div class="competition-facts" aria-label="Datos principales del torneo">
-            <span><strong>64</strong> PARTICIPANTES</span>
-            <span><strong>32</strong> EQUIPOS</span>
-            <span><strong>04</strong> GRUPOS</span>
-            <span><strong>03</strong> ESTACIONES</span>
-          </div>
-          <div class="section-meta">
-            <span>ORGANIZA</span>
-            <strong>AECOMPU · ASOCIACIÓN DE ESTUDIANTES DE COMPUTACIÓN</strong>
-          </div>
-        </div>
-
-        <div class="competition-art reveal slide-right" aria-hidden="true">
-          <span class="competition-art__index">02</span>
-          <div class="competition-art__pitch">
-            <div class="pitch__center-circle"></div>
-            <div class="pitch__half"></div>
-            <div class="pitch__box pitch__box--left"></div>
-            <div class="pitch__box pitch__box--right"></div>
-          </div>
-          <div class="competition-art__stamp">TWO PLAYERS<br>ONE TEAM</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="stats-band" aria-label="Estadísticas del torneo">
-      <div class="container stats-grid">
-        <article class="stat reveal fade-up">
-          <span class="stat__value" data-count="64">64</span>
-          <span class="stat__label">JUGADORES</span>
-        </article>
-        <article class="stat reveal fade-up">
-          <span class="stat__value" data-count="32">32</span>
-          <span class="stat__label">EQUIPOS</span>
-        </article>
-        <article class="stat reveal fade-up">
-          <span class="stat__value stat__value--text">2V2</span>
-          <span class="stat__label">FORMATO</span>
-        </article>
-        <article class="stat reveal fade-up">
-          <span class="stat__value" data-count="3">03</span>
-          <span class="stat__label">ESTACIONES</span>
-        </article>
-      </div>
-    </section>
-
-    <section class="section road section-anchor" id="formato" aria-labelledby="formatTitle">
-      <div class="container">
-        <div class="section-heading reveal fade-up">
-          <div>
-            <p class="section-kicker">TOURNAMENT FORMAT</p>
-            <h2 class="section-title" id="formatTitle">ROAD TO <span>THE FINAL</span></h2>
-          </div>
-          <p class="section-heading__aside">De 32 equipos a un campeón. La fase de grupos define 16 clasificados y desde octavos cada partido es de eliminación directa.</p>
-        </div>
-        <div class="roadmap" id="roadmap" aria-label="Etapas del torneo"></div>
-
-        <div class="groups-heading reveal fade-up">
-          <div>
-            <p class="section-kicker">GROUP STAGE</p>
-            <h3>4 GRUPOS · 8 EQUIPOS · <span>2 PARTIDOS POR EQUIPO</span></h3>
-          </div>
-          <p>La tabla muestra únicamente GF, GC y PTS. Se ordena automáticamente por puntos, diferencia de gol y goles a favor. Clasifican los cuatro mejores de cada grupo.</p>
-        </div>
-        <div class="groups-grid" id="groupsGrid" aria-label="Distribución de grupos"></div>
-      </div>
-    </section>
-
-    <section class="section match-center section-anchor" id="partidos" aria-labelledby="matchesTitle">
-      <div class="container">
-        <div class="section-heading reveal fade-up">
-          <div>
-            <p class="section-kicker">MATCHDAY CONTROL</p>
-            <h2 class="section-title" id="matchesTitle">3 STATIONS. <span>ONE EVENT.</span></h2>
-          </div>
-          <p class="section-heading__aside">Tres partidos pueden disputarse al mismo tiempo. Cada bloque operativo reserva 25 minutos: 5 + 5 + 5 minutos de partido/descanso y 10 minutos para rotación y preparación.</p>
-        </div>
-        <div class="match-grid" id="matchGrid"></div>
-      </div>
-    </section>
-
-    <section class="section bracket-section section-anchor" id="clasificacion" aria-labelledby="bracketTitle">
-      <div class="container">
-        <div class="section-heading reveal fade-up">
-          <div>
-            <p class="section-kicker">KNOCKOUT STAGE</p>
-            <h2 class="section-title" id="bracketTitle">TOP 16 <span>BRACKET</span></h2>
-          </div>
-          <p class="section-heading__aside">Cruces propuestos por posición: A vs B y C vs D. Los perdedores de semifinales disputan el tercer lugar.</p>
-        </div>
-        <div class="bracket-shell" tabindex="0" aria-label="Cuadro del torneo, deslizable horizontalmente">
-          <div class="bracket" id="bracket"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section rules-section section-anchor" id="reglas" aria-labelledby="rulesTitle">
-      <div class="container rules-layout">
-        <div class="rules-intro reveal slide-left">
-          <p class="section-kicker">OFFICIAL RULESET</p>
-          <h2 class="section-title" id="rulesTitle">PLAY FAIR.<br><span>PLAY TO WIN.</span></h2>
-          <p class="lead">El reglamento establece el formato 2 vs. 2, puntuación, desempates, tiempos, puntualidad, problemas técnicos, conducta, sanciones y procedimiento de competencia.</p>
-          <button class="btn btn--primary" id="openRules" type="button">VER REGLAMENTO COMPLETO <span aria-hidden="true">↗</span></button>
-        </div>
-        <div class="rules-grid reveal slide-right" id="rulesPreview"></div>
-      </div>
-    </section>
-
-    <section class="section schedule-section section-anchor" id="calendario" aria-labelledby="scheduleTitle">
-      <div class="container">
-        <div class="section-heading reveal fade-up">
-          <div>
-            <p class="section-kicker">EVENT TIMELINE</p>
-            <h2 class="section-title" id="scheduleTitle">8-HOUR <span>SCHEDULE</span></h2>
-          </div>
-          <p class="section-heading__aside">Inicio oficial 9:30 a. m. El check-in se realiza antes del kickoff. No hay pausa general: los equipos descansan naturalmente entre sus propios encuentros.</p>
-        </div>
-        <div class="schedule" id="schedule"></div>
-      </div>
-    </section>
-
-    <section class="section prizes section-anchor" id="premios" aria-labelledby="prizeTitle">
-      <div class="prizes__glow" aria-hidden="true"></div>
-      <div class="container">
-        <div class="section-heading section-heading--center reveal fade-up">
-          <div>
-            <p class="section-kicker">CHAMPIONSHIP REWARDS</p>
-            <h2 class="section-title" id="prizeTitle">TOP 3 <span>GLORY.</span></h2>
-          </div>
-        </div>
-
-        <div class="prize-grid prize-grid--three">
-          <article class="prize-card prize-card--champion reveal scale-in">
-            <div class="prize-card__rank">01</div>
-            <div class="trophy" aria-hidden="true"><span class="trophy__cup">♛</span></div>
-            <p class="prize-card__eyebrow">1.er LUGAR</p>
-            <h3>SUPERLEAGUE CHAMPION</h3>
-            <div class="prize-card__reward"><span>PREMIO</span><strong>POR CONFIRMAR</strong></div>
-          </article>
-
-          <article class="prize-card reveal fade-up">
-            <div class="prize-card__rank">02</div>
-            <p class="prize-card__eyebrow">2.º LUGAR</p>
-            <h3>RUNNER-UP</h3>
-            <div class="prize-card__reward"><span>PREMIO</span><strong>POR CONFIRMAR</strong></div>
-          </article>
-
-          <article class="prize-card prize-card--third reveal fade-up">
-            <div class="prize-card__rank">03</div>
-            <p class="prize-card__eyebrow">3.er LUGAR</p>
-            <h3>THIRD PLACE</h3>
-            <div class="prize-card__reward"><span>PREMIO</span><strong>POR CONFIRMAR</strong></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="final-stage" id="gran-final" aria-labelledby="finalTitle">
-      <div class="final-stage__lines" aria-hidden="true"></div>
-      <div class="container">
-        <div class="final-stage__header reveal fade-up">
-          <p class="section-kicker">THE FINAL</p>
-          <h2 id="finalTitle">GRAN FINAL · AECOMPU SUPERLEAGUE</h2>
-        </div>
-        <div class="final-versus reveal scale-in">
-          <div class="final-side">
-            <span class="final-side__tag">FINALISTA A</span>
-            <strong>POR DEFINIR</strong>
-          </div>
-          <div class="final-vs">
-            <span>VS</span>
-            <small>2 VS 2 · FC 27</small>
-          </div>
-          <div class="final-side final-side--right">
-            <span class="final-side__tag">FINALISTA B</span>
-            <strong>POR DEFINIR</strong>
-          </div>
-        </div>
-        <p class="final-stage__status">DÍA DEL TORNEO · <strong>5:00 P. M. – 5:25 P. M.</strong> · UGB USULUTÁN</p>
-      </div>
-    </section>
-
-    <section class="section aecompu-section" id="aecompu" aria-labelledby="aecompuTitle">
-      <div class="container split-layout split-layout--reverse">
-        <div class="aecompu-logo reveal slide-left">
-          <div class="aecompu-logo__placeholder" id="aecompuLogoPlaceholder">
-            <span>A</span>
-            <strong>AECOMPU</strong>
-            <small>ASOCIACIÓN DE ESTUDIANTES DE COMPUTACIÓN</small>
-          </div>
-          <img id="aecompuLogo" class="aecompu-logo__img" alt="Logo de AECOMPU" hidden>
-        </div>
-        <div class="split-layout__copy reveal slide-right">
-          <p class="section-kicker">POWERED BY AECOMPU</p>
-          <h2 class="section-title" id="aecompuTitle">HECHO POR ESTUDIANTES.<br><span>PARA ESTUDIANTES.</span></h2>
-          <p class="lead">AECOMPU es la Asociación de Estudiantes de Computación de la Universidad Gerardo Barrios.</p>
-          <p class="body-copy">La asociación impulsa espacios de tecnología, integración estudiantil, innovación y eSports que fortalezcan la comunidad universitaria mediante experiencias organizadas y competitivas.</p>
-          <div class="section-meta">
-            <span>UNIVERSIDAD</span>
-            <strong>UNIVERSIDAD GERARDO BARRIOS · CENTRO REGIONAL USULUTÁN</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="registration section-anchor" id="registro" aria-labelledby="registerTitle">
-      <div class="registration__polygon" aria-hidden="true"></div>
-      <div class="container registration__content">
-        <div class="registration__copy reveal slide-left">
-          <p class="section-kicker">TEAM REGISTRATION</p>
-          <h2 class="section-title" id="registerTitle">YOUR ROAD TO GLORY<br><span>STARTS AS A DUO.</span></h2>
-          <p class="lead">Inscripción por equipos de dos jugadores. Cupo máximo: 32 equipos / 64 participantes.</p>
-          <div class="registration__meta">
-            <span>32 CUPOS DE EQUIPO</span>
-            <span>FECHA LÍMITE: <strong id="registrationDeadline">POR CONFIRMAR</strong></span>
-          </div>
-          <a class="btn btn--primary btn--large" id="registrationButton" href="#">INSCRIPCIONES PRÓXIMAMENTE</a>
-        </div>
-
-        <div class="countdown-panel reveal slide-right" aria-live="polite">
-          <p>NEXT KICKOFF</p>
-          <div class="countdown" id="countdown" hidden>
-            <div><strong id="days">00</strong><span>DÍAS</span></div>
-            <div><strong id="hours">00</strong><span>HORAS</span></div>
-            <div><strong id="minutes">00</strong><span>MIN</span></div>
-            <div><strong id="seconds">00</strong><span>SEG</span></div>
-          </div>
-          <div class="countdown-empty" id="countdownEmpty">FECHA POR CONFIRMAR · KICKOFF 9:30 A. M.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section faq section-anchor" id="faq" aria-labelledby="faqTitle">
-      <div class="container faq-layout">
-        <div class="faq-intro reveal slide-left">
-          <p class="section-kicker">PLAYER INFO</p>
-          <h2 class="section-title" id="faqTitle">PREGUNTAS <span>FRECUENTES</span></h2>
-          <p class="body-copy">Aquí se resumen las dudas principales sobre equipos, grupos, horarios, clasificación, controles y reglas del evento.</p>
-        </div>
-        <div class="accordion reveal slide-right" id="faqAccordion"></div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer__grid">
-      <div class="footer__brand">
-        <a class="brand" href="#inicio">
-          <span class="brand__eyebrow">AECOMPU</span>
-          <span class="brand__main"><span>SUPER</span><strong>LEAGUE</strong></span>
-        </a>
-        <p>FC 27 · 2 VS 2 TOURNAMENT</p>
-        <p class="footer__muted">64 participantes · 32 equipos · 3 estaciones</p>
-        <p class="footer__muted">Universidad Gerardo Barrios · Centro Regional Usulután</p>
-      </div>
-
-      <div class="footer__links">
-        <strong>NAVEGACIÓN</strong>
-        <a href="#torneo">Torneo</a>
-        <a href="#formato">Formato</a>
-        <a href="#clasificacion">Bracket</a>
-        <a href="#reglas">Reglas</a>
-        <a href="#calendario">Horario</a>
-        <a href="#registro">Registro</a>
-      </div>
-
-      <div class="footer__season">
-        <span>SEASON</span>
-        <strong data-season>2026</strong>
-      </div>
-    </div>
-
-    <div class="container footer__bottom">
-      <span>© <span data-season>2026</span> AECOMPU</span>
-      <span>DESARROLLADO POR <a id="andradeDevLink" href="#" target="_blank" rel="noopener noreferrer">ANDRADE DEV</a></span>
-    </div>
-  </footer>
-
-  <div class="modal" id="rulesModal" aria-hidden="true">
-    <div class="modal__backdrop" data-modal-close></div>
-    <div class="modal__dialog modal__dialog--rules" role="dialog" aria-modal="true" aria-labelledby="rulesModalTitle" tabindex="-1">
-      <div class="modal__header">
-        <div>
-          <p class="section-kicker">OFFICIAL RULESET · 2026</p>
-          <h2 id="rulesModalTitle">REGLAMENTO <span>SUPERLEAGUE</span></h2>
-        </div>
-        <button class="modal__close" id="closeRules" type="button" aria-label="Cerrar reglamento">×</button>
-      </div>
-      <div class="modal__body" id="rulesModalContent"></div>
-    </div>
+<body class="light-page">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="container navbar">
+    <a class="brand" href="index.html" aria-label="AECOMPU Gaming, inicio"><span class="brand-mark">A</span><span class="brand-copy"><small>AECOMPU</small><strong>GAMING<span>.</span></strong></span></a>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-panel" aria-label="Navegación principal"><ul class="nav-links"><li><a class="is-active" href="index.html">Gaming</a></li><li><a href="#vision">Iniciativa</a></li><li><a href="tournaments.html">Tournaments</a></li></ul><a class="btn btn--primary" href="tournaments.html">Ver temporada 2026</a></nav>
   </div>
+</header>
+<main id="contenido">
+  <section class="light-hero">
+    <div class="hero-gridlines"></div>
+    <div class="container light-hero__content">
+      <div class="reveal">
+        <span class="pill"><i></i>Nueva iniciativa · 2026</span>
+        <h1>AECOMPU <span>Gaming</span></h1>
+        <p class="light-hero__statement">Un nuevo espacio donde computación, comunidad y videojuegos se encuentran.</p>
+        <p class="light-hero__description">AECOMPU Gaming nace para ampliar la experiencia estudiantil más allá del aula: encuentros, torneos, experiencias presenciales y nuevas formas de conectar a estudiantes de computación alrededor de una cultura que también es tecnología.</p>
+        <div class="hero-actions"><a class="btn btn--primary btn--large" href="tournaments.html">Explorar AECOMPU Tournament <span aria-hidden="true">→</span></a><a class="btn btn--soft btn--large" href="#vision">Conocer la iniciativa</a></div>
+        <div class="initiative-by"><span>SA</span><div>Iniciativa Propuesta por<br><strong>Salvador Andrade</strong></div></div>
+      </div>
+      <div class="gaming-orbit reveal reveal-delay-1" aria-hidden="true">
+        <div class="gaming-orbit__ring gaming-orbit__ring--a"></div><div class="gaming-orbit__ring gaming-orbit__ring--b"></div>
+        <div class="gaming-mark"><svg viewBox="0 0 128 96" fill="none"><path d="M41 24h46c15 0 24 10 28 26l8 30c2 8-6 14-13 10L88 75H40L18 90C11 94 3 88 5 80l8-30c4-16 13-26 28-26Z" stroke="currentColor" stroke-width="7"/><path d="M35 48v20M25 58h20" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><circle cx="91" cy="52" r="5" fill="currentColor"/><circle cx="103" cy="64" r="5" fill="currentColor"/></svg></div>
+        <span class="orbit-tag orbit-tag--a">Comunidad</span><span class="orbit-tag orbit-tag--b">Experiencias</span><span class="orbit-tag orbit-tag--c">Gaming + Tech</span>
+      </div>
+    </div>
+  </section>
 
-  <script src="js/grupos.js" defer></script>
-  <script src="js/main.js" defer></script>
-</body>
-</html>
+  <div class="quick-band"><div class="container"><div class="quick-band__inner reveal"><div class="quick-band__item"><span>Impulsado por</span><strong>AECOMPU</strong></div><div class="quick-band__item"><span>Primera temporada</span><strong>2026</strong></div><div class="quick-band__item"><span>Enfoque</span><strong>Gaming presencial</strong></div><div class="quick-band__item"><span>Comunidad</span><strong>Computación</strong></div></div></div></div>
+
+  <section class="section vision-section" id="vision"><div class="container"><div class="section-heading reveal"><div><p class="section-kicker">01 · La iniciativa</p><h2 class="section-title">Más que jugar. <span>Crear comunidad.</span></h2></div><p>AECOMPU Gaming propone convertir los videojuegos en un nuevo punto de encuentro para convivencia, organización, creatividad y cultura digital dentro de la comunidad estudiantil.</p></div>
+    <div class="grid-3"><article class="card vision-card reveal" data-index="01"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 12h10M12 7v10"/><circle cx="12" cy="12" r="9"/></svg></div><h3>Conectar</h3><p>Crear espacios donde estudiantes de distintos ciclos puedan conocerse, compartir intereses y construir vínculos fuera de las dinámicas académicas tradicionales.</p></article><article class="card vision-card reveal reveal-delay-1" data-index="02"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17 9 7l3 5 3-7 5 12H4Z"/></svg></div><h3>Experimentar</h3><p>Diseñar eventos con identidad propia: ambientación, presentaciones, experiencias competitivas, producción y momentos memorables.</p></article><article class="card vision-card reveal reveal-delay-2" data-index="03"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 19V9m7 10V5m7 14v-7"/></svg></div><h3>Escalar</h3><p>Iniciar con una temporada controlada y dejar una base preparada para nuevas disciplinas, formatos y ediciones durante 2027, 2028 y siguientes.</p></article></div>
+  </div></section>
+
+  <section class="section"><div class="container"><div class="section-heading reveal"><div><p class="section-kicker">02 · Qué puede llegar a ser</p><h2 class="section-title">Una plataforma para <span>nuevas experiencias.</span></h2></div><p>No se plantea como un único torneo, sino como una línea de actividades que puede evolucionar junto con la comunidad.</p></div><div class="grid-4"><article class="card vision-card reveal"><h3>Torneos</h3><p>Eventos presenciales con identidad, narrativa y producción propias.</p></article><article class="card vision-card reveal reveal-delay-1"><h3>Retos</h3><p>Actividades rápidas, amistosas y temáticas dentro de la vida universitaria.</p></article><article class="card vision-card reveal reveal-delay-2"><h3>Comunidad</h3><p>Espacios para descubrir jugadores, equipos y afinidades entre estudiantes.</p></article><article class="card vision-card reveal reveal-delay-3"><h3>Producción</h3><p>Diseño, contenido, streaming, organización y tecnología como parte de la experiencia.</p></article></div></div></section>
+
+  <section class="section section--tight"><div class="container"><div class="initiative-banner reveal"><div><p class="section-kicker" style="color:#a8d4f5">Primera activación</p><h2>AECOMPU Tournament 2026</h2><p>El primer paso de AECOMPU Gaming: una temporada para probar el concepto, reunir a la comunidad y convertir una partida en una experiencia que se sienta especial desde que entra el primer jugador.</p><a class="btn btn--soft btn--large" href="tournaments.html" style="margin-top:18px">Entrar a la temporada 2026 →</a></div><div class="initiative-banner__meta"><div><span>Primera experiencia</span><strong>EA SPORTS FC 27</strong></div><div><span>Plataforma</span><strong>PlayStation 5</strong></div><div><span>Fecha</span><strong>23 OCT 2026</strong></div><div><span>Próximo paso</span><strong>2027 / 2028 preparados</strong></div></div></div></div></section>
+</main>
+<footer class="footer"><div class="container"><div class="footer-grid"><div><a class="brand" href="index.html"><span class="brand-mark">A</span><span class="brand-copy"><small>AECOMPU</small><strong>GAMING<span>.</span></strong></span></a><p style="max-width:440px;margin-top:18px">Una iniciativa para explorar nuevas experiencias de videojuegos dentro de la comunidad de estudiantes de computación.</p></div><div><h4>Navegación</h4><div class="footer-links"><a href="index.html">AECOMPU Gaming</a><a href="tournaments.html">AECOMPU Tournament</a></div></div><div><h4>Iniciativa</h4><p>Propuesta por Salvador Andrade.<br>Organizada por AECOMPU.</p></div></div><div class="footer-bottom"><span>© 2026 AECOMPU Gaming</span><span>Diseñado para crecer temporada tras temporada.</span></div></div></footer>
+<div class="toast" role="status" aria-live="polite"></div><script src="assets/js/config.js"></script><script src="assets/js/app.js"></script>
+</body></html>
