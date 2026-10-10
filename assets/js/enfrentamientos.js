@@ -1,264 +1,1759 @@
 /* ==========================================================
    AECOMPU TOURNAMENT 2026 · ENFRENTAMIENTOS
-   ----------------------------------------------------------
-   Para editar el torneo solo se toca la parte de DATOS:
-   1) NOMBRES: el nombre de cada participante (01 al 32).
-   2) R32: los 16 cruces de 16avos (números de participante).
-   3) Marcadores: en SCORES, con el id del partido.
-   Los ganadores avanzan solos a la siguiente ronda.
+
+   IMPORTANTE:
+   DURANTE EL TORNEO SOLO MODIFIQUE "SCORES".
+
+   EJEMPLO NORMAL:
+   "r32-1": { score: [2, 0] },
+
+   SI HAY EMPATE Y SE DEFINE POR PENALES:
+   "r32-2": { score: [1, 1], winner: 2 },
+
+   winner: 1 = gana jugador de la izquierda
+   winner: 2 = gana jugador de la derecha
+
+   Los ganadores avanzan automáticamente.
+   Los perdedores de semifinales avanzan automáticamente
+   al partido por tercer lugar.
    ========================================================== */
 
-/* ---------- DATOS ---------- */
 
-// Nombre de cada participante. El índice 0 es el participante 01.
-const NOMBRES = Array.from({ length: 32 }, (_, i) =>
-  `Participante ${String(i + 1).padStart(2, "0")}`
+/* ==========================================================
+   ÚNICA PARTE QUE DEBE MODIFICAR DURANTE EL TORNEO
+   ========================================================== */
+
+const SCORES = {
+
+  /* ========================================================
+     16AVOS DE FINAL
+     ======================================================== */
+
+  // "r32-1":  { score: [0, 0] },
+  // "r32-2":  { score: [0, 0] },
+  // "r32-3":  { score: [0, 0] },
+  // "r32-4":  { score: [0, 0] },
+  // "r32-5":  { score: [0, 0] },
+  // "r32-6":  { score: [0, 0] },
+  // "r32-7":  { score: [0, 0] },
+  // "r32-8":  { score: [0, 0] },
+  // "r32-9":  { score: [0, 0] },
+  // "r32-10": { score: [0, 0] },
+  // "r32-11": { score: [0, 0] },
+  // "r32-12": { score: [0, 0] },
+  // "r32-13": { score: [0, 0] },
+  // "r32-14": { score: [0, 0] },
+  // "r32-15": { score: [0, 0] },
+  // "r32-16": { score: [0, 0] },
+
+
+  /* ========================================================
+     OCTAVOS DE FINAL
+     ======================================================== */
+
+  // "r16-1": { score: [0, 0] },
+  // "r16-2": { score: [0, 0] },
+  // "r16-3": { score: [0, 0] },
+  // "r16-4": { score: [0, 0] },
+  // "r16-5": { score: [0, 0] },
+  // "r16-6": { score: [0, 0] },
+  // "r16-7": { score: [0, 0] },
+  // "r16-8": { score: [0, 0] },
+
+
+  /* ========================================================
+     CUARTOS DE FINAL
+     ======================================================== */
+
+  // "qf-1": { score: [0, 0] },
+  // "qf-2": { score: [0, 0] },
+  // "qf-3": { score: [0, 0] },
+  // "qf-4": { score: [0, 0] },
+
+
+  /* ========================================================
+     SEMIFINALES
+     ======================================================== */
+
+  // "sf-1": { score: [0, 0] },
+  // "sf-2": { score: [0, 0] },
+
+
+  /* ========================================================
+     TERCER LUGAR
+     ======================================================== */
+
+  // "third-1": { score: [0, 0] },
+
+
+  /* ========================================================
+     GRAN FINAL
+     ======================================================== */
+
+  // "final-1": { score: [0, 0] },
+
+};
+
+
+/* ==========================================================
+   PARTICIPANTES
+
+   ESTA PARTE NO NECESITA CAMBIARSE DURANTE EL TORNEO.
+
+   Si ya tiene los nombres reales puede colocarlos aquí.
+   ========================================================== */
+
+const NOMBRES = Array.from(
+  { length: 32 },
+  (_, index) =>
+    `Participante ${String(index + 1).padStart(2, "0")}`
 );
-// Ejemplo para poner nombres reales:
-// NOMBRES[0] = "Juan Pérez";
 
-// Cruces de 16avos [participante A, participante B].
-const R32 = [
-  [1, 2], [3, 4], [5, 6], [7, 8],
-  [9, 10], [11, 12], [13, 14], [15, 16],
-  [17, 18], [19, 20], [21, 22], [23, 24],
-  [25, 26], [27, 28], [29, 30], [31, 32],
-];
 
-// Marcadores jugados: id del partido -> [goles A, goles B].
-// Si hay empate (penales), agrega winner: 1 (gana A) o 2 (gana B).
-// Ejemplos:
-//   r32-1: { score: [2, 1] },
-//   r32-2: { score: [1, 1], winner: 2 },
-const SCORES = {};
+/*
+   
 
-/* ---------- ARMADO DEL CUADRO ---------- */
+   NOMBRES[0] = "Juan Pérez";
+   NOMBRES[1] = "Carlos López";
+   NOMBRES[2] = "Fernando Hernández";
+
+   
+*/
+
+
+/* ==========================================================
+   CRUCES INICIALES
+
+   Genera automáticamente:
+
+   01 vs 02
+   03 vs 04
+   05 vs 06
+   ...
+   31 vs 32
+   ========================================================== */
+
+const R32 = Array.from(
+  { length: 16 },
+  (_, index) => [
+    index * 2 + 1,
+    index * 2 + 2
+  ]
+);
+
+
+/* ==========================================================
+   RONDAS
+   ========================================================== */
 
 const ROUNDS = [
-  { key: "r32", title: "16avos de final", short: "16avos" },
-  { key: "r16", title: "Octavos de final", short: "Octavos" },
-  { key: "qf",  title: "Cuartos de final", short: "Cuartos" },
-  { key: "sf",  title: "Semifinales", short: "Semifinales" },
-  { key: "third", title: "Tercer lugar", short: "3er lugar" },
-  { key: "final", title: "Final", short: "Final" },
+
+  {
+    key: "r32",
+    title: "16avos de final",
+    short: "16avos"
+  },
+
+  {
+    key: "r16",
+    title: "Octavos de final",
+    short: "Octavos"
+  },
+
+  {
+    key: "qf",
+    title: "Cuartos de final",
+    short: "Cuartos"
+  },
+
+  {
+    key: "sf",
+    title: "Semifinales",
+    short: "Semifinales"
+  },
+
+  {
+    key: "third",
+    title: "Tercer lugar",
+    short: "3er lugar"
+  },
+
+  {
+    key: "final",
+    title: "Gran Final",
+    short: "Final"
+  }
+
 ];
 
+
+/* ==========================================================
+   CONSTRUCCIÓN DEL TORNEO
+   ========================================================== */
+
 function buildMatches() {
+
   const matches = [];
 
-  R32.forEach(([a, b], i) => {
-    matches.push({
-      id: `r32-${i + 1}`, round: "r32", n: i + 1,
-      a: { p: a }, b: { p: b },
-    });
-  });
 
-  const next = (round, prev, count) => {
-    for (let i = 0; i < count; i++) {
+  /* --------------------------------------------------------
+     16AVOS
+     -------------------------------------------------------- */
+
+  R32.forEach(
+    ([participantA, participantB], index) => {
+
       matches.push({
-        id: `${round}-${i + 1}`, round, n: i + 1,
-        a: { from: `${prev}-${i * 2 + 1}`, take: "w" },
-        b: { from: `${prev}-${i * 2 + 2}`, take: "w" },
+
+        id: `r32-${index + 1}`,
+
+        round: "r32",
+
+        n: index + 1,
+
+        a: {
+          p: participantA
+        },
+
+        b: {
+          p: participantB
+        }
+
       });
+
     }
-  };
+  );
 
-  next("r16", "r32", 8);
-  next("qf", "r16", 4);
-  next("sf", "qf", 2);
+
+  /* --------------------------------------------------------
+     FUNCIÓN PARA CREAR SIGUIENTES RONDAS
+     -------------------------------------------------------- */
+
+  function createNextRound(
+    currentRound,
+    previousRound,
+    totalMatches
+  ) {
+
+    for (
+      let index = 0;
+      index < totalMatches;
+      index++
+    ) {
+
+      matches.push({
+
+        id: `${currentRound}-${index + 1}`,
+
+        round: currentRound,
+
+        n: index + 1,
+
+        a: {
+
+          from:
+            `${previousRound}-${index * 2 + 1}`,
+
+          take: "winner"
+
+        },
+
+        b: {
+
+          from:
+            `${previousRound}-${index * 2 + 2}`,
+
+          take: "winner"
+
+        }
+
+      });
+
+    }
+
+  }
+
+
+  /* --------------------------------------------------------
+     OCTAVOS
+     -------------------------------------------------------- */
+
+  createNextRound(
+    "r16",
+    "r32",
+    8
+  );
+
+
+  /* --------------------------------------------------------
+     CUARTOS
+     -------------------------------------------------------- */
+
+  createNextRound(
+    "qf",
+    "r16",
+    4
+  );
+
+
+  /* --------------------------------------------------------
+     SEMIFINALES
+     -------------------------------------------------------- */
+
+  createNextRound(
+    "sf",
+    "qf",
+    2
+  );
+
+
+  /* --------------------------------------------------------
+     TERCER LUGAR
+
+     Los perdedores de las semifinales avanzan aquí.
+     -------------------------------------------------------- */
 
   matches.push({
-    id: "third-1", round: "third", n: 1,
-    a: { from: "sf-1", take: "l" }, b: { from: "sf-2", take: "l" },
+
+    id: "third-1",
+
+    round: "third",
+
+    n: 1,
+
+    a: {
+
+      from: "sf-1",
+
+      take: "loser"
+
+    },
+
+    b: {
+
+      from: "sf-2",
+
+      take: "loser"
+
+    }
+
   });
+
+
+  /* --------------------------------------------------------
+     GRAN FINAL
+
+     Los ganadores de semifinales avanzan aquí.
+     -------------------------------------------------------- */
+
   matches.push({
-    id: "final-1", round: "final", n: 1,
-    a: { from: "sf-1", take: "w" }, b: { from: "sf-2", take: "w" },
+
+    id: "final-1",
+
+    round: "final",
+
+    n: 1,
+
+    a: {
+
+      from: "sf-1",
+
+      take: "winner"
+
+    },
+
+    b: {
+
+      from: "sf-2",
+
+      take: "winner"
+
+    }
+
   });
+
 
   return matches;
+
 }
+
+
+/* ==========================================================
+   UTILIDADES
+   ========================================================== */
 
 function roundTitle(key) {
-  return ROUNDS.find(r => r.key === key).short;
+
+  const round =
+    ROUNDS.find(
+      item =>
+        item.key === key
+    );
+
+  return round
+    ? round.short
+    : "";
+
 }
 
-// Devuelve el ganador (1 o 2) de un partido, o 0 si aún no se define.
-function winnerOf(m) {
-  const s = SCORES[m.id];
-  if (!s || !Array.isArray(s.score)) return 0;
-  const [x, y] = s.score;
-  if (typeof x !== "number" || typeof y !== "number") return 0;
-  if (x > y) return 1;
-  if (y > x) return 2;
-  return s.winner === 1 || s.winner === 2 ? s.winner : 0;
+
+/* ----------------------------------------------------------
+   Número con cero adelante.
+
+   1  → 01
+   2  → 02
+   12 → 12
+   ---------------------------------------------------------- */
+
+function pad(number) {
+
+  return String(number)
+    .padStart(
+      2,
+      "0"
+    );
+
 }
 
-// Resuelve cada lado del partido: participante real o "por definir".
-function resolve(matches) {
-  const byId = Object.fromEntries(matches.map(m => [m.id, m]));
 
-  const side = (slot) => {
-    if (slot.p) return { p: slot.p };
-    const src = byId[slot.from];
-    const w = winnerOf(src);
-    if (w) {
-      const winnerSide = w === 1 ? src.a : src.b;
-      const loserSide = w === 1 ? src.b : src.a;
-      const pick = slot.take === "w" ? winnerSide : loserSide;
-      if (pick.p) return { p: pick.p };
+/* ----------------------------------------------------------
+   Evita que nombres puedan romper el HTML.
+   ---------------------------------------------------------- */
+
+function escapeHtml(value) {
+
+  return String(value)
+    .replace(
+      /[&<>"']/g,
+      character => (
+
+        {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        }[character]
+
+      )
+    );
+
+}
+
+
+/* ==========================================================
+   OBTENER GANADOR
+   ========================================================== */
+
+function winnerOf(match) {
+
+  const result =
+    SCORES[match.id];
+
+
+  /*
+     El partido todavía
+     no tiene marcador.
+  */
+
+  if (
+    !result ||
+    !Array.isArray(result.score)
+  ) {
+
+    return 0;
+
+  }
+
+
+  const [
+    scoreA,
+    scoreB
+  ] = result.score;
+
+
+  /*
+     Marcador inválido.
+  */
+
+  if (
+    typeof scoreA !== "number" ||
+    typeof scoreB !== "number"
+  ) {
+
+    return 0;
+
+  }
+
+
+  /*
+     Gana jugador izquierdo.
+  */
+
+  if (
+    scoreA > scoreB
+  ) {
+
+    return 1;
+
+  }
+
+
+  /*
+     Gana jugador derecho.
+  */
+
+  if (
+    scoreB > scoreA
+  ) {
+
+    return 2;
+
+  }
+
+
+  /*
+     EMPATE.
+
+     Debe indicarse winner
+     porque se definió por penales.
+
+     winner: 1
+     winner: 2
+  */
+
+  if (
+    result.winner === 1 ||
+    result.winner === 2
+  ) {
+
+    return result.winner;
+
+  }
+
+
+  /*
+     Sigue sin ganador.
+  */
+
+  return 0;
+
+}
+
+
+/* ==========================================================
+   RESOLVER PARTICIPANTES
+   ========================================================== */
+
+function resolveMatches(matches) {
+
+  const byId =
+    Object.fromEntries(
+
+      matches.map(
+        match => [
+
+          match.id,
+
+          match
+
+        ]
+      )
+
+    );
+
+
+  /* --------------------------------------------------------
+     Resolver cada lado del partido.
+     -------------------------------------------------------- */
+
+  function resolveParticipant(slot) {
+
+
+    /*
+       Si ya sabemos exactamente
+       quién es el participante.
+    */
+
+    if (slot.p) {
+
+      return {
+
+        p: slot.p
+
+      };
+
     }
-    const verb = slot.take === "w" ? "Ganador" : "Perdedor";
-    return { label: `${verb} ${roundTitle(src.round)} ${src.n}` };
-  };
 
-  // Se resuelve en orden: las rondas anteriores ya tienen p resuelto.
-  matches.forEach(m => {
-    m.a = Object.assign({}, m.a, side(m.a));
-    m.b = Object.assign({}, m.b, side(m.b));
-  });
-}
 
-/* ---------- RENDER ---------- */
+    /*
+       Buscar partido anterior.
+    */
 
-const pad = (n) => String(n).padStart(2, "0");
+    const previousMatch =
+      byId[slot.from];
 
-function escapeHtml(str) {
-  return String(str).replace(/[&<>"']/g, c => (
-    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
-  ));
-}
 
-function photoBox(side) {
-  if (!side.p) {
-    return `
-      <div class="versus-photo versus-photo--tbd" aria-hidden="true">
-        <span>?</span>
-        <small>POR DEFINIR</small>
-      </div>`;
-  }
-  const id = pad(side.p);
-  const name = escapeHtml(NOMBRES[side.p - 1]);
-  const imgs = [1, 2, 3].map(k => `
-        <img class="participant-photo${k === 1 ? " is-active" : ""}"
-             src="assets/img/participantes/participante-${id}-0${k}.jpg"
-             alt="${name}, pose ${k}" loading="lazy">`).join("");
-  return `
-      <div class="versus-photo" aria-label="Fotos de ${name}">
-        <div class="versus-photo__fallback" aria-hidden="true"><span>${id}</span></div>${imgs}
-        <div class="versus-photo__dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i></div>
-      </div>`;
-}
+    if (!previousMatch) {
 
-function nameHtml(side, extraClass = "") {
-  if (!side.p) {
-    return `<span class="versus-name versus-name--tbd ${extraClass}">${escapeHtml(side.label)}</span>`;
-  }
-  return `<span class="versus-name ${extraClass}">${escapeHtml(NOMBRES[side.p - 1])}</span>`;
-}
+      return {
 
-function matchHtml(m) {
-  const s = SCORES[m.id];
-  const played = s && Array.isArray(s.score);
-  const [x, y] = played ? s.score : [0, 0];
-  const w = winnerOf(m);
+        label: "Por definir"
 
-  return `
-    <article class="versus-card${played ? " is-played" : ""}" id="${m.id}">
-      <header class="versus-card__head">
-        <span>${roundTitle(m.round)} · Partido ${pad(m.n)}</span>
-        <span class="versus-card__status">${played ? "Finalizado" : "Pendiente"}</span>
-      </header>
-      <div class="versus-card__photos">
-        ${photoBox(m.a)}
-        ${photoBox(m.b)}
-      </div>
-      <div class="versus-card__score">
-        ${nameHtml(m.a, w === 1 ? "is-winner" : "")}
-        <span class="versus-result">(${x} - ${y})</span>
-        ${nameHtml(m.b, w === 2 ? "is-winner" : "")}
-      </div>
-    </article>`;
-}
+      };
 
-function render() {
-  const matches = buildMatches();
-  resolve(matches);
+    }
 
-  const root = document.getElementById("enfrentamientos");
-  root.innerHTML = ROUNDS.map(r => {
-    const list = matches.filter(m => m.round === r.key);
-    return `
-      <section class="versus-round" id="ronda-${r.key}">
-        <div class="versus-round__head">
-          <h2>${r.title}</h2>
-          <span>${list.length} ${list.length === 1 ? "partido" : "partidos"}</span>
-        </div>
-        <div class="versus-grid versus-grid--${r.key}">
-          ${list.map(matchHtml).join("")}
-        </div>
-      </section>`;
-  }).join("");
 
-  const tabs = document.getElementById("versus-tabs");
-  if (tabs) {
-    tabs.innerHTML = ROUNDS.map(r =>
-      `<a href="#ronda-${r.key}">${r.short}</a>`
-    ).join("");
-  }
-}
+    /*
+       Saber quién ganó
+       el partido anterior.
+    */
 
-/* ---------- ROTACIÓN DE FOTOS (cada 3 segundos) ---------- */
+    const winner =
+      winnerOf(previousMatch);
 
-function startPhotoRotation() {
-  const boxes = [...document.querySelectorAll(".versus-photo:not(.versus-photo--tbd)")];
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  boxes.forEach((box, boxIndex) => {
-    const photos = [...box.querySelectorAll(".participant-photo")];
-    const dots = [...box.querySelectorAll(".versus-photo__dots i")];
+    /*
+       Aún no se jugó.
+    */
 
-    photos.forEach((img) => {
-      img.addEventListener("error", () => img.classList.add("is-missing"));
-    });
+    if (!winner) {
 
-    if (reducedMotion) return;
+      const participantType =
+        slot.take === "winner"
+          ? "Ganador"
+          : "Perdedor";
 
-    let index = 0;
-    const rotate = () => {
-      const available = photos.filter(img => !img.classList.contains("is-missing"));
-      if (available.length < 2) return;
 
-      photos.forEach(img => img.classList.remove("is-active"));
-      dots.forEach(dot => dot.classList.remove("is-active"));
+      return {
 
-      index = (index + 1) % photos.length;
-      let safety = 0;
-      while (photos[index].classList.contains("is-missing") && safety < photos.length) {
-        index = (index + 1) % photos.length;
-        safety++;
-      }
+        label:
+          `${participantType} ${roundTitle(previousMatch.round)} ${pad(previousMatch.n)}`
 
-      photos[index].classList.add("is-active");
-      if (dots[index]) dots[index].classList.add("is-active");
+      };
+
+    }
+
+
+    /*
+       Determinar ganador
+       y perdedor.
+    */
+
+    const winnerSide =
+      winner === 1
+        ? previousMatch.a
+        : previousMatch.b;
+
+
+    const loserSide =
+      winner === 1
+        ? previousMatch.b
+        : previousMatch.a;
+
+
+    /*
+       Seleccionar el que corresponde.
+    */
+
+    const selectedSide =
+      slot.take === "winner"
+        ? winnerSide
+        : loserSide;
+
+
+    /*
+       Ya tenemos participante real.
+    */
+
+    if (selectedSide.p) {
+
+      return {
+
+        p: selectedSide.p
+
+      };
+
+    }
+
+
+    return {
+
+      label: "Por definir"
+
     };
 
-    // Desfase inicial para que no cambien todas al mismo tiempo.
-    setTimeout(() => {
-      rotate();
-      setInterval(rotate, 3000);
-    }, 900 + (boxIndex % 8) * 240);
-  });
+  }
+
+
+  /*
+     IMPORTANTE:
+
+     Se ejecutan en orden:
+
+     16avos
+       ↓
+     Octavos
+       ↓
+     Cuartos
+       ↓
+     Semifinales
+       ↓
+     Final / 3er lugar
+  */
+
+  matches.forEach(
+    match => {
+
+
+      match.a = {
+
+        ...match.a,
+
+        ...resolveParticipant(
+          match.a
+        )
+
+      };
+
+
+      match.b = {
+
+        ...match.b,
+
+        ...resolveParticipant(
+          match.b
+        )
+
+      };
+
+
+    }
+  );
+
 }
 
-/* ---------- INICIO ---------- */
 
-if (typeof document !== "undefined") {
-  render();
-  startPhotoRotation();
+/* ==========================================================
+   FOTOS
+   ========================================================== */
+
+function photoBox(side) {
+
+
+  /* --------------------------------------------------------
+     PARTICIPANTE AÚN NO DEFINIDO
+     -------------------------------------------------------- */
+
+  if (!side.p) {
+
+    return `
+
+      <div
+        class="versus-photo versus-photo--tbd"
+        aria-hidden="true"
+      >
+
+        <span>?</span>
+
+        <small>
+          POR DEFINIR
+        </small>
+
+      </div>
+
+    `;
+
+  }
+
+
+  /* --------------------------------------------------------
+     PARTICIPANTE DEFINIDO
+     -------------------------------------------------------- */
+
+  const id =
+    pad(side.p);
+
+
+  const name =
+    escapeHtml(
+      NOMBRES[
+        side.p - 1
+      ]
+    );
+
+
+  /*
+     RUTAS GENERADAS:
+
+     participante-01-01.jpg
+     participante-01-02.jpg
+     participante-01-03.jpg
+
+     participante-02-01.jpg
+     participante-02-02.jpg
+     participante-02-03.jpg
+  */
+
+  const images = [
+    1,
+    2,
+    3
+  ]
+    .map(
+      pose => `
+
+        <img
+          class="participant-photo${pose === 1 ? " is-active" : ""}"
+          src="assets/img/participantes/participante-${id}-0${pose}.jpg"
+          alt="${name}, pose ${pose}"
+          loading="lazy"
+          decoding="async"
+        >
+
+      `
+    )
+    .join("");
+
+
+  return `
+
+    <div
+      class="versus-photo"
+      aria-label="Fotos de ${name}"
+    >
+
+
+      <div
+        class="versus-photo__fallback"
+        aria-hidden="true"
+      >
+
+        <span>
+          ${id}
+        </span>
+
+      </div>
+
+
+      ${images}
+
+
+      <div
+        class="versus-photo__dots"
+        aria-hidden="true"
+      >
+
+        <i class="is-active"></i>
+
+        <i></i>
+
+        <i></i>
+
+      </div>
+
+
+    </div>
+
+  `;
+
 }
 
-// Permite probar la lógica con Node sin navegador.
-if (typeof module !== "undefined") {
-  module.exports = { buildMatches, resolve, winnerOf, SCORES, NOMBRES, ROUNDS };
+
+/* ==========================================================
+   NOMBRE
+   ========================================================== */
+
+function nameHtml(
+  side,
+  extraClass = ""
+) {
+
+
+  /*
+     Participante todavía
+     no definido.
+  */
+
+  if (!side.p) {
+
+    return `
+
+      <span
+        class="
+          versus-name
+          versus-name--tbd
+          ${extraClass}
+        "
+      >
+
+        ${escapeHtml(
+          side.label ||
+          "Por definir"
+        )}
+
+      </span>
+
+    `;
+
+  }
+
+
+  /*
+     Participante real.
+  */
+
+  return `
+
+    <span
+      class="
+        versus-name
+        ${extraClass}
+      "
+    >
+
+      ${escapeHtml(
+        NOMBRES[
+          side.p - 1
+        ]
+      )}
+
+    </span>
+
+  `;
+
+}
+
+
+/* ==========================================================
+   TARJETA DE PARTIDO
+   ========================================================== */
+
+function matchHtml(match) {
+
+  const result =
+    SCORES[match.id];
+
+
+  const played =
+    Boolean(
+      result &&
+      Array.isArray(
+        result.score
+      )
+    );
+
+
+  /*
+     Si todavía no se juega:
+     — - —
+  */
+
+  const [
+    scoreA,
+    scoreB
+  ] =
+    played
+      ? result.score
+      : ["—", "—"];
+
+
+  const winner =
+    winnerOf(match);
+
+
+  /*
+     Detectar empate
+     resuelto por penales.
+  */
+
+  const decidedByPenalties =
+    played &&
+    scoreA === scoreB &&
+    (
+      result.winner === 1 ||
+      result.winner === 2
+    );
+
+
+  return `
+
+    <article
+      class="
+        versus-card
+        ${played ? "is-played" : ""}
+      "
+      id="${match.id}"
+    >
+
+
+      <!-- CABECERA -->
+
+      <header
+        class="versus-card__head"
+      >
+
+
+        <span>
+
+          ${roundTitle(
+            match.round
+          )}
+
+          ·
+
+          Partido ${pad(
+            match.n
+          )}
+
+        </span>
+
+
+        <span
+          class="
+            versus-card__status
+            ${played ? "is-finished" : ""}
+          "
+        >
+
+          ${
+            played
+              ? "FINALIZADO"
+              : "PENDIENTE"
+          }
+
+        </span>
+
+
+      </header>
+
+
+      <!-- FOTOS -->
+
+      <div
+        class="versus-card__photos"
+      >
+
+        ${photoBox(
+          match.a
+        )}
+
+        ${photoBox(
+          match.b
+        )}
+
+      </div>
+
+
+      <!-- RESULTADO -->
+
+      <div
+        class="versus-card__score"
+      >
+
+
+        ${nameHtml(
+          match.a,
+
+          winner === 1
+            ? "is-winner"
+            : ""
+        )}
+
+
+        <span
+          class="versus-result"
+        >
+
+          ${
+            played
+              ? `(${scoreA} - ${scoreB})`
+              : "(— - —)"
+          }
+
+        </span>
+
+
+        ${nameHtml(
+          match.b,
+
+          winner === 2
+            ? "is-winner"
+            : ""
+        )}
+
+
+      </div>
+
+
+      <!-- PENALES -->
+
+      ${
+        decidedByPenalties
+
+          ? `
+
+            <div
+              class="versus-card__penalties"
+            >
+
+              DEFINIDO POR PENALES
+
+            </div>
+
+          `
+
+          : ""
+      }
+
+
+    </article>
+
+  `;
+
+}
+
+
+/* ==========================================================
+   RENDERIZAR TORNEO
+   ========================================================== */
+
+function renderTournament() {
+
+
+  /*
+     Construimos todos
+     los partidos.
+  */
+
+  const matches =
+    buildMatches();
+
+
+  /*
+     Resolvemos automáticamente
+     quién avanza.
+  */
+
+  resolveMatches(
+    matches
+  );
+
+
+  /*
+     Buscar contenedor.
+  */
+
+  const root =
+    document.getElementById(
+      "enfrentamientos"
+    );
+
+
+  if (!root) {
+
+    console.warn(
+      'No se encontró el elemento #enfrentamientos'
+    );
+
+    return;
+
+  }
+
+
+  /*
+     Generar cada ronda.
+  */
+
+  root.innerHTML =
+    ROUNDS
+      .map(
+        round => {
+
+
+          const matchesInRound =
+            matches.filter(
+              match =>
+                match.round ===
+                round.key
+            );
+
+
+          return `
+
+            <section
+              class="
+                versus-round
+                versus-round--${round.key}
+              "
+              id="ronda-${round.key}"
+            >
+
+
+              <div
+                class="versus-round__head"
+              >
+
+
+                <h2>
+
+                  ${round.title}
+
+                </h2>
+
+
+                <span>
+
+                  ${matchesInRound.length}
+
+                  ${
+                    matchesInRound.length === 1
+                      ? "partido"
+                      : "partidos"
+                  }
+
+                </span>
+
+
+              </div>
+
+
+              <div
+                class="
+                  versus-grid
+                  versus-grid--${round.key}
+                "
+              >
+
+                ${
+                  matchesInRound
+                    .map(
+                      matchHtml
+                    )
+                    .join("")
+                }
+
+              </div>
+
+
+            </section>
+
+          `;
+
+        }
+      )
+      .join("");
+
+
+  /*
+     Crear navegación
+     entre rondas.
+  */
+
+  const tabs =
+    document.getElementById(
+      "versus-tabs"
+    );
+
+
+  if (tabs) {
+
+    tabs.innerHTML =
+      ROUNDS
+        .map(
+          round => `
+
+            <a
+              href="#ronda-${round.key}"
+            >
+
+              ${round.short}
+
+            </a>
+
+          `
+        )
+        .join("");
+
+  }
+
+}
+
+
+/* ==========================================================
+   ROTACIÓN DE FOTOS
+   ========================================================== */
+
+function startPhotoRotation() {
+
+
+  const boxes = [
+
+    ...document.querySelectorAll(
+      ".versus-photo:not(.versus-photo--tbd)"
+    )
+
+  ];
+
+
+  /*
+     Respetar usuarios que
+     desactivan animaciones.
+  */
+
+  const reducedMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+  boxes.forEach(
+    (
+      box,
+      boxIndex
+    ) => {
+
+
+      const photos = [
+
+        ...box.querySelectorAll(
+          ".participant-photo"
+        )
+
+      ];
+
+
+      const dots = [
+
+        ...box.querySelectorAll(
+          ".versus-photo__dots i"
+        )
+
+      ];
+
+
+      /*
+         Detectar imágenes
+         que no existen.
+      */
+
+      photos.forEach(
+        (
+          image,
+          imageIndex
+        ) => {
+
+
+          function markAsMissing() {
+
+            image.classList.add(
+              "is-missing"
+            );
+
+
+            image.classList.remove(
+              "is-active"
+            );
+
+
+            if (
+              dots[
+                imageIndex
+              ]
+            ) {
+
+              dots[
+                imageIndex
+              ].classList.add(
+                "is-missing"
+              );
+
+
+              dots[
+                imageIndex
+              ].classList.remove(
+                "is-active"
+              );
+
+            }
+
+          }
+
+
+          image.addEventListener(
+            "error",
+            markAsMissing
+          );
+
+
+          /*
+             Si la imagen ya falló
+             antes de agregar listener.
+          */
+
+          if (
+            image.complete &&
+            image.naturalWidth === 0
+          ) {
+
+            markAsMissing();
+
+          }
+
+
+        }
+      );
+
+
+      /*
+         Si el usuario no quiere
+         animaciones, dejamos
+         la primera foto.
+      */
+
+      if (
+        reducedMotion
+      ) {
+
+        return;
+
+      }
+
+
+      let currentIndex = 0;
+
+
+      /* ------------------------------------------------------
+         ROTAR FOTO
+         ------------------------------------------------------ */
+
+      function rotate() {
+
+
+        const availableIndexes =
+          photos
+            .map(
+              (
+                photo,
+                index
+              ) => {
+
+                if (
+                  photo.classList.contains(
+                    "is-missing"
+                  )
+                ) {
+
+                  return null;
+
+                }
+
+                return index;
+
+              }
+            )
+            .filter(
+              index =>
+                index !== null
+            );
+
+
+        /*
+           Ninguna foto disponible.
+        */
+
+        if (
+          availableIndexes.length === 0
+        ) {
+
+          return;
+
+        }
+
+
+        /*
+           Solo hay una.
+        */
+
+        if (
+          availableIndexes.length === 1
+        ) {
+
+
+          photos.forEach(
+            photo =>
+              photo.classList.remove(
+                "is-active"
+              )
+          );
+
+
+          dots.forEach(
+            dot =>
+              dot.classList.remove(
+                "is-active"
+              )
+          );
+
+
+          currentIndex =
+            availableIndexes[0];
+
+
+          photos[
+            currentIndex
+          ].classList.add(
+            "is-active"
+          );
+
+
+          if (
+            dots[
+              currentIndex
+            ]
+          ) {
+
+            dots[
+              currentIndex
+            ].classList.add(
+              "is-active"
+            );
+
+          }
+
+
+          return;
+
+        }
+
+
+        /*
+           Buscar posición actual.
+        */
+
+        let currentPosition =
+          availableIndexes.indexOf(
+            currentIndex
+          );
+
+
+        /*
+           Si la foto actual
+           ya no existe.
+        */
+
+        if (
+          currentPosition === -1
+        ) {
+
+          currentPosition = 0;
+
+        }
+
+
+        /*
+           Siguiente foto.
+        */
+
+        currentPosition =
+          (
+            currentPosition + 1
+          ) %
+          availableIndexes.length;
+
+
+        currentIndex =
+          availableIndexes[
+            currentPosition
+          ];
+
+
+        /*
+           Desactivar anteriores.
+        */
+
+        photos.forEach(
+          photo =>
+
+            photo.classList.remove(
+              "is-active"
+            )
+
+        );
+
+
+        dots.forEach(
+          dot =>
+
+            dot.classList.remove(
+              "is-active"
+            )
+
+        );
+
+
+        /*
+           Activar nueva.
+        */
+
+        photos[
+          currentIndex
+        ].classList.add(
+          "is-active"
+        );
+
+
+        if (
+          dots[
+            currentIndex
+          ]
+        ) {
+
+          dots[
+            currentIndex
+          ].classList.add(
+            "is-active"
+          );
+
+        }
+
+
+      }
+
+
+      /*
+         Diferente inicio para
+         cada tarjeta.
+
+         Evita que todas las fotos
+         cambien al mismo tiempo.
+      */
+
+      const initialDelay =
+        800 +
+        (
+          boxIndex % 8
+        ) * 210;
+
+
+      setTimeout(
+        () => {
+
+
+          rotate();
+
+
+          setInterval(
+            rotate,
+            3000
+          );
+
+
+        },
+        initialDelay
+      );
+
+
+    }
+  );
+
+}
+
+
+/* ==========================================================
+   INICIALIZACIÓN
+   ========================================================== */
+
+function initTournament() {
+
+
+  /*
+     Primero generamos
+     todo el HTML.
+  */
+
+  renderTournament();
+
+
+  /*
+     Esperamos un frame.
+
+     Así garantizamos que las fotos
+     ya existan dentro del DOM.
+  */
+
+  requestAnimationFrame(
+    () => {
+
+      startPhotoRotation();
+
+    }
+  );
+
+}
+
+
+/*
+   Funciona tanto si el JS
+   se carga con defer como si
+   se carga al final del HTML.
+*/
+
+if (
+  typeof document !==
+  "undefined"
+) {
+
+
+  if (
+    document.readyState ===
+    "loading"
+  ) {
+
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      initTournament
+    );
+
+
+  } else {
+
+
+    initTournament();
+
+
+  }
+
+}
+
+
+/* ==========================================================
+   SOPORTE PARA NODE / PRUEBAS
+   ========================================================== */
+
+if (
+  typeof module !==
+  "undefined"
+) {
+
+
+  module.exports = {
+
+    SCORES,
+
+    NOMBRES,
+
+    ROUNDS,
+
+    buildMatches,
+
+    resolveMatches,
+
+    winnerOf
+
+  };
+
+
 }
