@@ -25,6 +25,9 @@
   --participants-muted: #94a9c2;
 
   --participants-title-font: 'AdiCupQ2022', Impact, sans-serif;
+
+  /* Radio de las esquinas de las tarjetas */
+  --participants-radius: 18px;
 }
 
 /* =========================
@@ -315,6 +318,12 @@ body.tournament-page {
 
   border: 1px solid var(--participants-line);
 
+  /* Esquinas redondeadas */
+  border-radius: var(--participants-radius);
+
+  /* Evita que la foto con transform se salga de las esquinas (Safari) */
+  isolation: isolate;
+
   background:
     linear-gradient(
       145deg,
@@ -488,6 +497,8 @@ body.tournament-page {
 
   border:
     1px solid rgba(255, 255, 255, 0.11);
+
+  border-radius: 10px;
 
   background:
     rgba(2, 8, 20, 0.68);
