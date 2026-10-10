@@ -1,0 +1,765 @@
+/* ==========================================================
+   AECOMPU TOURNAMENT 2026
+   PARTICIPANTES.CSS
+   ========================================================== */
+
+/* =========================
+   FUENTE PERSONALIZADA
+   ========================= */
+
+
+
+/* =========================
+   VARIABLES GLOBALES
+   ========================= */
+
+:root {
+  --participants-bg: #030814;
+  --participants-bg-2: #061225;
+  --participants-surface: rgba(8, 22, 43, 0.72);
+  --participants-line: rgba(127, 193, 255, 0.16);
+
+  --participants-blue: #58adff;
+  --participants-blue-soft: #a8d8ff;
+  --participants-white: #f7fbff;
+  --participants-muted: #94a9c2;
+
+  --participants-title-font: 'AdiCupQ2022', Impact, sans-serif;
+}
+
+/* =========================
+   CONFIGURACIÓN GENERAL
+   ========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body.tournament-page {
+  font-family: var(--participants-title-font);
+}
+
+body.tournament-page {
+  background:
+    radial-gradient(
+      circle at 82% 12%,
+      rgba(68, 151, 255, 0.13),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at 10% 45%,
+      rgba(59, 130, 246, 0.08),
+      transparent 26rem
+    ),
+    var(--participants-bg);
+
+  color: var(--participants-white);
+}
+
+/* ==========================================================
+   HERO - ENCABEZADO DE PARTICIPANTES
+   ========================================================== */
+
+.participants-hero {
+  position: relative;
+  min-height: 62vh;
+
+  display: grid;
+  align-items: end;
+
+  overflow: hidden;
+
+  padding:
+    calc(var(--header-height, 78px) + 90px)
+    0
+    76px;
+
+  border-bottom: 1px solid var(--participants-line);
+
+  background:
+    linear-gradient(
+      110deg,
+      #020713 0%,
+      #061329 55%,
+      #081a36 100%
+    );
+}
+
+/* Cuadrícula decorativa del hero */
+
+.participants-hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.23;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px
+    );
+
+  background-size: 72px 72px;
+
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000, transparent 86%);
+
+  mask-image:
+    linear-gradient(to bottom, #000, transparent 86%);
+
+  pointer-events: none;
+}
+
+/* Número 32 decorativo */
+
+.participants-hero::after {
+  content: "32";
+
+  position: absolute;
+
+  right: -0.025em;
+  bottom: -0.19em;
+
+  color: rgba(255, 255, 255, 0.035);
+
+  font-family: var(--participants-title-font);
+
+  font-size: min(44vw, 620px);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.08em;
+
+  pointer-events: none;
+}
+
+/* Contenido principal */
+
+.participants-hero__content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Texto pequeño superior */
+
+.participants-kicker {
+  margin: 0 0 14px;
+
+  color: var(--participants-blue);
+
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Título principal */
+
+.participants-title {
+  margin: 0;
+
+  color: var(--participants-white);
+
+  font-family: var(--participants-title-font);
+
+  font-size: clamp(4rem, 9vw, 9rem);
+  font-weight: 400;
+  line-height: 0.82;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.participants-title span {
+  display: block;
+
+  color: var(--participants-blue);
+
+  text-shadow:
+    0 0 34px rgba(88, 173, 255, 0.14);
+}
+
+/* Descripción */
+
+.participants-lead {
+  max-width: 700px;
+
+  margin: 28px 0 0;
+
+  color: #c8dbef;
+
+  font-size: clamp(1rem, 1.7vw, 1.18rem);
+  line-height: 1.75;
+}
+
+/* Información del torneo */
+
+.participants-meta {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 26px;
+}
+
+.participants-meta span {
+  min-height: 32px;
+
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0 12px;
+
+  border: 1px solid rgba(88, 173, 255, 0.25);
+
+  color: #d8ebff;
+
+  background: rgba(88, 173, 255, 0.055);
+
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================
+   SECCIÓN PRINCIPAL DE PARTICIPANTES
+   ========================================================== */
+
+.participants-section {
+  position: relative;
+
+  padding: 92px 0 120px;
+
+  background:
+    radial-gradient(
+      circle at 50% 0,
+      rgba(88, 173, 255, 0.06),
+      transparent 30rem
+    ),
+    var(--participants-bg);
+}
+
+/* Encabezado de sección */
+
+.participants-section__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 40px;
+
+  margin-bottom: 42px;
+}
+
+.participants-section__head h2 {
+  margin: 0;
+
+  color: var(--participants-white);
+
+  font-family: var(--participants-title-font);
+
+  font-size: clamp(2.6rem, 5vw, 5rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.participants-section__head h2 span {
+  color: var(--participants-blue);
+}
+
+.participants-section__head p {
+  max-width: 460px;
+
+  margin: 0;
+
+  color: var(--participants-muted);
+  line-height: 1.7;
+}
+
+/* ==========================================================
+   GRID DE PARTICIPANTES
+   ========================================================== */
+
+.participants-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+/* ==========================================================
+   TARJETAS DE PARTICIPANTES
+   ========================================================== */
+
+.participant-card {
+  position: relative;
+
+  min-width: 0;
+  overflow: hidden;
+
+  border: 1px solid var(--participants-line);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(88, 173, 255, 0.055),
+      transparent 42%
+    ),
+    var(--participants-surface);
+
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.24);
+
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Animación al pasar el cursor */
+
+.participant-card:hover {
+  z-index: 2;
+
+  transform: translateY(-8px);
+
+  border-color:
+    rgba(88, 173, 255, 0.42);
+
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.36),
+    0 0 0 1px rgba(88, 173, 255, 0.05);
+}
+
+/* ==========================================================
+   CONTENEDOR DE FOTOGRAFÍAS
+   ========================================================== */
+
+.participant-card__media {
+  position: relative;
+
+  aspect-ratio: 4 / 5;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 32%,
+      rgba(88, 173, 255, 0.15),
+      transparent 28%
+    ),
+    linear-gradient(
+      150deg,
+      #08152a,
+      #030813 72%
+    );
+}
+
+/* Degradado inferior de fotografía */
+
+.participant-card__media::after {
+  content: "";
+
+  position: absolute;
+  z-index: 3;
+
+  inset: auto 0 0;
+
+  height: 42%;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(2, 7, 19, 0.95),
+      transparent
+    );
+
+  pointer-events: none;
+}
+
+/* ==========================================================
+   IMAGEN DE RESPALDO
+   ========================================================== */
+
+.participant-card__fallback {
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+  place-content: center;
+  justify-items: center;
+
+  gap: 6px;
+
+  color: rgba(255, 255, 255, 0.08);
+
+  font-family: var(--participants-title-font);
+}
+
+.participant-card__fallback span {
+  font-size: clamp(5rem, 10vw, 8rem);
+  font-weight: 400;
+  line-height: 0.8;
+}
+
+.participant-card__fallback small {
+  color: rgba(168, 216, 255, 0.36);
+
+  font-size: 0.52rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+}
+
+/* ==========================================================
+   FOTOGRAFÍAS - ROTACIÓN DE 3 IMÁGENES
+   ========================================================== */
+
+.participant-photo {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center top;
+
+  opacity: 0;
+
+  transform: scale(1.045);
+
+  transition:
+    opacity 0.75s ease,
+    transform 5.5s ease;
+}
+
+/* Fotografía visible */
+
+.participant-photo.is-active {
+  opacity: 1;
+
+  transform: scale(1);
+}
+
+/* Fotografía no disponible */
+
+.participant-photo.is-missing {
+  display: none;
+}
+
+/* ==========================================================
+   CONTADOR DE PARTICIPANTES
+   ========================================================== */
+
+.participant-card__counter {
+  position: absolute;
+
+  z-index: 4;
+
+  top: 14px;
+  left: 14px;
+
+  display: inline-flex;
+  align-items: baseline;
+
+  gap: 4px;
+
+  padding: 7px 9px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.11);
+
+  background:
+    rgba(2, 8, 20, 0.68);
+
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.participant-card__counter span {
+  color: var(--participants-white);
+
+  font-family: var(--participants-title-font);
+
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.participant-card__counter i {
+  color: var(--participants-blue);
+
+  font-size: 0.5rem;
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+/* ==========================================================
+   INDICADORES DE FOTOGRAFÍAS
+   ========================================================== */
+
+.participant-card__dots {
+  position: absolute;
+
+  z-index: 5;
+
+  right: 14px;
+  bottom: 13px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
+/* Indicador inactivo */
+
+.participant-card__dots i {
+  display: block;
+
+  width: 17px;
+  height: 2px;
+
+  background:
+    rgba(255, 255, 255, 0.25);
+
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+}
+
+/* Indicador activo */
+
+.participant-card__dots i.is-active {
+  width: 28px;
+
+  background: var(--participants-blue);
+
+  box-shadow:
+    0 0 12px rgba(88, 173, 255, 0.48);
+}
+
+/* ==========================================================
+   INFORMACIÓN DEL PARTICIPANTE
+   ========================================================== */
+
+.participant-card__body {
+  min-height: 122px;
+
+  display: grid;
+  align-content: center;
+
+  padding: 19px 18px 20px;
+
+  border-top:
+    1px solid var(--participants-line);
+}
+
+/* Texto superior de tarjeta */
+
+.participant-card__eyebrow {
+  margin-bottom: 7px;
+
+  color: var(--participants-blue);
+
+  font-size: 0.52rem;
+  font-weight: 900;
+  letter-spacing: 0.17em;
+}
+
+/* Nombre del participante */
+
+.participant-card__body h2 {
+  margin: 0;
+
+  color: var(--participants-white);
+
+  font-family: var(--participants-title-font);
+
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+
+  overflow-wrap: anywhere;
+}
+
+/* Gamertag */
+
+.participant-card__gamertag {
+  margin: 7px 0 0;
+
+  color: var(--participants-muted);
+
+  font-size: 0.78rem;
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================================
+   NOTA INFORMATIVA
+   ========================================================== */
+
+.participants-note {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  margin-top: 28px;
+
+  padding: 16px 18px;
+
+  border-left:
+    2px solid var(--participants-blue);
+
+  color: var(--participants-muted);
+
+  background:
+    rgba(88, 173, 255, 0.035);
+
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
+.participants-note strong {
+  color: #dcecff;
+}
+
+/* ==========================================================
+   RESPONSIVE - PANTALLAS MEDIANAS
+   ========================================================== */
+
+@media (max-width: 1120px) {
+
+  .participants-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+}
+
+/* ==========================================================
+   RESPONSIVE - TABLETS
+   ========================================================== */
+
+@media (max-width: 820px) {
+
+  .participants-section__head {
+    display: grid;
+    align-items: start;
+
+    gap: 18px;
+  }
+
+  .participants-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .participants-hero {
+    min-height: 56vh;
+  }
+
+  .participants-hero::after {
+    opacity: 0.65;
+  }
+
+}
+
+/* ==========================================================
+   RESPONSIVE - TELÉFONOS
+   ========================================================== */
+
+@media (max-width: 520px) {
+
+  .participants-hero {
+    min-height: auto;
+
+    padding-top:
+      calc(var(--header-height, 72px) + 64px);
+
+    padding-bottom: 62px;
+  }
+
+  .participants-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .participant-card__media {
+    aspect-ratio: 5 / 5.7;
+  }
+
+  .participants-section {
+    padding: 70px 0 90px;
+  }
+
+  .participants-title {
+    font-size:
+      clamp(3.6rem, 20vw, 6rem);
+  }
+
+  .participants-section__head h2 {
+    font-size:
+      clamp(2.5rem, 11vw, 4rem);
+  }
+
+  .participant-card__body h2 {
+    font-size: 1.85rem;
+  }
+
+  .participants-meta {
+    gap: 6px;
+  }
+
+  .participants-meta span {
+    font-size: 0.58rem;
+  }
+
+  .participants-hero::after {
+    font-size: 70vw;
+  }
+
+}
+
+/* ==========================================================
+   ACCESIBILIDAD - MOVIMIENTO REDUCIDO
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .participant-photo,
+  .participant-card,
+  .participant-card__dots i {
+    transition: none !important;
+  }
+
+  .participant-card:hover {
+    transform: none;
+  }
+
+}
