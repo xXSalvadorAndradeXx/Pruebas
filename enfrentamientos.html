@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Enfrentamientos del AECOMPU Tournament 2026 · De 16avos de final a la gran final, con tercer lugar. EA SPORTS FC 27 en PlayStation 5.">
+  <title>Enfrentamientos | AECOMPU Tournament 2026</title>
+
+  <!-- Hojas de estilo compartidas con el resto del sitio -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/tournament.css">
+  <!-- Estilos propios de esta página -->
+  <link rel="stylesheet" href="assets/css/enfrentamientos.css">
+</head>
+
+<body class="tournament-page">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-copy"><small>AECOMPU</small><strong>TOURNAMENT<span>.</span></strong></span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-panel">
+        <ul class="nav-links">
+          <li><a href="tournaments.html">Temporadas</a></li>
+          <li><a href="fc27.html">FC 27</a></li>
+          <li><a href="participantes.html">Participantes</a></li>
+          <li><a class="is-active" href="enfrentamientos.html">Enfrentamientos</a></li>
+          <li><a href="fc27.html#experiencia">Experiencia</a></li>
+          <li><a href="bases.html">Bases</a></li>
+        </ul>
+        <a class="btn btn--primary" href="#" data-registration>Inscribirme</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="versus-hero">
+      <div class="container">
+        <div class="versus-hero__content reveal">
+          <p class="versus-kicker">AECOMPU Tournament 2026 · EA SPORTS FC 27</p>
+          <h1 class="versus-title">Todos los <span>enfrentamientos.</span></h1>
+          <p class="versus-lead">
+            El camino completo del torneo: desde los 16avos de final hasta la gran final,
+            pasando por la lucha por el tercer lugar. Cada partido muestra a sus dos
+            protagonistas y el marcador.
+          </p>
+          <div class="versus-meta">
+            <span>32 partidos</span>
+            <span>6 rondas</span>
+            <span>1 vs 1</span>
+            <span>23 OCT 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="versus-tabs-wrap">
+      <div class="container">
+        <nav class="versus-tabs" id="versus-tabs" aria-label="Rondas del torneo"></nav>
+      </div>
+    </div>
+
+    <section class="versus-section">
+      <div class="container">
+        <!-- Los partidos se generan desde assets/js/enfrentamientos.js -->
+        <div id="enfrentamientos"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html">
+            <span class="brand-mark">A</span>
+            <span class="brand-copy"><small>AECOMPU</small><strong>TOURNAMENT<span>.</span></strong></span>
+          </a>
+          <p style="max-width:440px;margin-top:18px">
+            EA SPORTS FC 27 en PlayStation 5. Primera experiencia oficial de AECOMPU Gaming.
+          </p>
+        </div>
+        <div>
+          <h4>Evento</h4>
+          <div class="footer-links">
+            <a href="fc27.html">FC 27</a>
+            <a href="participantes.html">Participantes</a>
+            <a href="enfrentamientos.html">Enfrentamientos</a>
+            <a href="bases.html">Bases oficiales</a>
+          </div>
+        </div>
+        <div>
+          <h4>Datos</h4>
+          <p>23 de octubre de 2026<br>1:00 p. m. — 4:00 p. m.<br>UGB CRU · Sala de Realidad Virtual</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 AECOMPU Gaming</span>
+        <a href="fc27.html">← Volver a FC 27</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/app.js"></script>
+  <!-- Arma el cuadro y rota las fotos cada 3 segundos -->
+  <script src="assets/js/enfrentamientos.js"></script>
+</body>
+</html>
