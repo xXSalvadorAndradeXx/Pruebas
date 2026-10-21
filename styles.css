@@ -159,3 +159,40 @@ body{overflow-x:clip}
 @media(max-width:760px){.console-visual{height:240px;top:52px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.game-info{padding:15px 12px;min-height:100px}.game-info h3{font-size:23px}.game-cover{aspect-ratio:4/4.7}.pricing-grid-updated{grid-template-columns:1fr}.pricing-grid-updated .price-card{min-height:auto}.countdown-wrap{padding:21px 13px}.countdown-grid{gap:5px}.countdown-grid>div{padding:14px 3px}.countdown-grid small{font-size:8px;letter-spacing:0}.game-platform-heading{font-size:22px}}
 @media(max-width:390px){.game-info h3{font-size:20px}.game-platform-heading{font-size:19px}}
 @media(prefers-reduced-motion:reduce){.console-visual,.game-tile,.game-cover img{transition:none!important}}
+
+
+/* ==========================================================
+   SCROLL PERSONALIZADO Y DESPLAZAMIENTO SOLO VERTICAL
+   ========================================================== */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* Compatibilidad con navegadores antiguos */
+  overflow-x: clip;   /* Evita scroll lateral sin interferir con sticky */
+}
+
+html {
+  overflow-y: auto;
+  scrollbar-width: thin;                    /* Firefox */
+  scrollbar-color: #b979a5 #fff7f0;        /* Firefox */
+}
+
+/* Barra de desplazamiento vertical: Chrome, Edge y Safari */
+::-webkit-scrollbar {
+  width: 11px;
+  height: 0;
+}
+::-webkit-scrollbar-track {
+  background: #fff7f0;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8567a0, #e995b2);
+  border: 2px solid #fff7f0;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #6d4d79, #b56091);
+}
+::-webkit-scrollbar-corner {
+  background: #fff7f0;
+}
