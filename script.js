@@ -147,3 +147,22 @@ document.getElementById('download-ticket')?.addEventListener('click', () => {
     observer.observe(el);
   });
 })();
+// Cuenta regresiva a las 12:00 del 23 de octubre de 2026, hora salvadoreña (UTC-06:00).
+(() => {
+  const date = new Date('2026-10-23T12:00:00-06:00').getTime();
+  const ids = ['cd-days', 'cd-hours', 'cd-minutes', 'cd-seconds'];
+  const nodes = ids.map(id => document.getElementById(id));
+  if (nodes.some(node => !node)) return;
+  const message = document.getElementById('countdown-message');
+  function renderCountdown() {
+    const rest = Math.max(0, date - Date.now());
+    const seconds = Math.floor(rest / 1000);
+    const values = [Math.floor(seconds / 86400), Math.floor((seconds % 86400) / 3600), Math.floor((seconds % 3600) / 60), seconds % 60];
+    nodes.forEach((node, index) => { node.textContent = String(values[index]).padStart(2, '0'); });
+    if (rest === 0) { message.textContent = '¡LLEGÓ EL DÍA DE AECOMPU EXPERIENCE!'; return true; }
+    return false;
+  }
+  if (!renderCountdown()) {
+    const timer = setInterval(() => { if (renderCountdown()) clearInterval(timer); }, 1000);
+  }
+})();

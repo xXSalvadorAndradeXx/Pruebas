@@ -120,3 +120,42 @@ body{overflow-x:clip}
   .hero{min-height:0}
   .hero-content{padding-top:60px;padding-bottom:80px}
 }
+/* AECOMPU 2026: mejoras puntuales sin alterar la identidad visual */
+.header{position:sticky;top:0;z-index:100;box-shadow:0 3px 18px #2416370a}
+.console-visual{position:absolute;z-index:0;right:0;top:65px;width:100%;height:270px;object-fit:contain;filter:drop-shadow(0 16px 17px #130d3335);transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.console-card:hover .console-visual{transform:translateY(-7px) rotate(-2deg) scale(1.045)}
+.console-detail{background:linear-gradient(transparent,#25153d18 20%);padding-top:18px}
+.game-platform-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid #ddcbd6;padding:12px 0 18px;margin:20px 0 22px;font:900 25px var(--font-display);letter-spacing:1px}
+.game-platform-heading strong{font:900 12px var(--font-body);letter-spacing:1.3px;background:#f3e5e8;padding:10px 13px;color:#6d4d79;white-space:nowrap}
+.game-platform-heading.switch-heading{margin-top:66px}
+.game-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.game-tile{position:relative;min-width:0;background:#f5e8ea;overflow:hidden;transition:transform .35s,box-shadow .35s}
+.game-tile:hover{transform:translateY(-7px);box-shadow:0 14px 27px #25153524}
+.game-cover{aspect-ratio:4/4.5;overflow:hidden;background:linear-gradient(135deg,#b979a5,#f6b296)}
+.game-cover img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.game-tile:hover img{transform:scale(1.055)}
+.game-info{padding:20px 17px 24px;min-height:111px}
+.game-info h3{font:900 25px/1.02 var(--font-display);margin:10px 0 0}
+.game-ordinal{position:absolute;top:12px;right:12px;background:#211933c9;color:white;z-index:1;padding:7px 9px;font:900 15px var(--font-display)}
+.pricing-grid-updated{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pricing-grid-updated .price-card{padding:29px 19px;min-height:490px}
+.pricing-grid-updated .price-card h3{font-size:27px;margin-top:27px;min-height:66px}
+.pricing-grid-updated .price{font-size:75px;white-space:nowrap}
+.pricing-grid-updated .price span{font-size:42px}
+.tournament-rates{display:grid;gap:7px;margin:8px 0 14px}
+.tournament-rates>div{display:flex;justify-content:space-between;align-items:center;gap:5px;border-bottom:1px solid #ffffff50;padding:8px 0}
+.tournament-rates small{font-size:10px;font-weight:800;letter-spacing:.7px}
+.tournament-rates strong{font:900 32px var(--font-display)}
+.countdown-wrap{margin-top:42px;padding:26px 28px;background:#f3e5e8;text-align:center}
+.countdown-title{display:block;font-weight:900;font-size:11px;letter-spacing:2px;color:#94638e;margin-bottom:18px}
+.countdown-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;max-width:680px;margin:auto}
+.countdown-grid>div{background:#fff9f4;padding:18px 8px 14px}
+.countdown-grid strong{font:900 clamp(40px,6vw,79px)/1 var(--font-display);display:block;color:#211933;font-variant-numeric:tabular-nums}
+.countdown-grid small{display:block;font-size:10px;font-weight:900;letter-spacing:1.5px;color:#9c7199;margin-top:9px}
+.countdown-message{font-size:12px;font-weight:800;color:#65436b;margin:15px 0 0}
+.countdown-message:empty{display:none}
+@media(max-width:1100px){.pricing-grid-updated{grid-template-columns:repeat(2,minmax(0,1fr))}.pricing-grid-updated .price-card{min-height:440px}}
+@media(max-width:900px){.game-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.console-visual{height:240px;top:52px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.game-info{padding:15px 12px;min-height:100px}.game-info h3{font-size:23px}.game-cover{aspect-ratio:4/4.7}.pricing-grid-updated{grid-template-columns:1fr}.pricing-grid-updated .price-card{min-height:auto}.countdown-wrap{padding:21px 13px}.countdown-grid{gap:5px}.countdown-grid>div{padding:14px 3px}.countdown-grid small{font-size:8px;letter-spacing:0}.game-platform-heading{font-size:22px}}
+@media(max-width:390px){.game-info h3{font-size:20px}.game-platform-heading{font-size:19px}}
+@media(prefers-reduced-motion:reduce){.console-visual,.game-tile,.game-cover img{transition:none!important}}

@@ -1,0 +1,16 @@
+AECOMPU EXPERIENCE 2026
+
+Abra index.html en su navegador. No necesita instalar dependencias.
+
+Archivos principales:
+- index.html: estructura y contenido.
+- styles.css: diseño original con mejoras responsivas.
+- script.js: menú, animaciones y cuenta regresiva.
+- assets/consolas/: ilustraciones SVG locales de las consolas.
+- assets/juegos/: 14 portadas ilustrativas de reserva editables.
+
+Para usar imágenes propias de los juegos, reemplace el SVG correspondiente en assets/juegos/ por su imagen y actualice la extensión (.png/.jpg/.webp) en el src del index.html. Puede conservar el mismo nombre base de cada juego.
+
+El contador está definido para el viernes 23/10/2026 a las 12:00 del mediodía, hora de El Salvador.
+
+IMPORTANTE: confirme con organización las condiciones de entrada solidaria, precios, disponibilidad de juegos, derechos y premios antes de publicar. El sitio usa el formulario externo original para preinscripciones.
