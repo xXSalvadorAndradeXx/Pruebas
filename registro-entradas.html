@@ -5,7 +5,16 @@
 :root{--bg:#f4f6fb;--panel:#fff;--ink:#20263b;--muted:#788096;--line:#e5e9f2;--navy:#19142f;--violet:#7656a5;--pink:#e995b2;--green:#16865d;--red:#bd4359;--amber:#b97922;--shadow:0 12px 32px #2029470b}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.55;cursor:not-allowed}.hidden{display:none!important}.muted{color:var(--muted)}.small{font-size:12px}.eyebrow{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;font-weight:800;color:var(--violet)}
 .login-shell{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,480px);background:#19142f}.login-art{padding:clamp(32px,7vw,90px);display:flex;flex-direction:column;justify-content:space-between;color:#fff;background:radial-gradient(circle at 80% 25%,#e995b2 0,transparent 30%),linear-gradient(145deg,#24183f,#634d86 58%,#e995b2)}.login-brand{font-weight:900;font-size:17px;letter-spacing:2px}.login-brand span{display:block;font-size:10px;letter-spacing:4px;color:#ffd09a;margin-top:5px}.login-art h1{font-size:clamp(40px,6vw,78px);line-height:.93;letter-spacing:-3px;max-width:680px;margin:25px 0}.login-art h1 em{font-style:normal;color:#ffd09a}.login-art p{max-width:520px;color:#f0e9f8;line-height:1.8}.login-foot{font-size:11px;color:#d8cbe8}.login-panel{display:flex;align-items:center;justify-content:center;padding:30px;background:#f8f8fc}.login-card{width:min(100%,370px)}.login-card h2{font-size:30px;letter-spacing:-1px;margin:8px 0}.login-card>p{color:var(--muted);line-height:1.65;margin-bottom:28px}.field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}.field label{font-size:12px;font-weight:800;color:#4c5268}.field input,.field select,.field textarea,.control{width:100%;min-height:43px;border:1px solid #dce1ed;background:white;border-radius:10px;padding:10px 12px;color:var(--ink);outline:none;transition:border .2s,box-shadow .2s}.field textarea{resize:vertical}.field input:focus,.field select:focus,.field textarea:focus,.control:focus{border-color:#9a7bc2;box-shadow:0 0 0 3px #7656a518}.btn{border:0;border-radius:10px;min-height:43px;padding:11px 16px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s,filter .15s}.btn:hover{filter:brightness(1.04);transform:translateY(-1px)}.btn-primary{background:var(--navy);color:white}.btn-accent{background:#7656a5;color:white}.btn-light{background:#f0edf8;color:#59417f}.btn-outline{border:1px solid var(--line);background:white;color:var(--ink)}.btn-danger{background:#fff0f1;color:var(--red)}.btn-block{width:100%}.error-box,.success-box,.info-box{padding:11px 13px;border-radius:9px;font-size:12px;line-height:1.55;margin:12px 0}.error-box{background:#fff0f1;color:#9e2d43}.success-box{background:#e8f8ef;color:#126d49}.info-box{background:#f0edf8;color:#59417f}
-.app-shell{min-height:100vh;display:grid;grid-template-columns:245px minmax(0,1fr)}.sidebar{background:#19142f;color:#f8f5ff;min-height:100vh;padding:25px 16px;display:flex;flex-direction:column;gap:28px;position:sticky;top:0;height:100vh}.side-brand{display:flex;align-items:center;gap:11px;padding:0 9px}.brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#e995b2,#ffd09a);color:#241637;display:grid;place-items:center;font-weight:1000;font-size:19px}.side-brand strong{display:block;font-size:14px;letter-spacing:.8px}.side-brand small{display:block;color:#bcb0d0;font-size:10px;letter-spacing:1.5px;margin-top:4px}.side-label{font-size:9px;color:#9386ad;font-weight:900;letter-spacing:1.8px;padding:0 12px;margin-bottom:7px}.side-nav{display:grid;gap:5px}.side-nav a{display:flex;align-items:center;gap:11px;padding:12px;border-radius:9px;color:#d4cde3;font-size:12px;font-weight:700}.side-nav a.active,.side-nav a:hover{background:#ffffff14;color:white}.side-nav .nav-icon{width:20px;text-align:center;font-size:16px}.side-bottom{margin-top:auto}.secure-note{padding:13px;border:1px solid #ffffff1a;border-radius:10px;color:#c6bdd8;font-size:11px;line-height:1.6;margin:0 4px 15px}.side-user{display:flex;align-items:center;gap:10px;padding:13px 8px;border-top:1px solid #ffffff1c}.avatar{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:#7656a5;color:white;font-weight:900}.side-user strong{display:block;font-size:11px}.side-user small{display:block;color:#a99dbf;font-size:10px;margin-top:4px}.side-user button{margin-left:auto;background:none;border:0;color:#d7cde8;font-size:17px}.main{min-width:0}.topbar{height:72px;background:#ffffffd9;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 clamp(18px,3vw,38px);position:sticky;top:0;z-index:10}.topbar h1{font-size:18px;margin:0;letter-spacing:-.4px}.topbar p{font-size:11px;color:var(--muted);margin:5px 0 0}.top-actions{display:flex;align-items:center;gap:10px}.live-indicator{display:inline-flex;align-items:center;gap:7px;color:#16865d;font-size:11px;font-weight:800}.live-indicator i{width:7px;height:7px;border-radius:50%;background:#24b77c;box-shadow:0 0 0 4px #24b77c1a}.content{padding:clamp(18px,3vw,36px);max-width:1500px;margin:auto}.page-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:24px}.page-heading h2{font-size:26px;letter-spacing:-1px;margin:7px 0}.page-heading p{color:var(--muted);margin:0;line-height:1.6}.panel{background:var(--panel);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:19px 21px;border-bottom:1px solid var(--line)}.panel-head h3{margin:0;font-size:14px}.panel-body{padding:21px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 17px}.field.full{grid-column:1/-1}.field .hint{font-size:10px;color:var(--muted);line-height:1.5}.price-preview{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:17px 19px;border-radius:12px;background:linear-gradient(115deg,#f1eafa,#fff0f3);margin:4px 0 20px}.price-preview span{font-size:12px;color:#665d7c;font-weight:700}.price-preview strong{font-size:30px;letter-spacing:-1px;color:#302347}.checkline{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.6;color:#545a70}.checkline input{accent-color:#7656a5;margin-top:3px}.form-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:20px}.metric{padding:19px;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);min-width:0}.metric-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.metric-label{font-size:11px;font-weight:700;color:var(--muted)}.metric-icon{width:34px;height:34px;border-radius:10px;background:#f0edf8;display:grid;place-items:center;font-size:16px}.metric-value{font-size:29px;letter-spacing:-1.2px;font-weight:900;margin:15px 0 7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.metric-note{font-size:10px;color:var(--muted)}.dashboard-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,.7fr);gap:16px;margin-bottom:17px}.chart-area{padding:20px 21px}.bar-chart{height:185px;display:flex;align-items:flex-end;gap:clamp(8px,2vw,20px);padding:10px 0 0}.bar-col{flex:1;min-width:0;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:9px}.bar-value{font-size:10px;font-weight:800;color:#6c5a8c;white-space:nowrap}.bar{width:min(36px,75%);min-height:3px;border-radius:7px 7px 2px 2px;background:linear-gradient(180deg,#e995b2,#7656a5);transition:height .25s}.bar-label{font-size:10px;color:var(--muted)}.split-list{display:grid;gap:16px;padding:20px 21px}.split-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}.split-row .label{font-size:11px;font-weight:700}.split-row strong{font-size:12px}.track{grid-column:1/-1;height:7px;background:#f0edf6;border-radius:99px;overflow:hidden}.track span{display:block;height:100%;background:linear-gradient(90deg,#7656a5,#e995b2);border-radius:99px}.table-tools{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.table-tools input,.table-tools select{min-height:37px;border:1px solid var(--line);border-radius:9px;background:white;padding:8px 10px;font-size:11px;max-width:100%}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;white-space:nowrap}th,td{text-align:left;padding:13px 16px;border-bottom:1px solid #edf0f6;font-size:11px}th{color:#83899b;font-size:9px;text-transform:uppercase;letter-spacing:1px;background:#fbfcfe}tbody tr:hover{background:#faf9fd}tbody tr:last-child td{border-bottom:0}.guest-cell strong{display:block;font-size:11px}.guest-cell small{display:block;color:var(--muted);font-size:10px;margin-top:4px}.tag{display:inline-flex;align-items:center;padding:5px 8px;border-radius:99px;font-size:9px;font-weight:800;background:#f0edf8;color:#665084}.tag.green{background:#e8f8ef;color:#17744f}.tag.amber{background:#fff5df;color:#966018}.tag.gray{background:#f0f1f5;color:#666d7d}.empty-state{text-align:center;padding:35px 15px;color:var(--muted);font-size:12px}.footnote{margin-top:16px;font-size:10px;line-height:1.7;color:var(--muted)}.toast{position:fixed;right:22px;bottom:22px;z-index:50;max-width:min(390px,calc(100vw - 44px));padding:14px 17px;background:#19142f;color:white;border-radius:12px;box-shadow:0 14px 35px #10102038;font-size:12px;line-height:1.5}.toast.error{background:#9e2d43}.mobile-menu{display:none}
+.app-shell{min-height:100vh;display:grid;grid-template-columns:245px minmax(0,1fr)}.sidebar{background:#19142f;color:#f8f5ff;min-height:100vh;padding:25px 16px;display:flex;flex-direction:column;gap:28px;position:sticky;top:0;height:100vh}.side-brand{display:flex;align-items:center;gap:11px;padding:0 9px}.brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#e995b2,#ffd09a);color:#241637;display:grid;place-items:center;font-weight:1000;font-size:19px}.side-brand strong{display:block;font-size:14px;letter-spacing:.8px}.side-brand small{display:block;color:#bcb0d0;font-size:10px;letter-spacing:1.5px;margin-top:4px}.side-label{font-size:9px;color:#9386ad;font-weight:900;letter-spacing:1.8px;padding:0 12px;margin-bottom:7px}.side-nav{display:grid;gap:5px}.side-nav a{display:flex;align-items:center;gap:11px;padding:12px;border-radius:9px;color:#d4cde3;font-size:12px;font-weight:700}.side-nav a.active,.side-nav a:hover{background:#ffffff14;color:white}.side-nav .nav-icon{width:20px;text-align:center;font-size:16px}.side-bottom{margin-top:auto}.secure-note{padding:13px;border:1px solid #ffffff1a;border-radius:10px;color:#c6bdd8;font-size:11px;line-height:1.6;margin:0 4px 15px}.side-user{display:flex;align-items:center;gap:10px;padding:13px 8px;border-top:1px solid #ffffff1c}.avatar{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:#7656a5;color:white;font-weight:900}.side-user strong{display:block;font-size:11px}.side-user small{display:block;color:#a99dbf;font-size:10px;margin-top:4px}.side-user button{margin-left:auto;background:none;border:0;color:#d7cde8;font-size:17px}.main{min-width:0}.topbar{height:72px;background:#ffffffd9;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 clamp(18px,3vw,38px);position:sticky;top:0;z-index:10}.topbar h1{font-size:18px;margin:0;letter-spacing:-.4px}.topbar p{font-size:11px;color:var(--muted);margin:5px 0 0}.top-actions{display:flex;align-items:center;gap:10px}.live-indicator{display:inline-flex;align-items:center;gap:7px;color:#16865d;font-size:11px;font-weight:800}.live-indicator i{width:7px;height:7px;border-radius:50%;background:#24b77c;box-shadow:0 0 0 4px #24b77c1a}.content{padding:clamp(18px,3vw,36px);max-width:1500px;margin:auto}.page-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:24px}.page-heading h2{font-size:26px;letter-spacing:-1px;margin:7px 0}.page-heading p{color:var(--muted);margin:0;line-height:1.6}.panel{background:var(--panel);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:19px 21px;border-bottom:1px solid var(--line)}.panel-head h3{margin:0;font-size:14px}.panel-body{padding:21px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 17px}.field.full{grid-column:1/-1}.field .hint{font-size:10px;color:var(--muted);line-height:1.5}.price-preview{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:17px 19px;border-radius:12px;background:linear-gradient(115deg,#f1eafa,#fff0f3);margin:4px 0 20px}.price-preview span{font-size:12px;color:#665d7c;font-weight:700}.price-preview strong{font-size:30px;letter-spacing:-1px;color:#302347}.checkline{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.6;color:#545a70}.checkline input{accent-color:#7656a5;margin-top:3px}.form-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:20px}.metric{padding:19px;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);min-width:0}.metric-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.metric-label{font-size:11px;font-weight:700;color:var(--muted)}.metric-icon{width:34px;height:34px;border-radius:10px;background:#f0edf8;display:grid;place-items:center;font-size:16px}.metric-value{font-size:29px;letter-spacing:-1.2px;font-weight:900;margin:15px 0 7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.metric-note{font-size:10px;color:var(--muted)}.dashboard-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,.7fr);gap:16px;margin-bottom:17px}.chart-area{padding:20px 21px}.bar-chart{height:185px;display:flex;align-items:flex-end;gap:clamp(8px,2vw,20px);padding:10px 0 0}.bar-col{flex:1;min-width:0;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:9px}.bar-value{font-size:10px;font-weight:800;color:#6c5a8c;white-space:nowrap}.bar{width:min(36px,75%);min-height:3px;border-radius:7px 7px 2px 2px;background:linear-gradient(180deg,#e995b2,#7656a5);transition:height .25s}.bar-label{font-size:10px;color:var(--muted)}.split-list{display:grid;gap:16px;padding:20px 21px}.split-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}.split-row .label{font-size:11px;font-weight:700}.split-row strong{font-size:12px}.track{grid-column:1/-1;height:7px;background:#f0edf6;border-radius:99px;overflow:hidden}.track span{display:block;height:100%;background:linear-gradient(90deg,#7656a5,#e995b2);border-radius:99px}.table-tools{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.table-tools input,.table-tools select{min-height:37px;border:1px solid var(--line);border-radius:9px;background:white;padding:8px 10px;font-size:11px;max-width:100%}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;white-space:nowrap}th,td{text-align:left;padding:13px 16px;border-bottom:1px solid #edf0f6;font-size:11px}th{color:#83899b;font-size:9px;text-transform:uppercase;letter-spacing:1px;background:#fbfcfe}tbody tr:hover{background:#faf9fd}tbody tr:last-child td{border-bottom:0}.guest-cell strong{display:block;font-size:11px}.guest-cell small{display:block;color:var(--muted);font-size:10px;margin-top:4px}.tag{display:inline-flex;align-items:center;padding:5px 8px;border-radius:99px;font-size:9px;font-weight:800;background:#f0edf8;color:#665084}.tag.green{background:#e8f8ef;color:#17744f}.tag.amber{background:#fff5df;color:#966018}.tag.gray{background:#f0f1f5;color:#666d7d}.tag.pink{background:#fef0f6;color:#9e3a6a}.empty-state{text-align:center;padding:35px 15px;color:var(--muted);font-size:12px}.footnote{margin-top:16px;font-size:10px;line-height:1.7;color:var(--muted)}.toast{position:fixed;right:22px;bottom:22px;z-index:50;max-width:min(390px,calc(100vw - 44px));padding:14px 17px;background:#19142f;color:white;border-radius:12px;box-shadow:0 14px 35px #10102038;font-size:12px;line-height:1.5}.toast.error{background:#9e2d43}.mobile-menu{display:none}
+/* Solidaria banner */
+.solidaria-banner{background:#fff8e1;border:1px solid #f5d97a;border-radius:10px;padding:10px 13px;font-size:11px;color:#7a5800;line-height:1.6;margin:0 0 14px;display:none}
+.solidaria-banner.visible{display:block}
+/* Ticket badge */
+.ticket-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:99px;font-size:10px;font-weight:800;margin-left:8px}
+.ticket-badge.fac{background:#e8f8ef;color:#17744f}
+.ticket-badge.gen{background:#fff5df;color:#966018}
+.ticket-badge.sol{background:#fff8e1;color:#7a5800}
+.ticket-badge.cort{background:#f0f1f5;color:#666d7d}
 @media(max-width:1100px){.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.app-shell{grid-template-columns:215px minmax(0,1fr)}.dashboard-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.login-shell{grid-template-columns:1fr}.login-art{display:none}.login-panel{min-height:100vh}.app-shell{grid-template-columns:1fr}.sidebar{position:fixed;z-index:30;left:-260px;top:0;width:245px;transition:left .25s;height:100dvh;box-shadow:15px 0 40px #16132930}.sidebar.open{left:0}.mobile-menu{display:inline-flex}.topbar{height:64px;padding:0 16px}.topbar h1{font-size:15px}.topbar p{display:none}.top-actions .live-indicator{display:none}.content{padding:18px 13px}.page-heading{align-items:flex-start;flex-direction:column}.page-heading h2{font-size:23px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.metric-grid{gap:9px}.metric{padding:14px}.metric-value{font-size:24px}.metric-icon{width:29px;height:29px}.panel-head,.panel-body{padding:15px}.chart-area,.split-list{padding:15px}.table-tools{width:100%}.table-tools input{flex:1;min-width:150px}.table-tools select{flex:1}.btn{min-height:40px}.price-preview strong{font-size:27px}}
 @media(max-width:390px){.metric-grid{grid-template-columns:1fr 1fr}.metric-value{font-size:21px}.metric-label{font-size:10px}.top-actions .btn{padding:8px 10px;font-size:11px}}
@@ -34,32 +43,155 @@
 </aside>
 <main class="main"><header class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="btn btn-outline mobile-menu" id="mobileMenu" type="button" aria-label="Abrir menú">☰</button><div><h1>Registro de entradas</h1><p>Venta y control de acceso · AECOMPU Experience 2026</p></div></div><div class="top-actions"><span class="live-indicator"><i></i> Sincronización activa</span><a class="btn btn-light" href="dashboard-entradas.html">Ver dashboard ↗</a></div></header>
 <div class="content">
-  <div class="page-heading"><div><div class="eyebrow">PUNTO DE REGISTRO</div><h2>Nueva entrada</h2><p>Complete los datos básicos; el total se calcula automáticamente.</p></div><div class="tag green"><span style="margin-right:6px">●</span> Conectado a Firebase</div></div>
+  <div class="page-heading"><div><div class="eyebrow">PUNTO DE REGISTRO</div><h2>Nueva entrada</h2><p>Complete los datos; el total se calcula automáticamente según la categoría.</p></div><div class="tag green"><span style="margin-right:6px">●</span> Conectado a Firebase</div></div>
   <div class="dashboard-grid" style="grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);align-items:start">
     <section class="panel"><div class="panel-head"><h3>Datos del invitado</h3><span class="small muted">Campos con * obligatorios</span></div><div class="panel-body">
       <form id="entryForm">
         <div class="form-grid">
+
+          <!-- Nombre -->
           <div class="field full"><label for="guestName">Nombre del invitado *</label><input id="guestName" name="guestName" maxlength="120" placeholder="Nombre y apellido" autocomplete="name" required></div>
+
+          <!-- Carnet -->
           <div class="field"><label for="studentCarnet">Carnet de estudiante</label><input id="studentCarnet" name="studentCarnet" maxlength="40" placeholder="Opcional si es visitante"></div>
-          <div class="field"><label for="career">Carrera / categoría *</label><select id="career" name="career" required><option value="">Seleccione una opción</option><option value="tecnico">Técnico</option><option value="ingenieria">Ingeniería</option><option value="otras">Otras / visitante</option></select><span class="hint">Técnico e Ingeniería se incluyen automáticamente en el conteo para la rifa.</span></div>
-          <div class="field"><label for="ticketType">Tipo de entrada *</label><select id="ticketType" name="ticketType" required><option value="general">Entrada general — $1.00</option><option value="cortesia">Cortesía — $0.00</option></select></div>
-          <div class="field"><label for="activity">Actividad adicional</label><select id="activity" name="activity"><option value="ninguna">Ninguna — $0.00</option><option value="multijugador">Sesión multijugador — $0.75</option><option value="torneo">Torneo relámpago — $3.00</option></select></div>
-          <div class="field"><label for="paymentMethod">Forma de pago *</label><select id="paymentMethod" name="paymentMethod" required><option value="efectivo">Efectivo</option><option value="transferencia">Transferencia</option><option value="otro">Otro</option><option value="cortesia">Cortesía / no aplica</option></select><span class="hint" id="paymentHint">Seleccione cómo recibió el dinero.</span></div>
-          <div class="field full"><label for="notes">Nota (opcional)</label><input id="notes" name="notes" maxlength="180" placeholder="Ej. número de recibo o comentario breve"></div>
+
+          <!-- Carrera -->
+          <div class="field">
+            <label for="career">Carrera / categoría *</label>
+            <select id="career" name="career" required>
+              <option value="">Seleccione una opción</option>
+              <optgroup label="Facultad de Tecnología">
+                <option value="tecnico">Técnico</option>
+                <option value="ingenieria">Ingeniería</option>
+              </optgroup>
+              <optgroup label="Otras categorías">
+                <option value="otras">Otra facultad</option>
+                <option value="publico">Público general / visitante</option>
+              </optgroup>
+            </select>
+            <span class="hint">Técnico e Ingeniería participan en la rifa. Seleccionar una opción sugiere el tipo de entrada correspondiente.</span>
+          </div>
+
+          <!-- Tipo de entrada -->
+          <div class="field">
+            <label for="ticketType">Tipo de entrada *</label>
+            <select id="ticketType" name="ticketType" required>
+              <option value="facultad_tec">Facultad de Tecnología — $1.00</option>
+              <option value="general">Otras facultades / Público — $3.00</option>
+              <option value="solidaria">Entrada solidaria (juguete) — $0.00</option>
+              <option value="cortesia">Cortesía interna — $0.00</option>
+            </select>
+            <span class="hint" id="ticketHint">$1 para estudiantes de la Facultad de Tecnología.</span>
+          </div>
+
+          <!-- Actividad adicional -->
+          <div class="field full">
+            <label for="activity">Actividad adicional</label>
+            <select id="activity" name="activity">
+              <option value="ninguna">Sin actividad adicional — $0.00</option>
+              <option value="multijugador">Sesión multijugador — $0.75 por persona</option>
+              <optgroup label="Torneo Flash (costo total del torneo, no por persona)">
+                <option value="torneo_4">Torneo Flash · 4 jugadores — $3.00 total</option>
+                <option value="torneo_6">Torneo Flash · 6 jugadores — $7.00 total</option>
+                <option value="torneo_8">Torneo Flash · 8 jugadores — $10.00 total</option>
+              </optgroup>
+            </select>
+            <span class="hint" id="activityHint">Para torneos, registre el total del torneo en una sola entrada y anote los jugadores en la nota.</span>
+          </div>
+
+          <!-- Forma de pago -->
+          <div class="field">
+            <label for="paymentMethod">Forma de pago *</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+              <option value="efectivo">Efectivo</option>
+              <option value="transferencia">Transferencia</option>
+              <option value="otro">Otro</option>
+              <option value="cortesia">Cortesía / no aplica</option>
+            </select>
+            <span class="hint" id="paymentHint">Seleccione cómo recibió el dinero.</span>
+          </div>
+
+          <!-- Nota -->
+          <div class="field"><label for="notes">Nota (opcional)</label><input id="notes" name="notes" maxlength="200" placeholder="Ej. jugadores del torneo, número de recibo, aclaración"></div>
+
         </div>
-        <label class="checkline" style="margin:0 0 18px"><input id="toyDonation" type="checkbox"><span>El invitado entrega un juguete para la iniciativa <strong>Gaming con propósito</strong>. Este dato no cambia el precio.</span></label>
-        <div class="price-preview"><div><span>Total a registrar</span><div class="small muted" id="priceBreakdown" style="margin-top:5px">Entrada general: $1.00</div></div><strong id="totalPreview">$1.00</strong></div>
+
+        <!-- Banner entrada solidaria -->
+        <div class="solidaria-banner" id="solidariaBanner">
+          🎁 <strong>Entrada solidaria activa.</strong> Este invitado ingresa con un juguete como donación. No se registra cobro monetario. Las actividades con tarifa adicional se pagan por separado.
+        </div>
+
+        <!-- Donación de juguete adicional -->
+        <label class="checkline" style="margin:0 0 18px" id="toyDonationWrapper">
+          <input id="toyDonation" type="checkbox">
+          <span>El invitado entrega un juguete adicional para <strong>Gaming con propósito</strong>. No modifica el precio.</span>
+        </label>
+
+        <!-- Vista previa del precio -->
+        <div class="price-preview">
+          <div>
+            <span>Total a registrar</span>
+            <div class="small muted" id="priceBreakdown" style="margin-top:5px">Facultad de Tecnología: $1.00</div>
+          </div>
+          <strong id="totalPreview">$1.00</strong>
+        </div>
+
         <div id="formError" class="error-box hidden" role="alert"></div>
-        <div class="form-actions"><button id="saveEntryButton" class="btn btn-primary" type="submit">＋ Registrar entrada</button><button id="resetFormButton" class="btn btn-outline" type="reset">Limpiar formulario</button></div>
+        <div class="form-actions">
+          <button id="saveEntryButton" class="btn btn-primary" type="submit">＋ Registrar entrada</button>
+          <button id="resetFormButton" class="btn btn-outline" type="reset">Limpiar formulario</button>
+        </div>
       </form>
     </div></section>
+
+    <!-- Panel derecho -->
     <div style="display:grid;gap:15px">
-      <section class="panel"><div class="panel-head"><h3>Resumen del turno</h3><span class="tag">En vivo</span></div><div class="panel-body" style="display:grid;gap:17px"><div><div class="metric-label">Registros de hoy</div><div id="todayCount" style="font-size:29px;font-weight:900;margin-top:6px">—</div></div><div><div class="metric-label">Dinero recaudado hoy</div><div id="todayRevenue" style="font-size:25px;font-weight:900;margin-top:6px">—</div></div><div><div class="metric-label">Participantes en rifa (Técnico + Ingeniería)</div><div id="raffleCount" style="font-size:25px;font-weight:900;margin-top:6px">—</div></div></div></section>
-      <section class="panel"><div class="panel-head"><h3>Reglas rápidas</h3></div><div class="panel-body" style="font-size:12px;line-height:1.8;color:#697086"><p style="margin-top:0">• Entrada general: <strong>$1.00</strong>.</p><p>• Sesión multijugador adicional: <strong>$0.75</strong>.</p><p>• Torneo relámpago adicional: <strong>$3.00</strong>.</p><p>• Cortesía: <strong>$0.00</strong>.</p><p style="margin-bottom:0">Los registros se guardan en la base de datos compartida y aparecen en el dashboard al instante.</p></div></section>
+      <section class="panel">
+        <div class="panel-head"><h3>Resumen del turno</h3><span class="tag">En vivo</span></div>
+        <div class="panel-body" style="display:grid;gap:17px">
+          <div>
+            <div class="metric-label">Registros de hoy</div>
+            <div id="todayCount" style="font-size:29px;font-weight:900;margin-top:6px">—</div>
+          </div>
+          <div>
+            <div class="metric-label">Dinero recaudado hoy</div>
+            <div id="todayRevenue" style="font-size:25px;font-weight:900;margin-top:6px">—</div>
+          </div>
+          <div>
+            <div class="metric-label">Participantes en rifa</div>
+            <div id="raffleCount" style="font-size:25px;font-weight:900;margin-top:6px">—</div>
+            <div class="small muted" style="margin-top:4px">Técnico e Ingeniería (Fac. Tecnología)</div>
+          </div>
+          <div>
+            <div class="metric-label">Entradas solidarias (juguetes)</div>
+            <div id="solidariaCount" style="font-size:22px;font-weight:900;margin-top:6px">—</div>
+          </div>
+        </div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><h3>Tarifas del evento</h3></div>
+        <div class="panel-body" style="font-size:12px;line-height:1.9;color:#697086">
+          <p style="margin-top:0;font-weight:700;color:#4c5268">ENTRADAS</p>
+          <p style="margin:0">• Facultad de Tecnología: <strong>$1.00</strong></p>
+          <p style="margin:0">• Otras facultades / público: <strong>$3.00</strong></p>
+          <p style="margin:0">• Entrada solidaria (juguete): <strong>$0.00</strong></p>
+          <p style="font-weight:700;color:#4c5268;margin-top:12px;margin-bottom:0">ACTIVIDADES ADICIONALES</p>
+          <p style="margin:0">• Sesión multijugador: <strong>$0.75</strong> por persona</p>
+          <p style="font-weight:700;color:#4c5268;margin-bottom:0">Torneo Flash (total por torneo)</p>
+          <p style="margin:0">• 4 jugadores: <strong>$3.00</strong></p>
+          <p style="margin:0">• 6 jugadores: <strong>$7.00</strong></p>
+          <p style="margin-bottom:0">• 8 jugadores: <strong>$10.00</strong></p>
+        </div>
+      </section>
     </div>
   </div>
-  <section class="panel"><div class="panel-head"><h3>Últimas entradas registradas</h3><a class="small" href="dashboard-entradas.html" style="color:#7656a5;font-weight:800">Abrir listado completo →</a></div><div class="table-wrap"><table><thead><tr><th>Invitado</th><th>Carrera</th><th>Entrada</th><th>Total</th><th>Registrado por</th><th>Fecha</th></tr></thead><tbody id="recentEntries"><tr><td colspan="6" class="empty-state">Conectando con Firebase…</td></tr></tbody></table></div></section>
-  <p class="footnote">Los precios mostrados corresponden a las opciones configuradas en este prototipo. Verifique las tarifas finales del evento antes de usarlo en producción.</p>
+
+  <!-- Últimas entradas -->
+  <section class="panel">
+    <div class="panel-head"><h3>Últimas entradas registradas</h3><a class="small" href="dashboard-entradas.html" style="color:#7656a5;font-weight:800">Abrir listado completo →</a></div>
+    <div class="table-wrap"><table><thead><tr><th>Invitado</th><th>Carrera</th><th>Entrada</th><th>Actividad</th><th>Total</th><th>Registrado por</th><th>Fecha</th></tr></thead><tbody id="recentEntries"><tr><td colspan="7" class="empty-state">Conectando con Firebase…</td></tr></tbody></table></div>
+  </section>
+  <p class="footnote">Las tarifas corresponden a las aprobadas para AECOMPU Experience 2026. Para cortesías internas, asegúrese de tener autorización del organizador.</p>
 </div></main></div>
 <div id="toast" class="toast hidden" role="status"></div>
 <script type="module">
@@ -76,39 +208,302 @@ const firebaseConfig = {
   appId: "1:275967123743:web:45a4307519afaa60ca102a",
   measurementId: "G-93BBP4GZY8"
 };
-// Alias de acceso: cree estas cuentas en Firebase Authentication con las contraseñas
-// entregadas por el administrador. Las contraseñas NO se guardan en este HTML.
+// Alias de acceso: cree estas cuentas en Firebase Authentication
 const ADMIN_EMAILS = {
   timotea: "timotea@aecompu-8a34e.firebaseapp.com",
   salvador: "salvador@aecompu-8a34e.firebaseapp.com"
 };
 const DB_PATH = "aecompuExperience2026/entradas";
-function normalizeUsername(value){return String(value||"").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
+
+// ─── Precios oficiales AECOMPU Experience 2026 ───────────────────────────────
+const TICKET_PRICES = {
+  facultad_tec: 1.00,   // Facultad de Tecnología (Técnico / Ingeniería)
+  general:      3.00,   // Otras facultades y público general
+  solidaria:    0.00,   // Entrada solidaria — juguete como donación
+  cortesia:     0.00    // Cortesía interna
+};
+const ACTIVITY_PRICES = {
+  ninguna:    0.00,
+  multijugador: 0.75,   // por persona
+  torneo_4:   3.00,     // total del torneo · 4 jugadores
+  torneo_6:   7.00,     // total del torneo · 6 jugadores
+  torneo_8:  10.00      // total del torneo · 8 jugadores
+};
+// ─────────────────────────────────────────────────────────────────────────────
+
+function normalizeUsername(v){return String(v||"").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
 function usernameFromEmail(email){const key=Object.keys(ADMIN_EMAILS).find(k=>ADMIN_EMAILS[k]===email);return key?key.charAt(0).toUpperCase()+key.slice(1):"Administrador";}
-function money(value){return new Intl.NumberFormat("es-SV",{style:"currency",currency:"USD"}).format(Number(value)||0);}
-function escapeHTML(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function dateTime(value){if(!value)return "—";const d=new Date(Number(value));if(Number.isNaN(d.getTime()))return "—";return new Intl.DateTimeFormat("es-SV",{dateStyle:"short",timeStyle:"short"}).format(d);}
-function dateLabel(value){if(!value)return "—";const d=new Date(Number(value));return new Intl.DateTimeFormat("es-SV",{day:"2-digit",month:"short"}).format(d).replace(".","");}
-function careerLabel(value){return ({tecnico:"Técnico",ingenieria:"Ingeniería",otras:"Otras"})[value]||value||"—";}
-function ticketLabel(value){return ({general:"Entrada general",cortesia:"Cortesía"})[value]||value||"—";}
-function activityLabel(value){return ({ninguna:"Sin actividad adicional",multijugador:"Sesión multijugador",torneo:"Torneo relámpago"})[value]||value||"—";}
-function paymentLabel(value){return ({efectivo:"Efectivo",transferencia:"Transferencia",otro:"Otro",cortesia:"Cortesía / no aplica"})[value]||value||"—";}
+function money(v){return new Intl.NumberFormat("es-SV",{style:"currency",currency:"USD"}).format(Number(v)||0);}
+function escapeHTML(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function dateTime(v){if(!v)return "—";const d=new Date(Number(v));if(Number.isNaN(d.getTime()))return "—";return new Intl.DateTimeFormat("es-SV",{dateStyle:"short",timeStyle:"short"}).format(d);}
+
+function careerLabel(v){
+  return ({
+    tecnico:   "Técnico (Fac. Tec.)",
+    ingenieria:"Ingeniería (Fac. Tec.)",
+    otras:     "Otra facultad",
+    publico:   "Público general"
+  })[v]||v||"—";
+}
+function ticketLabel(v){
+  return ({
+    facultad_tec:"Fac. Tecnología ($1)",
+    general:     "General ($3)",
+    solidaria:   "Solidaria · juguete",
+    cortesia:    "Cortesía"
+  })[v]||v||"—";
+}
+function activityLabel(v){
+  return ({
+    ninguna:      "Sin actividad adicional",
+    multijugador: "Sesión multijugador",
+    torneo_4:     "Torneo Flash · 4j",
+    torneo_6:     "Torneo Flash · 6j",
+    torneo_8:     "Torneo Flash · 8j"
+  })[v]||v||"—";
+}
+function paymentLabel(v){
+  return ({
+    efectivo:     "Efectivo",
+    transferencia:"Transferencia",
+    otro:         "Otro",
+    cortesia:     "Cortesía / no aplica"
+  })[v]||v||"—";
+}
+function ticketTagClass(v){
+  return ({facultad_tec:"fac",general:"gen",solidaria:"sol",cortesia:"cort"})[v]||"cort";
+}
 
 const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getDatabase(app),entriesRef=ref(db,DB_PATH);
-const $=id=>document.getElementById(id);let currentUser=null,allEntries={};let toastTimer;
-function toast(message,isError=false){const el=$("toast");el.textContent=message;el.classList.remove("hidden","error");if(isError)el.classList.add("error");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.add("hidden"),4200);}
-function setLoginError(message){$("loginError").textContent=message;$("loginError").classList.toggle("hidden",!message);}
-$("loginForm").addEventListener("submit",async e=>{e.preventDefault();setLoginError("");const username=normalizeUsername($("loginUsername").value),password=$("loginPassword").value;const email=ADMIN_EMAILS[username];if(!email){setLoginError("Usuario no autorizado. Revise el nombre de usuario.");return;}const btn=$("loginButton");btn.disabled=true;btn.textContent="Validando acceso…";try{await signInWithEmailAndPassword(auth,email,password);}catch(err){setLoginError(err.code==="auth/invalid-credential"||err.code==="auth/wrong-password"||err.code==="auth/user-not-found"?"Usuario o contraseña incorrectos. Verifique también que la cuenta exista en Firebase Authentication.":"No se pudo iniciar sesión. Revise la conexión y la configuración de Firebase.");}finally{btn.disabled=false;btn.innerHTML='Entrar al ERP <span aria-hidden="true">→</span>';}});
-onAuthStateChanged(auth,user=>{currentUser=user;if(user){$("loginScreen").classList.add("hidden");$("appScreen").classList.remove("hidden");const name=usernameFromEmail(user.email);$("sideUsername").textContent=name;$("userAvatar").textContent=name.charAt(0).toUpperCase();subscribeEntries();}else{$("appScreen").classList.add("hidden");$("loginScreen").classList.remove("hidden");}});
-$("logoutButton").addEventListener("click",()=>signOut(auth));$("mobileMenu").addEventListener("click",()=>$("sidebar").classList.toggle("open"));
-const TICKET_PRICES={general:1,cortesia:0},ACTIVITY_PRICES={ninguna:0,multijugador:.75,torneo:3};
-function calculateTotal(){const t=$("ticketType").value,a=$("activity").value;const total=(TICKET_PRICES[t]||0)+(ACTIVITY_PRICES[a]||0);$("totalPreview").textContent=money(total);$("priceBreakdown").textContent=`${ticketLabel(t)}: ${money(TICKET_PRICES[t]||0)}${a!=="ninguna"?` + ${activityLabel(a)}: ${money(ACTIVITY_PRICES[a]||0)}`:""}`;const noCharge=total===0; if(noCharge)$("paymentMethod").value="cortesia";else if($("paymentMethod").value==="cortesia")$("paymentMethod").value="efectivo";$("paymentMethod").disabled=noCharge;$("paymentHint").textContent=noCharge?"No se registra cobro para esta cortesía.":"Seleccione cómo recibió el dinero.";return total;}
-$("ticketType").addEventListener("change",calculateTotal);$("activity").addEventListener("change",calculateTotal);$("entryForm").addEventListener("reset",()=>setTimeout(()=>{ $("paymentMethod").disabled=false;calculateTotal();$("formError").classList.add("hidden");},0));
+const $=id=>document.getElementById(id);
+let currentUser=null,allEntries={};let toastTimer;
+
+function toast(message,isError=false){
+  const el=$("toast");el.textContent=message;el.classList.remove("hidden","error");
+  if(isError)el.classList.add("error");clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.add("hidden"),4200);
+}
+function setLoginError(msg){$("loginError").textContent=msg;$("loginError").classList.toggle("hidden",!msg);}
+
+// ─── Login ────────────────────────────────────────────────────────────────────
+$("loginForm").addEventListener("submit",async e=>{
+  e.preventDefault();setLoginError("");
+  const username=normalizeUsername($("loginUsername").value),password=$("loginPassword").value;
+  const email=ADMIN_EMAILS[username];
+  if(!email){setLoginError("Usuario no autorizado. Revise el nombre de usuario.");return;}
+  const btn=$("loginButton");btn.disabled=true;btn.textContent="Validando acceso…";
+  try{await signInWithEmailAndPassword(auth,email,password);}
+  catch(err){
+    setLoginError(err.code==="auth/invalid-credential"||err.code==="auth/wrong-password"||err.code==="auth/user-not-found"
+      ?"Usuario o contraseña incorrectos. Verifique también que la cuenta exista en Firebase Authentication."
+      :"No se pudo iniciar sesión. Revise la conexión y la configuración de Firebase.");
+  }finally{btn.disabled=false;btn.innerHTML='Entrar al ERP <span aria-hidden="true">→</span>';}
+});
+onAuthStateChanged(auth,user=>{
+  currentUser=user;
+  if(user){
+    $("loginScreen").classList.add("hidden");$("appScreen").classList.remove("hidden");
+    const name=usernameFromEmail(user.email);
+    $("sideUsername").textContent=name;$("userAvatar").textContent=name.charAt(0).toUpperCase();
+    subscribeEntries();
+  }else{$("appScreen").classList.add("hidden");$("loginScreen").classList.remove("hidden");}
+});
+$("logoutButton").addEventListener("click",()=>signOut(auth));
+$("mobileMenu").addEventListener("click",()=>$("sidebar").classList.toggle("open"));
+
+// ─── Cálculo del precio ───────────────────────────────────────────────────────
+function calculateTotal(){
+  const t=$("ticketType").value;
+  const a=$("activity").value;
+  const ticketCost=TICKET_PRICES[t]??0;
+  const actCost=ACTIVITY_PRICES[a]??0;
+  const total=ticketCost+actCost;
+
+  $("totalPreview").textContent=money(total);
+  const actPart = a!=="ninguna" ? ` + ${activityLabel(a)}: ${money(actCost)}` : "";
+  $("priceBreakdown").textContent=`${ticketLabel(t)}: ${money(ticketCost)}${actPart}`;
+
+  // Gestión de pago y banner según tipo de entrada
+  const isSolidaria = t==="solidaria";
+  const isCortesia  = t==="cortesia";
+  const isZeroEntry = isSolidaria||isCortesia;
+
+  // Banner entrada solidaria
+  $("solidariaBanner").classList.toggle("visible", isSolidaria);
+
+  // Donación de juguete — auto-check y bloqueo si es entrada solidaria
+  if(isSolidaria){
+    $("toyDonation").checked=true;
+    $("toyDonation").disabled=true;
+    $("toyDonationWrapper").style.opacity="0.55";
+  }else{
+    $("toyDonation").disabled=false;
+    $("toyDonationWrapper").style.opacity="1";
+    if(!$("toyDonation").dataset.manual) $("toyDonation").checked=false;
+  }
+
+  // Forma de pago
+  if(isZeroEntry){
+    $("paymentMethod").value="cortesia";
+    $("paymentMethod").disabled=true;
+    $("paymentHint").textContent=isSolidaria?"Ingresa con donación de juguete. No se cobra entrada.":"No se registra cobro para esta cortesía.";
+  }else{
+    $("paymentMethod").disabled=false;
+    if($("paymentMethod").value==="cortesia") $("paymentMethod").value="efectivo";
+    $("paymentHint").textContent="Seleccione cómo recibió el dinero.";
+  }
+
+  // Hint de actividad para torneos
+  const isTorneo=a.startsWith("torneo_");
+  $("activityHint").textContent=isTorneo
+    ?"⚠ Registre el total del torneo en esta entrada. Anote los demás jugadores en la nota."
+    :"Para torneos, el precio es el total del torneo (no por persona).";
+
+  // Hint de ticket
+  const ticketHints={
+    facultad_tec:"Tarifa para estudiantes de la Facultad de Tecnología (Técnico o Ingeniería).",
+    general:"Tarifa para otras facultades y público general.",
+    solidaria:"El invitado ingresa entregando un juguete nuevo o en buen estado.",
+    cortesia:"Cortesía interna — requiere autorización del organizador."
+  };
+  $("ticketHint").textContent=ticketHints[t]||"";
+
+  return total;
+}
+
+// Sugerir tipo de entrada al cambiar carrera
+$("career").addEventListener("change",()=>{
+  const career=$("career").value;
+  if(!career) return;
+  // Solo sugerir si no es cortesía (respeta selección manual)
+  if($("ticketType").value!=="cortesia"&&$("ticketType").value!=="solidaria"){
+    if(career==="tecnico"||career==="ingenieria"){
+      $("ticketType").value="facultad_tec";
+    }else if(career==="otras"||career==="publico"){
+      $("ticketType").value="general";
+    }
+  }
+  calculateTotal();
+});
+
+$("ticketType").addEventListener("change",calculateTotal);
+$("activity").addEventListener("change",calculateTotal);
+
+// Marcar checkbox manual para no revertirlo al recalcular
+$("toyDonation").addEventListener("change",function(){
+  this.dataset.manual=this.checked?"1":"";
+});
+
+$("entryForm").addEventListener("reset",()=>setTimeout(()=>{
+  $("paymentMethod").disabled=false;
+  $("toyDonation").dataset.manual="";
+  $("formError").classList.add("hidden");
+  calculateTotal();
+},0));
 $("resetFormButton").addEventListener("click",()=>{ $("guestName").focus(); });
-$("entryForm").addEventListener("submit",async e=>{e.preventDefault();const error=$("formError");error.classList.add("hidden");if(!currentUser){error.textContent="Su sesión expiró. Inicie sesión nuevamente.";error.classList.remove("hidden");return;}const guestName=$("guestName").value.trim(),career=$("career").value;if(!guestName||!career){error.textContent="Complete el nombre del invitado y la carrera.";error.classList.remove("hidden");return;}const ticketType=$("ticketType").value,activity=$("activity").value,total=calculateTotal();const payload={guestName,studentCarnet:$("studentCarnet").value.trim(),career,ticketType,activity,paymentMethod:$("paymentMethod").value,amountCollected:Math.round(total*100)/100,toyDonation:$("toyDonation").checked,raffleEligible:career==="tecnico"||career==="ingenieria",notes:$("notes").value.trim(),recordedBy:usernameFromEmail(currentUser.email),recordedByUid:currentUser.uid,createdAt:Date.now(),serverCreatedAt:serverTimestamp(),status:total>0?"paid":"courtesy"};const btn=$("saveEntryButton");btn.disabled=true;btn.textContent="Guardando…";try{const newRef=push(entriesRef);await set(newRef,payload);$("entryForm").reset();toast("Entrada registrada correctamente. El dashboard se actualizará en tiempo real.");$("guestName").focus();}catch(err){error.textContent="No se pudo guardar. Revise las reglas de Realtime Database y que su usuario esté autorizado.";error.classList.remove("hidden");}finally{btn.disabled=false;btn.innerHTML="＋ Registrar entrada";}});
-function subscribeEntries(){onValue(entriesRef,snapshot=>{allEntries=snapshot.val()||{};renderSummary();renderRecent();},err=>{toast("Firebase rechazó la lectura. Revise las reglas de seguridad de la base de datos.",true);});}
-function values(){return Object.entries(allEntries).map(([id,v])=>({id,...v})).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));}
-function renderSummary(){const list=values(),today=new Date();const sameDay=v=>{const d=new Date(v.createdAt||0);return d.getFullYear()===today.getFullYear()&&d.getMonth()===today.getMonth()&&d.getDate()===today.getDate();};const todays=list.filter(sameDay);$("todayCount").textContent=todays.length;$("todayRevenue").textContent=money(todays.reduce((s,x)=>s+(Number(x.amountCollected)||0),0));$("raffleCount").textContent=list.filter(x=>x.raffleEligible).length;}
-function renderRecent(){const list=values().slice(0,7),body=$("recentEntries");if(!list.length){body.innerHTML='<tr><td colspan="6" class="empty-state">Aún no hay entradas registradas.</td></tr>';return;}body.innerHTML=list.map(x=>`<tr><td class="guest-cell"><strong>${escapeHTML(x.guestName)}</strong><small>${escapeHTML(x.studentCarnet||"Sin carnet")}</small></td><td>${escapeHTML(careerLabel(x.career))}</td><td>${escapeHTML(ticketLabel(x.ticketType))}</td><td><strong>${money(x.amountCollected)}</strong></td><td>${escapeHTML(x.recordedBy||"—")}</td><td>${escapeHTML(dateTime(x.createdAt))}</td></tr>`).join("");}
+
+// ─── Guardar entrada ──────────────────────────────────────────────────────────
+$("entryForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const error=$("formError");error.classList.add("hidden");
+  if(!currentUser){
+    error.textContent="Su sesión expiró. Inicie sesión nuevamente.";
+    error.classList.remove("hidden");return;
+  }
+  const guestName=$("guestName").value.trim();
+  const career=$("career").value;
+  if(!guestName||!career){
+    error.textContent="Complete el nombre del invitado y la carrera/categoría.";
+    error.classList.remove("hidden");return;
+  }
+
+  const ticketType=$("ticketType").value;
+  const activity=$("activity").value;
+  const total=calculateTotal();
+
+  // La rifa incluye a todos los estudiantes de Fac. de Tecnología con entrada pagada
+  const isFacTec = career==="tecnico"||career==="ingenieria";
+  const isPaidEntry = ticketType==="facultad_tec"||ticketType==="general"||ticketType==="solidaria";
+  const raffleEligible = isFacTec && isPaidEntry;
+
+  const payload={
+    guestName,
+    studentCarnet: $("studentCarnet").value.trim(),
+    career,
+    ticketType,
+    activity,
+    paymentMethod: $("paymentMethod").value,
+    amountCollected: Math.round(total*100)/100,
+    toyDonation: $("toyDonation").checked,
+    isSolidariaEntry: ticketType==="solidaria",
+    raffleEligible,
+    notes: $("notes").value.trim(),
+    recordedBy: usernameFromEmail(currentUser.email),
+    recordedByUid: currentUser.uid,
+    createdAt: Date.now(),
+    serverCreatedAt: serverTimestamp(),
+    status: total>0?"paid":(ticketType==="solidaria"?"solidarity":"courtesy")
+  };
+
+  const btn=$("saveEntryButton");btn.disabled=true;btn.textContent="Guardando…";
+  try{
+    const newRef=push(entriesRef);
+    await set(newRef,payload);
+    $("entryForm").reset();
+    toast("✓ Entrada registrada correctamente.");
+    $("guestName").focus();
+  }catch(err){
+    error.textContent="No se pudo guardar. Revise las reglas de Realtime Database y que su usuario esté autorizado.";
+    error.classList.remove("hidden");
+  }finally{
+    btn.disabled=false;btn.innerHTML="＋ Registrar entrada";
+  }
+});
+
+// ─── Firebase: lectura en tiempo real ────────────────────────────────────────
+function subscribeEntries(){
+  onValue(entriesRef,snapshot=>{
+    allEntries=snapshot.val()||{};
+    renderSummary();renderRecent();
+  },()=>{
+    toast("Firebase rechazó la lectura. Revise las reglas de seguridad de la base de datos.",true);
+  });
+}
+function values(){
+  return Object.entries(allEntries).map(([id,v])=>({id,...v})).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+}
+function renderSummary(){
+  const list=values();
+  const today=new Date();
+  const sameDay=v=>{
+    const d=new Date(v.createdAt||0);
+    return d.getFullYear()===today.getFullYear()&&d.getMonth()===today.getMonth()&&d.getDate()===today.getDate();
+  };
+  const todays=list.filter(sameDay);
+  $("todayCount").textContent=todays.length;
+  $("todayRevenue").textContent=money(todays.reduce((s,x)=>s+(Number(x.amountCollected)||0),0));
+  $("raffleCount").textContent=list.filter(x=>x.raffleEligible).length;
+  $("solidariaCount").textContent=list.filter(x=>x.isSolidariaEntry||x.toyDonation).length;
+}
+function renderRecent(){
+  const list=values().slice(0,8);
+  const body=$("recentEntries");
+  if(!list.length){
+    body.innerHTML='<tr><td colspan="7" class="empty-state">Aún no hay entradas registradas.</td></tr>';
+    return;
+  }
+  body.innerHTML=list.map(x=>`
+    <tr>
+      <td class="guest-cell"><strong>${escapeHTML(x.guestName)}</strong><small>${escapeHTML(x.studentCarnet||"Sin carnet")}</small></td>
+      <td>${escapeHTML(careerLabel(x.career))}</td>
+      <td><span class="tag ${ticketTagClass(x.ticketType)}">${escapeHTML(ticketLabel(x.ticketType))}</span></td>
+      <td>${escapeHTML(activityLabel(x.activity))}</td>
+      <td><strong>${money(x.amountCollected)}</strong></td>
+      <td>${escapeHTML(x.recordedBy||"—")}</td>
+      <td>${escapeHTML(dateTime(x.createdAt))}</td>
+    </tr>`).join("");
+}
+
+// Inicializar precio
 calculateTotal();
 </script></body></html>
